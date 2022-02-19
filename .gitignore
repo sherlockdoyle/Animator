@@ -1,0 +1,11 @@
+/.idea/
+/.ipynb_checkpoints/
+/.mypy_cache/
+/.vscode/
+/animator/skia.cpython-38-x86_64-linux-gnu.so
+/build/
+/docs/build/
+/docs/source/reference/
+/skia/include/
+/skia/lib/
+/venv/
