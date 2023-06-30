@@ -50,6 +50,8 @@ scene.add(am.Circle(100))
 scene.play_frames()
 ```
 
+There are more examples in the [`examples`](/examples) directory.
+
 ## Testing
 
 No tests. Animator is a visual library, so tests are visual! I'll add some tests later.
