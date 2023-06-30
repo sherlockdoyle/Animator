@@ -1,18 +1,19 @@
 """Contains relative positioning used by entities."""
-__all__ = 'LEFT', 'RIGHT', 'TOP', 'BOTTOM', 'CENTER', 'TL', 'TR', 'BL', 'BR'
 
 import numpy
 
+RelativePosition = numpy.ndarray
+
 # Relative positions
-LEFT = numpy.array([-1, 0])
-RIGHT = numpy.array([1, 0])
-TOP = numpy.array([0, -1])
-BOTTOM = numpy.array([0, 1])
-CENTER = numpy.array([0, 0])
-TL = TOP + LEFT
-TR = TOP + RIGHT
-BL = BOTTOM + LEFT
-BR = BOTTOM + RIGHT
+LEFT: RelativePosition = numpy.array([-1, 0])
+RIGHT: RelativePosition = numpy.array([1, 0])
+TOP: RelativePosition = numpy.array([0, -1])
+BOTTOM: RelativePosition = numpy.array([0, 1])
+CENTER: RelativePosition = numpy.array([0, 0])
+TL: RelativePosition = TOP + LEFT
+TR: RelativePosition = TOP + RIGHT
+BL: RelativePosition = BOTTOM + LEFT
+BR: RelativePosition = BOTTOM + RIGHT
 
 LEFT.flags.writeable = False
 RIGHT.flags.writeable = False

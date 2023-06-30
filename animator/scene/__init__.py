@@ -1,2 +1,1 @@
-from .scene import *
-from .color import *
+from animator.scene.scene import Scene as Scene

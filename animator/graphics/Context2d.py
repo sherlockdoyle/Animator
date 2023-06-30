@@ -1,18 +1,18 @@
 """**Context2d** adds more drawing functions to the :class:`skia.Canvas`. This is a convenience wrapper around
 :class:`skia.Canvas` that adds *HTML CanvasRenderingContext2D* like drawing methods. Most of the *Context2D* methods are
-available."""
+available, although they might behave differently."""
 from __future__ import annotations
 
-__all__ = 'Context2d',
-
 import math
-from typing import Sequence, Tuple, List, IO, NamedTuple, Literal, Dict, overload, TYPE_CHECKING, Any
+from contextlib import AbstractContextManager
+from typing import IO, Any, Literal, NamedTuple, Sequence, overload
 
 import numpy as np
-from .. import skia
 
-if TYPE_CHECKING:
-    from .._common_types import Color, Point
+from animator import skia
+
+Point = tuple[float, float]
+Color = tuple[float, float, float, float]
 
 
 class TextMetrics(NamedTuple):
@@ -24,11 +24,34 @@ class TextMetrics(NamedTuple):
 
 
 CompositeOperation = Literal[
-    'source-over', 'source-in', 'source-out', 'source-atop', 'destination-over', 'destination-in', 'destination-out',
-    'destination-atop', 'lighter', 'copy', 'xor', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge',
-    'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'
+    'source-over',
+    'source-in',
+    'source-out',
+    'source-atop',
+    'destination-over',
+    'destination-in',
+    'destination-out',
+    'destination-atop',
+    'lighter',
+    'copy',
+    'xor',
+    'multiply',
+    'screen',
+    'overlay',
+    'darken',
+    'lighten',
+    'color-dodge',
+    'color-burn',
+    'hard-light',
+    'soft-light',
+    'difference',
+    'exclusion',
+    'hue',
+    'saturation',
+    'color',
+    'luminosity',
 ]
-_composite_operation: Dict[CompositeOperation, skia.BlendMode] = {
+_composite_operation: dict[CompositeOperation, skia.BlendMode] = {
     'source-over': skia.BlendMode.kSrcOver,
     'source-in': skia.BlendMode.kSrcIn,
     'source-out': skia.BlendMode.kSrcOut,
@@ -54,13 +77,41 @@ _composite_operation: Dict[CompositeOperation, skia.BlendMode] = {
     'hue': skia.BlendMode.kHue,
     'saturation': skia.BlendMode.kSaturation,
     'color': skia.BlendMode.kColor,
-    'luminosity': skia.BlendMode.kLuminosity
+    'luminosity': skia.BlendMode.kLuminosity,
 }
-_composite_operation_inverse: Dict[skia.BlendMode, CompositeOperation] = {v: k for k, v in _composite_operation.items()}
+_composite_operation_inverse: dict[skia.BlendMode, CompositeOperation] = {v: k for k, v in _composite_operation.items()}
 
 
-class Context2d:
+def create_styled_paint(orig_paint: skia.Paint, style: skia.Paint.Style, color: Color | skia.Shader) -> skia.Paint:
+    """Returns a new paint object with the given *color* and *style* and the same properties as the original paint.
+
+    :param orig_paint: The original paint.
+    :param color: The new color.
+    :param style: The new fill or stroke style.
+    """
+    paint = skia.Paint(orig_paint)
+    if not isinstance(color, skia.Shader):
+        color = skia.Shader.Color(skia.Color4f(color))
+    paint.setShader(color)
+    paint.setStyle(style)
+    return paint
+
+
+def calculate_sweep_angle(start_angle: float, end_angle: float, counterclockwise: bool) -> float:
+    """Calculates the sweep angle for a given *start_angle* and *end_angle*, in degrees and *counterclockwise* flag."""
+    sweep_angle = end_angle - start_angle
+    if abs(sweep_angle) >= 360:
+        return -359.999969482421875 if counterclockwise else 359.999969482421875
+    else:
+        sweep_angle %= 360
+        if counterclockwise:
+            sweep_angle -= 360
+        return sweep_angle
+
+
+class Context2d(AbstractContextManager):
     """*Context2d* provides additional functionality on top of the :class:`skia.Canvas` class."""
+
     LINE_CAP_SQUARE = skia.Paint.Cap.kSquare_Cap
     LINE_CAP_ROUND = skia.Paint.Cap.kRound_Cap
     LINE_CAP_BUTT = skia.Paint.Cap.kButt_Cap
@@ -79,10 +130,10 @@ class Context2d:
 
         self._canvas: skia.Canvas = canvas
         self._path: skia.Path = skia.Path()
-        self._paint: skia.Paint = skia.Paint(AntiAlias=True)
+        self._paint: skia.Paint = skia.Paint(antiAlias=True)
         self._font: skia.Font = skia.Font()
 
-        self.__paths: List[skia.Path] = []
+        self.__paths: list[skia.Path] = []
 
     def clearRect(self, x: float, y: float, width: float, height: float) -> None:
         """Sets the rectangular area from (*x*, *y*) with *width* and *height* to transparent black.
@@ -92,7 +143,7 @@ class Context2d:
         :param width: The width of the rectangle.
         :param height: The height of the rectangle.
         """
-        paint = skia.Paint(BlendMode=skia.BlendMode.kClear)
+        paint = skia.Paint(blendMode=skia.BlendMode.kClear)
         self._canvas.drawRect(skia.Rect.MakeXYWH(x, y, width, height), paint)
 
     def fillRect(self, x: float, y: float, width: float, height: float) -> None:
@@ -103,10 +154,10 @@ class Context2d:
         :param width: The width of the rectangle.
         :param height: The height of the rectangle.
         """
-        paint = skia.Paint(self._paint)
-        paint.setColor4f(skia.Color4f(self.fillStyle))
-        paint.setStyle(skia.Paint.Style.kFill_Style)
-        self._canvas.drawRect(skia.Rect.MakeXYWH(x, y, width, height), paint)
+        self._canvas.drawRect(
+            skia.Rect.MakeXYWH(x, y, width, height),
+            create_styled_paint(self._paint, skia.Paint.Style.kFill_Style, self.fillStyle),
+        )
 
     def strokeRect(self, x: float, y: float, width: float, height: float) -> None:
         """Draws a rectangle from (*x*, *y*) with *width* and *height* that is stroked (outlined).
@@ -116,10 +167,10 @@ class Context2d:
         :param width: The width of the rectangle.
         :param height: The height of the rectangle.
         """
-        paint = skia.Paint(self._paint)
-        paint.setColor4f(skia.Color4f(self.strokeStyle))
-        paint.setStyle(skia.Paint.Style.kStroke_Style)
-        self._canvas.drawRect(skia.Rect.MakeXYWH(x, y, width, height), paint)
+        self._canvas.drawRect(
+            skia.Rect.MakeXYWH(x, y, width, height),
+            create_styled_paint(self._paint, skia.Paint.Style.kStroke_Style, self.strokeStyle),
+        )
 
     def fillText(self, text: str, x: float, y: float) -> None:
         """Draws a filled *text* at (x, y).
@@ -128,8 +179,9 @@ class Context2d:
         :param x: The x coordinate of the text.
         :param y: The y coordinate of the text.
         """
-        self._canvas.drawSimpleText(text, x, y, self._font,
-                                    getStyledPaint(self._paint, skia.Paint.kFill_Style, self.fillStyle))
+        self._canvas.drawString(
+            text, x, y, self._font, create_styled_paint(self._paint, skia.Paint.Style.kFill_Style, self.fillStyle)
+        )
 
     def strokeText(self, text: str, x: float, y: float) -> None:
         """Draws a stroked *text* at (x, y).
@@ -138,8 +190,9 @@ class Context2d:
         :param x: The x coordinate of the text.
         :param y: The y coordinate of the text.
         """
-        self._canvas.drawSimpleText(text, x, y, self._font,
-                                    getStyledPaint(self._paint, skia.Paint.kStroke_Style, self.strokeStyle))
+        self._canvas.drawString(
+            text, x, y, self._font, create_styled_paint(self._paint, skia.Paint.Style.kStroke_Style, self.strokeStyle)
+        )
 
     def measureText(self, text: str) -> TextMetrics:
         """Measures the *text* and returns information like width, etc.
@@ -147,8 +200,7 @@ class Context2d:
         :param text: The text to measure.
         :return: A :class:`TextMetrics` object with information about the text.
         """
-        bound = skia.Rect()
-        width = self._font.measureText(text, bounds=bound, paint=self._paint)
+        width, bound = self._font.measureText(text, paint=self._paint)
         return TextMetrics(width, bound.left(), bound.right(), bound.top(), bound.bottom())
 
     @property
@@ -187,19 +239,38 @@ class Context2d:
     def miterLimit(self, limit: float) -> None:
         self._paint.setStrokeMiter(limit)
 
-    # def setLineDash(self, segments: Optional[List[float]], offset: float = 0) -> None:
-    #     """Sets the line dash pattern and offset used when stroking lines. Pass empty list or ``None`` to remove the
-    #     set line dash."""
-    #     if not segments: segments = [1, 0]  # TODO: remove when skia bug is fixed
-    #     self._paint.setPathEffect(skia.DashPathEffect.Make(segments, offset))
+    def getLineDash(self) -> list[float]:
+        """Returns the line dash pattern used when stroking lines."""
+        return self._paint.getPathEffect().asADash().fIntervals
+
+    def setLineDash(self, segments: list[float] | None, offset: float = 0) -> None:
+        """Sets the line dash pattern and offset used when stroking lines. Pass empty list or ``None`` to remove the set
+        line dash."""
+        if not segments:
+            self._paint.setPathEffect(None)
+        else:
+            if len(segments) & 1:
+                segments += segments
+            self._paint.setPathEffect(skia.DashPathEffect.Make(segments, offset))
+
+    @property
+    def lineDashOffset(self) -> float:
+        """Offset for the line dash pattern."""
+        return self._paint.getPathEffect().asADash().fPhase
+
+    @lineDashOffset.setter
+    def lineDashOffset(self, offset: float) -> None:
+        self._paint.setPathEffect(skia.DashPathEffect.Make(self._paint.getPathEffect().asADash().fIntervals, offset))
 
     @property
     def font(self) -> str:
-        """The current set font, in <[[style-weight ]size'px'  ]family> format."""
-        parts: List[str] = []
+        """The current set font, in <[[style-weight ]size'px' ]family> format."""
+        parts: list[str] = []
         typeface: skia.Typeface = self._font.getTypefaceOrDefault()
-        if typeface.isItalic(): parts.append('italic')
-        if typeface.isBold(): parts.append('bold')
+        if typeface.isItalic():
+            parts.append('italic')
+        if typeface.isBold():
+            parts.append('bold')
         parts.append(f'{self._font.getSize():g}px')
         parts.append(f'"{typeface.getFamilyName()}"')
         return ' '.join(parts)
@@ -211,7 +282,7 @@ class Context2d:
         style_weight, size, family = [], None, None
         if l == 1:  # family
             family = parts[0]
-        if l == 2:  # size family
+        elif l == 2:  # size family
             size, family = parts
         else:  # style-weight size family
             *style_weight, size, family = parts
@@ -232,8 +303,9 @@ class Context2d:
             self._font.setSize(float(size))
 
     @staticmethod
-    def createConicGradient(start_angle: float, x: float, y: float, colors: List[Color],
-                            pos: List[float] | None = None) -> skia.Shader:
+    def createConicGradient(
+        start_angle: float, x: float, y: float, colors: list[Color], pos: list[float] | None = None
+    ) -> skia.Shader:
         """Creates a conical gradient around (*x*, *y*) starting from *start_angle* in radians.
 
         :param start_angle: The start angle in radians.
@@ -243,12 +315,14 @@ class Context2d:
         :param pos: The position of the colors in the gradient.
         :return: A :class:`skia.Shader` object representing the conical gradient.
         """
-        return skia.GradientShader.MakeSweep(x, y, list(map(lambda c: skia.Color4f(c), colors)), pos,
-                                             localMatrix=skia.Matrix.RotateRad(start_angle))
+        return skia.GradientShader.MakeSweep(
+            x, y, list(map(lambda c: skia.Color4f(c), colors)), pos, localMatrix=skia.Matrix.RotateRad(start_angle)
+        )
 
     @staticmethod
-    def createLinearGradient(x0: float, y0: float, x1: float, y1: float, colors: List[Color],
-                             pos: List[float] | None = None) -> skia.Shader:
+    def createLinearGradient(
+        x0: float, y0: float, x1: float, y1: float, colors: list[Color], pos: list[float] | None = None
+    ) -> skia.Shader:
         """Creates a linear gradient along the line joining (*x0*, *y0*) to (*x1*, *y1*).
 
         :param x0: The x coordinate of the start of the gradient.
@@ -262,8 +336,16 @@ class Context2d:
         return skia.GradientShader.MakeLinear([(x0, y0), (x1, y1)], list(map(lambda c: skia.Color4f(c), colors)), pos)
 
     @staticmethod
-    def createRadialGradient(x0: float, y0: float, r0: float, x1: float, y1: float, r1: float, colors: List[Color],
-                             pos: List[float] | None = None) -> skia.Shader:
+    def createRadialGradient(
+        x0: float,
+        y0: float,
+        r0: float,
+        x1: float,
+        y1: float,
+        r1: float,
+        colors: list[Color],
+        pos: list[float] | None = None,
+    ) -> skia.Shader:
         """Creates a radial gradient using the radius and coordinates of two circles.
 
         :param x0: The x coordinate of the center of the inner circle.
@@ -276,12 +358,15 @@ class Context2d:
         :param pos: The position of the colors in the gradient.
         :return: A :class:`skia.Shader` object representing the radial gradient.
         """
-        return skia.GradientShader.MakeTwoPointConical((x0, y0), r0, (x1, y1), r1,
-                                                       list(map(lambda c: skia.Color4f(c), colors)), pos)
+        return skia.GradientShader.MakeTwoPointConical(
+            (x0, y0), r0, (x1, y1), r1, list(map(lambda c: skia.Color4f(c), colors)), pos
+        )
 
     @staticmethod
-    def createPattern(image: str | IO[bytes] | skia.Image,
-                      repetition: Literal['repeat', 'repeat-x', 'repeat-y', 'no-repeat'] | None = None) -> skia.Shader:
+    def createPattern(
+        image: str | IO[bytes] | skia.Image,
+        repetition: Literal['repeat', 'repeat-x', 'repeat-y', 'no-repeat'] = 'repeat',
+    ) -> skia.Shader:
         """Creates a pattern using the *image* or path to the image.
 
         :param image: The image to use as a pattern.
@@ -291,8 +376,6 @@ class Context2d:
         """
         if not isinstance(image, skia.Image):
             image = skia.Image.open(image)
-        if repetition is None:
-            repetition = 'repeat'
         tmx = skia.TileMode.kRepeat if repetition in {'repeat', 'repeat-x'} else skia.TileMode.kDecal
         tmy = skia.TileMode.kRepeat if repetition in {'repeat', 'repeat-y'} else skia.TileMode.kDecal
         return image.makeShader(tmx, tmy)
@@ -343,8 +426,16 @@ class Context2d:
         """
         self._path.quadTo(cpx, cpy, x, y)
 
-    def arc(self, x: float, y: float, r: float, start_angle: float = 0, end_angle: float = 2 * math.pi,
-            counterclockwise: bool = False, move_to: bool = False) -> None:
+    def arc(
+        self,
+        x: float,
+        y: float,
+        r: float,
+        start_angle: float = 0,
+        end_angle: float = 2 * math.pi,
+        counterclockwise: bool = False,
+        move_to: bool = False,
+    ) -> None:
         """Creates a circular arc centered at (x, y) with radius *r*. The path starts at start_angle and ends
         at end_angle. Pass only the first 3 arguments to draw a complete circle.
 
@@ -352,22 +443,20 @@ class Context2d:
         :param y: The y-axis (vertical) coordinate of the arc's center.
         :param r: The arc's radius.
         :param start_angle: The angle at which the arc starts, measured clockwise from the positive x-axis and
-        expressed in radians.
+            expressed in radians.
         :param end_angle: The angle at which the arc ends, measured clockwise from the positive x-axis and expressed
-        in radians.
+            in radians.
         :param counterclockwise: If ``True``, draws the ellipse anticlockwise (counter-clockwise).
         :param move_to: If ``True``, moves the starting point on the ellipse. This removes the line joining the current
             point to the start of the ellipse.
         """
         start_angle = math.degrees(start_angle)
-        end_angle = math.degrees(end_angle) % 360
-        sweep_angle = end_angle - start_angle
-        if counterclockwise:
-            sweep_angle -= 360
-
-        if move_to:
-            self._path.moveTo(x, y)
-        self._path.arcTo(skia.Rect.MakeLTRB(x - r, y - r, x + r, y + r), start_angle, sweep_angle, move_to)
+        self._path.arcTo(
+            skia.Rect.MakeLTRB(x - r, y - r, x + r, y + r),
+            start_angle % 360,
+            calculate_sweep_angle(start_angle, math.degrees(end_angle), counterclockwise),
+            move_to,
+        )
 
     def arcTo(self, x1: float, y1: float, x2: float, y2: float, r: float) -> None:
         """Creates a circular arc to the current path, using the given control points and radius *r*.
@@ -380,9 +469,18 @@ class Context2d:
         """
         self._path.arcTo(x1, y1, x2, y2, r)
 
-    def ellipse(self, x: float, y: float, rx: float, ry: float | None = None, rotation: float = 0,
-                start_angle: float = 0, end_angle: float = 2 * math.pi, counterclockwise: bool = False,
-                move_to: bool = False) -> None:
+    def ellipse(
+        self,
+        x: float,
+        y: float,
+        rx: float,
+        ry: float | None = None,
+        rotation: float = 0,
+        start_angle: float = 0,
+        end_angle: float = 2 * math.pi,
+        counterclockwise: bool = False,
+        move_to: bool = False,
+    ) -> None:
         """Creates an elliptical arc centered at (x, y) with the radii rx and ry. The path starts at start_angle and
         ends at end_angle. Pass only the first 3 or 4 arguments to draw a complete ellipse.
 
@@ -402,8 +500,6 @@ class Context2d:
         if ry is None:
             ry = rx
         start_angle = math.degrees(start_angle)
-        end_angle = math.degrees(end_angle) % 360
-        sweep_angle = end_angle - start_angle
 
         path = skia.Path()
         if rx == 0 and ry == 0:
@@ -414,11 +510,16 @@ class Context2d:
                 rx = 0.0001  # add a small radius to draw a line for 0 radius
             elif ry == 0:
                 ry = 0.0001
-            if counterclockwise:
-                sweep_angle -= 360
-            path.addArc(skia.Rect.MakeLTRB(x - rx, y - ry, x + rx, y + ry), start_angle, sweep_angle)
-        self._path.addPath(path, skia.Matrix.RotateDeg(math.degrees(rotation), (x, y)),
-                           skia.Path.kAppend_AddPathMode if move_to else skia.Path.kExtend_AddPathMode)
+            path.addArc(
+                skia.Rect.MakeLTRB(x - rx, y - ry, x + rx, y + ry),
+                start_angle % 360,
+                calculate_sweep_angle(start_angle, math.degrees(end_angle), counterclockwise),
+            )
+        self._path.addPath(
+            path,
+            skia.Matrix.RotateDeg(math.degrees(rotation), (x, y)),
+            skia.Path.AddPathMode.kAppend_AddPathMode if move_to else skia.Path.AddPathMode.kExtend_AddPathMode,
+        )
 
     def rect(self, x: float, y: float, width: float, height: float) -> None:
         """Draws a rectangle from (x, y) with *width* and *height*.
@@ -435,7 +536,9 @@ class Context2d:
 
         :param clear_path: If *True*, the current path is cleared after filling.
         """
-        self._canvas.drawPath(self._path, getStyledPaint(self._paint, skia.Paint.kFill_Style, self.fillStyle))
+        self._canvas.drawPath(
+            self._path, create_styled_paint(self._paint, skia.Paint.Style.kFill_Style, self.fillStyle)
+        )
         if clear_path:
             self._path.rewind()
 
@@ -444,7 +547,9 @@ class Context2d:
 
         :param clear_path: If *True*, the current path is cleared after stroking.
         """
-        self._canvas.drawPath(self._path, getStyledPaint(self._paint, skia.Paint.kStroke_Style, self.strokeStyle))
+        self._canvas.drawPath(
+            self._path, create_styled_paint(self._paint, skia.Paint.Style.kStroke_Style, self.strokeStyle)
+        )
         if clear_path:
             self._path.rewind()
 
@@ -475,7 +580,7 @@ class Context2d:
         if path is None:
             path = skia.Path(self._path)
         path.setFillType(skia.PathFillType.kEvenOdd if fill_rule == 'evenodd' else skia.PathFillType.kWinding)
-        self._canvas.clipPath(path, True)
+        self._canvas.clipPath(path, doAntiAlias=True)
 
     def isPointInPath(self, x: float, y: float) -> bool:
         """Returns ``True`` if the point (x, y) is in the current path when filled.
@@ -488,10 +593,9 @@ class Context2d:
 
     def get_fill_for_stroke(self) -> skia.Path:
         """Returns a path, which when filled, will look like the current path stroked."""
-        fill_path = skia.Path()
         paint = skia.Paint(self._paint)
-        paint.setStyle(skia.Paint.kStroke_Style)
-        paint.getFillPath(self._path, fill_path)
+        paint.setStyle(skia.Paint.Style.kStroke_Style)
+        fill_path, _ = self._path.fillPathWithPaint(paint)
         return fill_path
 
     def isPointInStroke(self, x: float, y: float) -> bool:
@@ -563,8 +667,15 @@ class Context2d:
         :param m: The matrix to set.
         """
 
-    def setTransform(self, a: skia.Matrix | float, b: float | None = None, c: float | None = None,
-                     d: float | None = None, e: float | None = None, f: float | None = None) -> None:
+    def setTransform(
+        self,
+        a: skia.Matrix | float,
+        b: float | None = None,
+        c: float | None = None,
+        d: float | None = None,
+        e: float | None = None,
+        f: float | None = None,
+    ) -> None:
         if isinstance(a, skia.Matrix):
             self._canvas.setMatrix(a)
         else:
@@ -584,9 +695,12 @@ class Context2d:
         self._paint.setAlphaf(alpha)
 
     @property
-    def globalCompositeOperation(self) -> CompositeOperation:
+    def globalCompositeOperation(self) -> CompositeOperation | None:
         """Composite operation to use for drawing."""
-        return _composite_operation_inverse[self._paint.getBlendMode()]
+        blend_mode = self._paint.asBlendMode()
+        if blend_mode is None:
+            return None
+        return _composite_operation_inverse[blend_mode]
 
     @globalCompositeOperation.setter
     def globalCompositeOperation(self, operation: CompositeOperation) -> None:
@@ -602,8 +716,7 @@ class Context2d:
         """
 
     @overload
-    def drawImage(self, img: str | IO[bytes] | skia.Image, x: float, y: float, width: float,
-                  height: float) -> None:
+    def drawImage(self, img: str | IO[bytes] | skia.Image, x: float, y: float, width: float, height: float) -> None:
         """Draws an image at (*x*, *y*) with the given *width* and *height*.
 
         :param img: The filepath, a file like object or a ``skia.Image`` representing the image.
@@ -614,8 +727,18 @@ class Context2d:
         """
 
     @overload
-    def drawImage(self, img: str | IO[bytes] | skia.Image, sx: float, sy: float, sw: float, sh: float, dx: float,
-                  dy: float, dw: float, dh: float) -> None:
+    def drawImage(
+        self,
+        img: str | IO[bytes] | skia.Image,
+        sx: float,
+        sy: float,
+        sw: float,
+        sh: float,
+        dx: float,
+        dy: float,
+        dw: float,
+        dh: float,
+    ) -> None:
         """Draws a part of an image from (*sx*, *sy*) with width *sw* and height *sh* at (*dx*, *dy*) with the given
         width *dw* and height *dh*.
 
@@ -630,18 +753,28 @@ class Context2d:
         :param dh: The height of the image to draw.
         """
 
-    def drawImage(self, img: str | IO[bytes] | skia.Image, sx: float = 0, sy: float = 0, sw: float | None = None,
-                  sh: float | None = None, dx: float | None = None, dy: float | None = None, dw: float | None = None,
-                  dh: float | None = None) -> None:
+    def drawImage(
+        self,
+        img: str | IO[bytes] | skia.Image,
+        sx: float = 0,
+        sy: float = 0,
+        sw: float | None = None,
+        sh: float | None = None,
+        dx: float | None = None,
+        dy: float | None = None,
+        dw: float | None = None,
+        dh: float | None = None,
+    ) -> None:
         if not isinstance(img, skia.Image):
             img = skia.Image.open(img)
         if sw is None:  # drawImage(img, x, y)
-            self._canvas.drawImage(img, sx, sy, self._paint)
+            self._canvas.drawImage(img, sx, sy, paint=self._paint)
         elif dx is None:  # drawImage(img, x, y, width, height)
-            self._canvas.drawImageRect(img, skia.Rect.MakeXYWH(sx, sy, sw, sh), self._paint)
+            self._canvas.drawImageRect(img, skia.Rect.MakeXYWH(sx, sy, sw, sh), paint=self._paint)
         else:  # drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh)
-            self._canvas.drawImageRect(img, skia.Rect.MakeXYWH(sx, sy, sw, sh), skia.Rect.MakeXYWH(dx, dy, dw, dh),
-                                       self._paint)
+            self._canvas.drawImageRect(
+                img, src=skia.Rect.MakeXYWH(sx, sy, sw, sh), dst=skia.Rect.MakeXYWH(dx, dy, dw, dh), paint=self._paint
+            )
 
     @staticmethod
     def createImageData(width: int, height: int) -> np.ndarray:
@@ -666,9 +799,16 @@ class Context2d:
             raise RuntimeError('Failed to read pixels')
         return array
 
-    def putImageData(self, image_data: np.ndarray, dx: int = 0, dy: int = 0, dirty_x: int | None = None,
-                     dirty_y: int | None = None, dirty_width: int | None = None,
-                     dirty_height: int | None = None) -> None:
+    def putImageData(
+        self,
+        image_data: np.ndarray,
+        dx: int = 0,
+        dy: int = 0,
+        dirty_x: int | None = None,
+        dirty_y: int | None = None,
+        dirty_width: int | None = None,
+        dirty_height: int | None = None,
+    ) -> None:
         """Puts the given image data at (*dx*, *dy*) that's inside the given rectangle from (*dirty_x*, *dirty_y*)
         with *dirty_width* and *dirty_height*.
 
@@ -684,9 +824,16 @@ class Context2d:
         if dirty_x is None or img_rect.intersect(skia.IRect.MakeXYWH(dirty_x, dirty_y, dirty_width, dirty_height)):
             l, t = img_rect.left(), img_rect.top()
             self._canvas.writePixels(
-                skia.ImageInfo.Make(img_rect.width(), img_rect.height(), skia.ColorType.kRGBA_8888_ColorType,
-                                    skia.AlphaType.kUnpremul_AlphaType),
-                image_data if l == 0 and t == 0 else image_data[t:, l:], x=dx + l, y=dy + t)
+                skia.ImageInfo.Make(
+                    img_rect.width(),
+                    img_rect.height(),
+                    skia.ColorType.kRGBA_8888_ColorType,
+                    skia.AlphaType.kUnpremul_AlphaType,
+                ),
+                image_data if l == 0 and t == 0 else image_data[t:, l:],
+                x=dx + l,
+                y=dy + t,
+            )
 
     @property
     def imageSmoothingEnabled(self) -> bool:
@@ -709,7 +856,7 @@ class Context2d:
         """Enters the context, saving the current state."""
         self._canvas.save()
 
-    def __exit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
+    def __exit__(self, __exc_type: Any, __exc_value: Any, __traceback: Any) -> None:
         """Exits the context, restoring the last saved state."""
         self._canvas.restore()
 
@@ -742,7 +889,7 @@ class Context2d:
         self._path.addRect(x, y, x + w, y + w)
 
     @staticmethod
-    def parse_RR_radius(r: float | Sequence[float]) -> Tuple[float, ...]:
+    def parse_RR_radius(r: float | Sequence[float]) -> tuple[float, ...]:
         """Parses round rect radius from different formats.
 
         .. seealso:: :meth:`roundedRect`
@@ -789,10 +936,17 @@ class Context2d:
         """
         self._path.moveTo(x0, y0).lineTo(x1, y1)
 
-    def bezier_curve(self, x0: float, y0: float,  # Point
-                     x1: float | None = None, y1: float | None = None,  # Line
-                     x2: float | None = None, y2: float | None = None,  # Quadratic bezier
-                     x3: float | None = None, y3: float | None = None) -> None:  # Cubic bezier
+    def bezier_curve(
+        self,
+        x0: float,
+        y0: float,  # Point
+        x1: float | None = None,
+        y1: float | None = None,  # Line
+        x2: float | None = None,
+        y2: float | None = None,  # Quadratic bezier
+        x3: float | None = None,
+        y3: float | None = None,  # Cubic bezier
+    ) -> None:
         """Generic method to draw curves. With a single point (x0, y0), a point is drawn. With two sets of points (
         x1, y1), a line is drawn. With three sets of points (x2, y2), a quadratic bezier is drawn. With four sets of
         points (x3, y3), a cubic bezier curve is drawn.
@@ -817,8 +971,9 @@ class Context2d:
             self._path.cubicTo(x1, y1, x2, y2, x3, y3)
 
     @staticmethod
-    def catmullrom_to_bezier(p0: float, p1: float, p2: float, p3: float, t: float = 1) -> Tuple[
-        float, float, float, float]:
+    def catmullrom_to_bezier(
+        p0: float, p1: float, p2: float, p3: float, t: float = 1
+    ) -> tuple[float, float, float, float]:
         """Transforms a four point Catmull-Rom curve with tension *t* to a four point bezier curve. The points returned
         can be used to draw the curve with :meth:`bezier_curve`.
 
@@ -840,8 +995,9 @@ class Context2d:
         t *= 6  # https://pomax.github.io/bezierinfo/#catmullconv
         return p1, p1 + (p2 - p0) / t, p2 - (p3 - p1) / t, p2
 
-    def catmullRom(self, x0: float, y0: float, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float,
-                   t: float) -> None:
+    def catmullRom(
+        self, x0: float, y0: float, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float, t: float
+    ) -> None:
         """Draws a four point Catmull-Rom curve from (x1, y1) to (x2, y2) with control points (x0, y0) and (x3, y3).
 
         :param x0: The x-axis coordinate of the start point.
@@ -859,15 +1015,16 @@ class Context2d:
         self._path.moveTo(x0, y0).cubicTo(x1, y1, x2, y2, x3, y3)
 
     @staticmethod
-    def __get_control_points(x0: float, y0: float, x1: float, y1: float, x2: float, y2: float, t: float = 0.5) -> Tuple[
-        Point, Point]:  # http://scaledinnovation.com/analytics/splines/aboutSplines.html
+    def __get_control_points(
+        x0: float, y0: float, x1: float, y1: float, x2: float, y2: float, t: float = 0.5
+    ) -> tuple[Point, Point]:  # http://scaledinnovation.com/analytics/splines/aboutSplines.html
         d01 = math.hypot(x1 - x0, y1 - y0)
         d12 = math.hypot(x2 - x1, y2 - y1)
         fa = t * d01 / (d01 + d12)
         fb = t * d12 / (d01 + d12)
         return (x1 - fa * (x2 - x0), y1 - fa * (y2 - y0)), (x1 + fb * (x2 - x0), y1 + fb * (y2 - y0))
 
-    def spline(self, points: List[Point], tension: float = 0.5, closed: bool = False) -> None:
+    def spline(self, points: Sequence[Point], tension: float = 0.5, closed: bool = False) -> None:
         """Draws a spline passing through all the points (at least 3) with given tension. If closed is `True`, the curve
         is closed smoothly.
 
@@ -879,7 +1036,7 @@ class Context2d:
         """
         if closed:
             points = [points[-1], *points, points[0], points[1]]
-        cps: List[Point] = []
+        cps: list[Point] = []
         for i in range(len(points) - 2):
             cps.extend(Context2d.__get_control_points(*points[i], *points[i + 1], *points[i + 2], tension))
 
@@ -901,7 +1058,9 @@ class Context2d:
         :param path: The path to add.
         :param move_to: Whether to move to the start of the path.
         """
-        self._path.addPath(path, skia.Path.kAppend_AddPathMode if move_to else skia.Path.kExtend_AddPathMode)
+        self._path.addPath(
+            path, skia.Path.AddPathMode.kAppend_AddPathMode if move_to else skia.Path.AddPathMode.kExtend_AddPathMode
+        )
 
     @property
     def path(self) -> skia.Path:
@@ -926,18 +1085,3 @@ class Context2d:
         """Restores the last saved path, if available, as the current path."""
         if self.__paths:
             self._path = self.__paths.pop()
-
-
-def getStyledPaint(orig_paint: skia.Paint, style: skia.Paint.Style, color: Color | skia.Shader) -> skia.Paint:
-    """Returns a new paint object with the given *color* and *style* and the same properties as the original paint.
-
-    :param orig_paint: The original paint.
-    :param color: The new color.
-    :param style: The new fill or stroke style.
-    """
-    paint = skia.Paint(orig_paint)
-    if not isinstance(color, skia.Shader):
-        color = skia.Shaders.Color(skia.Color4f(color))
-    paint.setShader(color)
-    paint.setStyle(style)
-    return paint

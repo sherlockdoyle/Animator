@@ -14,13 +14,14 @@
 #
 import os
 import sys
+
 sys.path.insert(0, os.path.abspath('../..'))
 
 
 # -- Project information -----------------------------------------------------
 
 project = 'animator'
-copyright = '2022, Shekhar Dutta'
+copyright = '2023, Shekhar Dutta'
 author = 'Shekhar Dutta'
 
 # The short X.Y version
@@ -46,6 +47,7 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
+    'matplotlib.sphinxext.plot_directive',
 ]
 
 autosummary_generate = True
@@ -119,15 +121,12 @@ latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
     # 'papersize': 'letterpaper',
-
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
-
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
-
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
@@ -137,8 +136,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'animator.tex', 'animator Documentation',
-     'Shekhar Dutta', 'manual'),
+    (master_doc, 'animator.tex', 'animator Documentation', 'Shekhar Dutta', 'manual'),
 ]
 
 
@@ -146,10 +144,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'animator', 'animator Documentation',
-     [author], 1)
-]
+man_pages = [(master_doc, 'animator', 'animator Documentation', [author], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------------
@@ -158,9 +153,15 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'animator', 'animator Documentation',
-     author, 'animator', 'One line description of project.',
-     'Miscellaneous'),
+    (
+        master_doc,
+        'animator',
+        'animator Documentation',
+        author,
+        'animator',
+        'One line description of project.',
+        'Miscellaneous',
+    ),
 ]
 
 

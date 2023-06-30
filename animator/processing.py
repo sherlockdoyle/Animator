@@ -6,8 +6,8 @@ for displaying the scene and handling keyboard and mouse events. The sketch wind
 
 In Processing, your code starts from ``void setup()``. Here, however, there's no setup function. Instead,
 your code must start with :func:`size`, which will setup the internal scene and canvas. You must write the code you
-want to execute repeatedly (animations) inside a function and pass that to :func:`draw`. All the enums, as used in
-Processing, are also available. These include
+want to execute repeatedly (animations) inside a function and pass that to :func:`draw`. Alternatively, you can also use
+:func:`draw` as a decorator. All the enums, as used in Processing, are also available. These include
 
 ====== ======= ====== =======
 RADIUS CENTER  CORNER CORNERS
@@ -87,52 +87,130 @@ in Processing.
         println(mouseX, mouseY);
     }
 """
-from __future__ import annotations
-
-__all__ = ('pvars', 'HALF_PI', 'PI', 'QUARTER_PI', 'TAU', 'TWO_PI', 'RADIUS', 'CENTER', 'CORNER', 'CORNERS', 'SQUARE',
-           'PROJECT', 'ROUND', 'MITER', 'BEVEL', 'RGB', 'HSB', 'PIE', 'OPEN', 'CHORD', 'LEFT', 'RIGHT', 'size', 'draw',
-           'draw_parallel', 'arc', 'circle', 'ellipse', 'line', 'point', 'quad', 'rect', 'square', 'triangle', 'bezier',
-           'bezierPoint', 'bezierTangent', 'curve', 'curvePoint', 'curveTangent', 'curveTightness', 'loop', 'noLoop',
-           'push', 'pop', 'setTitle', 'delay', 'frameRate', 'smooth', 'noSmooth', 'ellipseMode', 'rectMode',
-           'imageMode', 'strokeCap', 'strokeJoin', 'strokeWeight', 'save', 'saveFrame', 'color', 'background',
-           'colorMode', 'fill', 'noFill', 'stroke', 'noStroke', 'alpha', 'red', 'green', 'blue', 'hue', 'saturation',
-           'brightness', 'lerpColor', 'image', 'imageMode', 'loadImage', 'noTint', 'tint', 'rotate', 'scale',
-           'translate', 'constrain', 'dist', 'lerp', 'mag', 'map_', 'norm', 'random', 'noise')
-
 import colorsys
 import math
 import random as rnd
 import time
 import types
-from typing import Callable, overload, Sequence, Tuple
+from pathlib import Path
+from typing import Callable, Sequence, Tuple, overload
 
 import cv2
 
-from . import skia
-from ._common_types import Color
-from .scene import Scene
-from .scene.Context2d import Context2d
-from .util.env import get_path
+from animator import skia
+from animator._common_types import Color
+from animator.graphics import Context2d
+from animator.scene import Scene
+
+__all__ = (
+    'pvars',
+    'HALF_PI',
+    'PI',
+    'QUARTER_PI',
+    'TAU',
+    'TWO_PI',
+    'RADIUS',
+    'CENTER',
+    'CORNER',
+    'CORNERS',
+    'SQUARE',
+    'PROJECT',
+    'ROUND',
+    'MITER',
+    'BEVEL',
+    'RGB',
+    'HSB',
+    'PIE',
+    'OPEN',
+    'CHORD',
+    'LEFT',
+    'RIGHT',
+    'size',
+    'draw',
+    'draw_parallel',
+    'arc',
+    'circle',
+    'ellipse',
+    'line',
+    'point',
+    'quad',
+    'rect',
+    'square',
+    'triangle',
+    'bezier',
+    'bezierPoint',
+    'bezierTangent',
+    'curve',
+    'curvePoint',
+    'curveTangent',
+    'curveTightness',
+    'loop',
+    'noLoop',
+    'push',
+    'pop',
+    'setTitle',
+    'delay',
+    'frameRate',
+    'smooth',
+    'noSmooth',
+    'ellipseMode',
+    'rectMode',
+    'imageMode',
+    'strokeCap',
+    'strokeJoin',
+    'strokeWeight',
+    'save',
+    'saveFrame',
+    'color',
+    'background',
+    'colorMode',
+    'fill',
+    'noFill',
+    'stroke',
+    'noStroke',
+    'alpha',
+    'red',
+    'green',
+    'blue',
+    'hue',
+    'saturation',
+    'brightness',
+    'lerpColor',
+    'image',
+    'imageMode',
+    'loadImage',
+    'noTint',
+    'tint',
+    'rotate',
+    'scale',
+    'translate',
+    'constrain',
+    'dist',
+    'lerp',
+    'mag',
+    'map_',
+    'norm',
+    'random',
+    'noise',
+)
 
 __scene: Scene = None
 __canvas: skia.Canvas = None
 __paint: skia.Paint = skia.Paint(
-    StrokeWidth=1,
-    StrokeCap=skia.Paint.Cap.kRound_Cap,
-    StrokeJoin=skia.Paint.Join.kMiter_Join,
-    AntiAlias=True
+    strokeWidth=1, strokeCap=skia.Paint.Cap.kRound_Cap, strokeJoin=skia.Paint.Join.kMiter_Join, antiAlias=True
 )
 __stroke_color: Color = (0, 0, 0, 1)
 __fill_color: Color = (1, 1, 1, 1)
 __title: str = 'processing_scene'
 __looping: bool = True
-__draw_func: Callable[[], None] = None
+__draw_func: Callable[[], bool | None] = None
 __frame_wait: int = 14
 __last_event = None
 
 
 class ProcessingVariables(types.SimpleNamespace):
     """A namespace to hold the processing global variables."""
+
     frameCount: int
     frameRate: float
     width: int
@@ -173,7 +251,7 @@ pvars = ProcessingVariables(
     mouseClicked=lambda: None,
     mouseWheel=lambda: None,
     mouseMoved=lambda: None,
-    mouseDragged=lambda: None
+    mouseDragged=lambda: None,
 )
 HALF_PI = math.pi / 2
 PI = math.pi
@@ -199,10 +277,16 @@ LEFT = 14
 RIGHT = 15
 
 __mouseButton = {cv2.EVENT_LBUTTONDOWN: LEFT, cv2.EVENT_RBUTTONDOWN: RIGHT, cv2.EVENT_MBUTTONDOWN: CENTER}
-__stroke_caps = {SQUARE: skia.Paint.Cap.kButt_Cap, PROJECT: skia.Paint.Cap.kSquare_Cap,
-                 ROUND: skia.Paint.Cap.kRound_Cap}
-__stroke_joins = {MITER: skia.Paint.Join.kMiter_Join, BEVEL: skia.Paint.Join.kBevel_Join,
-                  ROUND: skia.Paint.Join.kRound_Join}
+__stroke_caps = {
+    SQUARE: skia.Paint.Cap.kButt_Cap,
+    PROJECT: skia.Paint.Cap.kSquare_Cap,
+    ROUND: skia.Paint.Cap.kRound_Cap,
+}
+__stroke_joins = {
+    MITER: skia.Paint.Join.kMiter_Join,
+    BEVEL: skia.Paint.Join.kBevel_Join,
+    ROUND: skia.Paint.Join.kRound_Join,
+}
 __ellipse_mode: int = CENTER
 __rect_mode: int = CORNER
 __image_mode: int = CORNER
@@ -233,7 +317,7 @@ def size(w: int | Scene = 100, h: int | None = 100) -> None:
     background(204, 204, 204, 255)
 
 
-def __onMouse(event, x, y, flags, param):
+def __onMouse(event: int, x: int, y: int, flags, param):
     global __last_event
     pvars.mouseX, pvars.mouseY = x, y
     pvars.mouseButton = 0
@@ -259,14 +343,14 @@ def __onMouse(event, x, y, flags, param):
 def __fill_paint() -> skia.Paint:
     p = skia.Paint(__paint)
     p.setColor(skia.Color4f(__fill_color))
-    p.setStyle(skia.Paint.kFill_Style)
+    p.setStyle(skia.Paint.Style.kFill_Style)
     return p
 
 
 def __stroke_paint() -> skia.Paint:
     p = skia.Paint(__paint)
     p.setColor(skia.Color4f(__stroke_color))
-    p.setStyle(skia.Paint.kStroke_Style)
+    p.setStyle(skia.Paint.Style.kStroke_Style)
     return p
 
 
@@ -280,10 +364,10 @@ def draw(f: Callable[[], bool | None]) -> None:
     while not f() and __looping:
         pvars.pmouseX, pvars.pmouseY = pvars.mouseX, pvars.mouseY
         cv2.imshow(__title, cv2.cvtColor(__scene.frame, cv2.COLOR_RGBA2BGR))
-        key_code = cv2.waitKey(__frame_wait) & 0xff
-        pvars.keyPressed_ = key_code != 0xff
+        key_code = cv2.waitKey(__frame_wait) & 0xFF
+        pvars.keyPressed_ = key_code != 0xFF
         pvars.keyCode, pvars.key = key_code, chr(key_code)
-        if key_code != 0xff:
+        if key_code != 0xFF:
             pvars.keyPressed()
         if key_code == 27 or cv2.getWindowProperty(__title, cv2.WND_PROP_AUTOSIZE) < 0:
             break
@@ -305,6 +389,7 @@ def draw_parallel(f: Callable[[], bool | None]) -> None:
     :warning: In case of exceptions in Jupyter the kernel will crash.
     """
     import threading
+
     threading.Thread(target=draw, args=(f,)).start()
 
 
@@ -317,10 +402,12 @@ def __parse_bound_params(a: float, b: float, c: float, d: float, mode: int) -> s
         return skia.Rect.MakeXYWH(a - c / 2, b - d / 2, c, d)
     if mode == RADIUS:
         return skia.Rect.MakeLTRB(a - c, b - d, a + c, b + d)
+    raise ValueError('Invalid mode')
 
 
-def arc(a: float, b: float, c: float, d: float, start: float, stop: float,
-        mode: int | Tuple[int, int] = (PIE, OPEN)) -> None:
+def arc(
+    a: float, b: float, c: float, d: float, start: float, stop: float, mode: int | Tuple[int, int] = (PIE, OPEN)
+) -> None:
     """Draws an arc which is part of the :func:`ellipse` defined by a, b, c, d starting from start to stop. mode is a
     tuple of two elements containing the fill and stroke styles respectively. If mode is a single value, that is used
     for both the fill and stroke styles."""
@@ -379,8 +466,16 @@ def quad(x1: float, y1: float, x2: float, y2: float, x3: float, y3: float, x4: f
     __canvas.drawPath(path, __stroke_paint())
 
 
-def rect(a: float, b: float, c: float, d: float, tl: float = 0, tr: float | None = None, br: float | None = None,
-         bl: float | None = None) -> None:
+def rect(
+    a: float,
+    b: float,
+    c: float,
+    d: float,
+    tl: float = 0,
+    tr: float | None = None,
+    br: float | None = None,
+    bl: float | None = None,
+) -> None:
     """Draws a rectangle centered (or cornered, depending on :func:`rectMode`) at (a, b) and radius (or width and
     height) of c and d. The rectangle can have one or four optional corner radius."""
     if tr is None:
@@ -415,14 +510,14 @@ def bezierPoint(a: float, b: float, c: float, d: float, t: float) -> float:
     """Return the value of the bezier curve at point t for points a, b, c, d. Call this function twice with the x and y
     coordinates separately, or once with both coordinates in a numpy array."""
     u = 1 - t
-    return u ** 3 * a + 3 * u * t * (u * b + t * c) + t ** 3 * d
+    return u**3 * a + 3 * u * t * (u * b + t * c) + t**3 * d
 
 
 def bezierTangent(a: float, b: float, c: float, d: float, t: float) -> float:
     """Return the value of the tangent of the bezier curve at point t for points a, b, c, d. Call this function twice
     with the x and y coordinates separately, or once with both coordinates in a numpy array."""
     u = 1 - t
-    return -3 * (a * u ** 2 + b * u * (3 * t - 1) + c * t * (3 * t - 2) - d * t ** 2)
+    return -3 * (a * u**2 + b * u * (3 * t - 1) + c * t * (3 * t - 2) - d * t**2)
 
 
 def curve(x1: float, y1: float, x2: float, y2: float, x3: float, y3: float, x4: float, y4: float) -> None:
@@ -547,7 +642,7 @@ def saveFrame(path: str = 'screen-####.png') -> None:
     the current frame number. The number of digits is determined by the number of hashes in the path string."""
     first, last = path.find('#'), path.rfind('#')
     if first != -1:
-        path = path[:first] + str(pvars.frameCount).zfill(last - first + 1) + path[last + 1:]
+        path = path[:first] + str(pvars.frameCount).zfill(last - first + 1) + path[last + 1 :]
     __scene.save_frame(path)
 
 
@@ -587,8 +682,9 @@ def color(r: float | Sequence[float], g: float | None = None, b: float | None = 
     return r, g, b, a / __color_max[3]
 
 
-def background(r: float | Sequence[float] | skia.Image, g: float | None = None, b: float | None = None,
-               a: float | None = None) -> None:
+def background(
+    r: float | Sequence[float] | skia.Image, g: float | None = None, b: float | None = None, a: float | None = None
+) -> None:
     """Clears and set the background of the scene. Parameters are same as :func:`color` or an image."""
     if isinstance(r, skia.Image):
         __canvas.drawImage(r, 0, 0)
@@ -596,7 +692,13 @@ def background(r: float | Sequence[float] | skia.Image, g: float | None = None, 
         __canvas.clear(skia.Color4f(color(r, g, b, a)))
 
 
-def colorMode(mode: int, max1: float = None, max2: float = None, max3: float = None, maxA: float = None) -> None:
+def colorMode(
+    mode: int,
+    max1: float | None = None,
+    max2: float | None = None,
+    max3: float | None = None,
+    maxA: float | None = None,
+) -> None:
     """Sets the color mode (RGB or HSB) for future drawings and maximum values for each color components."""
     global __color_mode, __color_max
     __color_mode = mode
@@ -639,35 +741,38 @@ def alpha(rgb: int) -> float:
 
 def red(rgb: int) -> float:
     """Returns the red value for a 32-bit packed ARGB color scaled to the current red max."""
-    return (rgb >> 16 & 0xff) / 255 * __color_max[0]
+    return (rgb >> 16 & 0xFF) / 255 * __color_max[0]
 
 
 def green(rgb: int) -> float:
     """Returns the green value for a 32-bit packed ARGB color scaled to the current green max."""
-    return (rgb >> 8 & 0xff) / 255 * __color_max[1]
+    return (rgb >> 8 & 0xFF) / 255 * __color_max[1]
 
 
 def blue(rgb: int) -> float:
     """Returns the blue value for a 32-bit packed ARGB color scaled to the current blue max."""
-    return (rgb & 0xff) / 255 * __color_max[2]
+    return (rgb & 0xFF) / 255 * __color_max[2]
 
 
 def hue(rgb: int) -> float:
     """Returns the hue value for a 32-bit packed ARGB color scaled to the current hue max."""
-    return colorsys.rgb_to_hsv((rgb >> 16 & 0xff) / 255, (rgb >> 8 & 0xff) / 255, (rgb & 0xff) / 255)[0] * __color_max[
-        0]
+    return (
+        colorsys.rgb_to_hsv((rgb >> 16 & 0xFF) / 255, (rgb >> 8 & 0xFF) / 255, (rgb & 0xFF) / 255)[0] * __color_max[0]
+    )
 
 
 def saturation(rgb: int) -> float:
     """Returns the saturation value for a 32-bit packed ARGB color scaled to the current saturation max."""
-    return colorsys.rgb_to_hsv((rgb >> 16 & 0xff) / 255, (rgb >> 8 & 0xff) / 255, (rgb & 0xff) / 255)[1] * __color_max[
-        1]
+    return (
+        colorsys.rgb_to_hsv((rgb >> 16 & 0xFF) / 255, (rgb >> 8 & 0xFF) / 255, (rgb & 0xFF) / 255)[1] * __color_max[1]
+    )
 
 
 def brightness(rgb: int) -> float:
     """Returns the brightness value for a 32-bit packed ARGB color scaled to the current brightness max."""
-    return colorsys.rgb_to_hsv((rgb >> 16 & 0xff) / 255, (rgb >> 8 & 0xff) / 255, (rgb & 0xff) / 255)[2] * __color_max[
-        2]
+    return (
+        colorsys.rgb_to_hsv((rgb >> 16 & 0xFF) / 255, (rgb >> 8 & 0xFF) / 255, (rgb & 0xFF) / 255)[2] * __color_max[2]
+    )
 
 
 def lerpColor(c1: Color, c2: Color, amt: float) -> Color:
@@ -688,7 +793,7 @@ def image(img: skia.Image, a: float, b: float, c: float | None = None, d: float 
     elif __image_mode == CENTER:
         bound = skia.Rect.MakeXYWH(a - c / 2, b - d / 2, c, d)
 
-    __canvas.drawImageRect(img, bound, skia.Paint(ColorFilter=__tint))
+    __canvas.drawImageRect(img, bound, paint=skia.Paint(colorFilter=__tint))
 
 
 def imageMode(mode: int) -> None:
@@ -699,8 +804,8 @@ def imageMode(mode: int) -> None:
 
 
 def loadImage(path: str) -> skia.Image:
-    """Loads and returns an image from the ``path``. This only supports PNG images."""
-    return skia.Image.open(get_path(path))
+    """Loads and returns an image from the ``path``."""
+    return skia.Image.open(str(Path(path).expanduser().resolve()))
 
 
 def noTint() -> None:
@@ -713,12 +818,7 @@ def tint(r: float, g: float | None = None, b: float | None = None, a: float | No
     """Sets the tint color for drawing future images. Parameters are same as :func:`color`."""
     global __tint
     r, g, b, a = color(r, g, b, a)
-    __tint = skia.ColorFilters.Matrix([
-        r, 0, 0, 0, 0,
-        0, g, 0, 0, 0,
-        0, 0, b, 0, 0,
-        0, 0, 0, a, 0
-    ])
+    __tint = skia.ColorFilters.Matrix([r, 0, 0, 0, 0, 0, g, 0, 0, 0, 0, 0, b, 0, 0, 0, 0, 0, a, 0])
 
 
 def rotate(angle: float) -> None:

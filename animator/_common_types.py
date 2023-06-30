@@ -1,4 +1,19 @@
-from typing import Tuple
+from typing import Sequence, Tuple
 
-Point = Tuple[float, float]
-Color = Tuple[float, float, float, float]
+from animator import skia
+
+PointLike = skia.Point | Tuple[float, float]
+ColorLike = skia.Color4f | int | float | Sequence[float] | str
+ClipLike = (
+    skia.IRect
+    | skia.Path
+    | skia.RRect
+    | skia.Rect
+    | skia.Region
+    | skia.Shader
+    | tuple[()]
+    | tuple[int, int]
+    | tuple[int, int, int, int]
+    | tuple[float, float]
+    | tuple[float, float, float, float]
+)

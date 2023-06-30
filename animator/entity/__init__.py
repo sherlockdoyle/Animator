@@ -1,6 +1,25 @@
-from .entity import *
-from .style import *
-from .relpos import *
-from .basic import *
-from .text import *
-from .svg import *
+from animator.entity import relpos as relpos
+from animator.entity.entity import Entity as Entity
+from animator.entity.entity import Group as Group
+from animator.entity.image import Image as Image
+from animator.entity.image import PaintFill as PaintFill
+from animator.entity.image import Snapshot as Snapshot
+from animator.entity.misc import BackDrop as BackDrop
+from animator.entity.misc import Patch as Patch
+from animator.entity.misc import Vertices as Vertices
+from animator.entity.path import Circle as Circle
+from animator.entity.path import Ellipse as Ellipse
+from animator.entity.path import Line as Line
+from animator.entity.path import Path as Path
+from animator.entity.path import PathEntity as PathEntity
+from animator.entity.path import PathText as PathText
+from animator.entity.path import Point as Point
+from animator.entity.path import Polygon as Polygon
+from animator.entity.path import PolyLine as PolyLine
+from animator.entity.path import Rect as Rect
+from animator.entity.path import RoundRect as RoundRect
+from animator.entity.path import Square as Square
+from animator.entity.path import Star as Star
+from animator.entity.text import SimpleText as SimpleText
+from animator.entity.text import Text as Text
+from animator.entity.text import TextOnPath as TextOnPath

@@ -1,5 +1,5 @@
-from .scene import *
-from .entity import *
-from .anim import *
-from .display.DisplayManager import DisplayManager
-from .util import math
+from animator import skia as skia
+from animator.anim import *
+from animator.entity import *
+from animator.graphics import *
+from animator.scene import *
