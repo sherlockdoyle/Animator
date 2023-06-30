@@ -12,7 +12,7 @@ import numpy as np
 from animator import skia
 
 Point = tuple[float, float]
-Color = tuple[float, float, float, float]
+Color = skia.Color4f | tuple[float, float, float, float]
 
 
 class TextMetrics(NamedTuple):
