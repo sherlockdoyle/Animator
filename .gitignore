@@ -2,10 +2,14 @@
 /.ipynb_checkpoints/
 /.mypy_cache/
 /.vscode/
-/animator/skia.cpython-38-x86_64-linux-gnu.so
+/animator/skia.*
 /build/
+/dist/
 /docs/build/
 /docs/source/reference/
-/skia/include/
 /skia/lib/
 /venv/
+__pycache__/
+OWNERS
+*.bazel
+*.bzl

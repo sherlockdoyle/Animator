@@ -2,6 +2,7 @@
 #include "include/core/SkPoint.h"
 #include "include/core/SkPoint3.h"
 #include <pybind11/operators.h>
+#include <pybind11/stl.h>
 
 void initPoint(py::module &m)
 {
@@ -19,10 +20,10 @@ void initPoint(py::module &m)
                 :param t: Tuple of two integers.
             )doc",
              "t"_a)
-        .def_static("Make", &SkIPoint::Make, "x"_a, "y"_a)
-        .def(py::init(&SkIPoint::Make), "x"_a, "y"_a)
         .def_readwrite("fX", &SkIPoint::fX)
         .def_readwrite("fY", &SkIPoint::fY)
+        .def_static("Make", &SkIPoint::Make, "x"_a, "y"_a)
+        .def(py::init(&SkIPoint::Make), "x"_a, "y"_a)
         .def("x", &SkIPoint::x)
         .def("y", &SkIPoint::y)
         .def("isZero", &SkIPoint::isZero)
@@ -68,10 +69,10 @@ void initPoint(py::module &m)
                 :param t: Tuple of two floats.
             )doc",
              "t"_a)
-        .def_static("Make", &SkPoint::Make, "x"_a, "y"_a)
-        .def(py::init(&SkPoint::Make), "x"_a, "y"_a)
         .def_readwrite("fX", &SkPoint::fX)
         .def_readwrite("fY", &SkPoint::fY)
+        .def_static("Make", &SkPoint::Make, "x"_a, "y"_a)
+        .def(py::init(&SkPoint::Make), "x"_a, "y"_a)
         .def("x", &SkPoint::x)
         .def("y", &SkPoint::y)
         .def("isZero", &SkPoint::isZero)
@@ -103,6 +104,7 @@ void initPoint(py::module &m)
         .def("setLength", py::overload_cast<SkScalar>(&SkPoint::setLength), "length"_a)
         .def("setLength", py::overload_cast<SkScalar, SkScalar, SkScalar>(&SkPoint::setLength), "x"_a, "y"_a,
              "length"_a)
+        .def("scale", py::overload_cast<SkScalar>(&SkPoint::scale), "scale"_a)
         .def(
             "makeScaled",
             [](const SkPoint &p, const SkScalar &scale)
@@ -118,7 +120,6 @@ void initPoint(py::module &m)
                 :return: a new :py:class:`Point` scaled by *scale*
             )doc",
             "scale"_a)
-        .def("scale", py::overload_cast<SkScalar>(&SkPoint::scale), "scale"_a)
         .def("negate", &SkPoint::negate)
         .def(-py::self)
         .def(py::self += py::self, "other"_a)
@@ -180,22 +181,8 @@ void initPoint(py::module &m)
         .def(-py::self)
         .def(py::self - py::self, "other"_a)
         .def(py::self + py::self, "other"_a)
-        .def(
-            "__iadd__",
-            [](SkPoint3 &p, const SkPoint3 &v)
-            {
-                p += v;
-                return p;
-            },
-            py::is_operator(), "v"_a)
-        .def(
-            "__isub__",
-            [](SkPoint3 &p, const SkPoint3 &v)
-            {
-                p -= v;
-                return p;
-            },
-            py::is_operator(), "v"_a)
+        .def(py::self += py::self, "other"_a)
+        .def(py::self -= py::self, "other"_a)
         .def(SkScalar() * py::self, "t"_a)
         .def("isFinite", &SkPoint3::isFinite)
         .def_static("DotProduct", &SkPoint3::DotProduct, "a"_a, "b"_a)

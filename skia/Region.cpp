@@ -183,7 +183,7 @@ void initRegion(py::module &m)
         .def(
             "readFromMemory",
             [](SkRegion &self, const SkData &data) { return self.readFromMemory(data.data(), data.size()); },
-            "Constructs :py:class:`Region` from given :py:class:`Data`.", "buffer"_a)
+            "Reads :py:class:`Region` from given :py:class:`Data`.", "buffer"_a)
 
         .def("__sub__", &region_op<SkRegion, SkRegion::kDifference_Op>, py::is_operator())
         .def("__and__", &region_op<SkRegion, SkRegion::kIntersect_Op>, py::is_operator())

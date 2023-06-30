@@ -1,8 +1,7 @@
+#define SK_ENABLE_SKSL
 #include "common.h"
 #include "include/core/SkImageFilter.h"
-#include "include/core/SkPaint.h"
 #include "include/core/SkPoint3.h"
-#include "include/core/SkRegion.h"
 #include "include/effects/SkImageFilters.h"
 #include <pybind11/stl.h>
 
@@ -64,8 +63,6 @@ void initImageFilter(py::module &m)
     static const SkImageFilters::CropRect dcr = {};                   // default crop rect
     static const SkSamplingOptions dso(SkCubicResampler::Mitchell()); // default sampling options
     ImageFilters
-        .def_static("AlphaThreshold", &SkImageFilters::AlphaThreshold, "region"_a, "innerMin"_a, "outerMax"_a,
-                    "input"_a = py::none(), "cropRect"_a = dcr)
         .def_static("Arithmetic", &SkImageFilters::Arithmetic, "k1"_a, "k2"_a, "k3"_a, "k4"_a,
                     "enforcePMColor"_a = false, "background"_a = py::none(), "foreground"_a = py::none(),
                     "cropRect"_a = dcr)
@@ -92,7 +89,7 @@ void initImageFilter(py::module &m)
                     "color"_a, "input"_a = py::none(), "cropRect"_a = dcr)
         .def_static(
             "Image",
-            [](const sk_sp<SkImage> &image, const SkRect *srcRect, const SkRect *dstRect,
+            [](const sk_sp<SkImage> &image, const std::optional<SkRect> &srcRect, const std::optional<SkRect> &dstRect,
                const SkSamplingOptions &sampling)
             {
                 if (!(srcRect && dstRect))
@@ -100,24 +97,27 @@ void initImageFilter(py::module &m)
                 return SkImageFilters::Image(image, *srcRect, *dstRect, sampling);
             },
             "image"_a, "srcRect"_a = py::none(), "dstRect"_a = py::none(), "sampling"_a = dso)
-        .def_static("Magnifier", &SkImageFilters::Magnifier, "srcRect"_a, "inset"_a, "input"_a = py::none(),
-                    "cropRect"_a = dcr)
+        .def_static("Magnifier", &SkImageFilters::Magnifier, "lensBounds"_a, "zoomAmount"_a, "inset"_a,
+                    "sampling"_a = dso, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static(
             "MatrixConvolution",
             [](const SkISize &kernelSize, const std::vector<SkScalar> &kernel, const SkScalar &gain,
-               const SkScalar &bias, const SkIPoint &kernelOffset, const SkTileMode &tileMode,
+               const SkScalar &bias, const std::optional<const SkIPoint> &kernelOffset, const SkTileMode &tileMode,
                const bool &convolveAlpha, const sk_sp<SkImageFilter> &input, const SkImageFilters::CropRect &cropRect)
             {
-                const size_t requiredSize = kernelSize.width() * kernelSize.height(), actualSize = kernel.size();
+                const int width = kernelSize.width(), height = kernelSize.height();
+                const size_t requiredSize = width * height, actualSize = kernel.size();
                 if (requiredSize != actualSize)
                     throw py::value_error("kernel size must be {}, got {}"_s.format(requiredSize, actualSize));
-                return SkImageFilters::MatrixConvolution(kernelSize, kernel.data(), gain, bias, kernelOffset, tileMode,
-                                                         convolveAlpha, input, cropRect);
+                return SkImageFilters::MatrixConvolution(kernelSize, kernel.data(), gain, bias,
+                                                         kernelOffset ? *kernelOffset : SkIPoint{width / 2, height / 2},
+                                                         tileMode, convolveAlpha, input, cropRect);
             },
-            "kernelSize"_a, "kernel"_a, "gain"_a = 1, "bias"_a = 0, "kernelOffset"_a = SkIPoint{0, 0},
-            "tileMode"_a = SkTileMode::kClamp, "convolveAlpha"_a = false, "input"_a = py::none(), "cropRect"_a = dcr)
+            "If *kernelOffset* is not specified, it is assumed to be half the kernel width and height.", "kernelSize"_a,
+            "kernel"_a, "gain"_a = 1, "bias"_a = 0, "kernelOffset"_a = std::nullopt, "tileMode"_a = SkTileMode::kClamp,
+            "convolveAlpha"_a = false, "input"_a = py::none(), "cropRect"_a = dcr)
         .def_static("MatrixTransform", &SkImageFilters::MatrixTransform, "matrix"_a, "sampling"_a = dso,
-                    "input"_a = py::none())
+                    "input"_a = nullptr)
         .def_static(
             "Merge",
             [](const py::list &filters, const SkImageFilters::CropRect &cropRect)
@@ -141,29 +141,28 @@ void initImageFilter(py::module &m)
                         &SkImageFilters::Merge),
                     "first"_a, "second"_a, "cropRect"_a = dcr)
         .def_static("Offset", &SkImageFilters::Offset, "dx"_a, "dy"_a, "input"_a = py::none(), "cropRect"_a = dcr)
-        .def_static("Paint", &SkImageFilters::Paint, "paint"_a, "cropRect"_a = dcr)
         .def_static("Picture", py::overload_cast<sk_sp<SkPicture>, const SkRect &>(&SkImageFilters::Picture), "pic"_a,
                     "targetRect"_a)
         .def_static("Picture", py::overload_cast<sk_sp<SkPicture>>(&SkImageFilters::Picture), "pic"_a)
         .def_static(
             "RuntimeShader",
-            [](const SkRuntimeShaderBuilder &builder, const std::string *childShaderName,
-               const sk_sp<SkImageFilter> &input) {
-                return SkImageFilters::RuntimeShader(builder, childShaderName ? childShaderName->c_str() : nullptr,
-                                                     input);
-            },
-            "builder"_a, "childShaderName"_a = py::none(), "input"_a = py::none())
+            [](const SkRuntimeShaderBuilder &builder, const SkScalar &sampleRadius,
+               const std::string_view &childShaderName, const sk_sp<SkImageFilter> &input)
+            { return SkImageFilters::RuntimeShader(builder, sampleRadius, childShaderName, input); },
+            "builder"_a, "sampleRadius"_a = 0, "childShaderName"_a = "", "input"_a = nullptr)
         .def_static(
             "RuntimeShader",
-            [](const SkRuntimeShaderBuilder &builder, std::vector<const char *> &childShaderNames,
-               const std::vector<sk_sp<SkImageFilter>> &inputs)
+            [](const SkRuntimeShaderBuilder &builder, std::vector<std::string_view> &childShaderNames,
+               const std::vector<sk_sp<SkImageFilter>> &inputs, const SkScalar &maxSampleRadius)
             {
                 const size_t size = childShaderNames.size();
                 if (inputs.size() != size)
                     throw py::value_error("childShaderNames and inputs must be the same length");
-                return SkImageFilters::RuntimeShader(builder, childShaderNames.data(), inputs.data(), size);
+                return SkImageFilters::RuntimeShader(builder, maxSampleRadius, childShaderNames.data(), inputs.data(),
+                                                     size);
             },
-            "builder"_a, "childShaderNames"_a, "inputs"_a);
+            "Note that the *maxSampleRadius* parameter is at the end of the argument list, unlike the C++ API.",
+            "builder"_a, "childShaderNames"_a, "inputs"_a, "maxSampleRadius"_a = 0);
 
     py::enum_<SkImageFilters::Dither>(ImageFilters, "Dither")
         .value("kNo", SkImageFilters::Dither::kNo)

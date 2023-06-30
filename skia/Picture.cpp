@@ -1,10 +1,8 @@
 #include "common.h"
 #include "include/core/SkCanvas.h"
 #include "include/core/SkData.h"
+#include "include/core/SkMatrix.h"
 #include "include/core/SkPicture.h"
-
-// namespace
-// {
 
 class PyPicture : public SkPicture
 {
@@ -35,8 +33,6 @@ public:
 //     }
 //     size_t bytesUsed() const override { PYBIND11_OVERRIDE_PURE(size_t, SkBBoxHierarchy, bytesUsed); }
 // };
-
-// } // namespace
 
 void initPicture(py::module &m)
 {

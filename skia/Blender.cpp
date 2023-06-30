@@ -2,8 +2,9 @@
 #include "include/core/SkBlendMode.h"
 #include "include/core/SkBlender.h"
 #include "include/effects/SkBlenders.h"
+#include <pybind11/stl.h>
 
-void initBlendMode(py::module &m)
+void initBlender(py::module &m)
 {
     py::enum_<SkBlendMode> BlendMode(m, "BlendMode");
     BlendMode.value("kClear", SkBlendMode::kClear)

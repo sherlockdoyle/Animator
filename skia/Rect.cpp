@@ -1,4 +1,5 @@
 #include "common.h"
+#include "include/core/SkData.h"
 #include "include/core/SkMatrix.h"
 #include "include/core/SkRRect.h"
 #include "include/core/SkRect.h"
@@ -155,10 +156,7 @@ void initRect(py::module &m)
                      else
                          throw py::value_error("Invalid tuple.");
                  }),
-             R"doc(
-                 Create an :py:class:`Rect` from a tuple of 0, 2, or 4 floats.
-             )doc",
-             "t"_a)
+             "Create an :py:class:`Rect` from a tuple of 0, 2, or 4 floats.", "t"_a)
         .def_readwrite("fLeft", &SkRect::fLeft)
         .def_readwrite("fTop", &SkRect::fTop)
         .def_readwrite("fRight", &SkRect::fRight)
@@ -231,6 +229,7 @@ void initRect(py::module &m)
         .def("height", &SkRect::height)
         .def("centerX", &SkRect::centerX)
         .def("centerY", &SkRect::centerY)
+        .def("center", &SkRect::center)
         .def(py::self == py::self, "other"_a)
         .def(py::self != py::self, "other"_a)
         .def(
@@ -318,9 +317,7 @@ void initRect(py::module &m)
                 return py::memoryview::from_buffer(r.asScalars(), sizeof(SkScalar),
                                                    py::format_descriptor<SkScalar>::value, {4}, {sizeof(SkScalar)});
             },
-            R"doc(
-                Returns a :py:class:`memoryview` of :py:class:`Scalar` containing the :py:class:`Rect`'s coordinates.
-            )doc")
+            "Returns a :py:class:`memoryview` of :py:class:`Scalar` containing the :py:class:`Rect`'s coordinates.")
         .def(
             "dump",
             [](const SkRect &rect, bool asHex)
@@ -387,7 +384,7 @@ void initRect(py::module &m)
             [](SkRRect &rrect, const SkRect &rect, const std::vector<SkVector> &radii)
             {
                 if (radii.size() != 4)
-                    throw py::value_error("radii must be a list of 4 vectors");
+                    throw py::value_error("radii must be a list of 4 vectors.");
                 rrect.setRectRadii(rect, radii.data());
             },
             "rect"_a, "radii"_a);
@@ -442,6 +439,19 @@ void initRect(py::module &m)
         .def("__contains__", &SkRRect::contains, py::is_operator(), "Same as :py:meth:`RRect.contains`.", "rect"_a)
         .def("isValid", &SkRRect::isValid)
         .def_readonly_static("kSizeInMemory", &SkRRect::kSizeInMemory)
+        .def(
+            "writeToMemory",
+            [](const SkRRect &self)
+            {
+                sk_sp<SkData> data = SkData::MakeUninitialized(SkRRect::kSizeInMemory);
+                self.writeToMemory(data->writable_data());
+                return data;
+            },
+            "Writes :py:class:`RRect` to :py:class:`Data` and returns it.")
+        .def(
+            "readFromMemory",
+            [](SkRRect &self, const SkData &data) { return self.readFromMemory(data.data(), data.size()); },
+            "Reads :py:class:`RRect` from given :py:class:`Data`.", "buffer"_a)
         .def(
             "transform",
             [](const SkRRect &self, const SkMatrix &matrix) -> std::optional<SkRRect>

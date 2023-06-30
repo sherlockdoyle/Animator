@@ -1,5 +1,7 @@
 #include "common.h"
+#include "include/core/SkBlurTypes.h"
 #include "include/core/SkMaskFilter.h"
+#include "include/core/SkPoint3.h"
 #include "include/core/SkShader.h"
 #include "include/effects/SkShaderMaskFilter.h"
 #include "include/effects/SkTableMaskFilter.h"

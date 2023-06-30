@@ -1,7 +1,7 @@
 #include "common.h"
 #include "include/core/SkColor.h"
-#include <pybind11/numpy.h>
 #include <pybind11/operators.h>
+#include <pybind11/stl.h>
 
 void initColor(py::module &m)
 {
@@ -125,7 +125,7 @@ void initColor(py::module &m)
         .value("kBlue_ColorChannelFlag", SkColorChannelFlag::kBlue_SkColorChannelFlag)
         .value("kAlpha_ColorChannelFlag", SkColorChannelFlag::kAlpha_SkColorChannelFlag)
         .value("kGray_ColorChannelFlag", SkColorChannelFlag::kGray_SkColorChannelFlag)
-        .value("kGrayAlpha_SkColorChannelFlags", SkColorChannelFlag::kGrayAlpha_SkColorChannelFlags)
+        .value("kGrayAlpha_ColorChannelFlags", SkColorChannelFlag::kGrayAlpha_SkColorChannelFlags)
         .value("kRG_ColorChannelFlags", SkColorChannelFlag::kRG_SkColorChannelFlags)
         .value("kRGB_ColorChannelFlags", SkColorChannelFlag::kRGB_SkColorChannelFlags)
         .value("kRGBA_ColorChannelFlags", SkColorChannelFlag::kRGBA_SkColorChannelFlags);
@@ -220,7 +220,7 @@ void initColor(py::module &m)
         .def_static("FromPMColor", &SkColor4f::FromColor, "pmcolor"_a)
         .def("premul", &SkColor4f::premul)
         .def("toBytes_RGBA", &SkColor4f::toBytes_RGBA)
-        .def_static("FromBytes_RGBA", &SkColor4f::FromBytes_RGBA, "rgba"_a)
+        .def_static("FromBytes_RGBA", &SkColor4f::FromBytes_RGBA, "color"_a)
         .def("makeOpaque", &SkColor4f::makeOpaque)
         .def("__int__", &SkColor4f::toSkColor, R"doc(
                 Convert the color to an integer (ARGB color).

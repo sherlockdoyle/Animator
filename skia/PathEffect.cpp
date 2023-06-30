@@ -14,6 +14,7 @@
 
 struct PyDashInfo : public SkPathEffect::DashInfo
 {
+    using SkPathEffect::DashInfo::DashInfo;
     SkPathEffect::DashType fType;
     void alloc() { fIntervals = new SkScalar[fCount]; }
     ~PyDashInfo() { delete[] fIntervals; }
@@ -51,7 +52,25 @@ void initPathEffect(py::module &m)
         .def("setResScale", &SkStrokeRec::setResScale, "rs"_a)
         .def("needToApply", &SkStrokeRec::needToApply)
         .def("applyToPath", &SkStrokeRec::applyToPath, "dst"_a, "src"_a)
+        .def(
+            "applyAndGetPath",
+            [](const SkStrokeRec &self, const SkPath &src)
+            {
+                SkPath dst;
+                self.applyToPath(&dst, src);
+                return dst;
+            },
+            "Apply the stroke parameters to the src path and return the result.", "src"_a)
         .def("applyToPaint", &SkStrokeRec::applyToPaint, "paint"_a)
+        .def(
+            "getPaint",
+            [](const SkStrokeRec &self)
+            {
+                SkPaint paint;
+                self.applyToPaint(&paint);
+                return paint;
+            },
+            "Apply the stroke parameters to a paint and return it.")
         .def("getInflationRadius", &SkStrokeRec::getInflationRadius)
         .def_static("GetInflationRadius",
                     py::overload_cast<const SkPaint &, SkPaint::Style>(&SkStrokeRec::GetInflationRadius), "paint"_a,
@@ -79,10 +98,21 @@ void initPathEffect(py::module &m)
         .value("kNone_DashType", SkPathEffect::DashType::kNone_DashType)
         .value("kDash_DashType", SkPathEffect::DashType::kDash_DashType);
 
-    py::class_<PyDashInfo>(
+    py::class_<PyDashInfo, std::unique_ptr<PyDashInfo>>(
         PathEffect, "DashInfo",
         "Contains information about a dash pattern. This also contains an extra field ``fType`` for the dash type.")
         .def(py::init())
+        .def(py::init(
+                 [](const py::list &intervals, const SkScalar &phase)
+                 {
+                     int32_t count = intervals.size();
+                     std::unique_ptr<PyDashInfo> info = std::make_unique<PyDashInfo>(nullptr, count, phase);
+                     info->alloc();
+                     for (int32_t i = 0; i < count; ++i)
+                         info->fIntervals[i] = intervals[i].cast<SkScalar>();
+                     return info;
+                 }),
+             "Create a DashInfo from a list of intervals and a phase.", "intervals"_a, "phase"_a)
         .def_property_readonly("fIntervals", [](const PyDashInfo &self)
                                { return std::vector<SkScalar>(self.fIntervals, self.fIntervals + self.fCount); })
         .def_readonly("fCount", &PyDashInfo::fCount)
@@ -176,7 +206,7 @@ void initPathEffect(py::module &m)
             {
                 const size_t count = intervals.size();
                 if (count < 2 || count & 1)
-                    throw py::value_error("intervals must be an array of even length >= 2");
+                    throw py::value_error("intervals must be an array of even length >= 2.");
                 return SkDashPathEffect::Make(intervals.data(), count, phase);
             },
             "intervals"_a, "phase"_a = 0);
@@ -194,6 +224,9 @@ void initPathEffect(py::module &m)
     py::class_<SkStrokePathEffect>(m, "StrokePathEffect")
         .def_static("Make", &SkStrokePathEffect::Make, "width"_a, "join"_a, "cap"_a, "miter"_a = 4);
 
+    py::class_<SkStrokeAndFillPathEffect>(m, "StrokeAndFillPathEffect")
+        .def_static("Make", &SkStrokeAndFillPathEffect::Make);
+
     py::class_<SkTrimPathEffect> TrimPathEffect(m, "TrimPathEffect");
 
     py::enum_<SkTrimPathEffect::Mode>(TrimPathEffect, "Mode")
@@ -201,7 +234,4 @@ void initPathEffect(py::module &m)
         .value("kInverted", SkTrimPathEffect::Mode::kInverted);
     TrimPathEffect.def_static("Make", &SkTrimPathEffect::Make, "startT"_a, "stopT"_a,
                               "mode"_a = SkTrimPathEffect::Mode::kNormal);
-
-    py::class_<SkStrokeAndFillPathEffect>(m, "StrokeAndFillPathEffect")
-        .def_static("Make", &SkStrokeAndFillPathEffect::Make);
 }
