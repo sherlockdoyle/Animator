@@ -2,7 +2,6 @@
 #include "include/core/SkBlender.h"
 #include "include/core/SkColorFilter.h"
 #include "include/core/SkData.h"
-#include "include/core/SkDrawable.h"
 #include "include/core/SkFlattenable.h"
 #include "include/core/SkImageFilter.h"
 #include "include/core/SkMaskFilter.h"
@@ -28,7 +27,6 @@ void initFlattenable(py::module &m)
         .value("kColorFilter_Type", SkFlattenable::Type::kSkColorFilter_Type)
         .value("kBlender_Type", SkFlattenable::Type::kSkBlender_Type)
         .value("kDrawable_Type", SkFlattenable::Type::kSkDrawable_Type)
-        .value("kDrawLooper_Type", SkFlattenable::Type::kSkDrawLooper_Type)
         .value("kImageFilter_Type", SkFlattenable::Type::kSkImageFilter_Type)
         .value("kMaskFilter_Type", SkFlattenable::Type::kSkMaskFilter_Type)
         .value("kPathEffect_Type", SkFlattenable::Type::kSkPathEffect_Type)
@@ -48,9 +46,9 @@ void initFlattenable(py::module &m)
             "Deserialize a flattenable of the given *type* from a buffer *data*.", "type"_a, "data"_a)
         .def_static(
             "DeserializeAsType",
-            [](const SkFlattenable::Type &type, const py::buffer &data)
-                -> std::variant<sk_sp<SkColorFilter>, sk_sp<SkBlender>, sk_sp<SkDrawable>, sk_sp<SkImageFilter>,
-                                sk_sp<SkMaskFilter>, sk_sp<SkPathEffect>, sk_sp<SkShader>>
+            [](const SkFlattenable::Type &type,
+               const py::buffer &data) -> std::variant<sk_sp<SkColorFilter>, sk_sp<SkBlender>, sk_sp<SkImageFilter>,
+                                                       sk_sp<SkMaskFilter>, sk_sp<SkPathEffect>, sk_sp<SkShader>>
             {
                 py::buffer_info info = data.request();
                 sk_sp<SkFlattenable> result = SkFlattenable::Deserialize(type, info.ptr, info.size * info.itemsize);
@@ -65,9 +63,9 @@ void initFlattenable(py::module &m)
                 case SkFlattenable::Type::kSkBlender_Type:
                     return sk_sp<SkBlender>(reinterpret_cast<SkBlender *>(result.release()));
                 case SkFlattenable::Type::kSkDrawable_Type:
-                    return sk_sp<SkDrawable>(reinterpret_cast<SkDrawable *>(result.release()));
+                    throw py::type_error("Drawable is not supported.");
                 case SkFlattenable::Type::kSkDrawLooper_Type:
-                    throw py::type_error("DrawLooper is unsupported");
+                    throw py::type_error("DrawLooper is not supported.");
                 case SkFlattenable::Type::kSkImageFilter_Type:
                     return sk_sp<SkImageFilter>(reinterpret_cast<SkImageFilter *>(result.release()));
                 case SkFlattenable::Type::kSkMaskFilter_Type:

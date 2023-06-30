@@ -1,13 +1,56 @@
 #include "common.h"
+#include "include/core/SkBitmap.h"
+#include "include/core/SkColorSpace.h"
+#include "include/core/SkData.h"
 #include "include/core/SkEncodedImageFormat.h"
 #include "include/core/SkImage.h"
 #include "include/core/SkImageFilter.h"
 #include "include/core/SkPaint.h"
 #include "include/core/SkPicture.h"
+#include "include/core/SkStream.h"
+#include "include/core/SkSurfaceProps.h"
+#include "include/core/SkTextureCompressionType.h"
+#include "include/encode/SkJpegEncoder.h"
+#include "include/encode/SkPngEncoder.h"
+#include "include/encode/SkWebpEncoder.h"
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
 
-const SkImage::CompressionType SkImage::kETC1_CompressionType;
+sk_sp<SkData> encodeToData(const SkImage *self, const SkEncodedImageFormat &format = SkEncodedImageFormat::kPNG,
+                           const int &quality = 100)
+{ // taken from old SkImageEncoder.cpp
+    switch (format)
+    {
+    case SkEncodedImageFormat::kJPEG:
+    {
+        SkJpegEncoder::Options opts;
+        opts.fQuality = quality;
+        return SkJpegEncoder::Encode(nullptr, self, opts);
+    }
+    case SkEncodedImageFormat::kPNG:
+    {
+        SkPngEncoder::Options opts;
+        return SkPngEncoder::Encode(nullptr, self, opts);
+    }
+    case SkEncodedImageFormat::kWEBP:
+    {
+        SkWebpEncoder::Options opts;
+        if (quality == 100)
+        {
+            opts.fCompression = SkWebpEncoder::Compression::kLossless;
+            opts.fQuality = 75;
+        }
+        else
+        {
+            opts.fCompression = SkWebpEncoder::Compression::kLossy;
+            opts.fQuality = quality;
+        }
+        return SkWebpEncoder::Encode(nullptr, self, opts);
+    }
+    default:
+        return nullptr;
+    }
+}
 
 void initImage(py::module &m)
 {
@@ -36,6 +79,7 @@ void initImage(py::module &m)
              [](const SkCubicResampler &self) { return "CubicResampler(B={:g}, C={:g})"_s.format(self.B, self.C); });
 
     py::class_<SkSamplingOptions>(m, "SamplingOptions")
+        .def_readonly("maxAniso", &SkSamplingOptions::maxAniso)
         .def_readonly("useCubic", &SkSamplingOptions::useCubic)
         .def_readonly("cubic", &SkSamplingOptions::cubic)
         .def_readonly("filter", &SkSamplingOptions::filter)
@@ -45,12 +89,15 @@ void initImage(py::module &m)
         .def(py::init<SkFilterMode, SkMipmapMode>(), "fm"_a, "mm"_a)
         .def(py::init<SkFilterMode>(), "fm"_a)
         .def(py::init<const SkCubicResampler &>(), "c"_a)
+        .def_static("Aniso", &SkSamplingOptions::Aniso, "maxAniso"_a)
         .def(py::self == py::self)
         .def(py::self != py::self)
+        .def("isAniso", &SkSamplingOptions::isAniso)
         .def("__str__",
              [](const SkSamplingOptions &self)
              {
-                 return "SamplingOptions({})"_s.format(self.useCubic
+                 return "SamplingOptions({})"_s.format(self.isAniso() ? "maxAniso={}"_s.format(self.maxAniso)
+                                                       : self.useCubic
                                                            ? "cubic={}"_s.format(self.cubic)
                                                            : "filter={}, mipmap={}"_s.format(self.filter, self.mipmap));
              });
@@ -61,7 +108,7 @@ void initImage(py::module &m)
         .value("kMirror", SkTileMode::kMirror)
         .value("kDecal", SkTileMode::kDecal)
         .value("kLastTileMode", SkTileMode::kLastTileMode);
-    m.attr("kSkTileModeCount") = kSkTileModeCount;
+    m.attr("kTileModeCount") = kSkTileModeCount;
 
     py::enum_<SkEncodedImageFormat>(m, "EncodedImageFormat")
         .value("kBMP", SkEncodedImageFormat::kBMP)
@@ -78,6 +125,34 @@ void initImage(py::module &m)
         .value("kHEIF", SkEncodedImageFormat::kHEIF)
         .value("kAVIF", SkEncodedImageFormat::kAVIF)
         .value("kJPEGXL", SkEncodedImageFormat::kJPEGXL);
+
+    py::enum_<SkPixelGeometry>(m, "PixelGeometry")
+        .value("kUnknown_PixelGeometry", SkPixelGeometry::kUnknown_SkPixelGeometry)
+        .value("kRGB_H_PixelGeometry", SkPixelGeometry::kRGB_H_SkPixelGeometry)
+        .value("kBGR_H_PixelGeometry", SkPixelGeometry::kBGR_H_SkPixelGeometry)
+        .value("kRGB_V_PixelGeometry", SkPixelGeometry::kRGB_V_SkPixelGeometry)
+        .value("kBGR_V_PixelGeometry", SkPixelGeometry::kBGR_V_SkPixelGeometry)
+        .def("pixelGeometryIsRGB", &SkPixelGeometryIsRGB)
+        .def("pixelGeometryIsBGR", &SkPixelGeometryIsBGR)
+        .def("pixelGeometryIsH", &SkPixelGeometryIsH)
+        .def("pixelGeometryIsV", &SkPixelGeometryIsV);
+
+    py::class_<SkSurfaceProps> SurfaceProps(m, "SurfaceProps");
+
+    py::enum_<SkSurfaceProps::Flags>(SurfaceProps, "Flags", py::arithmetic())
+        .value("kUseDeviceIndependentFonts_Flag", SkSurfaceProps::Flags::kUseDeviceIndependentFonts_Flag)
+        .value("kDynamicMSAA_Flag", SkSurfaceProps::Flags::kDynamicMSAA_Flag)
+        .value("kAlwaysDither_Flag", SkSurfaceProps::Flags::kAlwaysDither_Flag);
+    SurfaceProps.def(py::init())
+        .def(py::init<uint32_t, SkPixelGeometry>(), "flags"_a, "pg"_a)
+        .def(py::init<const SkSurfaceProps &>(), "props"_a)
+        .def("cloneWithPixelGeometry", &SkSurfaceProps::cloneWithPixelGeometry, "newPixelGeometry"_a)
+        .def("flags", &SkSurfaceProps::flags)
+        .def("pixelGeometry", &SkSurfaceProps::pixelGeometry)
+        .def("isUseDeviceIndependentFonts", &SkSurfaceProps::isUseDeviceIndependentFonts)
+        .def("isAlwaysDither", &SkSurfaceProps::isAlwaysDither)
+        .def(py::self == py::self)
+        .def(py::self != py::self);
 
     py::class_<SkImage, sk_sp<SkImage>> Image(m, "Image", py::buffer_protocol(), R"doc(
         :py:class:`Image` describes a two dimensional array of pixels to draw.
@@ -117,10 +192,10 @@ void initImage(py::module &m)
                 SkImageInfo imgInfo = SkImageInfo::Make(dimensions, ct, at, cs);
                 size_t rowBytes = validateImageInfo_Buffer(imgInfo, bufInfo, 0);
                 size_t size = imgInfo.computeByteSize(rowBytes);
-                return SkImage::MakeRasterData(imgInfo,
-                                               copy ? SkData::MakeWithCopy(bufInfo.ptr, size)
-                                                    : SkData::MakeWithoutCopy(bufInfo.ptr, size),
-                                               rowBytes);
+                return SkImages::RasterFromData(imgInfo,
+                                                copy ? SkData::MakeWithCopy(bufInfo.ptr, size)
+                                                     : SkData::MakeWithoutCopy(bufInfo.ptr, size),
+                                                rowBytes);
             },
             R"doc(
                 Creates a new :py:class:`Image` from bytes.
@@ -161,10 +236,10 @@ void initImage(py::module &m)
             {
                 py::ssize_t rowBytes = array.strides(0);
                 size_t size = array.shape(0) * rowBytes;
-                return SkImage::MakeRasterData(ndarrayToImageInfo(array, ct, at, cs),
-                                               copy ? SkData::MakeWithCopy(array.data(), size)
-                                                    : SkData::MakeWithoutCopy(array.data(), size),
-                                               rowBytes);
+                return SkImages::RasterFromData(ndarrayToImageInfo(array, ct, at, cs),
+                                                copy ? SkData::MakeWithCopy(array.data(), size)
+                                                     : SkData::MakeWithoutCopy(array.data(), size),
+                                                rowBytes);
             },
             R"doc(
                 Creates a new :py:class:`Image` from numpy array.
@@ -177,11 +252,11 @@ void initImage(py::module &m)
                 :return: A new :py:class:`Image` sharing the data in the array if copy is ``False``, or a new
                     :py:class:`Image` with a copy of the data if copy is ``True``.
             )doc",
-            "array"_a, "ct"_a = kN32_SkColorType, "at"_a = SkAlphaType::kUnpremul_SkAlphaType, "cs"_a = py::none(),
+            "array"_a, "ct"_a = kN32_SkColorType, "at"_a = SkAlphaType::kUnpremul_SkAlphaType, "cs"_a = nullptr,
             "copy"_a = true)
         .def("toarray", &readToNumpy<SkImage>, "Returns a ``ndarray`` of the image's pixels.", "srcX"_a = 0,
              "srcY"_a = 0, "ct"_a = SkColorType::kN32_SkColorType, "at"_a = SkAlphaType::kUnpremul_SkAlphaType,
-             "cs"_a = py::none())
+             "cs"_a = nullptr)
         .def_static(
             "open",
             [](const py::object &fp)
@@ -203,7 +278,7 @@ void initImage(py::module &m)
                         throw py::value_error("Failed to open file {}"_s.format(path));
                 }
 
-                sk_sp<SkImage> image = SkImage::MakeFromEncoded(data);
+                sk_sp<SkImage> image = SkImages::DeferredFromEncodedData(data);
                 if (image)
                     return image;
                 throw py::value_error("Failed to decode image.");
@@ -214,7 +289,7 @@ void initImage(py::module &m)
             [](const SkImage &self, const py::object &fp, const SkEncodedImageFormat &encodedImageFormat,
                const int &quality)
             {
-                sk_sp<SkData> data = self.encodeToData(encodedImageFormat, quality);
+                sk_sp<SkData> data = encodeToData(&self, encodedImageFormat, quality);
                 if (!data)
                     throw py::value_error("Failed to encode image.");
                 if (py::hasattr(fp, "write"))
@@ -231,40 +306,47 @@ void initImage(py::module &m)
                 Saves the image to a file like object or a path.
 
                 :param fp: A file like object or a path.
-                :param format: The format of the image. Should be one of :py:attr:`SkEncodedImageFormat.kJPEG`,
-                    :py:attr:`SkEncodedImageFormat.kPNG`, :py:attr:`SkEncodedImageFormat.kWEBP`.
+                :param format: The format of the image. Should be one of :py:attr:`EncodedImageFormat.kJPEG`,
+                    :py:attr:`EncodedImageFormat.kPNG`, :py:attr:`EncodedImageFormat.kWEBP`.
                 :param quality: The quality of the image. 100 is the best quality.
             )doc",
             "fp"_a, "encodedImageFormat"_a = SkEncodedImageFormat::kPNG, "quality"_a = 100)
-        .def_static("MakeRasterCopy", &SkImage::MakeRasterCopy, "pixmap"_a)
-        .def_static("MakeRasterData", &SkImage::MakeRasterData, "info"_a, "pixels"_a, "rowBytes"_a)
+        .def_static("RasterFromBitmap", &SkImages::RasterFromBitmap, "bitmap"_a);
+
+    py::enum_<SkTextureCompressionType>(Image, "TextureCompressionType")
+        .value("kNone", SkTextureCompressionType::kNone)
+        .value("kETC2_RGB8_UNORM", SkTextureCompressionType::kETC2_RGB8_UNORM)
+        .value("kBC1_RGB8_UNORM", SkTextureCompressionType::kBC1_RGB8_UNORM)
+        .value("kBC1_RGBA8_UNORM", SkTextureCompressionType::kBC1_RGBA8_UNORM)
+        .value("kLast", SkTextureCompressionType::kLast)
+        .value("kETC1_RGB8", SkTextureCompressionType::kETC1_RGB8);
+    Image
+        .def_static("RasterFromCompressedTextureData", &SkImages::RasterFromCompressedTextureData, "data"_a, "width"_a,
+                    "height"_a, "type"_a)
+        .def_static("DeferredFromEncodedData", &SkImages::DeferredFromEncodedData, "encoded"_a,
+                    "alphaType"_a = std::nullopt);
+
+    py::enum_<SkImages::BitDepth>(Image, "BitDepth")
+        .value("kU8", SkImages::BitDepth::kU8)
+        .value("kF16", SkImages::BitDepth::kF16);
+    Image
         .def_static(
-            "MakeFromRaster", [](const SkPixmap &pixmap) { return SkImage::MakeFromRaster(pixmap, nullptr, nullptr); },
+            "DeferredFromPicture",
+            py::overload_cast<sk_sp<SkPicture>, const SkISize &, const SkMatrix *, const SkPaint *, SkImages::BitDepth,
+                              sk_sp<SkColorSpace>, SkSurfaceProps>(&SkImages::DeferredFromPicture),
+            "picture"_a, "dimensions"_a, "matrix"_a = nullptr, "paint"_a = nullptr,
+            "bitDepth"_a = SkImages::BitDepth::kU8, "colorSpace"_a = nullptr, "props"_a = SkSurfaceProps{})
+        .def_static("RasterFromPixmapCopy", &SkImages::RasterFromPixmapCopy, "pixmap"_a)
+        .def_static(
+            "RasterFromPixmap",
+            [](const SkPixmap &pixmap) { return SkImages::RasterFromPixmap(pixmap, nullptr, nullptr); },
             "Creates :py:class:`Image` from *pixmap*, sharing :py:class:`Pixmap` pixels.", "pixmap"_a,
             py::keep_alive<0, 1>())
-        .def_static("MakeFromBitmap", &SkImage::MakeFromBitmap, "bitmap"_a)
-        .def_static("MakeFromEncoded", &SkImage::MakeFromEncoded, "encoded"_a, "alphaType"_a = py::none());
-
-    py::enum_<SkImage::CompressionType>(Image, "CompressionType")
-        .value("kNone", SkImage::CompressionType::kNone)
-        .value("kETC2_RGB8_UNORM", SkImage::CompressionType::kETC2_RGB8_UNORM)
-        .value("kBC1_RGB8_UNORM", SkImage::CompressionType::kBC1_RGB8_UNORM)
-        .value("kBC1_RGBA8_UNORM", SkImage::CompressionType::kBC1_RGBA8_UNORM)
-        .value("kLast", SkImage::CompressionType::kLast);
-    Image.def_readonly_static("kCompressionTypeCount", &SkImage::kCompressionTypeCount)
-        .def_readonly_static("kETC1_CompressionType", &SkImage::kETC1_CompressionType)
-        .def_static("MakeRasterFromCompressed", &SkImage::MakeRasterFromCompressed, "data"_a, "width"_a, "height"_a,
-                    "type"_a);
+        .def_static("RasterFromData", &SkImages::RasterFromData, "info"_a, "pixels"_a, "rowBytes"_a);
 
     static constexpr SkSamplingOptions dso;
 
-    py::enum_<SkImage::BitDepth>(Image, "BitDepth")
-        .value("kU8", SkImage::BitDepth::kU8)
-        .value("kF16", SkImage::BitDepth::kF16);
-    Image
-        .def_static("MakeFromPicture", &SkImage::MakeFromPicture, "picture"_a, "dimensions"_a, "matrix"_a = py::none(),
-                    "paint"_a = py::none(), "bitDepth"_a = SkImage::BitDepth::kU8, "colorSpace"_a = py::none())
-        .def("imageInfo", &SkImage::imageInfo)
+    Image.def("imageInfo", &SkImage::imageInfo)
         .def("width", &SkImage::width)
         .def("height", &SkImage::height)
         .def("dimensions", &SkImage::dimensions)
@@ -279,13 +361,11 @@ void initImage(py::module &m)
         .def("makeShader",
              py::overload_cast<SkTileMode, SkTileMode, const SkSamplingOptions &, const SkMatrix *>(
                  &SkImage::makeShader, py::const_),
-             "tmx"_a = SkTileMode::kClamp, "tmy"_a = SkTileMode::kClamp, "sampling"_a = dso,
-             "localMatrix"_a = py::none())
+             "tmx"_a = SkTileMode::kClamp, "tmy"_a = SkTileMode::kClamp, "sampling"_a = dso, "localMatrix"_a = nullptr)
         .def("makeRawShader",
              py::overload_cast<SkTileMode, SkTileMode, const SkSamplingOptions &, const SkMatrix *>(
                  &SkImage::makeRawShader, py::const_),
-             "tmx"_a = SkTileMode::kClamp, "tmy"_a = SkTileMode::kClamp, "sampling"_a = dso,
-             "localMatrix"_a = py::none())
+             "tmx"_a = SkTileMode::kClamp, "tmy"_a = SkTileMode::kClamp, "sampling"_a = dso, "localMatrix"_a = nullptr)
         .def(
             "peekPixels",
             [](const SkImage &self)
@@ -325,18 +405,19 @@ void initImage(py::module &m)
             "srcY"_a = 0, "cachingHint"_a = SkImage::CachingHint::kAllow_CachingHint)
         .def("scalePixels", &SkImage::scalePixels, "dst"_a, "sampling"_a = dso,
              "cachingHint"_a = SkImage::kAllow_CachingHint)
-        .def("encodeToData", py::overload_cast<SkEncodedImageFormat, int>(&SkImage::encodeToData, py::const_),
-             "encodedImageFormat"_a, "quality"_a)
-        .def("encodeToData", py::overload_cast<>(&SkImage::encodeToData, py::const_))
+        .def("encodeToData", &encodeToData, "encodedImageFormat"_a = SkEncodedImageFormat::kPNG, "quality"_a = 100)
         .def("refEncodedData", &SkImage::refEncodedData)
         .def(
-            "makeSubset", [](const SkImage &self, const SkIRect &subset) { return self.makeSubset(subset, nullptr); },
+            "makeSubset", [](const SkImage &self, const SkIRect &subset) { return self.makeSubset(nullptr, subset); },
             "Returns subset of :py:class:`Image` with *subset* bounds.", "subset"_a)
         .def("hasMipmaps", &SkImage::hasMipmaps)
         .def("withDefaultMipmaps", &SkImage::withDefaultMipmaps)
-        .def("makeNonTextureImage", &SkImage::makeNonTextureImage)
-        .def("makeRasterImage", &SkImage::makeRasterImage,
-             "cachingHint"_a = SkImage::CachingHint::kDisallow_CachingHint)
+        .def("makeNonTextureImage", [](const SkImage &self) { return self.makeNonTextureImage(nullptr); })
+        .def(
+            "makeRasterImage",
+            [](const SkImage &self, const SkImage::CachingHint &cachingHint)
+            { return self.makeRasterImage(nullptr, cachingHint); },
+            "cachingHint"_a = SkImage::CachingHint::kDisallow_CachingHint)
         .def(
             "makeWithFilter",
             [](const SkImage &self, const SkImageFilter *filter, const SkIRect *subset, const SkIRect *clipBounds)
@@ -355,12 +436,12 @@ void initImage(py::module &m)
         .def("isLazyGenerated", &SkImage::isLazyGenerated)
         .def(
             "makeColorSpace",
-            [](const SkImage &self, const sk_sp<SkColorSpace> &target) { return self.makeColorSpace(target, nullptr); },
+            [](const SkImage &self, const sk_sp<SkColorSpace> &target) { return self.makeColorSpace(nullptr, target); },
             "Creates :py:class:`Image` in *target* colorspace.", "target"_a)
         .def(
             "makeColorTypeAndColorSpace",
             [](const SkImage &self, const SkColorType &targetColorType, const sk_sp<SkColorSpace> &targetColorSpace)
-            { return self.makeColorTypeAndColorSpace(targetColorType, targetColorSpace, nullptr); },
+            { return self.makeColorTypeAndColorSpace(nullptr, targetColorType, targetColorSpace); },
             "Creates :py:class:`Image` in *targetColorType* and *targetColorSpace*.", "targetColorType"_a,
             "targetColorSpace"_a)
         .def("reinterpretColorSpace", &SkImage::reinterpretColorSpace, "newColorSpace"_a)
@@ -397,7 +478,7 @@ void initImage(py::module &m)
                 const size_t rowBytes = imageInfo.minRowBytes();
                 const SkPixmap pixmap = SkPixmap(imageInfo, buffer->writable_data(), rowBytes);
                 if (self.scalePixels(pixmap, sampling, cachingHint))
-                    return SkImage::MakeRasterData(imageInfo, buffer, rowBytes);
+                    return SkImages::RasterFromData(imageInfo, buffer, rowBytes);
                 throw std::runtime_error("Failed to resize image.");
             },
             "Creates a new :py:class:`Image` by scaling pixels to fit *width* and *height*.", "width"_a, "height"_a,
@@ -405,9 +486,9 @@ void initImage(py::module &m)
         .def("_repr_png_",
              [](const SkImage &self)
              {
-                 sk_sp<SkData> data = self.encodeToData();
+                 sk_sp<SkData> data = encodeToData(&self);
                  if (!data)
-                     throw std::runtime_error("Failed to encode an image.");
+                     throw std::runtime_error("Failed to encode image.");
                  return py::bytes(static_cast<const char *>(data->data()), data->size());
              })
         .def("__str__",

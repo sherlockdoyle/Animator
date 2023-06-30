@@ -1,12 +1,16 @@
 #include "common.h"
 #include "include/core/SkBitmap.h"
+#include "include/core/SkColorSpace.h"
 #include "include/core/SkImage.h"
+#include "include/core/SkMatrix.h"
 #include "include/core/SkPaint.h"
+#include "include/core/SkShader.h"
+#include "include/core/SkTileMode.h"
 #include <pybind11/stl.h>
 
 void initBitmap(py::module &m)
 {
-    py::class_<SkBitmap> Bitmap(m, "Bitmap", py::buffer_protocol(), R"doc(
+    py::class_<SkBitmap, std::unique_ptr<SkBitmap>> Bitmap(m, "Bitmap", py::buffer_protocol(), R"doc(
         :py:class:`Bitmap` describes a two-dimensional raster pixel array.
 
         :py:class:`Bitmap` supports buffer protocol. It is possible to mount :py:class:`Bitmap` as array::
@@ -113,15 +117,15 @@ void initBitmap(py::module &m)
         .def("installPixels", py::overload_cast<const SkPixmap &>(&SkBitmap::installPixels), "pixmap"_a)
         .def(
             "setPixels",
-            [](SkBitmap &bitmap, const std::optional<py::buffer> &pixels)
+            [](SkBitmap &self, const std::optional<py::buffer> &pixels)
             {
                 if (pixels)
                 {
                     const py::buffer_info bufInfo = pixels->request();
-                    validateImageInfo_Buffer(bitmap.info(), bufInfo, bitmap.rowBytes());
-                    return bitmap.setPixels(bufInfo.ptr);
+                    validateImageInfo_Buffer(self.info(), bufInfo, self.rowBytes());
+                    return self.setPixels(bufInfo.ptr);
                 }
-                return bitmap.setPixels(nullptr);
+                return self.setPixels(nullptr);
             },
             R"doc(
                 Sets pixel data from the buffer *pixels*.
@@ -135,10 +139,13 @@ void initBitmap(py::module &m)
         .def("readyToDraw", &SkBitmap::readyToDraw)
         .def("getGenerationID", &SkBitmap::getGenerationID)
         .def("notifyPixelsChanged", &SkBitmap::notifyPixelsChanged)
-        .def("eraseColor", &SkBitmap::eraseColor, "c"_a)
+        .def("eraseColor", py::overload_cast<SkColor4f>(&SkBitmap::eraseColor, py::const_), "c"_a)
+        .def("eraseColor", py::overload_cast<SkColor>(&SkBitmap::eraseColor, py::const_), "c"_a)
         .def("eraseARGB", &SkBitmap::eraseARGB, "a"_a, "r"_a, "g"_a, "b"_a)
-        .def("erase", &SkBitmap::erase, "c"_a, "area"_a)
+        .def("erase", py::overload_cast<SkColor4f, const SkIRect &>(&SkBitmap::erase, py::const_), "c"_a, "area"_a)
+        .def("erase", py::overload_cast<SkColor, const SkIRect &>(&SkBitmap::erase, py::const_), "c"_a, "area"_a)
         .def("getColor", &SkBitmap::getColor, "x"_a, "y"_a)
+        .def("getColor4f", &SkBitmap::getColor4f, "x"_a, "y"_a)
         .def("getAlphaf", &SkBitmap::getAlphaf, "x"_a, "y"_a)
         .def(
             "extractSubset",
@@ -183,7 +190,7 @@ void initBitmap(py::module &m)
              py::overload_cast<SkTileMode, SkTileMode, const SkSamplingOptions &, const SkMatrix *>(
                  &SkBitmap::makeShader, py::const_),
              "tmx"_a = SkTileMode::kClamp, "tmy"_a = SkTileMode::kClamp, "sampling"_a = SkSamplingOptions(),
-             "localMatrix"_a = py::none())
+             "localMatrix"_a = nullptr)
         .def("asImage", &SkBitmap::asImage)
         .def("__str__",
              [](const SkBitmap &self)

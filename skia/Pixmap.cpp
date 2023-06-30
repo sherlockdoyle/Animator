@@ -1,7 +1,6 @@
 #include "common.h"
+#include "include/core/SkColorSpace.h"
 #include "include/core/SkPixmap.h"
-// #include <optional>
-// #include <pybind11/numpy.h>
 #include <pybind11/stl.h>
 
 template <bool readonly = true> py::memoryview Pixmap_addr(const SkPixmap &pixmap)
@@ -41,7 +40,7 @@ void initPixmap(py::module &m)
             [](SkPixmap &self)
             {
                 if (self.addr() == nullptr)
-                    throw std::runtime_error("Pixmap is empty");
+                    throw std::runtime_error("Pixmap is empty.");
                 return imageInfoToBufferInfo(self.info(), self.writable_addr(), self.rowBytes(), false);
             })
         .def(
@@ -51,13 +50,12 @@ void initPixmap(py::module &m)
             "Convert :py:class:`Pixmap` to bytes.")
         .def(py::init())
         .def(py::init(
-                 [](const SkImageInfo &info, const std::optional<py::buffer> &addr, size_t rowBytes)
+                 [](const SkImageInfo &info, const std::optional<py::buffer> &addr, const size_t &rowBytes)
                  {
                      if (addr)
                      {
                          py::buffer_info buf = addr->request();
-                         rowBytes = validateImageInfo_Buffer(info, buf, rowBytes);
-                         return SkPixmap(info, buf.ptr, rowBytes);
+                         return SkPixmap(info, buf.ptr, validateImageInfo_Buffer(info, buf, rowBytes));
                      }
                      return SkPixmap(info, nullptr, rowBytes == 0 ? info.minRowBytes() : rowBytes);
                  }),
@@ -74,13 +72,13 @@ void initPixmap(py::module &m)
         .def("reset", py::overload_cast<>(&SkPixmap::reset))
         .def(
             "reset",
-            [](SkPixmap &self, const SkImageInfo &imageInfo, const std::optional<py::buffer> &addr, size_t rowBytes)
+            [](SkPixmap &self, const SkImageInfo &imageInfo, const std::optional<py::buffer> &addr,
+               const size_t &rowBytes)
             {
                 if (addr)
                 {
                     py::buffer_info buf = addr->request();
-                    rowBytes = validateImageInfo_Buffer(imageInfo, buf, rowBytes);
-                    self.reset(imageInfo, buf.ptr, rowBytes);
+                    self.reset(imageInfo, buf.ptr, validateImageInfo_Buffer(imageInfo, buf, rowBytes));
                 }
                 else
                     self.reset(imageInfo, nullptr, rowBytes == 0 ? imageInfo.minRowBytes() : rowBytes);
@@ -95,7 +93,7 @@ void initPixmap(py::module &m)
                 SkPixmap subset;
                 if (self.extractSubset(&subset, area))
                     return subset;
-                throw std::runtime_error("Resulting subset is empty");
+                throw std::runtime_error("Resulting subset is empty.");
             },
             "Returns a new :py:class:`Pixmap` with subset of the original :py:class:`Pixmap` specified by *area*.",
             "area"_a)
@@ -116,6 +114,7 @@ void initPixmap(py::module &m)
         .def("computeByteSize", &SkPixmap::computeByteSize)
         .def("computeIsOpaque", &SkPixmap::computeIsOpaque)
         .def("getColor", &SkPixmap::getColor, "x"_a, "y"_a)
+        .def("getColor4f", &SkPixmap::getColor4f, "x"_a, "y"_a)
         .def("getAlphaf", &SkPixmap::getAlphaf, "x"_a, "y"_a)
         .def("addr8", &Pixmap_addrN<uint8_t>)
         .def("addr16", &Pixmap_addrN<uint16_t>)
@@ -131,9 +130,8 @@ void initPixmap(py::module &m)
         .def("scalePixels", &SkPixmap::scalePixels, "dst"_a, "sampling"_a)
         .def("erase", py::overload_cast<SkColor, const SkIRect &>(&SkPixmap::erase, py::const_), "color"_a, "subset"_a)
         .def("erase", py::overload_cast<SkColor>(&SkPixmap::erase, py::const_), "color"_a)
-        .def("erase",
-             py::overload_cast<const SkColor4f &, SkColorSpace *, const SkIRect *>(&SkPixmap::erase, py::const_),
-             "color"_a, "cs"_a = py::none(), "subset"_a = py::none())
+        .def("erase", py::overload_cast<const SkColor4f &, const SkIRect *>(&SkPixmap::erase, py::const_), "color"_a,
+             "subset"_a = nullptr)
         .def("__str__",
              [](const SkPixmap &self)
              {

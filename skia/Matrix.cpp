@@ -3,7 +3,6 @@
 #include "include/core/SkPoint3.h"
 #include "include/core/SkRSXform.h"
 #include <pybind11/iostream.h>
-#include <pybind11/numpy.h>
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
 
@@ -12,13 +11,13 @@ typedef py::array_t<SkScalar> ndarray;
 SkScalar getItem(const SkMatrix &m, int index)
 {
     if (index < 0 || 9 <= index)
-        throw std::out_of_range("Invalid index");
+        throw py::index_error("Index out of range.");
     return m[index];
 }
 void setItem(SkMatrix &m, int index, SkScalar value)
 {
     if (index < 0 || 9 <= index)
-        throw std::out_of_range("Invalid index");
+        throw py::index_error("Index out of range.");
     m[index] = value;
 }
 
@@ -77,10 +76,7 @@ void initMatrix(py::module &m)
                 rsxForm.toTriStrip(width, height, strip.data());
                 return strip;
             },
-            R"doc(
-                Returns a list of 4 points, the corners of the resulting strip.
-            )doc",
-            "width"_a, "height"_a)
+            "Returns a list of 4 points, the corners of the resulting strip.", "width"_a, "height"_a)
         .def("__str__",
              [](const SkRSXform &rsxForm)
              {
@@ -158,7 +154,7 @@ void initMatrix(py::module &m)
         .def_readonly_static("kATransX", &SkMatrix::kATransX)
         .def_readonly_static("kATransY", &SkMatrix::kATransY)
         .def("__getitem__", &getItem, py::is_operator(), "index"_a)
-        .def("get", &getItem, "index"_a)
+        .def("get", &SkMatrix::get, "index"_a)
         .def("rc", &SkMatrix::rc, "r"_a, "c"_a)
         .def("getScaleX", &SkMatrix::getScaleX)
         .def("getScaleY", &SkMatrix::getScaleY)
@@ -169,7 +165,7 @@ void initMatrix(py::module &m)
         .def("getPerspX", &SkMatrix::getPerspX)
         .def("getPerspY", &SkMatrix::getPerspY)
         .def("__setitem__", &setItem, py::is_operator(), "index"_a, "value"_a)
-        .def("set", &setItem, "index"_a, "value"_a)
+        .def("set", &SkMatrix::set, "index"_a, "value"_a)
         .def("setScaleX", &SkMatrix::setScaleX, "v"_a)
         .def("setScaleY", &SkMatrix::setScaleY, "v"_a)
         .def("setSkewY", &SkMatrix::setSkewY, "v"_a)
@@ -197,7 +193,7 @@ void initMatrix(py::module &m)
             [](SkMatrix &matrix, const std::vector<SkScalar> &values)
             {
                 if (values.size() != 9)
-                    throw py::value_error("9 values expected");
+                    throw py::value_error("set9 expects 9 values.");
                 return matrix.set9(values.data());
             },
             "buffer"_a)
@@ -211,9 +207,9 @@ void initMatrix(py::module &m)
         .def("setRotate", py::overload_cast<SkScalar, SkScalar, SkScalar>(&SkMatrix::setRotate), "degrees"_a, "px"_a,
              "py"_a)
         .def("setRotate", py::overload_cast<SkScalar>(&SkMatrix::setRotate), "degrees"_a)
-        .def("setSinCos", py::overload_cast<SkScalar, SkScalar, SkScalar, SkScalar>(&SkMatrix::setSinCos), "sinValue",
-             "cosValue", "px", "py")
-        .def("setSinCos", py::overload_cast<SkScalar, SkScalar>(&SkMatrix::setSinCos), "sinValue", "cosValue")
+        .def("setSinCos", py::overload_cast<SkScalar, SkScalar, SkScalar, SkScalar>(&SkMatrix::setSinCos), "sinValue"_a,
+             "cosValue"_a, "px"_a, "py"_a)
+        .def("setSinCos", py::overload_cast<SkScalar, SkScalar>(&SkMatrix::setSinCos), "sinValue"_a, "cosValue"_a)
         .def("setRSXform", &SkMatrix::setRSXform, "rsxForm"_a)
         .def("setSkew", py::overload_cast<SkScalar, SkScalar, SkScalar, SkScalar>(&SkMatrix::setSkew), "kx"_a, "ky"_a,
              "px"_a, "py"_a)
@@ -254,7 +250,7 @@ void initMatrix(py::module &m)
             [](SkMatrix &matrix, const std::vector<SkPoint> &src, const std::vector<SkPoint> &dst)
             {
                 if (src.size() != dst.size())
-                    throw py::value_error("src and dst must be the same size");
+                    throw py::value_error("src and dst must have the same size.");
                 return matrix.setPolyToPoly(src.data(), dst.data(), src.size());
             },
             "src"_a, "dst"_a)
@@ -264,9 +260,9 @@ void initMatrix(py::module &m)
             [](const SkMatrix &matrix)
             {
                 SkMatrix inverse;
-                if (!matrix.invert(&inverse))
-                    throw py::value_error("matrix is singular");
-                return inverse;
+                if (matrix.invert(&inverse))
+                    return inverse;
+                throw py::value_error("Matrix is not invertible.");
             },
             R"doc(
                 Returns the inverse of the matrix. If the matrix is singular, throws a ValueError.
@@ -304,7 +300,7 @@ void initMatrix(py::module &m)
                     | scale-x  skew-x translate-x |
                     | skew-y  scale-y translate-y |
                 
-                If :py:class:`SkMatrix` contains perspective, returns ``None``.
+                If :py:class:`Matrix` contains perspective, returns ``None``.
 
                 :return: list of 6 floats or ``None``
                 :rtype: list | None
@@ -314,7 +310,7 @@ void initMatrix(py::module &m)
             [](SkMatrix &matrix, const std::vector<SkScalar> &affine)
             {
                 if (affine.size() != 6)
-                    throw py::value_error("affine must be 6 floats");
+                    throw py::value_error("affine must have 6 elements.");
                 return matrix.setAffine(affine.data());
             },
             "affine"_a)
@@ -355,10 +351,7 @@ void initMatrix(py::module &m)
                 matrix.mapHomogeneousPoints(dst.data(), src.data(), src.size());
                 return dst;
             },
-            R"doc(
-                Returns homogeneous points, starting with 2D src points (with implied w = 1).
-            )doc",
-            "src"_a)
+            "Returns homogeneous points, starting with 2D src points (with implied w = 1).", "src"_a)
         .def("mapPoint", &SkMatrix::mapPoint, "pt"_a)
         .def("mapXY", py::overload_cast<SkScalar, SkScalar>(&SkMatrix::mapXY, py::const_), "x"_a, "y"_a)
         .def("mapOrigin", &SkMatrix::mapOrigin)
@@ -371,7 +364,7 @@ void initMatrix(py::module &m)
             },
             R"doc(
                 Maps *vecs* list of :py:class:`Point` and returns a new list of :py:class:`Point`, multiplying each
-                vector by :py:class:`SkMatrix`, treating translation as zero.
+                vector by :py:class:`Matrix`, treating translation as zero.
 
                 :param vecs: list of :py:class:`Point` to transform
                 :return: list of transformed :py:class:`Point`

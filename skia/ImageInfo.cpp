@@ -1,4 +1,5 @@
 #include "common.h"
+#include "include/core/SkColorSpace.h"
 #include "include/core/SkImageInfo.h"
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
@@ -32,6 +33,7 @@ void initImageInfo(py::module &m)
         .value("kBGRA_1010102_ColorType", SkColorType::kBGRA_1010102_SkColorType)
         .value("kRGB_101010x_ColorType", SkColorType::kRGB_101010x_SkColorType)
         .value("kBGR_101010x_ColorType", SkColorType::kBGR_101010x_SkColorType)
+        .value("kBGR_101010x_XR_ColorType", SkColorType::kBGR_101010x_XR_SkColorType)
         .value("kGray_8_ColorType", SkColorType::kGray_8_SkColorType)
         .value("kRGBA_F16Norm_ColorType", SkColorType::kRGBA_F16Norm_SkColorType)
         .value("kRGBA_F16_ColorType", SkColorType::kRGBA_F16_SkColorType)
@@ -43,12 +45,13 @@ void initImageInfo(py::module &m)
         .value("kR16G16_unorm_ColorType", SkColorType::kR16G16_unorm_SkColorType)
         .value("kR16G16B16A16_unorm_ColorType", SkColorType::kR16G16B16A16_unorm_SkColorType)
         .value("kSRGBA_8888_ColorType", SkColorType::kSRGBA_8888_SkColorType)
+        .value("kR8_unorm_ColorType", SkColorType::kR8_unorm_SkColorType)
         .value("kLastEnum_ColorType", SkColorType::kLastEnum_SkColorType)
         .value("kN32_ColorType", SkColorType::kN32_SkColorType)
         .def("bytesPerPixel", &SkColorTypeBytesPerPixel,
              R"doc(
                 Returns the number of bytes required to store a pixel, including unused padding. Returns zero if this
-                is *kUnknown_SkColorType* or invalid.
+                is *kUnknown_ColorType* or invalid.
 
                 :return: bytes per pixel
             )doc")
@@ -78,7 +81,7 @@ void initImageInfo(py::module &m)
                 :return: alpha type for this color type, or ``None``
                 :rtype: :py:class:`AlphaType` | None
             )doc",
-            py::arg("alphaType"));
+            "alphaType"_a);
 
     py::enum_<SkYUVColorSpace>(m, "YUVColorSpace")
         .value("kJPEG_Full_YUVColorSpace", SkYUVColorSpace::kJPEG_Full_SkYUVColorSpace)
@@ -118,20 +121,16 @@ void initImageInfo(py::module &m)
         .def("__str__",
              [](const SkColorInfo &info)
              {
-                 std::stringstream s;
-                 s << "ColorInfo(colorType=" << py::cast(info.colorType()).attr("__str__")()
-                   << ", alphaType=" << py::cast(info.alphaType()).attr("__str__")()
-                   << ", colorSpace=" << py::cast(info.colorSpace()).attr("__str__")() << ")";
-                 return s.str();
+                 return "ColorInfo(colorType={}, alphaType={}, colorSpace={})"_s.format(
+                     info.colorType(), info.alphaType(), info.colorSpace());
              });
 
-    py::class_<SkImageInfo>(m, "ImageInfo", R"doc(
-        :note: The :py:meth:`~ImageInfo.Make` methods are also available as constructors.
-    )doc")
+    py::class_<SkImageInfo>(m, "ImageInfo",
+                            ":note: The :py:meth:`~ImageInfo.Make` methods are also available as constructors.")
         .def(py::init())
         .def_static("Make",
                     py::overload_cast<int, int, SkColorType, SkAlphaType, sk_sp<SkColorSpace>>(&SkImageInfo::Make),
-                    "width"_a, "height"_a, "ct"_a, "at"_a, "cs"_a = py::none())
+                    "width"_a, "height"_a, "ct"_a, "at"_a, "cs"_a = nullptr)
         .def(py::init(py::overload_cast<int, int, SkColorType, SkAlphaType, sk_sp<SkColorSpace>>(&SkImageInfo::Make)),
              "width"_a, "height"_a, "ct"_a, "at"_a, "cs"_a = py::none())
         .def_static("Make",
@@ -143,7 +142,8 @@ void initImageInfo(py::module &m)
                     "colorInfo"_a)
         .def(py::init(py::overload_cast<SkISize, const SkColorInfo &>(&SkImageInfo::Make)), "dimensions"_a,
              "colorInfo"_a)
-        .def_static("MakeN32", &SkImageInfo::MakeN32, "width"_a, "height"_a, "at"_a, "cs"_a = py::none())
+        .def_static("MakeN32", py::overload_cast<int, int, SkAlphaType, sk_sp<SkColorSpace>>(&SkImageInfo::MakeN32),
+                    "width"_a, "height"_a, "at"_a, "cs"_a = py::none())
         .def_static("MakeS32", &SkImageInfo::MakeS32, "width"_a, "height"_a, "at"_a)
         .def_static("MakeN32Premul", py::overload_cast<int, int, sk_sp<SkColorSpace>>(&SkImageInfo::MakeN32Premul),
                     "width"_a, "height"_a, "cs"_a = py::none())
@@ -185,11 +185,7 @@ void initImageInfo(py::module &m)
         .def("__str__",
              [](const SkImageInfo &info)
              {
-                 std::stringstream s;
-                 s << "ImageInfo(width=" << info.width() << ", height=" << info.height()
-                   << ", colorType=" << py::cast(info.colorType()).attr("__str__")()
-                   << ", alphaType=" << py::cast(info.alphaType()).attr("__str__")()
-                   << ", colorSpace=" << py::cast(info.colorSpace()).attr("__str__")() << ")";
-                 return s.str();
+                 return "ImageInfo(width={}, height={}, colorType={}, alphaType={}, colorSpace={})"_s.format(
+                     info.width(), info.height(), info.colorType(), info.alphaType(), info.colorSpace());
              });
 }

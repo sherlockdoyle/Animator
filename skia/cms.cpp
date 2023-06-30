@@ -1,6 +1,7 @@
 #include "common.h"
-#include "include/third_party/skcms/skcms.h"
-#include <pybind11/numpy.h>
+#include "include/core/SkData.h"
+#include "include/encode/SkICC.h"
+#include "modules/skcms/skcms.h"
 #include <pybind11/stl.h>
 
 void initCms(py::module &m)
@@ -205,7 +206,8 @@ void initCms(py::module &m)
                  return s.str();
              });
 
-    py::class_<skcms_TransferFunction>(cms, "TransferFunction")
+    py::class_<skcms_TransferFunction> TransferFunction(cms, "TransferFunction");
+    TransferFunction
         .def(py::init([]() { return *skcms_Identity_TransferFunction(); }), "Create a new identity TransferFunction.")
         .def(py::init([](float g, float a, float b, float c, float d, float e, float f)
                       { return skcms_TransferFunction{g, a, b, c, d, e, f}; }),
@@ -214,7 +216,7 @@ void initCms(py::module &m)
                  [](const std::vector<float> &v)
                  {
                      if (v.size() != 7)
-                         throw py::value_error("Number of elements must be 9.");
+                         throw py::value_error("TransferFunction must have 7 values");
                      return skcms_TransferFunction{v[0], v[1], v[2], v[3], v[4], v[5], v[6]};
                  }),
              R"doc(
@@ -244,7 +246,15 @@ void initCms(py::module &m)
                 Inverts the transfer function.
 
                 :return: The inverted transfer function.
-            )doc")
+            )doc");
+
+    py::enum_<skcms_TFType>(cms, "TFType")
+        .value("Invalid", skcms_TFType_Invalid)
+        .value("sRGBish", skcms_TFType_sRGBish)
+        .value("PQish", skcms_TFType_PQish)
+        .value("HLGish", skcms_TFType_HLGish)
+        .value("HLGinvish", skcms_TFType_HLGinvish);
+    TransferFunction.def("getType", &skcms_TransferFunction_getType)
         .def("makePQish", &skcms_TransferFunction_makePQish, "A"_a, "B"_a, "C"_a, "D"_a, "E"_a, "F"_a)
         .def("makeScaledHLGish", &skcms_TransferFunction_makeScaledHLGish, "K"_a, "R"_a, "G"_a, "a"_a, "b"_a, "c"_a)
         .def("makeHLGish", &skcms_TransferFunction_makeHLGish, "R"_a, "G"_a, "a"_a, "b"_a, "c"_a)
@@ -265,6 +275,10 @@ void initCms(py::module &m)
                    << ", " << tf.e << ", " << tf.f << ")";
                  return s.str();
              });
+
+    cms.def("WriteICCProfile",
+            py::overload_cast<const skcms_TransferFunction &, const skcms_Matrix3x3 &>(&SkWriteICCProfile), "tf"_a,
+            "toXYZD50"_a);
 
     py::class_<skcms_Curve>(cms, "Curve")
         .def(py::init())
@@ -411,7 +425,14 @@ void initCms(py::module &m)
                     b2a.output_curves[i] = curves[i];
             });
 
-    py::class_<skcms_ICCProfile>(cms, "ICCProfile")
+    py::class_<skcms_CICP>(cms, "CICP")
+        .def(py::init())
+        .def_readwrite("color_primaries", &skcms_CICP::color_primaries)
+        .def_readwrite("transfer_characteristics", &skcms_CICP::transfer_characteristics)
+        .def_readwrite("matrix_coefficients", &skcms_CICP::matrix_coefficients)
+        .def_readwrite("video_full_range_flag", &skcms_CICP::video_full_range_flag);
+
+    py::class_<skcms_ICCProfile, std::unique_ptr<skcms_ICCProfile>>(cms, "ICCProfile")
         .def(py::init(
             []()
             {
@@ -462,6 +483,8 @@ void initCms(py::module &m)
         .def_readwrite("A2B", &skcms_ICCProfile::A2B)
         .def_readwrite("has_B2A", &skcms_ICCProfile::has_B2A)
         .def_readwrite("B2A", &skcms_ICCProfile::B2A)
+        .def_readwrite("has_CICP", &skcms_ICCProfile::has_CICP)
+        .def_readwrite("CICP", &skcms_ICCProfile::CICP)
         .def_static("sRGB_profile", &skcms_sRGB_profile, py::return_value_policy::reference)
         .def_static("XYZD50_profile", &skcms_XYZD50_profile, py::return_value_policy::reference)
         .def("approximatelyEqualProfiles", &skcms_ApproximatelyEqualProfiles,
@@ -540,7 +563,9 @@ void initCms(py::module &m)
         .def("makeUsableAsDestination", &skcms_MakeUsableAsDestination)
         .def("makeUsableAsDestinationWithSingleCurve", &skcms_MakeUsableAsDestinationWithSingleCurve)
         .def("setTransferFunction", &skcms_SetTransferFunction, "tf"_a)
-        .def("setXYZD50", &skcms_SetXYZD50, "m"_a);
+        .def("setXYZD50", &skcms_SetXYZD50, "m"_a)
+        .def("writeICCProfile", py::overload_cast<const skcms_ICCProfile *, const char *>(&SkWriteICCProfile),
+             "description"_a);
 
     enum Signature
     {
@@ -604,7 +629,10 @@ void initCms(py::module &m)
         .value("RGB_fff", skcms_PixelFormat_RGB_fff)
         .value("BGR_fff", skcms_PixelFormat_BGR_fff)
         .value("RGBA_ffff", skcms_PixelFormat_RGBA_ffff)
-        .value("BGRA_ffff", skcms_PixelFormat_BGRA_ffff);
+        .value("BGRA_ffff", skcms_PixelFormat_BGRA_ffff)
+
+        .value("RGB_101010x_XR", skcms_PixelFormat_RGB_101010x_XR)
+        .value("BGR_101010x_XR", skcms_PixelFormat_BGR_101010x_XR);
 
     py::enum_<skcms_AlphaFormat>(cms, "AlphaFormat")
         .value("Opaque", skcms_AlphaFormat_Opaque)
@@ -646,7 +674,7 @@ void initCms(py::module &m)
             "transformWithPalette",
             [](const py::array &src, const skcms_PixelFormat &srcFmt, const skcms_AlphaFormat &srcAlpha,
                const skcms_ICCProfile *srcProfile, const skcms_PixelFormat &dstFmt, const skcms_AlphaFormat &dstAlpha,
-               const skcms_ICCProfile *dstProfile, const py::object &palette)
+               const skcms_ICCProfile *dstProfile, const std::optional<py::array> &palette)
             {
                 py::ssize_t ndim = src.ndim();
                 auto shape = src.shape();
@@ -654,8 +682,7 @@ void initCms(py::module &m)
                 py::array dst(src.dtype(), std::vector<py::ssize_t>(shape, shape + ndim),
                               std::vector<py::ssize_t>(strides, strides + ndim));
                 if (skcms_TransformWithPalette(src.data(), srcFmt, srcAlpha, srcProfile, dst.mutable_data(), dstFmt,
-                                               dstAlpha, dstProfile, src.size(),
-                                               palette.is_none() ? nullptr : palette.cast<py::array>().data()))
+                                               dstAlpha, dstProfile, src.size(), palette ? palette->data() : nullptr))
                     return dst;
                 throw py::value_error("Failed to transform.");
             },
@@ -670,7 +697,7 @@ void initCms(py::module &m)
                 :param AlphaFormat dstAlpha: The destination alpha format.
                 :param ICCProfile dstProfile: The destination color profile. If ``None``, the sRGB color profile is
                     used.
-                :param numpy.ndarray palette: The palette.
+                :param numpy.ndarray palette: The palette. If ``None``, no palette is used.
                 :return: The destination pixels.
                 :rtype: numpy.ndarray
             )doc",
@@ -680,11 +707,11 @@ void initCms(py::module &m)
             "transformWithPalette",
             [](const py::array &src, const skcms_PixelFormat &srcFmt, const skcms_AlphaFormat &srcAlpha,
                const skcms_ICCProfile *srcProfile, py::array &dst, const skcms_PixelFormat &dstFmt,
-               const skcms_AlphaFormat &dstAlpha, const skcms_ICCProfile *dstProfile, const py::object &palette)
+               const skcms_AlphaFormat &dstAlpha, const skcms_ICCProfile *dstProfile,
+               const std::optional<py::array> &palette)
             {
                 if (skcms_TransformWithPalette(src.data(), srcFmt, srcAlpha, srcProfile, dst.mutable_data(), dstFmt,
-                                               dstAlpha, dstProfile, src.size(),
-                                               palette.is_none() ? nullptr : palette.cast<py::array>().data()))
+                                               dstAlpha, dstProfile, src.size(), palette ? palette->data() : nullptr))
                     return dst;
                 throw py::value_error("Failed to transform.");
             },
@@ -700,7 +727,7 @@ void initCms(py::module &m)
                 :param AlphaFormat dstAlpha: The destination alpha format.
                 :param ICCProfile dstProfile: The destination color profile. If ``None``, the sRGB color profile is
                     used.
-                :param numpy.ndarray palette: The palette.
+                :param numpy.ndarray palette: The palette. If ``None``, no palette is used.
                 :return: The destination pixels.
                 :rtype: numpy.ndarray
             )doc",

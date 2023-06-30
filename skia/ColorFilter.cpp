@@ -1,12 +1,30 @@
 #include "common.h"
 #include "include/core/SkColorFilter.h"
+#include "include/core/SkColorSpace.h"
+#include "include/core/SkColorTable.h"
 #include "include/effects/SkColorMatrix.h"
 #include "include/effects/SkColorMatrixFilter.h"
 #include "include/effects/SkHighContrastFilter.h"
 #include "include/effects/SkLumaColorFilter.h"
 #include "include/effects/SkOverdrawColorFilter.h"
-#include "include/effects/SkTableColorFilter.h"
 #include <pybind11/stl.h>
+
+void validateTableARGB(const std::optional<std::vector<uint8_t>> &tableA,
+                       const std::optional<std::vector<uint8_t>> &tableR,
+                       const std::optional<std::vector<uint8_t>> &tableG,
+                       const std::optional<std::vector<uint8_t>> &tableB)
+{
+    if (!tableA && !tableR && !tableG && !tableB)
+        throw py::value_error("At least one table must be specified.");
+    if (tableA && tableA->size() != 256)
+        throw py::value_error("tableA must have 256 elements.");
+    if (tableR && tableR->size() != 256)
+        throw py::value_error("tableR must have 256 elements.");
+    if (tableG && tableG->size() != 256)
+        throw py::value_error("tableG must have 256 elements.");
+    if (tableB && tableB->size() != 256)
+        throw py::value_error("tableB must have 256 elements.");
+}
 
 void initColorFilter(py::module &m)
 {
@@ -55,10 +73,7 @@ void initColorFilter(py::module &m)
                 py::buffer_info info = b.request();
                 return SkColorFilter::Deserialize(info.ptr, info.size * info.itemsize);
             },
-            R"doc(
-                Deserialize a color filter from a buffer.
-            )doc",
-            "buffer"_a);
+            "Deserialize a color filter from a buffer.", "buffer"_a);
 
     py::class_<SkColorMatrix>(m, "ColorMatrix")
         .def(py::init<>())
@@ -126,9 +141,75 @@ void initColorFilter(py::module &m)
 
     py::implicitly_convertible<std::vector<float>, SkColorMatrix>();
 
+    py::class_<SkColorTable, sk_sp<SkColorTable>>(m, "ColorTable")
+        .def_static(
+            "Make",
+            [](const std::vector<uint8_t> &table)
+            {
+                if (table.size() != 256)
+                    throw std::runtime_error("Table must have 256 elements.");
+                return SkColorTable::Make(table.data());
+            },
+            "table"_a)
+        .def_static(
+            "Make",
+            [](const std::optional<std::vector<uint8_t>> &tableA, const std::optional<std::vector<uint8_t>> &tableR,
+               const std::optional<std::vector<uint8_t>> &tableG, const std::optional<std::vector<uint8_t>> &tableB)
+            {
+                validateTableARGB(tableA, tableR, tableG, tableB);
+                return SkColorTable::Make(tableA ? tableA->data() : nullptr, tableR ? tableR->data() : nullptr,
+                                          tableG ? tableG->data() : nullptr, tableB ? tableB->data() : nullptr);
+            },
+            "tableA"_a, "tableR"_a, "tableG"_a, "tableB"_a)
+        .def(py::init(
+                 [](const std::vector<uint8_t> &table)
+                 {
+                     if (table.size() != 256)
+                         throw std::runtime_error("Table must have 256 elements.");
+                     return SkColorTable::Make(table.data());
+                 }),
+             "table"_a)
+        .def(
+            py::init(
+                [](const std::optional<std::vector<uint8_t>> &tableA, const std::optional<std::vector<uint8_t>> &tableR,
+                   const std::optional<std::vector<uint8_t>> &tableG, const std::optional<std::vector<uint8_t>> &tableB)
+                {
+                    validateTableARGB(tableA, tableR, tableG, tableB);
+                    return SkColorTable::Make(tableA ? tableA->data() : nullptr, tableR ? tableR->data() : nullptr,
+                                              tableG ? tableG->data() : nullptr, tableB ? tableB->data() : nullptr);
+                }),
+            "tableA"_a, "tableR"_a, "tableG"_a, "tableB"_a)
+        .def("alphaTable",
+             [](const SkColorTable &self)
+             {
+                 return py::memoryview::from_buffer(self.alphaTable(), sizeof(uint8_t),
+                                                    py::format_descriptor<uint8_t>::value, {256}, {sizeof(uint8_t)});
+             })
+        .def("redTable",
+             [](const SkColorTable &self)
+             {
+                 return py::memoryview::from_buffer(self.redTable(), sizeof(uint8_t),
+                                                    py::format_descriptor<uint8_t>::value, {256}, {sizeof(uint8_t)});
+             })
+        .def("greenTable",
+             [](const SkColorTable &self)
+             {
+                 return py::memoryview::from_buffer(self.greenTable(), sizeof(uint8_t),
+                                                    py::format_descriptor<uint8_t>::value, {256}, {sizeof(uint8_t)});
+             })
+        .def("blueTable",
+             [](const SkColorTable &self)
+             {
+                 return py::memoryview::from_buffer(self.blueTable(), sizeof(uint8_t),
+                                                    py::format_descriptor<uint8_t>::value, {256}, {sizeof(uint8_t)});
+             });
+
     py::class_<SkColorFilters>(m, "ColorFilters")
         .def_static("Compose", &SkColorFilters::Compose, "outer"_a, "inner"_a)
-        .def_static("Blend", &SkColorFilters::Blend, "c"_a, "mode"_a)
+        .def_static("Blend",
+                    py::overload_cast<const SkColor4f &, sk_sp<SkColorSpace>, SkBlendMode>(&SkColorFilters::Blend),
+                    "c"_a, "cs"_a, "mode"_a)
+        .def_static("Blend", py::overload_cast<SkColor, SkBlendMode>(&SkColorFilters::Blend), "c"_a, "mode"_a)
         .def_static("Matrix", py::overload_cast<const SkColorMatrix &>(&SkColorFilters::Matrix), "cm"_a)
         .def_static(
             "Matrix",
@@ -151,7 +232,28 @@ void initColorFilter(py::module &m)
             "rowMajor"_a)
         .def_static("LinearToSRGBGamma", &SkColorFilters::LinearToSRGBGamma)
         .def_static("SRGBToLinearGamma", &SkColorFilters::SRGBToLinearGamma)
-        .def_static("Lerp", &SkColorFilters::Lerp, "t"_a, "dst"_a, "src"_a);
+        .def_static("Lerp", &SkColorFilters::Lerp, "t"_a, "dst"_a, "src"_a)
+        .def_static(
+            "Table",
+            [](const std::vector<uint8_t> &table)
+            {
+                if (table.size() != 256)
+                    throw std::runtime_error("Expected 256 entries in table.");
+                return SkColorFilters::Table(table.data());
+            },
+            "table"_a)
+        .def_static(
+            "TableARGB",
+            [](const std::optional<std::vector<uint8_t>> &tableA, const std::optional<std::vector<uint8_t>> &tableR,
+               const std::optional<std::vector<uint8_t>> &tableG, const std::optional<std::vector<uint8_t>> &tableB)
+            {
+                validateTableARGB(tableA, tableR, tableG, tableB);
+                return SkColorFilters::TableARGB(tableA ? tableA->data() : nullptr, tableR ? tableR->data() : nullptr,
+                                                 tableG ? tableG->data() : nullptr, tableB ? tableB->data() : nullptr);
+            },
+            "tableA"_a, "tableR"_a, "tableG"_a, "tableB"_a)
+        .def_static("Table", py::overload_cast<sk_sp<SkColorTable>>(&SkColorFilters::Table), "table"_a)
+        .def_static("Lighting", &SkColorFilters::Lighting, "mul"_a, "add"_a);
 
     py::class_<SkColorMatrixFilter, sk_sp<SkColorMatrixFilter>, SkColorFilter>(m, "ColorMatrixFilter")
         .def_static("MakeLightingFilter", &SkColorMatrixFilter::MakeLightingFilter, "mul"_a, "add"_a);
@@ -192,33 +294,4 @@ void initColorFilter(py::module &m)
                 return SkOverdrawColorFilter::MakeWithSkColors(colors.data());
             },
             "colors"_a);
-
-    py::class_<SkTableColorFilter>(m, "TableColorFilter")
-        .def_static(
-            "Make",
-            [](const std::vector<uint8_t> &table)
-            {
-                if (table.size() != 256)
-                    throw py::value_error("Expected 256 entries in table");
-                return SkTableColorFilter::Make(table.data());
-            },
-            "table"_a)
-        .def_static(
-            "MakeARGB",
-            [](const std::vector<uint8_t> *tableA, const std::vector<uint8_t> *tableR,
-               const std::vector<uint8_t> *tableG, const std::vector<uint8_t> *tableB)
-            {
-                if (tableA && tableA->size() != 256)
-                    throw py::value_error("Expected 256 entries in tableA");
-                if (tableR && tableR->size() != 256)
-                    throw py::value_error("Expected 256 entries in tableR");
-                if (tableG && tableG->size() != 256)
-                    throw py::value_error("Expected 256 entries in tableG");
-                if (tableB && tableB->size() != 256)
-                    throw py::value_error("Expected 256 entries in tableB");
-                return SkTableColorFilter::MakeARGB(tableA ? &(*tableA)[0] : nullptr, tableR ? &(*tableR)[0] : nullptr,
-                                                    tableG ? &(*tableG)[0] : nullptr, tableB ? &(*tableB)[0] : nullptr);
-            },
-            "tableA"_a, "tableR"_a, "tableG"_a, "tableB"_a)
-        .def_static("RegisterFlattenables", &SkTableColorFilter::RegisterFlattenables);
 }

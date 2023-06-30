@@ -1,8 +1,14 @@
 #include "common.h"
+#include "include/core/SkCubicMap.h"
 #include "include/core/SkData.h"
+#include "include/core/SkFont.h"
+#include "include/core/SkPaint.h"
 #include "include/core/SkPath.h"
 #include "include/core/SkPathBuilder.h"
+#include "include/core/SkPathUtils.h"
+#include "include/core/SkRRect.h"
 #include "include/pathops/SkPathOps.h"
+#include "include/utils/SkTextUtils.h"
 #include <pybind11/iostream.h>
 #include <pybind11/operators.h>
 #include <pybind11/stl.h>
@@ -28,6 +34,17 @@ void resizePoints(const SkPath::Verb &verb, std::vector<SkPoint> &pts)
     case SkPath::Verb::kCubic_Verb:
         break;
     }
+}
+template <SkPathOp op> SkPath path_op(const SkPath &self, const SkPath &other)
+{
+    SkPath result;
+    Op(self, other, op, &result);
+    return result;
+}
+template <SkPathOp op> SkPath &path_iop(SkPath &self, const SkPath &other)
+{
+    Op(self, other, op, &self);
+    return self;
 }
 
 void initPath(py::module &m)
@@ -166,8 +183,18 @@ void initPath(py::module &m)
                 *max* points. If *max* is negative, return all points.
             )doc",
             "max"_a = -1)
-        .def("countVerbs", &SkPath::countVerbs)
-        .def(
+        .def("countVerbs", &SkPath::countVerbs);
+
+    py::enum_<SkPath::Verb>(Path, "Verb")
+        .value("kMove_Verb", SkPath::Verb::kMove_Verb)
+        .value("kLine_Verb", SkPath::Verb::kLine_Verb)
+        .value("kQuad_Verb", SkPath::Verb::kQuad_Verb)
+        .value("kConic_Verb", SkPath::Verb::kConic_Verb)
+        .value("kCubic_Verb", SkPath::Verb::kCubic_Verb)
+        .value("kClose_Verb", SkPath::Verb::kClose_Verb)
+        .value("kDone_Verb", SkPath::Verb::kDone_Verb);
+
+    Path.def(
             "getVerbs",
             [](const SkPath &path, int max)
             {
@@ -241,9 +268,10 @@ void initPath(py::module &m)
             {
                 int size = 1 + 2 * (1 << pow2);
                 std::vector<SkPoint> pts(size);
-                int length = SkPath::ConvertConicToQuads(p0, p1, p2, w, pts.data(), pow2);
-                if (length < size)
-                    pts.resize(length);
+                int quadCount = SkPath::ConvertConicToQuads(p0, p1, p2, w, pts.data(), pow2);
+                int actualSize = 1 + 2 * quadCount;
+                if (actualSize < size)
+                    pts.resize(actualSize);
                 return pts;
             },
             R"doc(
@@ -289,11 +317,7 @@ void initPath(py::module &m)
             [](SkPath &path, const SkRect &rect, const std::vector<SkScalar> &radii, const SkPathDirection &dir)
             {
                 if (radii.size() != 8)
-                {
-                    std::stringstream s;
-                    s << "radii must have 8 elements (given " << radii.size() << " elements).";
-                    throw py::value_error(s.str());
-                }
+                    throw py::value_error("radii must have 8 elements (given {} elements)."_s.format(radii.size()));
                 return path.addRoundRect(rect, radii.data(), dir);
             },
             "rect"_a, "radii"_a, "dir"_a = SkPathDirection::kCW)
@@ -316,6 +340,16 @@ void initPath(py::module &m)
              "mode"_a = SkPath::kAppend_AddPathMode)
         .def("addPath", py::overload_cast<const SkPath &, const SkMatrix &, SkPath::AddPathMode>(&SkPath::addPath),
              "src"_a, "matrix"_a, "mode"_a = SkPath::kAppend_AddPathMode)
+        .def(
+            "__add__",
+            [](const SkPath &self, const SkPath &other)
+            {
+                SkPath path(self);
+                return path.addPath(other);
+            },
+            py::is_operator())
+        .def(
+            "__iadd__", [](SkPath &self, const SkPath &other) { return self.addPath(other); }, py::is_operator())
         .def("reverseAddPath", &SkPath::reverseAddPath, "src"_a)
         .def(
             "makeOffset",
@@ -351,15 +385,6 @@ void initPath(py::module &m)
         .value("kConic_SegmentMask", SkPath::SegmentMask::kConic_SegmentMask)
         .value("kCubic_SegmentMask", SkPath::SegmentMask::kCubic_SegmentMask);
     Path.def("getSegmentMasks", &SkPath::getSegmentMasks);
-
-    py::enum_<SkPath::Verb>(Path, "Verb")
-        .value("kMove_Verb", SkPath::Verb::kMove_Verb)
-        .value("kLine_Verb", SkPath::Verb::kLine_Verb)
-        .value("kQuad_Verb", SkPath::Verb::kQuad_Verb)
-        .value("kConic_Verb", SkPath::Verb::kConic_Verb)
-        .value("kCubic_Verb", SkPath::Verb::kCubic_Verb)
-        .value("kClose_Verb", SkPath::Verb::kClose_Verb)
-        .value("kDone_Verb", SkPath::Verb::kDone_Verb);
 
     py::class_<SkPath::Iter>(Path, "Iter")
         .def(py::init())
@@ -411,7 +436,21 @@ void initPath(py::module &m)
                  py::scoped_ostream_redirect stream;
                  path.dumpHex();
              })
+        .def("dumpArrays",
+             [](const SkPath &self)
+             {
+                 py::scoped_ostream_redirect stream;
+                 self.dumpArrays();
+             })
         .def("serialize", &SkPath::serialize)
+        .def(
+            "readFromMemory",
+            [](SkPath &self, const py::buffer &data)
+            {
+                py::buffer_info bufInfo = data.request();
+                return self.readFromMemory(bufInfo.ptr, bufInfo.size * bufInfo.itemsize);
+            },
+            "Reads the path from the buffer and returns the number of bytes read.", "data"_a)
         .def("getGenerationID", &SkPath::getGenerationID)
         .def("isValid", &SkPath::isValid)
         .def(
@@ -420,9 +459,8 @@ void initPath(py::module &m)
         .def("__str__",
              [](const SkPath &path)
              {
-                 std::stringstream s;
-                 s << "Path(" << path.countVerbs() << " segments)";
-                 return s.str();
+                 int numVerbs = path.countVerbs();
+                 return "Path({} segment{})"_s.format(numVerbs, numVerbs == 1 ? "" : "s");
              });
 
     py::class_<SkPathBuilder> PathBuilder(m, "PathBuilder");
@@ -552,13 +590,34 @@ void initPath(py::module &m)
                 SkPath result;
                 if (Op(one, two, op, &result))
                     return result;
-                throw std::runtime_error("Failed to apply op");
+                throw std::runtime_error("Failed to apply op.");
             },
             R"doc(
-                Return the resultant path of applying the *op *to this path and the specified path. If the operation
+                Return the resultant path of applying the *op* to this path and the specified path. If the operation
                 fails, throws a runtime error.
             )doc",
             "two"_a, "op"_a)
+        .def(
+            "iop",
+            [](SkPath &self, const SkPath &other, SkPathOp op)
+            {
+                if (Op(self, other, op, &self))
+                    return self;
+                throw std::runtime_error("Failed to apply op.");
+            },
+            R"doc(
+                Apply the *op* to this path and the specified path in place and return itself. If the operation fails,
+                throws a runtime error.
+            )doc",
+            "other"_a, "op"_a)
+        .def("__sub__", &path_op<SkPathOp::kDifference_SkPathOp>, py::is_operator())
+        .def("__and__", &path_op<SkPathOp::kIntersect_SkPathOp>, py::is_operator())
+        .def("__or__", &path_op<SkPathOp::kUnion_SkPathOp>, py::is_operator())
+        .def("__xor__", &path_op<SkPathOp::kXOR_SkPathOp>, py::is_operator())
+        .def("__isub__", &path_iop<SkPathOp::kDifference_SkPathOp>, py::is_operator())
+        .def("__iand__", &path_iop<SkPathOp::kIntersect_SkPathOp>, py::is_operator())
+        .def("__ior__", &path_iop<SkPathOp::kUnion_SkPathOp>, py::is_operator())
+        .def("__ixor__", &path_iop<SkPathOp::kXOR_SkPathOp>, py::is_operator())
         .def(
             "simplify",
             [](const SkPath &path)
@@ -566,12 +625,21 @@ void initPath(py::module &m)
                 SkPath result;
                 if (Simplify(path, &result))
                     return result;
-                throw std::runtime_error("Failed to simplify path");
+                throw std::runtime_error("Failed to simplify path.");
             },
             R"doc(
                 Return the path as a set of non-overlapping contours that describe the same area as the original path.
                 If the simplify fails, throws a runtime error.
             )doc")
+        .def(
+            "isimplify",
+            [](SkPath &self)
+            {
+                if (Simplify(self, &self))
+                    return self;
+                throw std::runtime_error("Failed to simplify path.");
+            },
+            "Simplify the path in place and return itself. If the simplify fails, throws a runtime error.")
         .def(
             "tightBounds",
             [](const SkPath &path)
@@ -579,7 +647,7 @@ void initPath(py::module &m)
                 SkRect result;
                 if (TightBounds(path, &result))
                     return result;
-                throw std::runtime_error("Failed to compute tight bounds");
+                throw std::runtime_error("Failed to compute tight bounds.");
             },
             "Return the resulting rectangle to the tight bounds of the path.")
         .def(
@@ -589,7 +657,7 @@ void initPath(py::module &m)
                 SkPath result;
                 if (AsWinding(path, &result))
                     return result;
-                throw std::runtime_error("Failed to convert to winding");
+                throw std::runtime_error("Failed to convert to winding.");
             },
             R"doc(
                 Return the result with fill type winding to area equivalent to path. If the conversion fails, throws
@@ -606,10 +674,57 @@ void initPath(py::module &m)
                 SkPath result;
                 if (builder.resolve(&result))
                     return result;
-                throw std::runtime_error("Failed to resolve");
+                throw std::runtime_error("Failed to resolve.");
             },
             R"doc(
                 Computes the sum of all paths and operands and returns it, and resets the builder to its initial state.
                 If the operation fails, throws a runtime error.
             )doc");
+
+    Path.def(
+            "fillPathWithPaint",
+            [](const SkPath &src, const SkPaint &paint, const SkRect *cullRect, const SkScalar &resScale)
+            {
+                SkPath dst;
+                bool isFill = skpathutils::FillPathWithPaint(src, paint, &dst, cullRect, resScale);
+                return py::make_tuple(dst, isFill);
+            },
+            R"doc(
+                Returns the filled equivalent of the stroked path.
+
+                :param paint: :py:class:`Paint` from which attributes such as stroke cap, width, miter, and join, as
+                    well as pathEffect will be used
+                :param cullRect: optional limit passed to :py:class:`PathEffect`
+                :param resScale: if > 1, increase precision, else if (0 < resScale < 1) reduce precision to favor speed
+                    and size
+                :return: a tuple of (:py:class:`Path`, bool) where the bool indicates whether the path represents style
+                    fill or hairline (true for fill, false for hairline)
+            )doc",
+            "paint"_a, "cullRect"_a = nullptr, "resScale"_a = 1)
+        .def(
+            "fillPathWithPaint",
+            [](const SkPath &src, const SkPaint &paint, const SkRect *cullRect, const SkMatrix &ctm)
+            {
+                SkPath dst;
+                bool isFill = skpathutils::FillPathWithPaint(src, paint, &dst, cullRect, ctm);
+                return py::make_tuple(dst, isFill);
+            },
+            "Returns the filled equivalent of the stroked path.", "paint"_a, "cullRect"_a, "ctm"_a)
+        .def_static(
+            "GetFromText",
+            [](const std::string &text, const SkScalar &x, const SkScalar &y, const SkFont &font,
+               const SkTextEncoding &encoding)
+            {
+                SkPath path;
+                SkTextUtils::GetPath(text.c_str(), text.size(), encoding, x, y, font, &path);
+                return path;
+            },
+            "Returns the path representing the *text* using SkTextUtils.", "text"_a, "x"_a, "y"_a, "font"_a,
+            "encoding"_a = SkTextEncoding::kUTF8);
+
+    py::class_<SkCubicMap>(m, "CubicMap")
+        .def(py::init<SkPoint, SkPoint>(), "p1"_a, "p2"_a)
+        .def_static("IsLinear", &SkCubicMap::IsLinear, "p1"_a, "p2"_a)
+        .def("computeYFromX", &SkCubicMap::computeYFromX, "x"_a)
+        .def("computeFromT", &SkCubicMap::computeFromT, "t"_a);
 }

@@ -1,19 +1,20 @@
 #include "common.h"
+#include "include/core/SkColorSpace.h"
 
 SkImageInfo ndarrayToImageInfo(const py::array &array, const SkColorType &ct, const SkAlphaType &at,
                                const sk_sp<SkColorSpace> &cs)
 {
     if (!(array.flags() & py::array::c_style))
-        throw py::value_error("Array must be c-style contiguous");
+        throw py::value_error("Array must be c-style contiguous.");
     if (array.ndim() < 2)
-        throw py::value_error("Array must have at least 2 dimensions");
+        throw py::value_error("Array must have at least 2 dimensions.");
     if (array.shape(0) == 0 || array.shape(1) == 0)
-        throw py::value_error("Array must have at least 1 element");
+        throw py::value_error("Array must have at least 1 element.");
     SkImageInfo info = SkImageInfo::Make(array.shape(1), array.shape(0), ct, at, cs);
     const int pixelSize = array.ndim() == 2 ? array.strides(1) : array.strides(2) * array.shape(2);
     if (pixelSize != info.bytesPerPixel())
         throw py::value_error(
-            "Incorrect number of channels (expected {} but got {})"_s.format(info.bytesPerPixel(), pixelSize));
+            "Incorrect number of channels (expected {} but got {})."_s.format(info.bytesPerPixel(), pixelSize));
     return info;
 }
 
@@ -23,11 +24,11 @@ size_t validateImageInfo_Buffer(const SkImageInfo &imgInfo, const py::buffer_inf
         rowBytes = imgInfo.minRowBytes();
     else if (!imgInfo.validRowBytes(rowBytes))
         throw py::value_error(
-            "rowBytes is too small (expected at least {} but got {})"_s.format(imgInfo.minRowBytes(), rowBytes));
+            "rowBytes is too small (expected at least {} but got {})."_s.format(imgInfo.minRowBytes(), rowBytes));
     const size_t bufInfoSize = bufInfo.size * bufInfo.itemsize, imgInfoSize = imgInfo.computeByteSize(rowBytes);
     if (bufInfoSize < imgInfoSize)
         throw py::value_error(
-            "buffer is too small (expected at least {} but got {})"_s.format(imgInfoSize, bufInfoSize));
+            "buffer is too small (expected at least {} but got {} bytes)."_s.format(imgInfoSize, bufInfoSize));
     return rowBytes;
 }
 
@@ -56,6 +57,7 @@ py::buffer_info imageInfoToBufferInfo(const SkImageInfo &imgInfo, void *data, py
     case kBGRA_1010102_SkColorType:
     case kRGB_101010x_SkColorType:
     case kBGR_101010x_SkColorType:
+    case kBGR_101010x_XR_SkColorType:
         return py::buffer_info(data, bytesPerPixel, "I", 2, {height, width}, {rowBytes, bytesPerPixel}, readonly);
 
     case kRGBA_F16Norm_SkColorType:

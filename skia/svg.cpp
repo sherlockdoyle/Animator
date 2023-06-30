@@ -1,5 +1,4 @@
 #include "common.h"
-#include "include/core/SkString.h"
 #include "include/utils/SkParsePath.h"
 
 void initSvg(py::module &m)
@@ -23,9 +22,8 @@ void initSvg(py::module &m)
         "ToSVGString",
         [](const SkPath &path, const SkParsePath::PathEncoding &encoding)
         {
-            SkString str;
-            SkParsePath::ToSVGString(path, &str, encoding);
-            return py::str(str.c_str());
+            SkString str = SkParsePath::ToSVGString(path, encoding);
+            return SkString2pyStr(str);
         },
         "Create an SVG string from a :py:class:`skia.Path`.", "path"_a,
         "encoding"_a = SkParsePath::PathEncoding::Absolute);

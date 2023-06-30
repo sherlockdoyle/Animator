@@ -3,6 +3,26 @@
 #include "include/core/SkData.h"
 #include <pybind11/stl.h>
 
+class NamedTransferFn
+{
+public:
+    static constexpr skcms_TransferFunction kSRGB = SkNamedTransferFn::kSRGB;
+    static constexpr skcms_TransferFunction k2Dot2 = SkNamedTransferFn::k2Dot2;
+    static constexpr skcms_TransferFunction kLinear = SkNamedTransferFn::kLinear;
+    static constexpr skcms_TransferFunction kRec2020 = SkNamedTransferFn::kRec2020;
+    static constexpr skcms_TransferFunction kPQ = SkNamedTransferFn::kPQ;
+    static constexpr skcms_TransferFunction kHLG = SkNamedTransferFn::kHLG;
+};
+class NamedGamut
+{
+public:
+    static constexpr skcms_Matrix3x3 kSRGB = SkNamedGamut::kSRGB;
+    static constexpr skcms_Matrix3x3 kAdobeRGB = SkNamedGamut::kAdobeRGB;
+    static constexpr skcms_Matrix3x3 kDisplayP3 = SkNamedGamut::kDisplayP3;
+    static constexpr skcms_Matrix3x3 kRec2020 = SkNamedGamut::kRec2020;
+    static constexpr skcms_Matrix3x3 kXYZ = SkNamedGamut::kXYZ;
+};
+
 void initColorSpace(py::module &m)
 {
     py::class_<SkColorSpacePrimaries>(m, "ColorSpacePrimaries")
@@ -27,20 +47,20 @@ void initColorSpace(py::module &m)
                  return toXYZD50;
              });
 
-    py::module NamedTransferFn = m.def_submodule("NamedTransferFn", "Try not to write to these attributes! :)");
-    NamedTransferFn.attr("kSRGB") = &SkNamedTransferFn::kSRGB;
-    NamedTransferFn.attr("k2Dot2") = &SkNamedTransferFn::k2Dot2;
-    NamedTransferFn.attr("kLinear") = &SkNamedTransferFn::kLinear;
-    NamedTransferFn.attr("kRec2020") = &SkNamedTransferFn::kRec2020;
-    NamedTransferFn.attr("kPQ") = &SkNamedTransferFn::kPQ;
-    NamedTransferFn.attr("kHLG") = &SkNamedTransferFn::kHLG;
+    py::class_<NamedTransferFn>(m, "NamedTransferFn")
+        .def_readonly_static("kSRGB", &NamedTransferFn::kSRGB)
+        .def_readonly_static("k2Dot2", &NamedTransferFn::k2Dot2)
+        .def_readonly_static("kLinear", &NamedTransferFn::kLinear)
+        .def_readonly_static("kRec2020", &NamedTransferFn::kRec2020)
+        .def_readonly_static("kPQ", &NamedTransferFn::kPQ)
+        .def_readonly_static("kHLG", &NamedTransferFn::kHLG);
 
-    py::module NamedGamut = m.def_submodule("NamedGamut", "Try not to write to these attributes! :)");
-    NamedGamut.attr("kSRGB") = &SkNamedGamut::kSRGB;
-    NamedGamut.attr("kAdobeRGB") = &SkNamedGamut::kAdobeRGB;
-    NamedGamut.attr("kDisplayP3") = &SkNamedGamut::kDisplayP3;
-    NamedGamut.attr("kRec2020") = &SkNamedGamut::kRec2020;
-    NamedGamut.attr("kXYZ") = &SkNamedGamut::kXYZ;
+    py::class_<NamedGamut>(m, "NamedGamut")
+        .def_readonly_static("kSRGB", &NamedGamut::kSRGB)
+        .def_readonly_static("kAdobeRGB", &NamedGamut::kAdobeRGB)
+        .def_readonly_static("kDisplayP3", &NamedGamut::kDisplayP3)
+        .def_readonly_static("kRec2020", &NamedGamut::kRec2020)
+        .def_readonly_static("kXYZ", &NamedGamut::kXYZ);
 
     py::class_<SkColorSpace, sk_sp<SkColorSpace>>(m, "ColorSpace")
         .def(py::init(&SkColorSpace::Make), "profile"_a)
@@ -123,9 +143,7 @@ void initColorSpace(py::module &m)
                 colorspace.invTransferFn(&tf);
                 return tf;
             },
-            R"doc(
-                Returns the inverse transfer function from this color space.
-            )doc")
+            "Returns the inverse transfer function from this color space.")
         .def(
             "gamutTransformTo",
             [](const SkColorSpace &colorspace, const SkColorSpace &dst)

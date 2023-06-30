@@ -9,7 +9,7 @@ sk_sp<SkVertices> Vertices_MakeCopy(const SkVertices::VertexMode &mode, const st
 {
     const size_t vertexCount = positions.size();
     if ((texs && texs->size() != vertexCount) || (colors && colors->size() != vertexCount))
-        throw py::value_error("positions, texs, and colors must be the same length");
+        throw py::value_error("positions, texs, and colors must be the same length.");
 
     if (indices)
         return SkVertices::MakeCopy(mode, vertexCount, positions.data(), texs ? texs->data() : nullptr,
@@ -32,8 +32,8 @@ void initVertices(py::module &m)
     Vertices
         .def(py::init(&Vertices_MakeCopy), "Create a vertices by copying the specified arrays.", "mode"_a,
              "positions"_a, "texs"_a = py::none(), "colors"_a = py::none(), "indices"_a = py::none())
-        .def_static("Vertices_MakeCopy", &Vertices_MakeCopy, "Create a vertices by copying the specified arrays.",
-                    "mode"_a, "positions"_a, "texs"_a, "colors"_a, "indices"_a = py::none())
+        .def_static("MakeCopy", &Vertices_MakeCopy, "Create a vertices by copying the specified arrays.", "mode"_a,
+                    "positions"_a, "texs"_a, "colors"_a, "indices"_a = py::none())
         .def("uniqueID", &SkVertices::uniqueID)
         .def("bounds", &SkVertices::bounds)
         .def("approximateSize", &SkVertices::approximateSize);

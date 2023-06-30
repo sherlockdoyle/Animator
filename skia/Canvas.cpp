@@ -1,17 +1,22 @@
 #include "common.h"
 #include "include/core/SkBitmap.h"
 #include "include/core/SkCanvas.h"
+#include "include/core/SkColorSpace.h"
 #include "include/core/SkFont.h"
-#include "include/core/SkImageFilter.h"
 #include "include/core/SkPath.h"
 #include "include/core/SkPicture.h"
+#include "include/core/SkPoint3.h"
+#include "include/core/SkRRect.h"
 #include "include/core/SkRSXform.h"
 #include "include/core/SkRegion.h"
+#include "include/core/SkShader.h"
 #include "include/core/SkSurface.h"
 #include "include/core/SkTextBlob.h"
 #include "include/core/SkVertices.h"
 #include "include/utils/SkNullCanvas.h"
-#include <pybind11/numpy.h>
+#include "include/utils/SkShadowUtils.h"
+#include "include/utils/SkTextUtils.h"
+#include "modules/skparagraph/include/Paragraph.h"
 #include <pybind11/stl.h>
 
 struct PyLattice : public SkCanvas::Lattice
@@ -43,7 +48,7 @@ void initCanvas(py::module &m)
         .value("kIntersect", SkClipOp::kIntersect)
         .value("kMax_EnumValue", SkClipOp::kMax_EnumValue);
 
-    py::class_<SkCanvas> Canvas(m, "Canvas");
+    py::class_<SkCanvas, std::unique_ptr<SkCanvas>> Canvas(m, "Canvas");
     Canvas
         .def(py::init(
                  [](py::array &array, const SkColorType &ct, const SkAlphaType &at, const sk_sp<SkColorSpace> &cs,
@@ -67,10 +72,10 @@ void initCanvas(py::module &m)
                 :param surfaceProps: optional surface properties
             )doc",
              "array"_a, "ct"_a = SkColorType::kN32_SkColorType, "at"_a = SkAlphaType::kUnpremul_SkAlphaType,
-             "cs"_a = py::none(), "surfaceProps"_a = py::none())
+             "cs"_a = nullptr, "surfaceProps"_a = nullptr)
         .def("toarray", &readToNumpy<SkCanvas>, "Returns a ``ndarray`` of the current canvas' pixels.", "srcX"_a = 0,
              "srcY"_a = 0, "ct"_a = SkColorType::kN32_SkColorType, "at"_a = SkAlphaType::kUnpremul_SkAlphaType,
-             "cs"_a = py::none())
+             "cs"_a = nullptr)
         .def_static(
             "MakeRasterDirect",
             [](const SkImageInfo &info, const py::buffer &pixels, size_t rowBytes, const SkSurfaceProps *props)
@@ -90,7 +95,7 @@ void initCanvas(py::module &m)
                 :param rowBytes: number of bytes per row
                 :param props: optional :py:class:`SurfaceProps`
             )doc",
-            "info"_a, "pixels"_a, "rowBytes"_a = 0, "props"_a = py::none())
+            "info"_a, "pixels"_a, "rowBytes"_a = 0, "props"_a = nullptr)
         .def_static(
             "MakeRasterDirectN32",
             [](const int &width, const int &height, const py::buffer &pixels, size_t rowBytes)
@@ -106,7 +111,7 @@ void initCanvas(py::module &m)
             "Allocates raster :py:class:`Canvas` that will draw directly into pixel buffer.", "width"_a, "height"_a,
             "pixels"_a, "rowBytes"_a)
         .def(py::init())
-        .def(py::init<int, int, const SkSurfaceProps *>(), "width"_a, "height"_a, "props"_a = py::none())
+        .def(py::init<int, int, const SkSurfaceProps *>(), "width"_a, "height"_a, "props"_a = nullptr)
         .def(py::init<const SkBitmap &>(), "bitmap"_a)
         .def(py::init<const SkBitmap &, const SkSurfaceProps &>(), "bitmap"_a, "props"_a)
         .def("imageInfo", &SkCanvas::imageInfo)
@@ -123,24 +128,30 @@ void initCanvas(py::module &m)
                 Returns :py:class:`SurfaceProps`, if :py:class:`Canvas` is associated with raster surface. Otherwise,
                 returns ``None``.
             )doc")
+        .def("getBaseProps", &SkCanvas::getBaseProps)
+        .def("getTopProps", &SkCanvas::getTopProps)
         .def("getBaseLayerSize", &SkCanvas::getBaseLayerSize)
-        .def("makeSurface", &SkCanvas::makeSurface, "info"_a, "props"_a = py::none())
+        .def("makeSurface", &SkCanvas::makeSurface, "info"_a, "props"_a = nullptr)
         .def("getSurface", &SkCanvas::getSurface, py::return_value_policy::reference)
-        .def("accessTopLayerPixels",
-             [](SkCanvas &self) -> std::optional<py::tuple>
-             {
-                 SkImageInfo info;
-                 size_t rowBytes;
-                 SkIPoint origin;
-                 void *addr = self.accessTopLayerPixels(&info, &rowBytes, &origin);
-                 if (!addr)
-                     return std::nullopt;
-                 const py::buffer_info bufInfo = imageInfoToBufferInfo(info, addr, rowBytes, true);
-                 return py::make_tuple(py::memoryview::from_buffer(bufInfo.ptr, bufInfo.itemsize,
-                                                                   bufInfo.format.c_str(), bufInfo.shape,
-                                                                   bufInfo.strides, bufInfo.readonly),
-                                       info, rowBytes, origin);
-             })
+        .def(
+            "accessTopLayerPixels",
+            [](SkCanvas &self) -> std::optional<py::tuple>
+            {
+                SkImageInfo info;
+                size_t rowBytes;
+                SkIPoint origin;
+                void *addr = self.accessTopLayerPixels(&info, &rowBytes, &origin);
+                if (!addr)
+                    return std::nullopt;
+                const py::buffer_info bufInfo = imageInfoToBufferInfo(info, addr, rowBytes, true);
+                return py::make_tuple(py::memoryview::from_buffer(bufInfo.ptr, bufInfo.itemsize, bufInfo.format.c_str(),
+                                                                  bufInfo.shape, bufInfo.strides, bufInfo.readonly),
+                                      info, rowBytes, origin);
+            },
+            R"doc(
+                Returns a tuple of ``(memoryview of pixels, image info, rowBytes, origin)`` if the pixels can be read
+                directly. Otherwise, returns ``None``.
+            )doc")
         .def(
             "peekPixels",
             [](SkCanvas &self)
@@ -172,7 +183,8 @@ void initCanvas(py::module &m)
              "x"_a = 0, "y"_a = 0)
         .def("save", &SkCanvas::save)
         .def("saveLayer", py::overload_cast<const SkRect *, const SkPaint *>(&SkCanvas::saveLayer),
-             "bounds"_a = py::none(), "paint"_a = py::none())
+             "bounds"_a = nullptr, "paint"_a = nullptr)
+        .def("saveLayerAlphaf", &SkCanvas::saveLayerAlphaf, "bounds"_a, "alpha"_a)
         .def("saveLayerAlpha", &SkCanvas::saveLayerAlpha, "bounds"_a, "alpha"_a);
 
     py::enum_<SkCanvas::SaveLayerFlagsSet>(Canvas, "SaveLayerFlags", py::arithmetic())
@@ -182,10 +194,11 @@ void initCanvas(py::module &m)
 
     py::class_<SkCanvas::SaveLayerRec>(Canvas, "SaveLayerRec")
         .def(py::init())
-        .def(py::init<const SkRect *, const SkPaint *, SkCanvas::SaveLayerFlags>(), "bounds"_a, "paint"_a,
-             "saveLayerFlags"_a = 0)
-        .def(py::init<const SkRect *, const SkPaint *, const SkImageFilter *, SkCanvas::SaveLayerFlags>(), "bounds"_a,
-             "paint"_a, "backdrop"_a, "saveLayerFlags"_a)
+        .def(py::init<const SkRect *, const SkPaint *, SkCanvas::SaveLayerFlags>(), py::keep_alive<1, 3>(),
+             "bounds"_a = nullptr, "paint"_a = nullptr, "saveLayerFlags"_a = 0)
+        .def(py::init<const SkRect *, const SkPaint *, const SkImageFilter *, SkCanvas::SaveLayerFlags>(),
+             py::keep_alive<1, 3>(), py::keep_alive<1, 4>(), "bounds"_a = nullptr, "paint"_a = nullptr,
+             "backdrop"_a = nullptr, "saveLayerFlags"_a = 0)
         .def_readwrite("fBounds", &SkCanvas::SaveLayerRec::fBounds)
         .def_readwrite("fPaint", &SkCanvas::SaveLayerRec::fPaint)
         .def_readwrite("fBackdrop", &SkCanvas::SaveLayerRec::fBackdrop)
@@ -259,6 +272,8 @@ void initCanvas(py::module &m)
         .def("drawImage", py::overload_cast<const sk_sp<SkImage> &, SkScalar, SkScalar>(&SkCanvas::drawImage),
              "image"_a, "left"_a, "top"_a);
 
+    static constexpr SkSamplingOptions dso;
+
     py::enum_<SkCanvas::SrcRectConstraint>(Canvas, "SrcRectConstraint")
         .value("kStrict_SrcRectConstraint", SkCanvas::SrcRectConstraint::kStrict_SrcRectConstraint)
         .value("kFast_SrcRectConstraint", SkCanvas::SrcRectConstraint::kFast_SrcRectConstraint);
@@ -266,19 +281,20 @@ void initCanvas(py::module &m)
         .def("drawImage",
              py::overload_cast<const sk_sp<SkImage> &, SkScalar, SkScalar, const SkSamplingOptions &, const SkPaint *>(
                  &SkCanvas::drawImage),
-             "image"_a, "left"_a, "top"_a, "sampling"_a, "paint"_a = py::none())
+             "image"_a, "left"_a, "top"_a, "sampling"_a = dso, "paint"_a = nullptr)
         .def("drawImageRect",
              py::overload_cast<const sk_sp<SkImage> &, const SkRect &, const SkRect &, const SkSamplingOptions &,
                                const SkPaint *, SkCanvas::SrcRectConstraint>(&SkCanvas::drawImageRect),
-             "image"_a, "src"_a, "dst"_a, "sampling"_a, "paint"_a, "constraint"_a)
+             "image"_a, "src"_a, "dst"_a, "sampling"_a = dso, "paint"_a = nullptr,
+             "constraint"_a = SkCanvas::SrcRectConstraint::kFast_SrcRectConstraint)
         .def("drawImageRect",
              py::overload_cast<const sk_sp<SkImage> &, const SkRect &, const SkSamplingOptions &, const SkPaint *>(
                  &SkCanvas::drawImageRect),
-             "image"_a, "dst"_a, "sampling"_a, "paint"_a = py::none())
+             "image"_a, "dst"_a, "sampling"_a = dso, "paint"_a = nullptr)
         .def("drawImageNine",
              py::overload_cast<const SkImage *, const SkIRect &, const SkRect &, SkFilterMode, const SkPaint *>(
                  &SkCanvas::drawImageNine),
-             "image"_a, "center"_a, "dst"_a, "filter"_a, "paint"_a = py::none());
+             "image"_a, "center"_a, "dst"_a, "filter"_a, "paint"_a = nullptr);
 
     py::class_<PyLattice> Lattice(Canvas, "Lattice");
 
@@ -288,56 +304,58 @@ void initCanvas(py::module &m)
         .value("kFixedColor", SkCanvas::Lattice::RectType::kFixedColor);
     Lattice
         .def(py::init(
-            [](const py::list &fXDivs, const py::list &fYDivs, const std::optional<py::list> &fRectTypes,
-               const SkIRect *fBounds, const std::optional<py::list> &fColors)
-            {
-                const int xCount = fXDivs.size(), yCount = fYDivs.size();
-                if (xCount == 0 || yCount == 0)
-                    throw py::value_error("Lattice must have at least one div");
+                 [](const py::list &fXDivs, const py::list &fYDivs, const std::optional<py::list> &fRectTypes,
+                    const SkIRect *fBounds, const std::optional<py::list> &fColors)
+                 {
+                     const int xCount = fXDivs.size(), yCount = fYDivs.size();
+                     if (xCount == 0 || yCount == 0)
+                         throw py::value_error("Lattice must have at least one div");
 
-                std::unique_ptr<int[]> xDivs(new int[xCount]);
-                std::unique_ptr<int[]> yDivs(new int[yCount]);
-                std::unique_ptr<SkCanvas::Lattice::RectType[]> rectTypes;
-                std::unique_ptr<SkIRect> bounds;
-                std::unique_ptr<SkColor[]> colors;
+                     std::unique_ptr<int[]> xDivs(new int[xCount]);
+                     std::unique_ptr<int[]> yDivs(new int[yCount]);
+                     std::unique_ptr<SkCanvas::Lattice::RectType[]> rectTypes;
+                     std::unique_ptr<SkIRect> bounds;
+                     std::unique_ptr<SkColor[]> colors;
 
-                for (int i = 0; i < xCount; ++i)
-                    xDivs[i] = fXDivs[i].cast<int>();
-                for (int i = 0; i < yCount; ++i)
-                    yDivs[i] = fYDivs[i].cast<int>();
+                     for (int i = 0; i < xCount; ++i)
+                         xDivs[i] = fXDivs[i].cast<int>();
+                     for (int i = 0; i < yCount; ++i)
+                         yDivs[i] = fYDivs[i].cast<int>();
 
-                if (fRectTypes)
-                {
-                    const int rectCount = fRectTypes->size();
-                    if (rectCount != xCount * yCount)
-                        throw py::value_error("Lattice must have rectTypes for every div");
-                    rectTypes = std::make_unique<SkCanvas::Lattice::RectType[]>(rectCount);
-                    for (int i = 0; i < rectCount; ++i)
-                        rectTypes[i] = fRectTypes->operator[](i).cast<SkCanvas::Lattice::RectType>();
-                }
+                     if (fRectTypes)
+                     {
+                         const int rectCount = fRectTypes->size();
+                         if (rectCount != xCount * yCount)
+                             throw py::value_error("Lattice must have rectTypes for every div");
+                         rectTypes = std::make_unique<SkCanvas::Lattice::RectType[]>(rectCount);
+                         for (int i = 0; i < rectCount; ++i)
+                             rectTypes[i] = fRectTypes->operator[](i).cast<SkCanvas::Lattice::RectType>();
+                     }
 
-                if (fBounds)
-                    bounds = std::make_unique<SkIRect>(
-                        SkIRect{fBounds->fLeft, fBounds->fTop, fBounds->fRight, fBounds->fBottom});
+                     if (fBounds)
+                         bounds = std::make_unique<SkIRect>(
+                             SkIRect{fBounds->fLeft, fBounds->fTop, fBounds->fRight, fBounds->fBottom});
 
-                if (fColors)
-                {
-                    const int colorCount = fColors->size();
-                    if (colorCount != xCount * yCount)
-                        throw py::value_error("Lattice must have colors for every div");
-                    colors = std::make_unique<SkColor[]>(colorCount);
-                    for (int i = 0; i < colorCount; ++i)
-                        colors[i] = fColors->operator[](i).cast<SkColor>();
-                }
+                     if (fColors)
+                     {
+                         const int colorCount = fColors->size();
+                         if (colorCount != xCount * yCount)
+                             throw py::value_error("Lattice must have colors for every div");
+                         colors = std::make_unique<SkColor[]>(colorCount);
+                         for (int i = 0; i < colorCount; ++i)
+                             colors[i] = fColors->operator[](i).cast<SkColor>();
+                     }
 
-                std::unique_ptr<PyLattice> lattice = std::make_unique<PyLattice>(fXDivs.size(), fYDivs.size());
-                lattice->fXDivs = xDivs.release();
-                lattice->fYDivs = yDivs.release();
-                lattice->fRectTypes = rectTypes.release();
-                lattice->fBounds = bounds.release();
-                lattice->fColors = colors.release();
-                return lattice;
-            }))
+                     std::unique_ptr<PyLattice> lattice = std::make_unique<PyLattice>(fXDivs.size(), fYDivs.size());
+                     lattice->fXDivs = xDivs.release();
+                     lattice->fYDivs = yDivs.release();
+                     lattice->fRectTypes = rectTypes.release();
+                     lattice->fBounds = bounds.release();
+                     lattice->fColors = colors.release();
+                     return lattice;
+                 }),
+             "Constructs a lattice from the given divs, rectTypes, bounds, and colors.", "fXDivs"_a, "fYDivs"_a,
+             "fRectTypes"_a = std::nullopt, "fBounds"_a = nullptr, "fColors"_a = std::nullopt)
         .def_property_readonly("fXDivs", [](const PyLattice &self)
                                { return std::vector<int>(self.fXDivs, self.fXDivs + self.fXCount); })
         .def_property_readonly("fYDivs", [](const PyLattice &self)
@@ -350,9 +368,9 @@ void initCanvas(py::module &m)
                                            self.fRectTypes, self.fRectTypes + self.fXCount * self.fYCount);
                                    return std::nullopt;
                                })
-        .def_readwrite("fXCount", &PyLattice::fXCount)
-        .def_readwrite("fYCount", &PyLattice::fYCount)
-        .def_readwrite("fBounds", &PyLattice::fBounds)
+        .def_readonly("fXCount", &PyLattice::fXCount)
+        .def_readonly("fYCount", &PyLattice::fYCount)
+        .def_readonly("fBounds", &PyLattice::fBounds)
         .def_property_readonly("fColors",
                                [](const PyLattice &self) -> std::optional<std::vector<SkColor>>
                                {
@@ -366,7 +384,7 @@ void initCanvas(py::module &m)
         .def("drawImageLattice",
              py::overload_cast<const SkImage *, const SkCanvas::Lattice &, const SkRect &, SkFilterMode,
                                const SkPaint *>(&SkCanvas::drawImageLattice),
-             "image"_a, "lattice"_a, "dst"_a, "filter"_a = SkFilterMode::kNearest, "paint"_a = py::none())
+             "image"_a, "lattice"_a, "dst"_a, "filter"_a = SkFilterMode::kNearest, "paint"_a = nullptr)
         .def(
             "drawSimpleText",
             [](SkCanvas &self, const std::string &text, const SkTextEncoding &encoding, const SkScalar &x,
@@ -424,7 +442,7 @@ void initCanvas(py::module &m)
              "blob"_a, "x"_a, "y"_a, "paint"_a)
         .def("drawPicture",
              py::overload_cast<const sk_sp<SkPicture> &, const SkMatrix *, const SkPaint *>(&SkCanvas::drawPicture),
-             "picture"_a, "matrix"_a = py::none(), "paint"_a = py::none())
+             "picture"_a, "matrix"_a = nullptr, "paint"_a = nullptr)
         .def("drawVertices",
              py::overload_cast<const sk_sp<SkVertices> &, SkBlendMode, const SkPaint &>(&SkCanvas::drawVertices),
              "vertices"_a, "mode"_a, "paint"_a)
@@ -451,13 +469,13 @@ void initCanvas(py::module &m)
                const SkBlendMode &mode, const SkSamplingOptions &sampling, const SkRect *cullRect, const SkPaint *paint)
             {
                 if ((xform && xform->size() != tex.size()) || (colors && colors->size() != tex.size()))
-                    throw py::value_error("xform and colors must be the same length as tex");
+                    throw py::value_error("xform and colors must be the same length as tex.");
                 self.drawAtlas(atlas, xform ? xform->data() : nullptr, tex.data(), colors ? colors->data() : nullptr,
                                tex.size(), mode, sampling, cullRect, paint);
             },
             "Draws a set of sprites from *atlas*, defined by *xform*, *tex*, and *colors* using *mode* and *sampling*.",
-            "atlas"_a, "xform"_a, "tex"_a, "colors"_a, "mode"_a, "sampling"_a, "cullRect"_a = py::none(),
-            "paint"_a = py::none())
+            "atlas"_a, "xform"_a, "tex"_a, "colors"_a, "mode"_a, "sampling"_a, "cullRect"_a = nullptr,
+            "paint"_a = nullptr)
         // .def("drawAnnotation",
         //      py::overload_cast<const SkRect &, const char[], const sk_sp<SkData> &>(&SkCanvas::drawAnnotation),
         //      "rect"_a, "key"_a, "value"_a)
@@ -465,10 +483,19 @@ void initCanvas(py::module &m)
         .def("isClipRect", &SkCanvas::isClipRect)
         .def("getLocalToDeviceAs3x3", &SkCanvas::getLocalToDeviceAs3x3)
         .def("getTotalMatrix", &SkCanvas::getTotalMatrix)
+        .def(
+            "drawParagraph",
+            [](SkCanvas &self, skia::textlayout::Paragraph *const paragraph, const SkScalar &x, const SkScalar &y)
+            { paragraph->paint(&self, x, y); },
+            "Draws the *paragraph* at the given *x* and *y* position.", "paragraph"_a, "x"_a, "y"_a)
+        .def("drawShadow", &SkShadowUtils::DrawShadow,
+             "Draw an offset spot shadow and outlining ambient shadow for the given *path* using a disc light.",
+             "path"_a, "zPlaneParams"_a, "lightPos"_a, "lightRadius"_a, "ambientColor"_a, "spotColor"_a,
+             "flags"_a = SkShadowFlags::kNone_ShadowFlag)
         .def("__str__",
              [](const SkCanvas &self)
              {
-                 SkISize size = self.getBaseLayerSize();
+                 const SkISize size = self.getBaseLayerSize();
                  return "Canvas({} x {})"_s.format(size.width(), size.height());
              });
 
@@ -479,6 +506,18 @@ void initCanvas(py::module &m)
         .def("__exit__", [](SkAutoCanvasRestore &self, py::args) { self.restore(); });
 
     m.def("MakeNullCanvas", &SkMakeNullCanvas);
+
+    py::enum_<SkTextUtils::Align>(m, "TextUtils_Align")
+        .value("kLeft_Align", SkTextUtils::Align::kLeft_Align)
+        .value("kCenter_Align", SkTextUtils::Align::kCenter_Align)
+        .value("kRight_Align", SkTextUtils::Align::kRight_Align);
+    Canvas.def(
+        "drawText",
+        [](SkCanvas *self, const std::string &text, const SkScalar &x, const SkScalar &y, const SkFont &font,
+           const SkPaint &paint, const SkTextEncoding &encoding, const SkTextUtils::Align &align)
+        { SkTextUtils::Draw(self, text.c_str(), text.size(), encoding, x, y, font, paint, align); },
+        "Draws the *text* at (*x*, *y*) using the given *font* and *paint* useing SkTextUtils.", "text"_a, "x"_a, "y"_a,
+        "font"_a, "paint"_a, "encoding"_a = SkTextEncoding::kUTF8, "align"_a = SkTextUtils::Align::kLeft_Align);
 
     // py::class_<SkSVGCanvas>(m, "SVGCanvas")
     //     .def_static("Make", &SkSVGCanvas::Make,
@@ -507,5 +546,5 @@ void initCanvas(py::module &m)
     //                                   uint32_t(SkSVGCanvas::kConvertTextToPaths_Flag); })
     //     .def_property_readonly_static("kNoPrettyXML_Flag",
     //                                   [](py::object obj) { return uint32_t(SkSVGCanvas::kNoPrettyXML_Flag); })
-    ;
+    // ;
 }

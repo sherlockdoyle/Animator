@@ -45,10 +45,7 @@ void initData(py::module &m)
                 return py::memoryview::from_buffer(data.data(), sizeof(uint8_t), py::format_descriptor<uint8_t>::value,
                                                    {data.size()}, {sizeof(uint8_t)});
             },
-            R"doc(
-                Returns the read-only memoryview to the data.
-            )doc",
-            py::keep_alive<0, 1>())
+            "Returns the read-only memoryview to the data.", py::keep_alive<0, 1>())
         .def(
             "bytes",
             [](const SkData &data) { return py::bytes(reinterpret_cast<const char *>(data.bytes()), data.size()); },
@@ -94,6 +91,7 @@ void initData(py::module &m)
             },
             "Create a new dataref by copying the specified data.", "data"_a)
         .def_static("MakeUninitialized", &SkData::MakeUninitialized, "length"_a)
+        .def_static("MakeZeroInitialized", &SkData::MakeZeroInitialized, "length"_a)
         .def_static("MakeWithCString", &SkData::MakeWithCString,
                     "Create a new dataref by copying the specified string or bytes.", "cstr"_a)
         .def_static(

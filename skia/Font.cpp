@@ -6,6 +6,7 @@
 #include "include/core/SkPaint.h"
 #include "include/core/SkPath.h"
 #include "include/core/SkStream.h"
+#include "include/ports/SkFontMgr_data.h"
 #include <optional>
 #include <pybind11/iostream.h>
 #include <pybind11/operators.h>
@@ -14,12 +15,19 @@
 
 using CoordinateVector = std::vector<SkFontArguments::VariationPosition::Coordinate>;
 PYBIND11_MAKE_OPAQUE(CoordinateVector);
-
 void FontArguments_VariationPosition_coordinates(SkFontArguments::VariationPosition &vp,
                                                  const CoordinateVector &coordinates)
 {
     vp.coordinates = coordinates.data();
     vp.coordinateCount = coordinates.size();
+}
+
+using OverrideVector = std::vector<SkFontArguments::Palette::Override>;
+PYBIND11_MAKE_OPAQUE(OverrideVector);
+void FontArguments_Palette_overrides(SkFontArguments::Palette &p, const OverrideVector &overrides)
+{
+    p.overrides = overrides.data();
+    p.overrideCount = overrides.size();
 }
 
 sk_sp<SkTypeface> Typeface_MakeFromName(const std::optional<std::string> &familyName, const SkFontStyle &fontStyle)
@@ -32,7 +40,7 @@ py::tuple FontStyleSet_getStyle(SkFontStyleSet *self, int index)
     SkFontStyle style;
     SkString name;
     if (index < 0 || index >= self->count())
-        throw py::index_error("index out of range");
+        throw py::index_error("Index out of range.");
     self->getStyle(index, &style, &name);
     return py::make_tuple(style, py::str(name.c_str(), name.size()));
 }
@@ -41,9 +49,9 @@ py::str FontMgr_getFamilyName(const SkFontMgr &fontmgr, int index)
 {
     SkString familyName;
     if (index < 0 || index >= fontmgr.countFamilies())
-        throw py::index_error("index out of range");
+        throw py::index_error("Index out of range.");
     fontmgr.getFamilyName(index, &familyName);
-    return py::str(familyName.c_str(), familyName.size());
+    return SkString2pyStr(familyName);
 }
 
 void initFont(py::module &m)
@@ -75,7 +83,9 @@ void initFont(py::module &m)
         .value("kUpright_Slant", SkFontStyle::Slant::kUpright_Slant)
         .value("kItalic_Slant", SkFontStyle::Slant::kItalic_Slant)
         .value("kOblique_Slant", SkFontStyle::Slant::kOblique_Slant);
-    FontStyle.def(py::init<int, int, SkFontStyle::Slant>(), "weight"_a, "width"_a, "slant"_a)
+    FontStyle
+        .def(py::init<int, int, SkFontStyle::Slant>(), "weight"_a = SkFontStyle::Weight::kNormal_Weight,
+             "width"_a = SkFontStyle::Width::kNormal_Width, "slant"_a = SkFontStyle::Slant::kUpright_Slant)
         .def(py::init<>())
         .def(py::self == py::self)
         .def("weight", &SkFontStyle::weight)
@@ -91,6 +101,7 @@ void initFont(py::module &m)
              });
 
     py::class_<SkFontArguments> FontArguments(m, "FontArguments");
+
     py::class_<SkFontArguments::VariationPosition> VariationPosition(FontArguments, "VariationPosition");
     py::class_<SkFontArguments::VariationPosition::Coordinate>(VariationPosition, "Coordinate")
         .def(py::init(
@@ -123,11 +134,50 @@ void initFont(py::module &m)
                  return "VariationPosition({} coordinate{})"_s.format(self.coordinateCount,
                                                                       self.coordinateCount == 1 ? "" : "s");
              });
+
+    py::class_<SkFontArguments::Palette> Palette(FontArguments, "Palette");
+    py::class_<SkFontArguments::Palette::Override>(Palette, "Override")
+        .def(py::init(
+                 [](const int &index, const SkColor &color) -> SkFontArguments::Palette::Override {
+                     return {index, color};
+                 }),
+             "index"_a, "color"_a)
+        .def_readwrite("index", &SkFontArguments::Palette::Override::index)
+        .def_readwrite("color", &SkFontArguments::Palette::Override::color)
+        .def("__str__", [](const SkFontArguments::Palette::Override &self)
+             { return "Override(index={}, color={:x})"_s.format(self.index, self.color); });
+    py::bind_vector<OverrideVector>(Palette, "OverrideVector");
+    Palette
+        .def(py::init(
+                 [](const int &index, const OverrideVector &overrides)
+                 {
+                     SkFontArguments::Palette p;
+                     p.index = index;
+                     FontArguments_Palette_overrides(p, overrides);
+                     return p;
+                 }),
+             "index"_a, "overrides"_a)
+        .def_readwrite("index", &SkFontArguments::Palette::index)
+        .def_property(
+            "overrides",
+            [](const SkFontArguments::Palette &self)
+            { return OverrideVector(self.overrides, self.overrides + self.overrideCount); },
+            &FontArguments_Palette_overrides)
+        .def_readonly("overrideCount", &SkFontArguments::Palette::overrideCount)
+        .def("__str__",
+             [](const SkFontArguments::Palette &self)
+             {
+                 return "Palette(index={}, {} override{})"_s.format(self.index, self.overrideCount,
+                                                                    self.overrideCount == 1 ? "" : "s");
+             });
+
     FontArguments.def(py::init())
         .def("setCollectionIndex", &SkFontArguments::setCollectionIndex, "collectionIndex"_a)
         .def("setVariationDesignPosition", &SkFontArguments::setVariationDesignPosition, "position"_a)
         .def("getCollectionIndex", &SkFontArguments::getCollectionIndex)
-        .def("getVariationDesignPosition", &SkFontArguments::getVariationDesignPosition);
+        .def("getVariationDesignPosition", &SkFontArguments::getVariationDesignPosition)
+        .def("setPalette", &SkFontArguments::setPalette, "palette"_a)
+        .def("getPalette", &SkFontArguments::getPalette);
 
     py::class_<SkFontParameters> FontParameters(m, "FontParameters");
     py::class_<SkFontParameters::Variation> Variation(FontParameters, "Variation");
@@ -136,7 +186,7 @@ void initFont(py::module &m)
         .def(py::init<SkFourByteTag, float, float, float, bool>())
         .def_readwrite("tag", &SkFontParameters::Variation::Axis::tag)
         .def_readwrite("min", &SkFontParameters::Variation::Axis::min)
-        .def_readwrite("def", &SkFontParameters::Variation::Axis::def)
+        .def_readwrite("def_", &SkFontParameters::Variation::Axis::def)
         .def_readwrite("max", &SkFontParameters::Variation::Axis::max)
         .def("isHidden", &SkFontParameters::Variation::Axis::isHidden)
         .def("setHidden", &SkFontParameters::Variation::Axis::setHidden, "hidden"_a)
@@ -169,23 +219,23 @@ void initFont(py::module &m)
             {
                 int coordinateCount = self.getVariationDesignPosition(nullptr, 0);
                 if (coordinateCount == -1)
-                    throw std::runtime_error("Failed to get number of axes");
+                    throw std::runtime_error("Failed to get number of axes.");
                 CoordinateVector coordinates(coordinateCount);
                 if (self.getVariationDesignPosition(coordinates.data(), coordinates.size()) == -1)
-                    throw std::runtime_error("Failed to get positions");
+                    throw std::runtime_error("Failed to get positions.");
                 return coordinates;
             },
             "Returns the design variation coordinates.")
         .def(
             "getVariationDesignParameters",
-            [](const SkTypeface &typeface)
+            [](const SkTypeface &self)
             {
-                int parameterCount = typeface.getVariationDesignParameters(nullptr, 0);
+                int parameterCount = self.getVariationDesignParameters(nullptr, 0);
                 if (parameterCount == -1)
-                    throw std::runtime_error("Failed to get number of axes");
+                    throw std::runtime_error("Failed to get number of axes.");
                 std::vector<SkFontParameters::Variation::Axis> parameters(parameterCount);
-                if (typeface.getVariationDesignParameters(parameters.data(), parameters.size()) == -1)
-                    throw std::runtime_error("Failed to get parameters");
+                if (self.getVariationDesignParameters(parameters.data(), parameters.size()) == -1)
+                    throw std::runtime_error("Failed to get parameters.");
                 return parameters;
             },
             "Returns the design variation parameters.")
@@ -267,7 +317,7 @@ void initFont(py::module &m)
                 int tableCount = self.countTables();
                 std::vector<SkFontTableTag> tags(tableCount);
                 if (self.getTableTags(tags.data()) != tableCount)
-                    throw std::runtime_error("Failed to get table tags");
+                    throw std::runtime_error("Failed to get table tags.");
                 return tags;
             },
             "Returns the list of table tags in the font.")
@@ -278,11 +328,11 @@ void initFont(py::module &m)
             {
                 size_t tableSize = self.getTableSize(tag);
                 if (offset > tableSize)
-                    throw py::value_error("Offset is out of range");
+                    throw py::value_error("Offset is out of range.");
                 size_t numBytes = length < 0 ? tableSize - offset : std::min((size_t)length, tableSize - offset);
                 std::vector<char> data(numBytes);
                 if (self.getTableData(tag, offset, numBytes, data.data()) == 0)
-                    throw py::value_error("Not a valid tag");
+                    throw py::value_error("Not a valid tag.");
                 return py::bytes(data.data(), numBytes);
             },
             R"doc(
@@ -334,7 +384,7 @@ void initFont(py::module &m)
             {
                 SkTypeface::LocalizedStrings *it = self.createFamilyNameIterator();
                 if (!it)
-                    throw std::runtime_error("Failed to create family name iterator");
+                    throw std::runtime_error("Failed to create family name iterator.");
                 py::list results;
                 SkTypeface::LocalizedString name;
                 while (it->next(&name))
@@ -372,7 +422,7 @@ void initFont(py::module &m)
              });
 
     py::class_<SkFontMetrics> FontMetrics(m, "FontMetrics");
-    FontMetrics.def(py::init()).def("__eq__", &SkFontMetrics::operator==, py::is_operator());
+    FontMetrics.def(py::init()).def("__eq__", &SkFontMetrics::operator==, py::is_operator(), "other"_a);
     py::enum_<SkFontMetrics::FontMetricsFlags>(FontMetrics, "FontMetricsFlags", py::arithmetic())
         .value("kUnderlineThicknessIsValid_Flag", SkFontMetrics::FontMetricsFlags::kUnderlineThicknessIsValid_Flag)
         .value("kUnderlinePositionIsValid_Flag", SkFontMetrics::FontMetricsFlags::kUnderlinePositionIsValid_Flag)
@@ -600,7 +650,7 @@ void initFont(py::module &m)
             {
                 std::size_t count = glyphs.size();
                 if (count != pos.size())
-                    throw py::value_error("glyphs and pos must be the same length");
+                    throw py::value_error("glyphs and pos must have the same size.");
                 return self.getIntercepts(glyphs.data(), count, pos.data(), top, bottom, paint);
             },
             "Returns intervals [start, end] describing lines parallel to the advance that intersect with the *glyphs*.",
@@ -735,7 +785,10 @@ void initFont(py::module &m)
         .def("makeFromFile", &SkFontMgr::makeFromFile, "path"_a, "ttcIndex"_a = 0)
         .def("legacyMakeTypeface", &SkFontMgr::legacyMakeTypeface, "familyName"_a, "style"_a)
         .def_static("RefDefault", &SkFontMgr::RefDefault)
+        .def_static("RefEmpty", &SkFontMgr::RefEmpty)
         .def(py::init(&SkFontMgr::RefDefault))
+        .def_static("New_Custom_Data", [](std::vector<sk_sp<SkData>> &datas)
+                    { return SkFontMgr_New_Custom_Data(SkSpan(datas.data(), datas.size())); })
         .def("__str__",
              [](const SkFontMgr &self)
              {

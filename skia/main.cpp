@@ -10,24 +10,24 @@ PYBIND11_MODULE(skia, m)
         made.
     )doc";
 
+    initData(m);
     initFlattenable(m);
-    initBlendMode(m);
+    initBlender(m);
     initPoint(m);
     initColor(m);
     initCms(m);
-    initData(m);
     initColorSpace(m);
     initSize(m);
     initRect(m);
     initImageInfo(m);
     initColorFilter(m);
     initMatrix(m);
+    initFont(m);
     initPath(m);
     initSvg(m);
     initMaskFilter(m);
     initPaint(m);
     initPathEffect(m);
-    initFont(m);
     initPixmap(m);
     initPicture(m);
     initRegion(m);
@@ -39,7 +39,10 @@ PYBIND11_MODULE(skia, m)
     initSurface(m);
     initTextBlob(m);
     initVertices(m);
+    initShadow(m);
+    initTextlayout(m);
     initCanvas(m);
+    initPathMeasure(m);
 
     initExtras(m);
 }

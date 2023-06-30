@@ -1,7 +1,8 @@
+#define SK_ENABLE_SKSL
 #include "common.h"
 #include "include/core/SkImage.h"
+#include "include/core/SkStream.h"
 #include "include/effects/SkRuntimeEffect.h"
-#include "include/sksl/SkSLDebugTrace.h"
 #include <pybind11/stl.h>
 
 static void BuilderUniform_throwIfUnequal(const size_t &size, const size_t &count)
@@ -53,11 +54,12 @@ void initRuntimeEffect(py::module &m)
 
     py::enum_<SkRuntimeEffect::Uniform::Flags>(Uniform, "Flags", py::arithmetic())
         .value("kArray_Flag", SkRuntimeEffect::Uniform::Flags::kArray_Flag)
-        .value("kColor_Flag", SkRuntimeEffect::Uniform::Flags::kColor_Flag);
+        .value("kColor_Flag", SkRuntimeEffect::Uniform::Flags::kColor_Flag)
+        .value("kVertex_Flag", SkRuntimeEffect::Uniform::Flags::kVertex_Flag)
+        .value("kFragment_Flag", SkRuntimeEffect::Uniform::Flags::kFragment_Flag)
+        .value("kHalfPrecision_Flag", SkRuntimeEffect::Uniform::Flags::kHalfPrecision_Flag);
 
-    Uniform
-        .def_property_readonly("name", [](const SkRuntimeEffect::Uniform &self)
-                               { return py::str(self.name.c_str(), self.name.size()); })
+    Uniform.def_readonly("name", &SkRuntimeEffect::Uniform::name)
         .def_readonly("offset", &SkRuntimeEffect::Uniform::offset)
         .def_readonly("type", &SkRuntimeEffect::Uniform::type)
         .def_readonly("count", &SkRuntimeEffect::Uniform::count)
@@ -68,11 +70,13 @@ void initRuntimeEffect(py::module &m)
         .def("__str__",
              [](const SkRuntimeEffect::Uniform &self)
              {
-                 return "Uniform('{}', type={}{}{})"_s.format(
-                     self.name.c_str(), self.type,
-                     self.flags & SkRuntimeEffect::Uniform::Flags::kColor_Flag ? ", color" : "",
+                 return "Uniform('{}', type={}{}{}{}{}{})"_s.format(
+                     self.name, self.type, self.flags & SkRuntimeEffect::Uniform::Flags::kColor_Flag ? ", color" : "",
                      self.flags & SkRuntimeEffect::Uniform::Flags::kArray_Flag ? ", array[{}]"_s.format(self.count)
-                                                                               : "");
+                                                                               : "",
+                     self.flags & SkRuntimeEffect::Uniform::Flags::kVertex_Flag ? ", vertex" : "",
+                     self.flags & SkRuntimeEffect::Uniform::Flags::kFragment_Flag ? ", fragment" : "",
+                     self.flags & SkRuntimeEffect::Uniform::Flags::kHalfPrecision_Flag ? ", half" : "");
              });
 
     py::enum_<SkRuntimeEffect::ChildType>(RuntimeEffect, "ChildType")
@@ -81,24 +85,23 @@ void initRuntimeEffect(py::module &m)
         .value("kBlender", SkRuntimeEffect::ChildType::kBlender);
 
     py::class_<SkRuntimeEffect::Child>(RuntimeEffect, "Child")
-        .def_property_readonly("name", [](const SkRuntimeEffect::Child &self)
-                               { return py::str(self.name.c_str(), self.name.size()); })
+        .def_readonly("name", &SkRuntimeEffect::Child::name)
         .def_readonly("type", &SkRuntimeEffect::Child::type)
         .def_readonly("index", &SkRuntimeEffect::Child::index)
-        .def("__str__", [](const SkRuntimeEffect::Child &self)
-             { return "Child('{}', type={})"_s.format(self.name.c_str(), self.type); });
+        .def("__str__",
+             [](const SkRuntimeEffect::Child &self) { return "Child('{}', type={})"_s.format(self.name, self.type); });
 
     py::class_<SkRuntimeEffect::Options>(RuntimeEffect, "Options")
         .def(py::init(
-                 [](const bool &forceNoInline)
+                 [](const bool &forceUnoptimized)
                  {
                      SkRuntimeEffect::Options self;
-                     self.forceNoInline = forceNoInline;
+                     self.forceUnoptimized = forceUnoptimized;
                      return self;
                  }),
-             "forceNoInline"_a = false)
+             "forceUnoptimized"_a = false)
         .def("__str__", [](const SkRuntimeEffect::Options &self)
-             { return "Options({})"_s.format(self.forceNoInline ? "forceNoInline" : ""); });
+             { return "Options({})"_s.format(self.forceUnoptimized ? "forceUnoptimized" : ""); });
 
     py::class_<SkRuntimeEffect::Result>(RuntimeEffect, "Result")
         .def_readonly("effect", &SkRuntimeEffect::Result::effect)
@@ -153,14 +156,14 @@ void initRuntimeEffect(py::module &m)
                const SkMatrix *localMatrix)
             { return self.makeShader(uniforms, children.data(), children.size(), localMatrix); },
             "Create a shader from this effect with the given *uniforms* and *children*.", "uniforms"_a, "children"_a,
-            "localMatrix"_a = py::none())
+            "localMatrix"_a = nullptr)
         .def(
             "makeShader",
             [](const SkRuntimeEffect &self, const sk_sp<SkData> &uniforms,
                std::vector<SkRuntimeEffect::ChildPtr> &children, const SkMatrix *localMatrix)
             { return self.makeShader(uniforms, SkSpan(children.data(), children.size()), localMatrix); },
             "Create a shader from this effect with the given *uniforms* and *children*.", "uniforms"_a, "children"_a,
-            "localMatrix"_a = py::none())
+            "localMatrix"_a = nullptr)
         .def(
             "makeImage",
             [](const SkRuntimeEffect &self, const sk_sp<SkData> &uniforms,
@@ -176,12 +179,13 @@ void initRuntimeEffect(py::module &m)
                 :note: The *resultInfo* and *localMatrix* parameters are swapped from the corresponding parameters in
                     the C++ API.
             )doc",
-            "uniforms"_a, "children"_a, "resultInfo"_a, "localMatrix"_a = py::none(), "mipmapped"_a = false)
-        .def("makeColorFilter", py::overload_cast<sk_sp<SkData>>(&SkRuntimeEffect::makeColorFilter, py::const_),
+            "uniforms"_a, "children"_a, "resultInfo"_a, "localMatrix"_a = nullptr, "mipmapped"_a = false)
+        .def("makeColorFilter", py::overload_cast<sk_sp<const SkData>>(&SkRuntimeEffect::makeColorFilter, py::const_),
              "uniforms"_a)
         .def(
             "makeColorFilter",
-            [](const SkRuntimeEffect &self, const sk_sp<SkData> &uniforms, std::vector<sk_sp<SkColorFilter>> &children)
+            [](const SkRuntimeEffect &self, const sk_sp<const SkData> &uniforms,
+               std::vector<sk_sp<SkColorFilter>> &children)
             { return self.makeColorFilter(uniforms, children.data(), children.size()); },
             "Create a color filter from this effect with the given *uniforms* and *children*.", "uniforms"_a,
             "children"_a)
@@ -194,7 +198,7 @@ void initRuntimeEffect(py::module &m)
             "children"_a)
         .def(
             "makeBlender",
-            [](const SkRuntimeEffect &self, const sk_sp<SkData> &uniforms,
+            [](const SkRuntimeEffect &self, const sk_sp<const SkData> &uniforms,
                std::vector<SkRuntimeEffect::ChildPtr> &children)
             { return self.makeBlender(uniforms, SkSpan(children.data(), children.size())); },
             "Create a blender from this effect with the given *uniforms* and *children*.", "uniforms"_a,
@@ -210,16 +214,19 @@ void initRuntimeEffect(py::module &m)
              [](const SkRuntimeEffect &self)
              {
                  const SkSpan<const SkRuntimeEffect::Uniform> uniforms = self.uniforms();
-                 return std::vector<SkRuntimeEffect::Uniform>(uniforms.data(), uniforms.data() + uniforms.size());
+                 return std::vector<SkRuntimeEffect::Uniform>(uniforms.begin(), uniforms.end());
              })
         .def("children",
              [](const SkRuntimeEffect &self)
              {
                  const SkSpan<const SkRuntimeEffect::Child> children = self.children();
-                 return std::vector<SkRuntimeEffect::Child>(children.data(), children.data() + children.size());
+                 return std::vector<SkRuntimeEffect::Child>(children.begin(), children.end());
              })
         .def("findUniform", &SkRuntimeEffect::findUniform, "name"_a, py::return_value_policy::reference_internal)
         .def("findChild", &SkRuntimeEffect::findChild, "name"_a, py::return_value_policy::reference_internal)
+        .def("allowShader", &SkRuntimeEffect::allowShader)
+        .def("allowColorFilter", &SkRuntimeEffect::allowColorFilter)
+        .def("allowBlender", &SkRuntimeEffect::allowBlender)
         .def("__str__",
              [](const SkRuntimeEffect &self)
              {
@@ -253,7 +260,6 @@ void initRuntimeEffect(py::module &m)
              });
 
     py::class_<SkRuntimeEffectBuilder> RuntimeEffectBuilder(m, "RuntimeEffectBuilder");
-    RuntimeEffectBuilder.def("effect", &SkRuntimeEffectBuilder::effect, py::return_value_policy::reference_internal);
 
     py::class_<SkRuntimeEffectBuilder::BuilderUniform>(RuntimeEffectBuilder, "BuilderUniform")
         .def(
@@ -355,16 +361,6 @@ void initRuntimeEffect(py::module &m)
             "Set the uniform with an array of values to the given *val*. *val* is automatically type-cast.", "val"_a)
         .def("__str__", [](const SkRuntimeEffectBuilder::BuilderUniform &self)
              { return "BuilderUniform({})"_s.format(self.fVar); });
-    RuntimeEffectBuilder.def(
-        "uniform",
-        [](SkRuntimeEffectBuilder &self, const char *name)
-        {
-            const SkRuntimeEffectBuilder::BuilderUniform uniform = self.uniform(name);
-            if (!uniform.fVar)
-                throw py::value_error("No uniform named '{}' found."_s.format(name));
-            return uniform;
-        },
-        "name"_a);
 
     py::class_<SkRuntimeEffectBuilder::BuilderChild>(RuntimeEffectBuilder, "BuilderChild")
         .def(
@@ -399,23 +395,39 @@ void initRuntimeEffect(py::module &m)
             "Set the child to the given *val*.", "val"_a)
         .def("__str__",
              [](const SkRuntimeEffectBuilder::BuilderChild &self) { return "BuilderChild({})"_s.format(self.fChild); });
-    RuntimeEffectBuilder.def(
-        "child",
-        [](SkRuntimeEffectBuilder &self, const char *name)
-        {
-            const SkRuntimeEffectBuilder::BuilderChild &child = self.child(name);
-            if (!child.fChild)
-                throw py::value_error("No child named '{}' found."_s.format(name));
-            return child;
-        },
-        "name"_a);
+
+    RuntimeEffectBuilder.def("effect", &SkRuntimeEffectBuilder::effect, py::return_value_policy::reference_internal)
+        .def(
+            "uniform",
+            [](SkRuntimeEffectBuilder &self, const std::string_view &name)
+            {
+                const SkRuntimeEffectBuilder::BuilderUniform uniform = self.uniform(name);
+                if (!uniform.fVar)
+                    throw py::value_error("No uniform named '{}' found."_s.format(name));
+                return uniform;
+            },
+            "name"_a)
+        .def(
+            "child",
+            [](SkRuntimeEffectBuilder &self, const std::string_view &name)
+            {
+                const SkRuntimeEffectBuilder::BuilderChild &child = self.child(name);
+                if (!child.fChild)
+                    throw py::value_error("No child named '{}' found."_s.format(name));
+                return child;
+            },
+            "name"_a)
+        .def("uniforms", &SkRuntimeEffectBuilder::uniforms)
+        .def("children",
+             [](SkRuntimeEffectBuilder &self)
+             {
+                 const SkSpan<SkRuntimeEffect::ChildPtr> children = self.children();
+                 return std::vector<SkRuntimeEffect::ChildPtr>(children.begin(), children.end());
+             });
 
     py::class_<SkRuntimeShaderBuilder, SkRuntimeEffectBuilder>(m, "RuntimeShaderBuilder")
         .def(py::init<sk_sp<SkRuntimeEffect>>(), "effect"_a)
-        .def(
-            "makeShader",
-            [](SkRuntimeShaderBuilder &self, const SkMatrix *localMatrix) { return self.makeShader(localMatrix); },
-            "localMatrix"_a = py::none())
+        .def("makeShader", &SkRuntimeShaderBuilder::makeShader, "localMatrix"_a = nullptr)
         .def(
             "makeImage",
             [](SkRuntimeShaderBuilder &self, const SkImageInfo &resultInfo, const SkMatrix *localMatrix,
@@ -426,7 +438,11 @@ void initRuntimeEffect(py::module &m)
                  :note: The *resultInfo* and *localMatrix* parameters are swapped from the corresponding parameters in
                      the C++ API.
              )doc",
-            "resultInfo"_a, "localMatrix"_a = py::none(), "mipmapped"_a = false);
+            "resultInfo"_a, "localMatrix"_a = nullptr, "mipmapped"_a = false);
+
+    py::class_<SkRuntimeColorFilterBuilder, SkRuntimeEffectBuilder>(m, "RuntimeColorFilterBuilder")
+        .def(py::init<sk_sp<SkRuntimeEffect>>(), "effect"_a)
+        .def("makeColorFilter", &SkRuntimeColorFilterBuilder::makeColorFilter);
 
     py::class_<SkRuntimeBlendBuilder, SkRuntimeEffectBuilder>(m, "RuntimeBlendBuilder")
         .def(py::init<sk_sp<SkRuntimeEffect>>(), "effect"_a)
