@@ -1,0 +1,31 @@
+animator.skia.RuntimeColorFilterBuilder
+=======================================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: RuntimeColorFilterBuilder
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~RuntimeColorFilterBuilder.__init__
+      ~RuntimeColorFilterBuilder.child
+      ~RuntimeColorFilterBuilder.children
+      ~RuntimeColorFilterBuilder.effect
+      ~RuntimeColorFilterBuilder.makeColorFilter
+      ~RuntimeColorFilterBuilder.uniform
+      ~RuntimeColorFilterBuilder.uniforms
+   
+   
+
+   
+   
+   

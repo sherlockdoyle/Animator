@@ -1,0 +1,29 @@
+animator.skia.GradientShader
+============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: GradientShader
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~GradientShader.MakeLinear
+      ~GradientShader.MakeRadial
+      ~GradientShader.MakeSweep
+      ~GradientShader.MakeTwoPointConical
+      ~GradientShader.__init__
+   
+   
+
+   
+   
+   

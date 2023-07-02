@@ -1,0 +1,623 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.graphics.style.Style &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.scene" href="animator.scene.html" />
+    <link rel="prev" title="animator.graphics.style" href="animator.graphics.style.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-graphics-style-style">
+<h1>animator.graphics.style.Style<a class="headerlink" href="#animator-graphics-style-style" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.graphics.style.Style">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.graphics.style.</span></span><span class="sig-name descname"><span class="pre">Style</span></span><a class="headerlink" href="#animator.graphics.style.Style" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The style of an entity. This class initializes with the default style values, which can be changed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clip</strong> – The clip to be applied to the entity. The clip is applied after transformations.</p></li>
+<li><p><strong>paint_style</strong> – Paint style for the entity; if the entity is filled, stroked, or both.</p></li>
+<li><p><strong>optimization</strong> – Optimization to apply for the final paint since applying the final paint can be expensive.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#animator.graphics.style.Style.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.__init__" title="animator.graphics.style.Style.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.apply_clip" title="animator.graphics.style.Style.apply_clip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_clip</span></code></a>(canvas)</p></td>
+<td><p>Apply the clip to the canvas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.apply_final_paint" title="animator.graphics.style.Style.apply_final_paint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_final_paint</span></code></a>(canvas)</p></td>
+<td><p>Apply the final paint to the canvas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.get_dash" title="animator.graphics.style.Style.get_dash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dash</span></code></a>()</p></td>
+<td><p>Get the dash of the stroke.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.nothing_to_draw" title="animator.graphics.style.Style.nothing_to_draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nothing_to_draw</span></code></a>()</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the style has nothing to draw.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_blend_mode" title="animator.graphics.style.Style.set_blend_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_blend_mode</span></code></a>(mode)</p></td>
+<td><p>Set the blend mode of the entity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_color_filter" title="animator.graphics.style.Style.set_color_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color_filter</span></code></a>(filter)</p></td>
+<td><p>Set the color filter of the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_dash" title="animator.graphics.style.Style.set_dash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_dash</span></code></a>(intervals[, phase])</p></td>
+<td><p>Set the dash of the stroke.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_fill_color" title="animator.graphics.style.Style.set_fill_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fill_color</span></code></a>(c, *args, **kwargs)</p></td>
+<td><p>Set the fill color of the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_fill_color_or_shader" title="animator.graphics.style.Style.set_fill_color_or_shader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fill_color_or_shader</span></code></a>(c, *args, **kwargs)</p></td>
+<td><p>Set the fill color or shader of the entity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_fill_shader" title="animator.graphics.style.Style.set_fill_shader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fill_shader</span></code></a>(shader)</p></td>
+<td><p>Set the fill shader of the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_from_kwargs" title="animator.graphics.style.Style.set_from_kwargs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_from_kwargs</span></code></a>(**kwargs)</p></td>
+<td><p>Set the style from arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_glow" title="animator.graphics.style.Style.set_glow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_glow</span></code></a>(sigma[, color, glow_only])</p></td>
+<td><p>Set a glow emmiting from behind the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_image_filter" title="animator.graphics.style.Style.set_image_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_image_filter</span></code></a>(filter)</p></td>
+<td><p>Set the image filter in the <code class="docutils literal notranslate"><span class="pre">final_paint</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_mask_filter" title="animator.graphics.style.Style.set_mask_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mask_filter</span></code></a>(filter)</p></td>
+<td><p>Set the mask filter of the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_path_effect" title="animator.graphics.style.Style.set_path_effect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_path_effect</span></code></a>(effect)</p></td>
+<td><p>Set the path effect of the entity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_shadow" title="animator.graphics.style.Style.set_shadow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_shadow</span></code></a>(dx, dy[, sx, sy, color, shadow_only])</p></td>
+<td><p>Set the shadow of the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_stroke_color" title="animator.graphics.style.Style.set_stroke_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_stroke_color</span></code></a>(c, *args, **kwargs)</p></td>
+<td><p>Set the stroke color of the entity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_stroke_color_or_shader" title="animator.graphics.style.Style.set_stroke_color_or_shader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_stroke_color_or_shader</span></code></a>(c, *args, **kwargs)</p></td>
+<td><p>Set the stroke color or shader of the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_stroke_shader" title="animator.graphics.style.Style.set_stroke_shader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_stroke_shader</span></code></a>(shader)</p></td>
+<td><p>Set the stroke shader of the entity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.set_trim" title="animator.graphics.style.Style.set_trim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_trim</span></code></a>([start, stop])</p></td>
+<td><p>Set the trim of the stroke.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">FILL_COLOR</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">OPACITY</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">STROKE_CAP</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">STROKE_COLOR</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">STROKE_JOIN</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">STROKE_MITER</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">STROKE_WIDTH</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.anti_alias" title="animator.graphics.style.Style.anti_alias"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anti_alias</span></code></a></p></td>
+<td><p>Whether the entity is anti-aliased.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.fill_paint" title="animator.graphics.style.Style.fill_paint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fill_paint</span></code></a></p></td>
+<td><p>The paint used to fill the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.final_paint" title="animator.graphics.style.Style.final_paint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">final_paint</span></code></a></p></td>
+<td><p>The final paint used to draw the entity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.opacity" title="animator.graphics.style.Style.opacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity</span></code></a></p></td>
+<td><p>The opacity of the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.stroke_cap" title="animator.graphics.style.Style.stroke_cap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stroke_cap</span></code></a></p></td>
+<td><p>The cap of the stroke.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.stroke_join" title="animator.graphics.style.Style.stroke_join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stroke_join</span></code></a></p></td>
+<td><p>The join of the stroke.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.stroke_miter" title="animator.graphics.style.Style.stroke_miter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stroke_miter</span></code></a></p></td>
+<td><p>The miter of the stroke.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.graphics.style.Style.stroke_paint" title="animator.graphics.style.Style.stroke_paint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stroke_paint</span></code></a></p></td>
+<td><p>The paint used to stroke the entity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.graphics.style.Style.stroke_width" title="animator.graphics.style.Style.stroke_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stroke_width</span></code></a></p></td>
+<td><p>The width of the stroke.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.FinalPaintOptimization">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinalPaintOptimization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.graphics.style.Style.FinalPaintOptimization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.FinalPaintOptimization.ALL">
+<span class="sig-name descname"><span class="pre">ALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#animator.graphics.style.Style.FinalPaintOptimization.ALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply all properties from the final paint if present.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.FinalPaintOptimization.ALWAYS">
+<span class="sig-name descname"><span class="pre">ALWAYS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#animator.graphics.style.Style.FinalPaintOptimization.ALWAYS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always apply all properties from the final paint.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.FinalPaintOptimization.NONE">
+<span class="sig-name descname"><span class="pre">NONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#animator.graphics.style.Style.FinalPaintOptimization.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not apply any properties from the final paint.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.FinalPaintOptimization.OPACITY_ONLY">
+<span class="sig-name descname"><span class="pre">OPACITY_ONLY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#animator.graphics.style.Style.FinalPaintOptimization.OPACITY_ONLY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only apply opacity from the final paint if present.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.PaintStyle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PaintStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.graphics.style.Style.PaintStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.PaintStyle.FILL_ONLY">
+<span class="sig-name descname"><span class="pre">FILL_ONLY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#animator.graphics.style.Style.PaintStyle.FILL_ONLY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only fill the entity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.PaintStyle.FILL_THEN_STROKE">
+<span class="sig-name descname"><span class="pre">FILL_THEN_STROKE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#animator.graphics.style.Style.PaintStyle.FILL_THEN_STROKE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill the entity, then stroke it. This is the most common style.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.PaintStyle.STROKE_ONLY">
+<span class="sig-name descname"><span class="pre">STROKE_ONLY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#animator.graphics.style.Style.PaintStyle.STROKE_ONLY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only stroke the entity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.PaintStyle.STROKE_THEN_FILL">
+<span class="sig-name descname"><span class="pre">STROKE_THEN_FILL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#animator.graphics.style.Style.PaintStyle.STROKE_THEN_FILL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stroke the entity, then fill it.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.anti_alias">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">anti_alias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.anti_alias" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the entity is anti-aliased.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.apply_clip">
+<span class="sig-name descname"><span class="pre">apply_clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Canvas.html#animator.skia.Canvas" title="animator.skia.Canvas"><span class="pre">animator.skia.Canvas</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.apply_clip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the clip to the canvas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.apply_final_paint">
+<span class="sig-name descname"><span class="pre">apply_final_paint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Canvas.html#animator.skia.Canvas" title="animator.skia.Canvas"><span class="pre">animator.skia.Canvas</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.apply_final_paint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the final paint to the canvas.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.fill_paint">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fill_paint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.fill_paint" title="Permalink to this definition">¶</a></dt>
+<dd><p>The paint used to fill the entity.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.final_paint">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">final_paint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.final_paint" title="Permalink to this definition">¶</a></dt>
+<dd><p>The final paint used to draw the entity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.get_dash">
+<span class="sig-name descname"><span class="pre">get_dash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.PathEffect.html#animator.skia.PathEffect.DashInfo" title="animator.skia.PathEffect.DashInfo"><span class="pre">animator.skia.PathEffect.DashInfo</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.get_dash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the dash of the stroke.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.nothing_to_draw">
+<span class="sig-name descname"><span class="pre">nothing_to_draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.nothing_to_draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the style has nothing to draw. However, even if this returns <code class="docutils literal notranslate"><span class="pre">False</span></code>, the style may not
+draw anything.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.opacity">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.opacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>The opacity of the entity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_blend_mode">
+<span class="sig-name descname"><span class="pre">set_blend_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.BlendMode.html#animator.skia.BlendMode" title="animator.skia.BlendMode"><span class="pre">animator.skia.BlendMode</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Blender.html#animator.skia.Blender" title="animator.skia.Blender"><span class="pre">animator.skia.Blender</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'source-over'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'source-in'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'source-out'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'source-atop'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'destination-over'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'destination-in'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'destination-out'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'destination-atop'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'lighter'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'copy'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'xor'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'multiply'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'screen'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'overlay'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'darken'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'lighten'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'color-dodge'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'color-burn'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'hard-light'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'soft-light'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'difference'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'exclusion'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'hue'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'saturation'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'color'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'luminosity'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_blend_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the blend mode of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">final_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_color_filter">
+<span class="sig-name descname"><span class="pre">set_color_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ColorFilter.html#animator.skia.ColorFilter" title="animator.skia.ColorFilter"><span class="pre">animator.skia.ColorFilter</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.ColorMatrix.html#animator.skia.ColorMatrix" title="animator.skia.ColorMatrix"><span class="pre">animator.skia.ColorMatrix</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.ColorTable.html#animator.skia.ColorTable" title="animator.skia.ColorTable"><span class="pre">animator.skia.ColorTable</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_color_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the color filter of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">final_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_dash">
+<span class="sig-name descname"><span class="pre">set_dash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_dash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the dash of the stroke.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">stroke_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_fill_color">
+<span class="sig-name descname"><span class="pre">set_fill_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_fill_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the fill color of the entity. This takes the same arguments as <code class="xref py py-func docutils literal notranslate"><span class="pre">animator.color()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">fill_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_fill_color_or_shader">
+<span class="sig-name descname"><span class="pre">set_fill_color_or_shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Shader.html#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_fill_color_or_shader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the fill color or shader of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">fill_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_fill_shader">
+<span class="sig-name descname"><span class="pre">set_fill_shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Shader.html#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_fill_shader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the fill shader of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">fill_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_from_kwargs">
+<span class="sig-name descname"><span class="pre">set_from_kwargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_from_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the style from arguments. Supported arguments are the same as the attributes of this class and</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fill_color</span></code>: The fill color or shader of the entity. Takes all the arguments of <code class="xref py py-func docutils literal notranslate"><span class="pre">animator.color()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stroke_color</span></code>: The stroke color or shader of the entity. Takes all the arguments of
+<code class="xref py py-func docutils literal notranslate"><span class="pre">animator.color()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image_filter</span></code>: The image filter of the entity. Can be a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.ImageFilter</span></code>, a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">skia.ColorFilter</span></code>, a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.Image</span></code>, a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.Picture</span></code> or a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.Shader</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blend_mode</span></code>: The blend mode of the entity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mask_filter</span></code>: The mask filter of the entity. Can be a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.MaskFilter</span></code> or a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">skia.Shader</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color_filter</span></code>: The color filter of the entity. Can be a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.ColorFilter</span></code>, a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">skia.ColorMatrix</span></code> or a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.ColorTable</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path_effect</span></code>: The path effect to apply to the entity’s path, intelligently applied to the
+<code class="docutils literal notranslate"><span class="pre">stroke_paint</span></code> or <code class="docutils literal notranslate"><span class="pre">fill_paint</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dash</span></code>: The dash of the stroke. Can be <code class="docutils literal notranslate"><span class="pre">None</span></code> or a list of floats.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trim</span></code>: The trim of the stroke. Can be <code class="docutils literal notranslate"><span class="pre">None</span></code> or a tuple of <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">end)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code>: The style of the paint. Can be <code class="docutils literal notranslate"><span class="pre">'fill'</span></code>, <code class="docutils literal notranslate"><span class="pre">'stroke'</span></code>, <code class="docutils literal notranslate"><span class="pre">'fill-stroke'</span></code> (default) or
+<code class="docutils literal notranslate"><span class="pre">'stroke-fill'</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_glow">
+<span class="sig-name descname"><span class="pre">set_glow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glow_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_glow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a glow emmiting from behind the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sigma</strong> – The sigma of the glow.</p></li>
+<li><p><strong>color</strong> – The color of the glow. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, a translucent fill color will be used.</p></li>
+<li><p><strong>glow_only</strong> – Whether the glow should be the only thing drawn.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>Modifies <code class="docutils literal notranslate"><span class="pre">final_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_image_filter">
+<span class="sig-name descname"><span class="pre">set_image_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ImageFilter.html#animator.skia.ImageFilter" title="animator.skia.ImageFilter"><span class="pre">animator.skia.ImageFilter</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.ColorFilter.html#animator.skia.ColorFilter" title="animator.skia.ColorFilter"><span class="pre">animator.skia.ColorFilter</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Image.html#animator.skia.Image" title="animator.skia.Image"><span class="pre">animator.skia.Image</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Picture.html#animator.skia.Picture" title="animator.skia.Picture"><span class="pre">animator.skia.Picture</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Shader.html#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_image_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the image filter in the <code class="docutils literal notranslate"><span class="pre">final_paint</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">final_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_mask_filter">
+<span class="sig-name descname"><span class="pre">set_mask_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.MaskFilter.html#animator.skia.MaskFilter" title="animator.skia.MaskFilter"><span class="pre">animator.skia.MaskFilter</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Shader.html#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_mask_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the mask filter of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">fill_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_path_effect">
+<span class="sig-name descname"><span class="pre">set_path_effect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">effect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.PathEffect.html#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_path_effect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the path effect of the entity. The effect is intelligently applied to the <code class="docutils literal notranslate"><span class="pre">stroke_paint</span></code> or <code class="docutils literal notranslate"><span class="pre">fill_paint</span></code>
+depending on its type. It’d make more sense to apply the effect manually to the paint you want to apply it to
+using <code class="docutils literal notranslate"><span class="pre">style.stroke_paint.setPathEffect(effect)</span></code> or <code class="docutils literal notranslate"><span class="pre">style.fill_paint.setPathEffect(effect)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">stroke_paint</span></code>, <code class="docutils literal notranslate"><span class="pre">fill_paint</span></code> or both.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_shadow">
+<span class="sig-name descname"><span class="pre">set_shadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shadow_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_shadow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the shadow of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dx</strong> – The x offset of the shadow.</p></li>
+<li><p><strong>dy</strong> – The y offset of the shadow.</p></li>
+<li><p><strong>sx</strong> – The sigma x of the shadow.</p></li>
+<li><p><strong>sy</strong> – The sigma y of the shadow.</p></li>
+<li><p><strong>color</strong> – The color of the shadow. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, a translucent fill color will be used.</p></li>
+<li><p><strong>shadow_only</strong> – Whether the shadow should be the only thing drawn.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Note</dt>
+<dd class="field-even"><p>Modifies <code class="docutils literal notranslate"><span class="pre">final_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_stroke_color">
+<span class="sig-name descname"><span class="pre">set_stroke_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_stroke_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the stroke color of the entity. This takes the same arguments as <code class="xref py py-func docutils literal notranslate"><span class="pre">animator.color()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">stroke_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_stroke_color_or_shader">
+<span class="sig-name descname"><span class="pre">set_stroke_color_or_shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Shader.html#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_stroke_color_or_shader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the stroke color or shader of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">stroke_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_stroke_shader">
+<span class="sig-name descname"><span class="pre">set_stroke_shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Shader.html#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_stroke_shader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the stroke shader of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">stroke_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.set_trim">
+<span class="sig-name descname"><span class="pre">set_trim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.graphics.style.Style.set_trim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the trim of the stroke.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>Modifies <code class="docutils literal notranslate"><span class="pre">stroke_paint</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.stroke_cap">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stroke_cap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint.Cap" title="animator.skia.Paint.Cap"><span class="pre">animator.skia.Paint.Cap</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.stroke_cap" title="Permalink to this definition">¶</a></dt>
+<dd><p>The cap of the stroke.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.stroke_join">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stroke_join</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint.Join" title="animator.skia.Paint.Join"><span class="pre">animator.skia.Paint.Join</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.stroke_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>The join of the stroke.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.stroke_miter">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stroke_miter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.stroke_miter" title="Permalink to this definition">¶</a></dt>
+<dd><p>The miter of the stroke.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.stroke_paint">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stroke_paint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.stroke_paint" title="Permalink to this definition">¶</a></dt>
+<dd><p>The paint used to stroke the entity.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.graphics.style.Style.stroke_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stroke_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#animator.graphics.style.Style.stroke_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>The width of the stroke.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.graphics.html">animator.graphics</a><ul>
+  <li><a href="animator.graphics.style.html">animator.graphics.style</a><ul>
+      <li>Previous: <a href="animator.graphics.style.html" title="previous chapter">animator.graphics.style</a></li>
+      <li>Next: <a href="animator.scene.html" title="next chapter">animator.scene</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.graphics.style.Style.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

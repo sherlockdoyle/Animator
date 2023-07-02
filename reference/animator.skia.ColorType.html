@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.ColorType &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.CornerPathEffect" href="animator.skia.CornerPathEffect.html" />
+    <link rel="prev" title="animator.skia.ColorTable" href="animator.skia.ColorTable.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-colortype">
+<h1>animator.skia.ColorType<a class="headerlink" href="#animator-skia-colortype" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.ColorType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">ColorType</span></span><a class="headerlink" href="#animator.skia.ColorType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kUnknown_ColorType</p>
+<p>kAlpha_8_ColorType</p>
+<p>kRGB_565_ColorType</p>
+<p>kARGB_4444_ColorType</p>
+<p>kRGBA_8888_ColorType</p>
+<p>kRGB_888x_ColorType</p>
+<p>kBGRA_8888_ColorType</p>
+<p>kRGBA_1010102_ColorType</p>
+<p>kBGRA_1010102_ColorType</p>
+<p>kRGB_101010x_ColorType</p>
+<p>kBGR_101010x_ColorType</p>
+<p>kBGR_101010x_XR_ColorType</p>
+<p>kGray_8_ColorType</p>
+<p>kRGBA_F16Norm_ColorType</p>
+<p>kRGBA_F16_ColorType</p>
+<p>kRGBA_F32_ColorType</p>
+<p>kR8G8_unorm_ColorType</p>
+<p>kA16_float_ColorType</p>
+<p>kR16G16_float_ColorType</p>
+<p>kA16_unorm_ColorType</p>
+<p>kR16G16_unorm_ColorType</p>
+<p>kR16G16B16A16_unorm_ColorType</p>
+<p>kSRGBA_8888_ColorType</p>
+<p>kR8_unorm_ColorType</p>
+<p>kLastEnum_ColorType</p>
+<p>kN32_ColorType</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorType.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorType" title="animator.skia.ColorType"><span class="pre">animator.skia.ColorType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.ColorType.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorType.__init__" title="animator.skia.ColorType.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(self, value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorType.bytesPerPixel" title="animator.skia.ColorType.bytesPerPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytesPerPixel</span></code></a>(self)</p></td>
+<td><p>Returns the number of bytes required to store a pixel, including unused padding.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorType.isAlwaysOpaque" title="animator.skia.ColorType.isAlwaysOpaque"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isAlwaysOpaque</span></code></a>(self)</p></td>
+<td><p>Returns true if <a class="reference internal" href="#animator.skia.ColorType" title="animator.skia.ColorType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorType</span></code></a> always decodes alpha to 1.0, making the pixel fully opaque.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorType.validateAlphaType" title="animator.skia.ColorType.validateAlphaType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validateAlphaType</span></code></a>(self, alphaType)</p></td>
+<td><p>Returns a <a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlphaType</span></code></a> if this <em>colorType</em> has a valid <a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlphaType</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kA16_float_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kA16_unorm_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kARGB_4444_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kAlpha_8_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kBGRA_1010102_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kBGRA_8888_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kBGR_101010x_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kBGR_101010x_XR_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kGray_8_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kLastEnum_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kN32_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kR16G16B16A16_unorm_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kR16G16_float_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kR16G16_unorm_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kR8G8_unorm_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kR8_unorm_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kRGBA_1010102_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kRGBA_8888_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kRGBA_F16Norm_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kRGBA_F16_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kRGBA_F32_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kRGB_101010x_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kRGB_565_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kRGB_888x_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kSRGBA_8888_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kUnknown_ColorType</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorType.name" title="animator.skia.ColorType.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorType.bytesPerPixel">
+<span class="sig-name descname"><span class="pre">bytesPerPixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorType" title="animator.skia.ColorType"><span class="pre">animator.skia.ColorType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ColorType.bytesPerPixel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of bytes required to store a pixel, including unused padding. Returns zero if this
+is <em>kUnknown_ColorType</em> or invalid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bytes per pixel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorType.isAlwaysOpaque">
+<span class="sig-name descname"><span class="pre">isAlwaysOpaque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorType" title="animator.skia.ColorType"><span class="pre">animator.skia.ColorType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ColorType.isAlwaysOpaque" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if <a class="reference internal" href="#animator.skia.ColorType" title="animator.skia.ColorType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorType</span></code></a> always decodes alpha to 1.0, making the pixel fully opaque. If
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, <a class="reference internal" href="#animator.skia.ColorType" title="animator.skia.ColorType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorType</span></code></a> does not reserve bits to encode alpha.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if alpha is always set to 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.ColorType.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.ColorType.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorType.validateAlphaType">
+<span class="sig-name descname"><span class="pre">validateAlphaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorType" title="animator.skia.ColorType"><span class="pre">animator.skia.ColorType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">alphaType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><span class="pre">animator.skia.AlphaType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><span class="pre">animator.skia.AlphaType</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.ColorType.validateAlphaType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlphaType</span></code></a> if this <em>colorType</em> has a valid <a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlphaType</span></code></a>.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> only if <em>alphaType</em> is <code class="xref py py-attr docutils literal notranslate"><span class="pre">kUnknown_AlphaType</span></code>, color type is not
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">kUnknown_ColorType</span></code>, and <a class="reference internal" href="#animator.skia.ColorType" title="animator.skia.ColorType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorType</span></code></a> is not always opaque.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alphaType</strong> – alpha type</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>alpha type for this color type, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlphaType</span></code></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.ColorTable.html" title="previous chapter">animator.skia.ColorTable</a></li>
+      <li>Next: <a href="animator.skia.CornerPathEffect.html" title="next chapter">animator.skia.CornerPathEffect</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.ColorType.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

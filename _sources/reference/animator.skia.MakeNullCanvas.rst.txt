@@ -1,0 +1,6 @@
+animator.skia.MakeNullCanvas
+============================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: MakeNullCanvas

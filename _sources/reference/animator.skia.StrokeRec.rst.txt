@@ -1,0 +1,52 @@
+animator.skia.StrokeRec
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: StrokeRec
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~StrokeRec.GetInflationRadius
+      ~StrokeRec.__init__
+      ~StrokeRec.applyAndGetPath
+      ~StrokeRec.applyToPaint
+      ~StrokeRec.applyToPath
+      ~StrokeRec.getCap
+      ~StrokeRec.getInflationRadius
+      ~StrokeRec.getJoin
+      ~StrokeRec.getMiter
+      ~StrokeRec.getPaint
+      ~StrokeRec.getResScale
+      ~StrokeRec.getStyle
+      ~StrokeRec.getWidth
+      ~StrokeRec.hasEqualEffect
+      ~StrokeRec.isFillStyle
+      ~StrokeRec.isHairlineStyle
+      ~StrokeRec.needToApply
+      ~StrokeRec.setFillStyle
+      ~StrokeRec.setHairlineStyle
+      ~StrokeRec.setResScale
+      ~StrokeRec.setStrokeParams
+      ~StrokeRec.setStrokeStyle
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~StrokeRec.kStyleCount
+   
+   

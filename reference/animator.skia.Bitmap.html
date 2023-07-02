@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.Bitmap &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.BlendMode" href="animator.skia.BlendMode.html" />
+    <link rel="prev" title="animator.skia.AutoCanvasRestore" href="animator.skia.AutoCanvasRestore.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-bitmap">
+<h1>animator.skia.Bitmap<a class="headerlink" href="#animator-skia-bitmap" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Bitmap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">Bitmap</span></span><a class="headerlink" href="#animator.skia.Bitmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bitmap</span></code></a> describes a two-dimensional raster pixel array.</p>
+<p><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bitmap</span></code></a> supports buffer protocol. It is possible to mount <a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bitmap</span></code></a> as array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pixmap</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or mount array as <a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bitmap</span></code></a> with <a class="reference internal" href="animator.skia.ImageInfo.html#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageInfo</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">bitmap</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Bitmap</span><span class="p">()</span>
+<span class="n">bitmap</span><span class="o">.</span><span class="n">setInfo</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ImageInfo</span><span class="o">.</span><span class="n">MakeN32Premul</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">bitmap</span><span class="o">.</span><span class="n">setPixels</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Bitmap.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: animator.skia.Bitmap) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.Bitmap, src: animator.skia.Bitmap) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.__init__" title="animator.skia.Bitmap.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.allocN32Pixels" title="animator.skia.Bitmap.allocN32Pixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocN32Pixels</span></code></a>(self, width, height[, isOpaque])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.allocPixels" title="animator.skia.Bitmap.allocPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocPixels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.allocPixelsFlags" title="animator.skia.Bitmap.allocPixelsFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocPixelsFlags</span></code></a>(self, info[, flags])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.alphaType" title="animator.skia.Bitmap.alphaType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alphaType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.asImage" title="animator.skia.Bitmap.asImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asImage</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.bounds" title="animator.skia.Bitmap.bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bounds</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.bytesPerPixel" title="animator.skia.Bitmap.bytesPerPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytesPerPixel</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.colorSpace" title="animator.skia.Bitmap.colorSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorSpace</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.colorType" title="animator.skia.Bitmap.colorType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.computeByteSize" title="animator.skia.Bitmap.computeByteSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeByteSize</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.computeIsOpaque" title="animator.skia.Bitmap.computeIsOpaque"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeIsOpaque</span></code></a>(self)</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all pixels are opaque.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.dimensions" title="animator.skia.Bitmap.dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dimensions</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.drawsNothing" title="animator.skia.Bitmap.drawsNothing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drawsNothing</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.empty" title="animator.skia.Bitmap.empty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">empty</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.erase" title="animator.skia.Bitmap.erase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">erase</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.eraseARGB" title="animator.skia.Bitmap.eraseARGB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eraseARGB</span></code></a>(self, a, r, g, b)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.eraseColor" title="animator.skia.Bitmap.eraseColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eraseColor</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.extractAlpha" title="animator.skia.Bitmap.extractAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extractAlpha</span></code></a>(self[, paint])</p></td>
+<td><p>Returns a tuple of (bitmap describing the alpha values, top-left position of the alpha values).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.extractSubset" title="animator.skia.Bitmap.extractSubset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extractSubset</span></code></a>(self, subset)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.getAlphaf" title="animator.skia.Bitmap.getAlphaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getAlphaf</span></code></a>(self, x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.getBounds" title="animator.skia.Bitmap.getBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getBounds</span></code></a>(self)</p></td>
+<td><p>Returns <a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><code class="xref py py-class docutils literal notranslate"><span class="pre">IRect</span></code></a> { 0, 0, <a class="reference internal" href="#animator.skia.Bitmap.width" title="animator.skia.Bitmap.width"><code class="xref py py-meth docutils literal notranslate"><span class="pre">width()</span></code></a>, <a class="reference internal" href="#animator.skia.Bitmap.height" title="animator.skia.Bitmap.height"><code class="xref py py-meth docutils literal notranslate"><span class="pre">height()</span></code></a> }.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.getColor" title="animator.skia.Bitmap.getColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getColor</span></code></a>(self, x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.getColor4f" title="animator.skia.Bitmap.getColor4f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getColor4f</span></code></a>(self, x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.getGenerationID" title="animator.skia.Bitmap.getGenerationID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getGenerationID</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.getPixels" title="animator.skia.Bitmap.getPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPixels</span></code></a>(self)</p></td>
+<td><p>Return a <code class="docutils literal notranslate"><span class="pre">memoryview</span></code> object of the pixel data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.getSubset" title="animator.skia.Bitmap.getSubset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSubset</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.height" title="animator.skia.Bitmap.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.info" title="animator.skia.Bitmap.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.installPixels" title="animator.skia.Bitmap.installPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">installPixels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.isImmutable" title="animator.skia.Bitmap.isImmutable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isImmutable</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.isNull" title="animator.skia.Bitmap.isNull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNull</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.isOpaque" title="animator.skia.Bitmap.isOpaque"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isOpaque</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.makeShader" title="animator.skia.Bitmap.makeShader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeShader</span></code></a>(self, tmx, tmy, sampling, localMatrix)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.notifyPixelsChanged" title="animator.skia.Bitmap.notifyPixelsChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notifyPixelsChanged</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.peekPixels" title="animator.skia.Bitmap.peekPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">peekPixels</span></code></a>(self)</p></td>
+<td><p>Returns a <a class="reference internal" href="animator.skia.Pixmap.html#animator.skia.Pixmap" title="animator.skia.Pixmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pixmap</span></code></a> describing the pixel data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.pixelRefOrigin" title="animator.skia.Bitmap.pixelRefOrigin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pixelRefOrigin</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.pixmap" title="animator.skia.Bitmap.pixmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pixmap</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.readPixels" title="animator.skia.Bitmap.readPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readPixels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.readyToDraw" title="animator.skia.Bitmap.readyToDraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readyToDraw</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.refColorSpace" title="animator.skia.Bitmap.refColorSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refColorSpace</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.reset" title="animator.skia.Bitmap.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.rowBytes" title="animator.skia.Bitmap.rowBytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rowBytes</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.rowBytesAsPixels" title="animator.skia.Bitmap.rowBytesAsPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rowBytesAsPixels</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.setAlphaType" title="animator.skia.Bitmap.setAlphaType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAlphaType</span></code></a>(self, alphaType)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.setImmutable" title="animator.skia.Bitmap.setImmutable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setImmutable</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.setInfo" title="animator.skia.Bitmap.setInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setInfo</span></code></a>(self, imageInfo[, rowBytes])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.setPixels" title="animator.skia.Bitmap.setPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPixels</span></code></a>(self, pixels)</p></td>
+<td><p>Sets pixel data from the buffer <em>pixels</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.shiftPerPixel" title="animator.skia.Bitmap.shiftPerPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shiftPerPixel</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.swap" title="animator.skia.Bitmap.swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swap</span></code></a>(self, other)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.tobytes" title="animator.skia.Bitmap.tobytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tobytes</span></code></a>(self)</p></td>
+<td><p>Convert <a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bitmap</span></code></a> to bytes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.tryAllocN32Pixels" title="animator.skia.Bitmap.tryAllocN32Pixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tryAllocN32Pixels</span></code></a>(self, width, height[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.tryAllocPixels" title="animator.skia.Bitmap.tryAllocPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tryAllocPixels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.tryAllocPixelsFlags" title="animator.skia.Bitmap.tryAllocPixelsFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tryAllocPixelsFlags</span></code></a>(self, info[, flags])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Bitmap.width" title="animator.skia.Bitmap.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Bitmap.writePixels" title="animator.skia.Bitmap.writePixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePixels</span></code></a>(self, src[, dstX, dstY])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.AllocFlags">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AllocFlags</span></span><a class="headerlink" href="#animator.skia.Bitmap.AllocFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kZeroPixels_AllocFlag</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.AllocFlags.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Bitmap.AllocFlags.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.allocN32Pixels">
+<span class="sig-name descname"><span class="pre">allocN32Pixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">isOpaque</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.allocN32Pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.allocPixels">
+<span class="sig-name descname"><span class="pre">allocPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Bitmap.allocPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>allocPixels(self: animator.skia.Bitmap, info: animator.skia.ImageInfo, rowBytes: int) -&gt; None</p></li>
+<li><p>allocPixels(self: animator.skia.Bitmap, info: animator.skia.ImageInfo) -&gt; None</p></li>
+<li><p>allocPixels(self: animator.skia.Bitmap) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.allocPixelsFlags">
+<span class="sig-name descname"><span class="pre">allocPixelsFlags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ImageInfo.html#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.allocPixelsFlags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.alphaType">
+<span class="sig-name descname"><span class="pre">alphaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><span class="pre">animator.skia.AlphaType</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.alphaType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.asImage">
+<span class="sig-name descname"><span class="pre">asImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Image.html#animator.skia.Image" title="animator.skia.Image"><span class="pre">animator.skia.Image</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.asImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.bounds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.bytesPerPixel">
+<span class="sig-name descname"><span class="pre">bytesPerPixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.bytesPerPixel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.colorSpace">
+<span class="sig-name descname"><span class="pre">colorSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorSpace.html#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.colorSpace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.colorType">
+<span class="sig-name descname"><span class="pre">colorType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorType.html#animator.skia.ColorType" title="animator.skia.ColorType"><span class="pre">animator.skia.ColorType</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.colorType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.computeByteSize">
+<span class="sig-name descname"><span class="pre">computeByteSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.computeByteSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.computeIsOpaque">
+<span class="sig-name descname"><span class="pre">computeIsOpaque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.computeIsOpaque" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all pixels are opaque.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.dimensions">
+<span class="sig-name descname"><span class="pre">dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ISize.html#animator.skia.ISize" title="animator.skia.ISize"><span class="pre">animator.skia.ISize</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.drawsNothing">
+<span class="sig-name descname"><span class="pre">drawsNothing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.drawsNothing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.erase">
+<span class="sig-name descname"><span class="pre">erase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Bitmap.erase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>erase(self: animator.skia.Bitmap, c: animator.skia.Color4f, area: animator.skia.IRect) -&gt; None</p></li>
+<li><p>erase(self: animator.skia.Bitmap, c: int, area: animator.skia.IRect) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.eraseARGB">
+<span class="sig-name descname"><span class="pre">eraseARGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.eraseARGB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.eraseColor">
+<span class="sig-name descname"><span class="pre">eraseColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Bitmap.eraseColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>eraseColor(self: animator.skia.Bitmap, c: animator.skia.Color4f) -&gt; None</p></li>
+<li><p>eraseColor(self: animator.skia.Bitmap, c: int) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.extractAlpha">
+<span class="sig-name descname"><span class="pre">extractAlpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">paint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="animator.skia.IPoint.html#animator.skia.IPoint" title="animator.skia.IPoint"><span class="pre">animator.skia.IPoint</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Bitmap.extractAlpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of (bitmap describing the alpha values, top-left position of the alpha values).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.extractSubset">
+<span class="sig-name descname"><span class="pre">extractSubset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.extractSubset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.getAlphaf">
+<span class="sig-name descname"><span class="pre">getAlphaf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.getAlphaf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.getBounds">
+<span class="sig-name descname"><span class="pre">getBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.getBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><code class="xref py py-class docutils literal notranslate"><span class="pre">IRect</span></code></a> { 0, 0, <a class="reference internal" href="#animator.skia.Bitmap.width" title="animator.skia.Bitmap.width"><code class="xref py py-meth docutils literal notranslate"><span class="pre">width()</span></code></a>, <a class="reference internal" href="#animator.skia.Bitmap.height" title="animator.skia.Bitmap.height"><code class="xref py py-meth docutils literal notranslate"><span class="pre">height()</span></code></a> }.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.getColor">
+<span class="sig-name descname"><span class="pre">getColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.getColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.getColor4f">
+<span class="sig-name descname"><span class="pre">getColor4f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.getColor4f" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.getGenerationID">
+<span class="sig-name descname"><span class="pre">getGenerationID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.getGenerationID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.getPixels">
+<span class="sig-name descname"><span class="pre">getPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#memoryview" title="(in Python v3.11)"><span class="pre">memoryview</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.getPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <code class="docutils literal notranslate"><span class="pre">memoryview</span></code> object of the pixel data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.getSubset">
+<span class="sig-name descname"><span class="pre">getSubset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.getSubset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.height">
+<span class="sig-name descname"><span class="pre">height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ImageInfo.html#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.installPixels">
+<span class="sig-name descname"><span class="pre">installPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Bitmap.installPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic">
+<li><p>installPixels(self: animator.skia.Bitmap, info: animator.skia.ImageInfo, pixels: Optional[buffer], rowBytes: int = 0) -&gt; bool</p>
+<blockquote>
+<div><p>Sets <a class="reference internal" href="animator.skia.ImageInfo.html#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageInfo</span></code></a> <em>info</em> and pixel data from the buffer <em>pixels</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">warning</dt>
+<dd class="field-odd"><p>Keep a reference to the buffer until the bitmap is no longer needed.</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>installPixels(self: animator.skia.Bitmap, pixmap: animator.skia.Pixmap) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.isImmutable">
+<span class="sig-name descname"><span class="pre">isImmutable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.isImmutable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.isNull">
+<span class="sig-name descname"><span class="pre">isNull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.isNull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.isOpaque">
+<span class="sig-name descname"><span class="pre">isOpaque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.isOpaque" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.makeShader">
+<span class="sig-name descname"><span class="pre">makeShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.Bitmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmx:</span> <span class="pre">animator.skia.TileMode</span> <span class="pre">=</span> <span class="pre">&lt;TileMode.kClamp:</span> <span class="pre">0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmy:</span> <span class="pre">animator.skia.TileMode</span> <span class="pre">=</span> <span class="pre">&lt;TileMode.kClamp:</span> <span class="pre">0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling:</span> <span class="pre">animator.skia.SamplingOptions</span> <span class="pre">=</span> <span class="pre">&lt;animator.skia.SamplingOptions</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2053650b70&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">localMatrix:</span> <span class="pre">animator.skia.Matrix</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Shader.html#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.makeShader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.notifyPixelsChanged">
+<span class="sig-name descname"><span class="pre">notifyPixelsChanged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.notifyPixelsChanged" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.peekPixels">
+<span class="sig-name descname"><span class="pre">peekPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Pixmap.html#animator.skia.Pixmap" title="animator.skia.Pixmap"><span class="pre">animator.skia.Pixmap</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.peekPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <a class="reference internal" href="animator.skia.Pixmap.html#animator.skia.Pixmap" title="animator.skia.Pixmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pixmap</span></code></a> describing the pixel data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.pixelRefOrigin">
+<span class="sig-name descname"><span class="pre">pixelRefOrigin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.IPoint.html#animator.skia.IPoint" title="animator.skia.IPoint"><span class="pre">animator.skia.IPoint</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.pixelRefOrigin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.pixmap">
+<span class="sig-name descname"><span class="pre">pixmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Pixmap.html#animator.skia.Pixmap" title="animator.skia.Pixmap"><span class="pre">animator.skia.Pixmap</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.pixmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.readPixels">
+<span class="sig-name descname"><span class="pre">readPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Bitmap.readPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>readPixels(self: animator.skia.Bitmap, dstInfo: animator.skia.ImageInfo, dstPixels: buffer, dstRowBytes: int = 0, srcX: int = 0, srcY: int = 0) -&gt; bool</p></li>
+</ol>
+<p>Copies <em>dstInfo</em> pixels starting from (<em>srcX</em>, <em>srcY</em>) to <em>dstPixels</em> buffer.</p>
+<ol class="arabic simple" start="2">
+<li><p>readPixels(self: animator.skia.Bitmap, dst: animator.skia.Pixmap, srcX: int = 0, srcY: int = 0) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.readyToDraw">
+<span class="sig-name descname"><span class="pre">readyToDraw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.readyToDraw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.refColorSpace">
+<span class="sig-name descname"><span class="pre">refColorSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorSpace.html#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.refColorSpace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.rowBytes">
+<span class="sig-name descname"><span class="pre">rowBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.rowBytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.rowBytesAsPixels">
+<span class="sig-name descname"><span class="pre">rowBytesAsPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.rowBytesAsPixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.setAlphaType">
+<span class="sig-name descname"><span class="pre">setAlphaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">alphaType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><span class="pre">animator.skia.AlphaType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.setAlphaType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.setImmutable">
+<span class="sig-name descname"><span class="pre">setImmutable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.setImmutable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.setInfo">
+<span class="sig-name descname"><span class="pre">setInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">imageInfo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ImageInfo.html#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowBytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.setInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.setPixels">
+<span class="sig-name descname"><span class="pre">setPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">buffer</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.setPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets pixel data from the buffer <em>pixels</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Warning</dt>
+<dd class="field-odd"><p>Keep a reference to the buffer until the bitmap is no longer needed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.shiftPerPixel">
+<span class="sig-name descname"><span class="pre">shiftPerPixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.shiftPerPixel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.swap">
+<span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.swap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.tobytes">
+<span class="sig-name descname"><span class="pre">tobytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.11)"><span class="pre">bytes</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.tobytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert <a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bitmap</span></code></a> to bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.tryAllocN32Pixels">
+<span class="sig-name descname"><span class="pre">tryAllocN32Pixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">isOpaque</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.tryAllocN32Pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.tryAllocPixels">
+<span class="sig-name descname"><span class="pre">tryAllocPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Bitmap.tryAllocPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>tryAllocPixels(self: animator.skia.Bitmap, info: animator.skia.ImageInfo, rowBytes: int) -&gt; bool</p></li>
+<li><p>tryAllocPixels(self: animator.skia.Bitmap, info: animator.skia.ImageInfo) -&gt; bool</p></li>
+<li><p>tryAllocPixels(self: animator.skia.Bitmap) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.tryAllocPixelsFlags">
+<span class="sig-name descname"><span class="pre">tryAllocPixelsFlags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ImageInfo.html#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.tryAllocPixelsFlags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.width">
+<span class="sig-name descname"><span class="pre">width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Bitmap.writePixels">
+<span class="sig-name descname"><span class="pre">writePixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Bitmap" title="animator.skia.Bitmap"><span class="pre">animator.skia.Bitmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Pixmap.html#animator.skia.Pixmap" title="animator.skia.Pixmap"><span class="pre">animator.skia.Pixmap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Bitmap.writePixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.AutoCanvasRestore.html" title="previous chapter">animator.skia.AutoCanvasRestore</a></li>
+      <li>Next: <a href="animator.skia.BlendMode.html" title="next chapter">animator.skia.BlendMode</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.Bitmap.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

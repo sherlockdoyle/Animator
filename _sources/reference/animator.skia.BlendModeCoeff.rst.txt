@@ -1,0 +1,43 @@
+animator.skia.BlendModeCoeff
+============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: BlendModeCoeff
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BlendModeCoeff.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BlendModeCoeff.kCoeffCount
+      ~BlendModeCoeff.kDA
+      ~BlendModeCoeff.kDC
+      ~BlendModeCoeff.kIDA
+      ~BlendModeCoeff.kIDC
+      ~BlendModeCoeff.kISA
+      ~BlendModeCoeff.kISC
+      ~BlendModeCoeff.kOne
+      ~BlendModeCoeff.kSA
+      ~BlendModeCoeff.kSC
+      ~BlendModeCoeff.kZero
+      ~BlendModeCoeff.name
+      ~BlendModeCoeff.value
+   
+   

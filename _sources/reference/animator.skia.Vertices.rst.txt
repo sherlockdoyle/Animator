@@ -1,0 +1,29 @@
+animator.skia.Vertices
+======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Vertices
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Vertices.MakeCopy
+      ~Vertices.__init__
+      ~Vertices.approximateSize
+      ~Vertices.bounds
+      ~Vertices.uniqueID
+   
+   
+
+   
+   
+   

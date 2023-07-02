@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.ColorSpace &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.ColorSpacePrimaries" href="animator.skia.ColorSpacePrimaries.html" />
+    <link rel="prev" title="animator.skia.ColorMatrixFilter" href="animator.skia.ColorMatrixFilter.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-colorspace">
+<h1>animator.skia.ColorSpace<a class="headerlink" href="#animator-skia-colorspace" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">ColorSpace</span></span><a class="headerlink" href="#animator.skia.ColorSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">animator.skia.cms.ICCProfile</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.Deserialize" title="animator.skia.ColorSpace.Deserialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Deserialize</span></code></a>(buffer)</p></td>
+<td><p>Deserialize a color space from a buffer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.Equals" title="animator.skia.ColorSpace.Equals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Equals</span></code></a>(x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.Make" title="animator.skia.ColorSpace.Make"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Make</span></code></a>(profile)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.MakeRGB" title="animator.skia.ColorSpace.MakeRGB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeRGB</span></code></a>(transferFn, toXYZ)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.MakeSRGB" title="animator.skia.ColorSpace.MakeSRGB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeSRGB</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.MakeSRGBLinear" title="animator.skia.ColorSpace.MakeSRGBLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeSRGBLinear</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.__init__" title="animator.skia.ColorSpace.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(self, profile)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.gammaCloseToSRGB" title="animator.skia.ColorSpace.gammaCloseToSRGB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gammaCloseToSRGB</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.gammaIsLinear" title="animator.skia.ColorSpace.gammaIsLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gammaIsLinear</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.gamutTransformTo" title="animator.skia.ColorSpace.gamutTransformTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gamutTransformTo</span></code></a>(self, dst)</p></td>
+<td><p>Returns the matrix that transforms from this color space to the destination color space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.hash" title="animator.skia.ColorSpace.hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hash</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.invTransferFn" title="animator.skia.ColorSpace.invTransferFn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invTransferFn</span></code></a>(self)</p></td>
+<td><p>Returns the inverse transfer function from this color space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.isNumericalTransferFn" title="animator.skia.ColorSpace.isNumericalTransferFn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isNumericalTransferFn</span></code></a>(self)</p></td>
+<td><p>Returns the transfer function from this color space if the transfer function can be represented as coefficients to the standard ICC 7-parameter equation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.isSRGB" title="animator.skia.ColorSpace.isSRGB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSRGB</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.makeColorSpin" title="animator.skia.ColorSpace.makeColorSpin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeColorSpin</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.makeLinearGamma" title="animator.skia.ColorSpace.makeLinearGamma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeLinearGamma</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.makeSRGBGamma" title="animator.skia.ColorSpace.makeSRGBGamma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeSRGBGamma</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.serialize" title="animator.skia.ColorSpace.serialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialize</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.toProfile" title="animator.skia.ColorSpace.toProfile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toProfile</span></code></a>(self)</p></td>
+<td><p>Convert this color space to an skcms ICC profile struct and return it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.toXYZD50" title="animator.skia.ColorSpace.toXYZD50"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toXYZD50</span></code></a>(self)</p></td>
+<td><p>Returns the matrix if the color gamut can be described as a matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.toXYZD50Hash" title="animator.skia.ColorSpace.toXYZD50Hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toXYZD50Hash</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.transferFn" title="animator.skia.ColorSpace.transferFn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transferFn</span></code></a>(self)</p></td>
+<td><p>Returns the transfer function from this color space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ColorSpace.transferFnHash" title="animator.skia.ColorSpace.transferFnHash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transferFnHash</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.Deserialize">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Deserialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.Deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize a color space from a buffer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.Equals">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.Equals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.Make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">animator.skia.cms.ICCProfile</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.Make" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.MakeRGB">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeRGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transferFn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">animator.skia.cms.TransferFunction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toXYZ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">animator.skia.cms.Matrix3x3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.MakeRGB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.MakeSRGB">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeSRGB</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.MakeSRGB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.MakeSRGBLinear">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeSRGBLinear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.MakeSRGBLinear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.gammaCloseToSRGB">
+<span class="sig-name descname"><span class="pre">gammaCloseToSRGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.gammaCloseToSRGB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.gammaIsLinear">
+<span class="sig-name descname"><span class="pre">gammaIsLinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.gammaIsLinear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.gamutTransformTo">
+<span class="sig-name descname"><span class="pre">gamutTransformTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">animator.skia.cms.Matrix3x3</span></span></span><a class="headerlink" href="#animator.skia.ColorSpace.gamutTransformTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the matrix that transforms from this color space to the destination color space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dst</strong> (<a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><em>skia.ColorSpace</em></a>) – The destination color space.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The matrix that transforms from this color space to the destination color space.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>skia.cms.Matrix3x3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.hash">
+<span class="sig-name descname"><span class="pre">hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.invTransferFn">
+<span class="sig-name descname"><span class="pre">invTransferFn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">animator.skia.cms.TransferFunction</span></span></span><a class="headerlink" href="#animator.skia.ColorSpace.invTransferFn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inverse transfer function from this color space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.isNumericalTransferFn">
+<span class="sig-name descname"><span class="pre">isNumericalTransferFn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">animator.skia.cms.TransferFunction</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.ColorSpace.isNumericalTransferFn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transfer function from this color space if the transfer function can be represented as
+coefficients to the standard ICC 7-parameter equation. Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise (eg, PQ, HLG).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The transfer function from this color space.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>skia.cms.TransferFunction | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.isSRGB">
+<span class="sig-name descname"><span class="pre">isSRGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.isSRGB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.makeColorSpin">
+<span class="sig-name descname"><span class="pre">makeColorSpin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.makeColorSpin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.makeLinearGamma">
+<span class="sig-name descname"><span class="pre">makeLinearGamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.makeLinearGamma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.makeSRGBGamma">
+<span class="sig-name descname"><span class="pre">makeSRGBGamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.makeSRGBGamma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><span class="pre">animator.skia.Data</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.serialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.toProfile">
+<span class="sig-name descname"><span class="pre">toProfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">animator.skia.cms.ICCProfile</span></span></span><a class="headerlink" href="#animator.skia.ColorSpace.toProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this color space to an skcms ICC profile struct and return it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.toXYZD50">
+<span class="sig-name descname"><span class="pre">toXYZD50</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">animator.skia.cms.Matrix3x3</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.ColorSpace.toXYZD50" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the matrix if the color gamut can be described as a matrix. Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The matrix describing this color space.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>skia.cms.Matrix3x3 | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.toXYZD50Hash">
+<span class="sig-name descname"><span class="pre">toXYZD50Hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.toXYZD50Hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.transferFn">
+<span class="sig-name descname"><span class="pre">transferFn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">animator.skia.cms.TransferFunction</span></span></span><a class="headerlink" href="#animator.skia.ColorSpace.transferFn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transfer function from this color space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ColorSpace.transferFnHash">
+<span class="sig-name descname"><span class="pre">transferFnHash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ColorSpace.transferFnHash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.ColorMatrixFilter.html" title="previous chapter">animator.skia.ColorMatrixFilter</a></li>
+      <li>Next: <a href="animator.skia.ColorSpacePrimaries.html" title="next chapter">animator.skia.ColorSpacePrimaries</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.ColorSpace.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

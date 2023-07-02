@@ -1,0 +1,36 @@
+animator.skia.FontHinting
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: FontHinting
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FontHinting.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~FontHinting.kFull
+      ~FontHinting.kNone
+      ~FontHinting.kNormal
+      ~FontHinting.kSlight
+      ~FontHinting.name
+      ~FontHinting.value
+   
+   

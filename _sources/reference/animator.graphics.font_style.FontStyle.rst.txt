@@ -1,0 +1,42 @@
+animator.graphics.font\_style.FontStyle
+=======================================
+
+.. currentmodule:: animator.graphics.font_style
+
+.. autoclass:: FontStyle
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FontStyle.__init__
+      ~FontStyle.get_available_fonts
+      ~FontStyle.get_closest_font_name
+      ~FontStyle.get_font
+      ~FontStyle.set_fake_slant
+      ~FontStyle.set_fake_width
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~FontStyle.COLOR
+      ~FontStyle.FAMILY_NAME
+      ~FontStyle.SIZE
+      ~FontStyle.STYLE
+      ~FontStyle.family_name
+      ~FontStyle.size
+      ~FontStyle.style
+   
+   

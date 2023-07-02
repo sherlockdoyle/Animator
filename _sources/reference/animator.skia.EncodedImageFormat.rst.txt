@@ -1,0 +1,46 @@
+animator.skia.EncodedImageFormat
+================================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: EncodedImageFormat
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~EncodedImageFormat.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~EncodedImageFormat.kASTC
+      ~EncodedImageFormat.kAVIF
+      ~EncodedImageFormat.kBMP
+      ~EncodedImageFormat.kDNG
+      ~EncodedImageFormat.kGIF
+      ~EncodedImageFormat.kHEIF
+      ~EncodedImageFormat.kICO
+      ~EncodedImageFormat.kJPEG
+      ~EncodedImageFormat.kJPEGXL
+      ~EncodedImageFormat.kKTX
+      ~EncodedImageFormat.kPKM
+      ~EncodedImageFormat.kPNG
+      ~EncodedImageFormat.kWBMP
+      ~EncodedImageFormat.kWEBP
+      ~EncodedImageFormat.name
+      ~EncodedImageFormat.value
+   
+   

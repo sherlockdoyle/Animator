@@ -1,0 +1,39 @@
+﻿animator
+========
+
+.. automodule:: animator
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: module.rst
+   :recursive:
+
+   animator.anim
+   animator.display
+   animator.entity
+   animator.graphics
+   animator.processing
+   animator.scene
+   animator.skia
+   animator.util
+

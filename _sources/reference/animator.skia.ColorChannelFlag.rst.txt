@@ -1,0 +1,41 @@
+animator.skia.ColorChannelFlag
+==============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorChannelFlag
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorChannelFlag.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ColorChannelFlag.kAlpha_ColorChannelFlag
+      ~ColorChannelFlag.kBlue_ColorChannelFlag
+      ~ColorChannelFlag.kGrayAlpha_ColorChannelFlags
+      ~ColorChannelFlag.kGray_ColorChannelFlag
+      ~ColorChannelFlag.kGreen_ColorChannelFlag
+      ~ColorChannelFlag.kRGBA_ColorChannelFlags
+      ~ColorChannelFlag.kRGB_ColorChannelFlags
+      ~ColorChannelFlag.kRG_ColorChannelFlags
+      ~ColorChannelFlag.kRed_ColorChannelFlag
+      ~ColorChannelFlag.name
+      ~ColorChannelFlag.value
+   
+   

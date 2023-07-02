@@ -1,0 +1,48 @@
+animator.skia.Point3
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Point3
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Point3.CrossProduct
+      ~Point3.DotProduct
+      ~Point3.Length
+      ~Point3.Make
+      ~Point3.__init__
+      ~Point3.cross
+      ~Point3.dot
+      ~Point3.isFinite
+      ~Point3.length
+      ~Point3.makeScale
+      ~Point3.normalize
+      ~Point3.scale
+      ~Point3.set
+      ~Point3.x
+      ~Point3.y
+      ~Point3.z
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Point3.fX
+      ~Point3.fY
+      ~Point3.fZ
+   
+   

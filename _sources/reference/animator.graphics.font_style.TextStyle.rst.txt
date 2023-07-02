@@ -1,0 +1,55 @@
+animator.graphics.font\_style.TextStyle
+=======================================
+
+.. currentmodule:: animator.graphics.font_style
+
+.. autoclass:: TextStyle
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TextStyle.__init__
+      ~TextStyle.get_text_style
+      ~TextStyle.set_in_text_style
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~TextStyle.color
+      ~TextStyle.foregroundPaint
+      ~TextStyle.backgroundPaint
+      ~TextStyle.decoration
+      ~TextStyle.decorationMode
+      ~TextStyle.decorationStyle
+      ~TextStyle.decorationColor
+      ~TextStyle.decorationThicknessMultiplier
+      ~TextStyle.fontStyle
+      ~TextStyle.shadows
+      ~TextStyle.fontArguments
+      ~TextStyle.fontSize
+      ~TextStyle.fontFamilies
+      ~TextStyle.baselineShift
+      ~TextStyle.height
+      ~TextStyle.heightOverride
+      ~TextStyle.halfLeading
+      ~TextStyle.letterSpacing
+      ~TextStyle.wordSpacing
+      ~TextStyle.typeface
+      ~TextStyle.locale
+      ~TextStyle.textBaseline
+      ~TextStyle.placeholder
+   
+   

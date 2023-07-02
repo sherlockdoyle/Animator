@@ -1,0 +1,51 @@
+animator.skia.FontMetrics
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: FontMetrics
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FontMetrics.__init__
+      ~FontMetrics.hasBounds
+      ~FontMetrics.hasStrikeoutPosition
+      ~FontMetrics.hasStrikeoutThickness
+      ~FontMetrics.hasUnderlinePosition
+      ~FontMetrics.hasUnderlineThickness
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~FontMetrics.fAscent
+      ~FontMetrics.fAvgCharWidth
+      ~FontMetrics.fBottom
+      ~FontMetrics.fCapHeight
+      ~FontMetrics.fDescent
+      ~FontMetrics.fFlags
+      ~FontMetrics.fLeading
+      ~FontMetrics.fMaxCharWidth
+      ~FontMetrics.fStrikeoutPosition
+      ~FontMetrics.fStrikeoutThickness
+      ~FontMetrics.fTop
+      ~FontMetrics.fUnderlinePosition
+      ~FontMetrics.fUnderlineThickness
+      ~FontMetrics.fXHeight
+      ~FontMetrics.fXMax
+      ~FontMetrics.fXMin
+   
+   

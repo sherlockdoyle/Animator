@@ -1,0 +1,48 @@
+animator.skia.YUVColorSpace
+===========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: YUVColorSpace
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~YUVColorSpace.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~YUVColorSpace.kBT2020_10bit_Full_YUVColorSpace
+      ~YUVColorSpace.kBT2020_10bit_Limited_YUVColorSpace
+      ~YUVColorSpace.kBT2020_12bit_Full_YUVColorSpace
+      ~YUVColorSpace.kBT2020_12bit_Limited_YUVColorSpace
+      ~YUVColorSpace.kBT2020_8bit_Full_YUVColorSpace
+      ~YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace
+      ~YUVColorSpace.kBT2020_YUVColorSpace
+      ~YUVColorSpace.kIdentity_YUVColorSpace
+      ~YUVColorSpace.kJPEG_Full_YUVColorSpace
+      ~YUVColorSpace.kJPEG_YUVColorSpace
+      ~YUVColorSpace.kLastEnum_YUVColorSpace
+      ~YUVColorSpace.kRec601_Limited_YUVColorSpace
+      ~YUVColorSpace.kRec601_YUVColorSpace
+      ~YUVColorSpace.kRec709_Full_YUVColorSpace
+      ~YUVColorSpace.kRec709_Limited_YUVColorSpace
+      ~YUVColorSpace.kRec709_YUVColorSpace
+      ~YUVColorSpace.name
+      ~YUVColorSpace.value
+   
+   

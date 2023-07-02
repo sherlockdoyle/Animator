@@ -1,0 +1,57 @@
+animator.skia.Typeface
+======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Typeface
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Typeface.Equal
+      ~Typeface.MakeDefault
+      ~Typeface.MakeDeserialize
+      ~Typeface.MakeFromData
+      ~Typeface.MakeFromFile
+      ~Typeface.MakeFromName
+      ~Typeface.UniqueID
+      ~Typeface.__init__
+      ~Typeface.copyTableData
+      ~Typeface.countGlyphs
+      ~Typeface.countTables
+      ~Typeface.createFamilyNameIterator
+      ~Typeface.fontStyle
+      ~Typeface.getBounds
+      ~Typeface.getFamilyName
+      ~Typeface.getFamilyNames
+      ~Typeface.getKerningPairAdjustments
+      ~Typeface.getPostScriptName
+      ~Typeface.getTableData
+      ~Typeface.getTableSize
+      ~Typeface.getTableTags
+      ~Typeface.getUnitsPerEm
+      ~Typeface.getVariationDesignParameters
+      ~Typeface.getVariationDesignPosition
+      ~Typeface.isBold
+      ~Typeface.isFixedPitch
+      ~Typeface.isItalic
+      ~Typeface.makeClone
+      ~Typeface.serialize
+      ~Typeface.textToGlyphs
+      ~Typeface.unicharToGlyph
+      ~Typeface.unicharsToGlyphs
+      ~Typeface.uniqueID
+   
+   
+
+   
+   
+   

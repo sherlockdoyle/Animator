@@ -1,0 +1,45 @@
+animator.graphics.Context2d
+===========================
+
+.. automodule:: animator.graphics.Context2d
+
+   
+   
+   .. rubric:: Module Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      LINE_CAP_BUTT
+      LINE_CAP_ROUND
+      LINE_CAP_SQUARE
+      LINE_JOIN_BEVEL
+      LINE_JOIN_MITER
+      LINE_JOIN_ROUND
+      font
+      globalAlpha
+      globalCompositeOperation
+      imageSmoothingEnabled
+      lineCap
+      lineDashOffset
+      lineJoin
+      lineWidth
+      miterLimit
+      path
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

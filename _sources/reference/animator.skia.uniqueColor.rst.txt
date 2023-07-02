@@ -1,0 +1,6 @@
+animator.skia.uniqueColor
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: uniqueColor

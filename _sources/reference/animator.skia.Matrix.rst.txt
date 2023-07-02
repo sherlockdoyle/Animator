@@ -1,0 +1,133 @@
+animator.skia.Matrix
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Matrix
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Matrix.Concat
+      ~Matrix.I
+      ~Matrix.InvalidMatrix
+      ~Matrix.MakeAll
+      ~Matrix.MakeRectToRect
+      ~Matrix.RectToRect
+      ~Matrix.RotateDeg
+      ~Matrix.RotateRad
+      ~Matrix.Scale
+      ~Matrix.SetAffineIdentity
+      ~Matrix.Skew
+      ~Matrix.Translate
+      ~Matrix.__init__
+      ~Matrix.asAffine
+      ~Matrix.decomposeScale
+      ~Matrix.dirtyMatrixTypeCache
+      ~Matrix.dump
+      ~Matrix.get
+      ~Matrix.get9
+      ~Matrix.getMaxScale
+      ~Matrix.getMinMaxScales
+      ~Matrix.getMinScale
+      ~Matrix.getPerspX
+      ~Matrix.getPerspY
+      ~Matrix.getScaleX
+      ~Matrix.getScaleY
+      ~Matrix.getSkewX
+      ~Matrix.getSkewY
+      ~Matrix.getTranslateX
+      ~Matrix.getTranslateY
+      ~Matrix.getType
+      ~Matrix.hasPerspective
+      ~Matrix.invert
+      ~Matrix.isFinite
+      ~Matrix.isIdentity
+      ~Matrix.isScaleTranslate
+      ~Matrix.isSimilarity
+      ~Matrix.isTranslate
+      ~Matrix.makeInverse
+      ~Matrix.mapHomogeneousPoints
+      ~Matrix.mapOrigin
+      ~Matrix.mapPoint
+      ~Matrix.mapPoints
+      ~Matrix.mapRadius
+      ~Matrix.mapRect
+      ~Matrix.mapRectScaleTranslate
+      ~Matrix.mapRectToQuad
+      ~Matrix.mapVector
+      ~Matrix.mapVectors
+      ~Matrix.mapXY
+      ~Matrix.normalizePerspective
+      ~Matrix.postConcat
+      ~Matrix.postRotate
+      ~Matrix.postScale
+      ~Matrix.postSkew
+      ~Matrix.postTranslate
+      ~Matrix.preConcat
+      ~Matrix.preRotate
+      ~Matrix.preScale
+      ~Matrix.preSkew
+      ~Matrix.preTranslate
+      ~Matrix.preservesAxisAlignment
+      ~Matrix.preservesRightAngles
+      ~Matrix.rc
+      ~Matrix.rectStaysRect
+      ~Matrix.reset
+      ~Matrix.set
+      ~Matrix.set9
+      ~Matrix.setAffine
+      ~Matrix.setAll
+      ~Matrix.setConcat
+      ~Matrix.setIdentity
+      ~Matrix.setPerspX
+      ~Matrix.setPerspY
+      ~Matrix.setPolyToPoly
+      ~Matrix.setRSXform
+      ~Matrix.setRectToRect
+      ~Matrix.setRotate
+      ~Matrix.setScale
+      ~Matrix.setScaleTranslate
+      ~Matrix.setScaleX
+      ~Matrix.setScaleY
+      ~Matrix.setSinCos
+      ~Matrix.setSkew
+      ~Matrix.setSkewX
+      ~Matrix.setSkewY
+      ~Matrix.setTranslate
+      ~Matrix.setTranslateX
+      ~Matrix.setTranslateY
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Matrix.kAScaleX
+      ~Matrix.kAScaleY
+      ~Matrix.kASkewX
+      ~Matrix.kASkewY
+      ~Matrix.kATransX
+      ~Matrix.kATransY
+      ~Matrix.kMPersp0
+      ~Matrix.kMPersp1
+      ~Matrix.kMPersp2
+      ~Matrix.kMScaleX
+      ~Matrix.kMScaleY
+      ~Matrix.kMSkewX
+      ~Matrix.kMSkewY
+      ~Matrix.kMTransX
+      ~Matrix.kMTransY
+   
+   

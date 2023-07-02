@@ -1,0 +1,35 @@
+animator.skia.ColorFilters
+==========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorFilters
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorFilters.Blend
+      ~ColorFilters.Compose
+      ~ColorFilters.HSLAMatrix
+      ~ColorFilters.Lerp
+      ~ColorFilters.Lighting
+      ~ColorFilters.LinearToSRGBGamma
+      ~ColorFilters.Matrix
+      ~ColorFilters.SRGBToLinearGamma
+      ~ColorFilters.Table
+      ~ColorFilters.TableARGB
+      ~ColorFilters.__init__
+   
+   
+
+   
+   
+   

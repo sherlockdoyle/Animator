@@ -1,0 +1,66 @@
+animator.graphics.style.Style
+=============================
+
+.. currentmodule:: animator.graphics.style
+
+.. autoclass:: Style
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Style.__init__
+      ~Style.apply_clip
+      ~Style.apply_final_paint
+      ~Style.get_dash
+      ~Style.nothing_to_draw
+      ~Style.set_blend_mode
+      ~Style.set_color_filter
+      ~Style.set_dash
+      ~Style.set_fill_color
+      ~Style.set_fill_color_or_shader
+      ~Style.set_fill_shader
+      ~Style.set_from_kwargs
+      ~Style.set_glow
+      ~Style.set_image_filter
+      ~Style.set_mask_filter
+      ~Style.set_path_effect
+      ~Style.set_shadow
+      ~Style.set_stroke_color
+      ~Style.set_stroke_color_or_shader
+      ~Style.set_stroke_shader
+      ~Style.set_trim
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Style.FILL_COLOR
+      ~Style.OPACITY
+      ~Style.STROKE_CAP
+      ~Style.STROKE_COLOR
+      ~Style.STROKE_JOIN
+      ~Style.STROKE_MITER
+      ~Style.STROKE_WIDTH
+      ~Style.anti_alias
+      ~Style.fill_paint
+      ~Style.final_paint
+      ~Style.opacity
+      ~Style.stroke_cap
+      ~Style.stroke_join
+      ~Style.stroke_miter
+      ~Style.stroke_paint
+      ~Style.stroke_width
+   
+   

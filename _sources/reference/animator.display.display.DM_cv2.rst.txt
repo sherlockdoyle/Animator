@@ -1,0 +1,35 @@
+animator.display.display.DM\_cv2
+================================
+
+.. currentmodule:: animator.display.display
+
+.. autoclass:: DM_cv2
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DM_cv2.__init__
+      ~DM_cv2.close
+      ~DM_cv2.get_best
+      ~DM_cv2.show_frame
+      ~DM_cv2.waittime
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~DM_cv2.display_method
+   
+   

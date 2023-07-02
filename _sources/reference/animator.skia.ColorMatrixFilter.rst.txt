@@ -1,0 +1,37 @@
+animator.skia.ColorMatrixFilter
+===============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorMatrixFilter
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorMatrixFilter.Deserialize
+      ~ColorMatrixFilter.DeserializeAsType
+      ~ColorMatrixFilter.MakeLightingFilter
+      ~ColorMatrixFilter.__init__
+      ~ColorMatrixFilter.asAColorMatrix
+      ~ColorMatrixFilter.asAColorMode
+      ~ColorMatrixFilter.filterColor
+      ~ColorMatrixFilter.filterColor4f
+      ~ColorMatrixFilter.getFlattenableType
+      ~ColorMatrixFilter.getTypeName
+      ~ColorMatrixFilter.isAlphaUnchanged
+      ~ColorMatrixFilter.makeComposed
+      ~ColorMatrixFilter.serialize
+   
+   
+
+   
+   
+   

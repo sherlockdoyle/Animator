@@ -1,0 +1,31 @@
+animator.skia.Blender
+=====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Blender
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Blender.Deserialize
+      ~Blender.DeserializeAsType
+      ~Blender.Mode
+      ~Blender.__init__
+      ~Blender.getFlattenableType
+      ~Blender.getTypeName
+      ~Blender.serialize
+   
+   
+
+   
+   
+   

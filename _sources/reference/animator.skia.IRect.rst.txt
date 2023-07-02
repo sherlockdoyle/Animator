@@ -1,0 +1,74 @@
+animator.skia.IRect
+===================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: IRect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~IRect.Intersects
+      ~IRect.MakeEmpty
+      ~IRect.MakeLTRB
+      ~IRect.MakePtSize
+      ~IRect.MakeSize
+      ~IRect.MakeWH
+      ~IRect.MakeXYWH
+      ~IRect.__init__
+      ~IRect.adjust
+      ~IRect.bottom
+      ~IRect.contains
+      ~IRect.containsNoEmptyCheck
+      ~IRect.height
+      ~IRect.height64
+      ~IRect.inset
+      ~IRect.intersect
+      ~IRect.isEmpty
+      ~IRect.isEmpty64
+      ~IRect.join
+      ~IRect.left
+      ~IRect.makeInset
+      ~IRect.makeOffset
+      ~IRect.makeOutset
+      ~IRect.makeSorted
+      ~IRect.offset
+      ~IRect.offsetTo
+      ~IRect.outset
+      ~IRect.right
+      ~IRect.setEmpty
+      ~IRect.setLTRB
+      ~IRect.setSize
+      ~IRect.setWH
+      ~IRect.setXYWH
+      ~IRect.size
+      ~IRect.sort
+      ~IRect.top
+      ~IRect.topLeft
+      ~IRect.width
+      ~IRect.width64
+      ~IRect.x
+      ~IRect.y
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~IRect.fBottom
+      ~IRect.fLeft
+      ~IRect.fRight
+      ~IRect.fTop
+   
+   

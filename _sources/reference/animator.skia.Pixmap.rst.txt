@@ -1,0 +1,57 @@
+animator.skia.Pixmap
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Pixmap
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Pixmap.__init__
+      ~Pixmap.addr
+      ~Pixmap.addr16
+      ~Pixmap.addr32
+      ~Pixmap.addr64
+      ~Pixmap.addr8
+      ~Pixmap.addrF16
+      ~Pixmap.alphaType
+      ~Pixmap.bounds
+      ~Pixmap.colorSpace
+      ~Pixmap.colorType
+      ~Pixmap.computeByteSize
+      ~Pixmap.computeIsOpaque
+      ~Pixmap.dimensions
+      ~Pixmap.erase
+      ~Pixmap.extractSubset
+      ~Pixmap.getAlphaf
+      ~Pixmap.getColor
+      ~Pixmap.getColor4f
+      ~Pixmap.height
+      ~Pixmap.info
+      ~Pixmap.isOpaque
+      ~Pixmap.readPixels
+      ~Pixmap.refColorSpace
+      ~Pixmap.reset
+      ~Pixmap.rowBytes
+      ~Pixmap.rowBytesAsPixels
+      ~Pixmap.scalePixels
+      ~Pixmap.setColorSpace
+      ~Pixmap.shiftPerPixel
+      ~Pixmap.tobytes
+      ~Pixmap.width
+      ~Pixmap.writable_addr
+   
+   
+
+   
+   
+   

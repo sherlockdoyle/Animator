@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.Region &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.RuntimeBlendBuilder" href="animator.skia.RuntimeBlendBuilder.html" />
+    <link rel="prev" title="animator.skia.Rect" href="animator.skia.Rect.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-region">
+<h1>animator.skia.Region<a class="headerlink" href="#animator-skia-region" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Region">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">Region</span></span><a class="headerlink" href="#animator.skia.Region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> describes the set of pixels used to clip <a class="reference internal" href="animator.skia.Canvas.html#animator.skia.Canvas" title="animator.skia.Canvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">Canvas</span></code></a>.</p>
+<p><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> supports a few operators:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">regionA</span> <span class="o">==</span> <span class="n">regionB</span>  <span class="c1"># Equality</span>
+<span class="n">regionA</span> <span class="o">!=</span> <span class="n">regionB</span>  <span class="c1"># Inequality</span>
+
+<span class="n">regionA</span> <span class="o">-</span> <span class="n">regionB</span>   <span class="c1"># Difference</span>
+<span class="n">regionA</span> <span class="o">&amp;</span> <span class="n">regionB</span>   <span class="c1"># Intersect</span>
+<span class="n">regionA</span> <span class="o">|</span> <span class="n">regionB</span>   <span class="c1"># Union</span>
+<span class="n">regionA</span> <span class="o">^</span> <span class="n">regionB</span>   <span class="c1"># XOR</span>
+
+<span class="n">regionA</span> <span class="o">-=</span> <span class="n">regionB</span>  <span class="c1"># In-place Difference</span>
+<span class="n">regionA</span> <span class="o">&amp;=</span> <span class="n">regionB</span>  <span class="c1"># In-place Intersect</span>
+<span class="n">regionA</span> <span class="o">|=</span> <span class="n">regionB</span>  <span class="c1"># In-place Union</span>
+<span class="n">regionA</span> <span class="o">^=</span> <span class="n">regionB</span>  <span class="c1"># In-place XOR</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Region.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: animator.skia.Region) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.Region, region: animator.skia.Region) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.Region, rect: animator.skia.IRect) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.__init__" title="animator.skia.Region.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.computeRegionComplexity" title="animator.skia.Region.computeRegionComplexity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeRegionComplexity</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.contains" title="animator.skia.Region.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.getBoundaryPath" title="animator.skia.Region.getBoundaryPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getBoundaryPath</span></code></a>(self, path)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.getBounds" title="animator.skia.Region.getBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getBounds</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.intersects" title="animator.skia.Region.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.isComplex" title="animator.skia.Region.isComplex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isComplex</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.isEmpty" title="animator.skia.Region.isEmpty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEmpty</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.isRect" title="animator.skia.Region.isRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isRect</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.makeTranslate" title="animator.skia.Region.makeTranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeTranslate</span></code></a>(self, dx, dy)</p></td>
+<td><p>Makes a copy of <a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> translated by <em>dx</em> and <em>dy</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.op" title="animator.skia.Region.op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">op</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.quickContains" title="animator.skia.Region.quickContains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quickContains</span></code></a>(self, r)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.quickReject" title="animator.skia.Region.quickReject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quickReject</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.readFromMemory" title="animator.skia.Region.readFromMemory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readFromMemory</span></code></a>(self, buffer)</p></td>
+<td><p>Reads <a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> from given <a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.set" title="animator.skia.Region.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a>(self, src)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.setEmpty" title="animator.skia.Region.setEmpty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setEmpty</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.setPath" title="animator.skia.Region.setPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPath</span></code></a>(self, path, clip)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.setRect" title="animator.skia.Region.setRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRect</span></code></a>(self, rect)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.setRects" title="animator.skia.Region.setRects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRects</span></code></a>(self, rects)</p></td>
+<td><p>Constructs <a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> as the union of <a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><code class="xref py py-class docutils literal notranslate"><span class="pre">IRect</span></code></a> in <em>rects</em> array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.setRegion" title="animator.skia.Region.setRegion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRegion</span></code></a>(self, region)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.swap" title="animator.skia.Region.swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swap</span></code></a>(self, other)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Region.translate" title="animator.skia.Region.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a>(self, dx, dy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Region.writeToMemory" title="animator.skia.Region.writeToMemory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeToMemory</span></code></a>(self)</p></td>
+<td><p>Writes <a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> to <a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a> and returns it.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kOpCnt</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Region.Op">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Op</span></span><a class="headerlink" href="#animator.skia.Region.Op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kDifference_Op</p>
+<p>kIntersect_Op</p>
+<p>kUnion_Op</p>
+<p>kXOR_Op</p>
+<p>kReverseDifference_Op</p>
+<p>kReplace_Op</p>
+<p>kLastOp</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Region.Op.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Region.Op.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.computeRegionComplexity">
+<span class="sig-name descname"><span class="pre">computeRegionComplexity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Region.computeRegionComplexity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.contains">
+<span class="sig-name descname"><span class="pre">contains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Region.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>contains(self: animator.skia.Region, x: int, y: int) -&gt; bool</p></li>
+<li><p>contains(self: animator.skia.Region, other: animator.skia.IRect) -&gt; bool</p></li>
+<li><p>contains(self: animator.skia.Region, other: animator.skia.Region) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.getBoundaryPath">
+<span class="sig-name descname"><span class="pre">getBoundaryPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.getBoundaryPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.getBounds">
+<span class="sig-name descname"><span class="pre">getBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a></span></span><a class="headerlink" href="#animator.skia.Region.getBounds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.intersects">
+<span class="sig-name descname"><span class="pre">intersects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Region.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>intersects(self: animator.skia.Region, rect: animator.skia.IRect) -&gt; bool</p></li>
+<li><p>intersects(self: animator.skia.Region, other: animator.skia.Region) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.isComplex">
+<span class="sig-name descname"><span class="pre">isComplex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.isComplex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.isEmpty">
+<span class="sig-name descname"><span class="pre">isEmpty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.isRect">
+<span class="sig-name descname"><span class="pre">isRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.isRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.makeTranslate">
+<span class="sig-name descname"><span class="pre">makeTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></span><a class="headerlink" href="#animator.skia.Region.makeTranslate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a copy of <a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> translated by <em>dx</em> and <em>dy</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.op">
+<span class="sig-name descname"><span class="pre">op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Region.op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>op(self: animator.skia.Region, rect: animator.skia.IRect, op: animator.skia.Region.Op) -&gt; bool</p></li>
+<li><p>op(self: animator.skia.Region, rgn: animator.skia.Region, op: animator.skia.Region.Op) -&gt; bool</p></li>
+<li><p>op(self: animator.skia.Region, rect: animator.skia.IRect, rgn: animator.skia.Region, op: animator.skia.Region.Op) -&gt; bool</p></li>
+<li><p>op(self: animator.skia.Region, rgn: animator.skia.Region, rect: animator.skia.IRect, op: animator.skia.Region.Op) -&gt; bool</p></li>
+<li><p>op(self: animator.skia.Region, rgna: animator.skia.Region, rgnb: animator.skia.Region, op: animator.skia.Region.Op) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.quickContains">
+<span class="sig-name descname"><span class="pre">quickContains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.quickContains" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.quickReject">
+<span class="sig-name descname"><span class="pre">quickReject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Region.quickReject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>quickReject(self: animator.skia.Region, rect: animator.skia.IRect) -&gt; bool</p></li>
+<li><p>quickReject(self: animator.skia.Region, region: animator.skia.Region) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.readFromMemory">
+<span class="sig-name descname"><span class="pre">readFromMemory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><span class="pre">animator.skia.Data</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Region.readFromMemory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads <a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> from given <a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.setEmpty">
+<span class="sig-name descname"><span class="pre">setEmpty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.setEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.setPath">
+<span class="sig-name descname"><span class="pre">setPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.setPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.setRect">
+<span class="sig-name descname"><span class="pre">setRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.setRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.setRects">
+<span class="sig-name descname"><span class="pre">setRects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.setRects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs <a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> as the union of <a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><code class="xref py py-class docutils literal notranslate"><span class="pre">IRect</span></code></a> in <em>rects</em> array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.setRegion">
+<span class="sig-name descname"><span class="pre">setRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Region.setRegion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.swap">
+<span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Region.swap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.translate">
+<span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Region.translate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Region.writeToMemory">
+<span class="sig-name descname"><span class="pre">writeToMemory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><span class="pre">animator.skia.Region</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><span class="pre">animator.skia.Data</span></a></span></span><a class="headerlink" href="#animator.skia.Region.writeToMemory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes <a class="reference internal" href="#animator.skia.Region" title="animator.skia.Region"><code class="xref py py-class docutils literal notranslate"><span class="pre">Region</span></code></a> to <a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a> and returns it.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.Rect.html" title="previous chapter">animator.skia.Rect</a></li>
+      <li>Next: <a href="animator.skia.RuntimeBlendBuilder.html" title="next chapter">animator.skia.RuntimeBlendBuilder</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.Region.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

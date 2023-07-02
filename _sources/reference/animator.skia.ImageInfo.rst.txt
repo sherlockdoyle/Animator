@@ -1,0 +1,58 @@
+animator.skia.ImageInfo
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ImageInfo
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ImageInfo.ByteSizeOverflowed
+      ~ImageInfo.Make
+      ~ImageInfo.MakeA8
+      ~ImageInfo.MakeN32
+      ~ImageInfo.MakeN32Premul
+      ~ImageInfo.MakeS32
+      ~ImageInfo.MakeUnknown
+      ~ImageInfo.__init__
+      ~ImageInfo.alphaType
+      ~ImageInfo.bounds
+      ~ImageInfo.bytesPerPixel
+      ~ImageInfo.colorInfo
+      ~ImageInfo.colorSpace
+      ~ImageInfo.colorType
+      ~ImageInfo.computeByteSize
+      ~ImageInfo.computeMinByteSize
+      ~ImageInfo.computeOffset
+      ~ImageInfo.dimensions
+      ~ImageInfo.gammaCloseToSRGB
+      ~ImageInfo.height
+      ~ImageInfo.isEmpty
+      ~ImageInfo.isOpaque
+      ~ImageInfo.makeAlphaType
+      ~ImageInfo.makeColorSpace
+      ~ImageInfo.makeColorType
+      ~ImageInfo.makeDimensions
+      ~ImageInfo.makeWH
+      ~ImageInfo.minRowBytes
+      ~ImageInfo.minRowBytes64
+      ~ImageInfo.refColorSpace
+      ~ImageInfo.reset
+      ~ImageInfo.shiftPerPixel
+      ~ImageInfo.validRowBytes
+      ~ImageInfo.width
+   
+   
+
+   
+   
+   

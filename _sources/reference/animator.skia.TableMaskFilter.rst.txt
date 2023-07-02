@@ -1,0 +1,30 @@
+animator.skia.TableMaskFilter
+=============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: TableMaskFilter
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TableMaskFilter.Create
+      ~TableMaskFilter.CreateClip
+      ~TableMaskFilter.CreateGamma
+      ~TableMaskFilter.MakeClipTable
+      ~TableMaskFilter.MakeGammaTable
+      ~TableMaskFilter.__init__
+   
+   
+
+   
+   
+   

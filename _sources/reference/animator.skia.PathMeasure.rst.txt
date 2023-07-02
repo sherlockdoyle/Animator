@@ -1,0 +1,32 @@
+animator.skia.PathMeasure
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: PathMeasure
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathMeasure.__init__
+      ~PathMeasure.getLength
+      ~PathMeasure.getMatrix
+      ~PathMeasure.getPosTan
+      ~PathMeasure.getSegment
+      ~PathMeasure.isClosed
+      ~PathMeasure.nextContour
+      ~PathMeasure.setPath
+   
+   
+
+   
+   
+   

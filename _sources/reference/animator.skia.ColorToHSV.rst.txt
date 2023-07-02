@@ -1,0 +1,6 @@
+animator.skia.ColorToHSV
+========================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: ColorToHSV

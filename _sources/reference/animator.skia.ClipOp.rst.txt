@@ -1,0 +1,35 @@
+animator.skia.ClipOp
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ClipOp
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ClipOp.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ClipOp.kDifference
+      ~ClipOp.kIntersect
+      ~ClipOp.kMax_EnumValue
+      ~ClipOp.name
+      ~ClipOp.value
+   
+   

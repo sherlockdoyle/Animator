@@ -1,0 +1,6 @@
+animator.skia.RGBToHSV
+======================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: RGBToHSV

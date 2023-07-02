@@ -1,0 +1,40 @@
+animator.skia.Shader
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Shader
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Shader.Blend
+      ~Shader.Color
+      ~Shader.CoordClamp
+      ~Shader.Deserialize
+      ~Shader.DeserializeAsType
+      ~Shader.Empty
+      ~Shader.MakeFractalNoise
+      ~Shader.MakeTurbulence
+      ~Shader.__init__
+      ~Shader.getFlattenableType
+      ~Shader.getTypeName
+      ~Shader.isAImage
+      ~Shader.isOpaque
+      ~Shader.makeWithColorFilter
+      ~Shader.makeWithLocalMatrix
+      ~Shader.serialize
+   
+   
+
+   
+   
+   

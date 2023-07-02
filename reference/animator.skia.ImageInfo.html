@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.ImageInfo &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.Line2DPathEffect" href="animator.skia.Line2DPathEffect.html" />
+    <link rel="prev" title="animator.skia.ImageFilters" href="animator.skia.ImageFilters.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-imageinfo">
+<h1>animator.skia.ImageInfo<a class="headerlink" href="#animator-skia-imageinfo" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">ImageInfo</span></span><a class="headerlink" href="#animator.skia.ImageInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>The <a class="reference internal" href="#animator.skia.ImageInfo.Make" title="animator.skia.ImageInfo.Make"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Make()</span></code></a> methods are also available as constructors.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.ImageInfo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: animator.skia.ImageInfo) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.ImageInfo, width: int, height: int, ct: animator.skia.ColorType, at: animator.skia.AlphaType, cs: animator.skia.ColorSpace = None) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.ImageInfo, dimensions: animator.skia.ISize, ct: animator.skia.ColorType, at: animator.skia.AlphaType, cs: animator.skia.ColorSpace = None) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.ImageInfo, dimensions: animator.skia.ISize, colorInfo: animator.skia.ColorInfo) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.ByteSizeOverflowed" title="animator.skia.ImageInfo.ByteSizeOverflowed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ByteSizeOverflowed</span></code></a>(byteSize)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.Make" title="animator.skia.ImageInfo.Make"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Make</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.MakeA8" title="animator.skia.ImageInfo.MakeA8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeA8</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.MakeN32" title="animator.skia.ImageInfo.MakeN32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeN32</span></code></a>(width, height, at[, cs])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.MakeN32Premul" title="animator.skia.ImageInfo.MakeN32Premul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeN32Premul</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.MakeS32" title="animator.skia.ImageInfo.MakeS32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeS32</span></code></a>(width, height, at)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.MakeUnknown" title="animator.skia.ImageInfo.MakeUnknown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeUnknown</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.__init__" title="animator.skia.ImageInfo.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.alphaType" title="animator.skia.ImageInfo.alphaType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alphaType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.bounds" title="animator.skia.ImageInfo.bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bounds</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.bytesPerPixel" title="animator.skia.ImageInfo.bytesPerPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytesPerPixel</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.colorInfo" title="animator.skia.ImageInfo.colorInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorInfo</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.colorSpace" title="animator.skia.ImageInfo.colorSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorSpace</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.colorType" title="animator.skia.ImageInfo.colorType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colorType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.computeByteSize" title="animator.skia.ImageInfo.computeByteSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeByteSize</span></code></a>(self, rowBytes)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.computeMinByteSize" title="animator.skia.ImageInfo.computeMinByteSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeMinByteSize</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.computeOffset" title="animator.skia.ImageInfo.computeOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeOffset</span></code></a>(self, x, y, rowBytes)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.dimensions" title="animator.skia.ImageInfo.dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dimensions</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.gammaCloseToSRGB" title="animator.skia.ImageInfo.gammaCloseToSRGB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gammaCloseToSRGB</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.height" title="animator.skia.ImageInfo.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.isEmpty" title="animator.skia.ImageInfo.isEmpty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEmpty</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.isOpaque" title="animator.skia.ImageInfo.isOpaque"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isOpaque</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.makeAlphaType" title="animator.skia.ImageInfo.makeAlphaType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeAlphaType</span></code></a>(self, newAlphaType)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.makeColorSpace" title="animator.skia.ImageInfo.makeColorSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeColorSpace</span></code></a>(self, cs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.makeColorType" title="animator.skia.ImageInfo.makeColorType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeColorType</span></code></a>(self, newColorType)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.makeDimensions" title="animator.skia.ImageInfo.makeDimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeDimensions</span></code></a>(self, newSize)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.makeWH" title="animator.skia.ImageInfo.makeWH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeWH</span></code></a>(self, newWidth, newHeight)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.minRowBytes" title="animator.skia.ImageInfo.minRowBytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minRowBytes</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.minRowBytes64" title="animator.skia.ImageInfo.minRowBytes64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">minRowBytes64</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.refColorSpace" title="animator.skia.ImageInfo.refColorSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refColorSpace</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.reset" title="animator.skia.ImageInfo.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.shiftPerPixel" title="animator.skia.ImageInfo.shiftPerPixel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shiftPerPixel</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.validRowBytes" title="animator.skia.ImageInfo.validRowBytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validRowBytes</span></code></a>(self, rowBytes)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.ImageInfo.width" title="animator.skia.ImageInfo.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.ByteSizeOverflowed">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ByteSizeOverflowed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">byteSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.ByteSizeOverflowed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.Make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.ImageInfo.Make" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>Make(width: int, height: int, ct: animator.skia.ColorType, at: animator.skia.AlphaType, cs: animator.skia.ColorSpace = None) -&gt; animator.skia.ImageInfo</p></li>
+<li><p>Make(dimensions: animator.skia.ISize, ct: animator.skia.ColorType, at: animator.skia.AlphaType, cs: animator.skia.ColorSpace = None) -&gt; animator.skia.ImageInfo</p></li>
+<li><p>Make(dimensions: animator.skia.ISize, colorInfo: animator.skia.ColorInfo) -&gt; animator.skia.ImageInfo</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.MakeA8">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeA8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.ImageInfo.MakeA8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>MakeA8(width: int, height: int) -&gt; animator.skia.ImageInfo</p></li>
+<li><p>MakeA8(dimensions: animator.skia.ISize) -&gt; animator.skia.ImageInfo</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.MakeN32">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeN32</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">at</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><span class="pre">animator.skia.AlphaType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ColorSpace.html#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.MakeN32" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.MakeN32Premul">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeN32Premul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.ImageInfo.MakeN32Premul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>MakeN32Premul(width: int, height: int, cs: animator.skia.ColorSpace = None) -&gt; animator.skia.ImageInfo</p></li>
+<li><p>MakeN32Premul(dimensions: animator.skia.ISize, cs: animator.skia.ColorSpace = None) -&gt; animator.skia.ImageInfo</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.MakeS32">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeS32</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">at</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><span class="pre">animator.skia.AlphaType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.MakeS32" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.MakeUnknown">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeUnknown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.ImageInfo.MakeUnknown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>MakeUnknown(width: int, height: int) -&gt; animator.skia.ImageInfo</p></li>
+<li><p>MakeUnknown() -&gt; animator.skia.ImageInfo</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.alphaType">
+<span class="sig-name descname"><span class="pre">alphaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><span class="pre">animator.skia.AlphaType</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.alphaType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.IRect.html#animator.skia.IRect" title="animator.skia.IRect"><span class="pre">animator.skia.IRect</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.bounds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.bytesPerPixel">
+<span class="sig-name descname"><span class="pre">bytesPerPixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.bytesPerPixel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.colorInfo">
+<span class="sig-name descname"><span class="pre">colorInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorInfo.html#animator.skia.ColorInfo" title="animator.skia.ColorInfo"><span class="pre">animator.skia.ColorInfo</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.colorInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.colorSpace">
+<span class="sig-name descname"><span class="pre">colorSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorSpace.html#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.colorSpace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.colorType">
+<span class="sig-name descname"><span class="pre">colorType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorType.html#animator.skia.ColorType" title="animator.skia.ColorType"><span class="pre">animator.skia.ColorType</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.colorType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.computeByteSize">
+<span class="sig-name descname"><span class="pre">computeByteSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowBytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.computeByteSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.computeMinByteSize">
+<span class="sig-name descname"><span class="pre">computeMinByteSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.computeMinByteSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.computeOffset">
+<span class="sig-name descname"><span class="pre">computeOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowBytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.computeOffset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.dimensions">
+<span class="sig-name descname"><span class="pre">dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ISize.html#animator.skia.ISize" title="animator.skia.ISize"><span class="pre">animator.skia.ISize</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.gammaCloseToSRGB">
+<span class="sig-name descname"><span class="pre">gammaCloseToSRGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.gammaCloseToSRGB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.height">
+<span class="sig-name descname"><span class="pre">height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.isEmpty">
+<span class="sig-name descname"><span class="pre">isEmpty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.isOpaque">
+<span class="sig-name descname"><span class="pre">isOpaque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.isOpaque" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.makeAlphaType">
+<span class="sig-name descname"><span class="pre">makeAlphaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">newAlphaType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.AlphaType.html#animator.skia.AlphaType" title="animator.skia.AlphaType"><span class="pre">animator.skia.AlphaType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.makeAlphaType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.makeColorSpace">
+<span class="sig-name descname"><span class="pre">makeColorSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ColorSpace.html#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.makeColorSpace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.makeColorType">
+<span class="sig-name descname"><span class="pre">makeColorType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">newColorType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ColorType.html#animator.skia.ColorType" title="animator.skia.ColorType"><span class="pre">animator.skia.ColorType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.makeColorType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.makeDimensions">
+<span class="sig-name descname"><span class="pre">makeDimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">newSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ISize.html#animator.skia.ISize" title="animator.skia.ISize"><span class="pre">animator.skia.ISize</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.makeDimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.makeWH">
+<span class="sig-name descname"><span class="pre">makeWH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">newHeight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.makeWH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.minRowBytes">
+<span class="sig-name descname"><span class="pre">minRowBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.minRowBytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.minRowBytes64">
+<span class="sig-name descname"><span class="pre">minRowBytes64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.minRowBytes64" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.refColorSpace">
+<span class="sig-name descname"><span class="pre">refColorSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorSpace.html#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.refColorSpace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.shiftPerPixel">
+<span class="sig-name descname"><span class="pre">shiftPerPixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.shiftPerPixel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.validRowBytes">
+<span class="sig-name descname"><span class="pre">validRowBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowBytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.validRowBytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.ImageInfo.width">
+<span class="sig-name descname"><span class="pre">width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.ImageInfo.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.ImageFilters.html" title="previous chapter">animator.skia.ImageFilters</a></li>
+      <li>Next: <a href="animator.skia.Line2DPathEffect.html" title="next chapter">animator.skia.Line2DPathEffect</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.ImageInfo.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

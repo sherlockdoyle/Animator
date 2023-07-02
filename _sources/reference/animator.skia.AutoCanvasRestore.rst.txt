@@ -1,0 +1,26 @@
+animator.skia.AutoCanvasRestore
+===============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: AutoCanvasRestore
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~AutoCanvasRestore.__init__
+      ~AutoCanvasRestore.restore
+   
+   
+
+   
+   
+   

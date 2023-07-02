@@ -1,0 +1,36 @@
+animator.skia.ColorInfo
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorInfo
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorInfo.__init__
+      ~ColorInfo.alphaType
+      ~ColorInfo.bytesPerPixel
+      ~ColorInfo.colorSpace
+      ~ColorInfo.colorType
+      ~ColorInfo.gammaCloseToSRGB
+      ~ColorInfo.isOpaque
+      ~ColorInfo.makeAlphaType
+      ~ColorInfo.makeColorSpace
+      ~ColorInfo.makeColorType
+      ~ColorInfo.refColorSpace
+      ~ColorInfo.shiftPerPixel
+   
+   
+
+   
+   
+   

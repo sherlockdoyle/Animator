@@ -1,0 +1,6 @@
+animator.skia.ColorGetR
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: ColorGetR

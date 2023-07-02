@@ -1,0 +1,32 @@
+animator.graphics.font\_style
+=============================
+
+.. automodule:: animator.graphics.font_style
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      FontStyle
+      TextStyle
+   
+   
+
+   
+   
+   
+
+
+

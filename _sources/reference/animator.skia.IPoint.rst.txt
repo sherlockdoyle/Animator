@@ -1,0 +1,38 @@
+animator.skia.IPoint
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: IPoint
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~IPoint.Make
+      ~IPoint.__init__
+      ~IPoint.equals
+      ~IPoint.isZero
+      ~IPoint.set
+      ~IPoint.x
+      ~IPoint.y
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~IPoint.fX
+      ~IPoint.fY
+   
+   

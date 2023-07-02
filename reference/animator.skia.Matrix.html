@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.Matrix &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.MatrixPathEffect" href="animator.skia.MatrixPathEffect.html" />
+    <link rel="prev" title="animator.skia.MaskFilter" href="animator.skia.MaskFilter.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-matrix">
+<h1>animator.skia.Matrix<a class="headerlink" href="#animator-skia-matrix" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Matrix">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">Matrix</span></span><a class="headerlink" href="#animator.skia.Matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: animator.skia.Matrix, array: numpy.ndarray[numpy.float32]) -&gt; None</p></li>
+</ol>
+<p>Creates a <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> from 3x3 float32 NumPy array.</p>
+<ol class="arabic simple" start="2">
+<li><p>__init__(self: animator.skia.Matrix) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.Concat" title="animator.skia.Matrix.Concat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Concat</span></code></a>(a, b)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.I" title="animator.skia.Matrix.I"><code class="xref py py-obj docutils literal notranslate"><span class="pre">I</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.InvalidMatrix" title="animator.skia.Matrix.InvalidMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InvalidMatrix</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.MakeAll" title="animator.skia.Matrix.MakeAll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeAll</span></code></a>(scaleX, skewX, transX, skewY, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.MakeRectToRect" title="animator.skia.Matrix.MakeRectToRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeRectToRect</span></code></a>(src, dst, stf)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.RectToRect" title="animator.skia.Matrix.RectToRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RectToRect</span></code></a>(src, dst, mode)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.RotateDeg" title="animator.skia.Matrix.RotateDeg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotateDeg</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.RotateRad" title="animator.skia.Matrix.RotateRad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotateRad</span></code></a>(rad)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.Scale" title="animator.skia.Matrix.Scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Scale</span></code></a>(sx, sy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.SetAffineIdentity" title="animator.skia.Matrix.SetAffineIdentity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetAffineIdentity</span></code></a>()</p></td>
+<td><p>Returns affine with identity values in column major order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.Skew" title="animator.skia.Matrix.Skew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Skew</span></code></a>(kx, ky)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.Translate" title="animator.skia.Matrix.Translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Translate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.__init__" title="animator.skia.Matrix.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.asAffine" title="animator.skia.Matrix.asAffine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asAffine</span></code></a>(self)</p></td>
+<td><p>Returns affine in column major order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.decomposeScale" title="animator.skia.Matrix.decomposeScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decomposeScale</span></code></a>(self)</p></td>
+<td><p>Decomposes <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> into scale components and whatever remains.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.dirtyMatrixTypeCache" title="animator.skia.Matrix.dirtyMatrixTypeCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirtyMatrixTypeCache</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.dump" title="animator.skia.Matrix.dump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.get" title="animator.skia.Matrix.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(self, index)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.get9" title="animator.skia.Matrix.get9"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get9</span></code></a>(self)</p></td>
+<td><p>Returns nine scalar values contained by <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> into list, in member value ascending order: kMScaleX, kMSkewX, kMTransX, kMSkewY, kMScaleY, kMTransY, kMPersp0, kMPersp1, kMPersp2.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.getMaxScale" title="animator.skia.Matrix.getMaxScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMaxScale</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.getMinMaxScales" title="animator.skia.Matrix.getMinMaxScales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMinMaxScales</span></code></a>(self)</p></td>
+<td><p>Returns a tuple of (minimum scaling factor, maximum scaling factor).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.getMinScale" title="animator.skia.Matrix.getMinScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMinScale</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.getPerspX" title="animator.skia.Matrix.getPerspX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPerspX</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.getPerspY" title="animator.skia.Matrix.getPerspY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPerspY</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.getScaleX" title="animator.skia.Matrix.getScaleX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getScaleX</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.getScaleY" title="animator.skia.Matrix.getScaleY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getScaleY</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.getSkewX" title="animator.skia.Matrix.getSkewX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSkewX</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.getSkewY" title="animator.skia.Matrix.getSkewY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSkewY</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.getTranslateX" title="animator.skia.Matrix.getTranslateX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getTranslateX</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.getTranslateY" title="animator.skia.Matrix.getTranslateY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getTranslateY</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.getType" title="animator.skia.Matrix.getType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.hasPerspective" title="animator.skia.Matrix.hasPerspective"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasPerspective</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.invert" title="animator.skia.Matrix.invert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invert</span></code></a>(self, inverse)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.isFinite" title="animator.skia.Matrix.isFinite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFinite</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.isIdentity" title="animator.skia.Matrix.isIdentity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isIdentity</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.isScaleTranslate" title="animator.skia.Matrix.isScaleTranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isScaleTranslate</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.isSimilarity" title="animator.skia.Matrix.isSimilarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSimilarity</span></code></a>(self[, tol])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.isTranslate" title="animator.skia.Matrix.isTranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isTranslate</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.makeInverse" title="animator.skia.Matrix.makeInverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeInverse</span></code></a>(self)</p></td>
+<td><p>Returns the inverse of the matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapHomogeneousPoints" title="animator.skia.Matrix.mapHomogeneousPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapHomogeneousPoints</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapOrigin" title="animator.skia.Matrix.mapOrigin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapOrigin</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapPoint" title="animator.skia.Matrix.mapPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapPoint</span></code></a>(self, pt)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapPoints" title="animator.skia.Matrix.mapPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapPoints</span></code></a>(self, pts)</p></td>
+<td><p>Maps <em>src</em> list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> and returns a new list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapRadius" title="animator.skia.Matrix.mapRadius"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapRadius</span></code></a>(self, radius)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapRect" title="animator.skia.Matrix.mapRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapRect</span></code></a>(self, src, pc)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapRectScaleTranslate" title="animator.skia.Matrix.mapRectScaleTranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapRectScaleTranslate</span></code></a>(self, src)</p></td>
+<td><p>Returns bounds of src corners mapped by <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapRectToQuad" title="animator.skia.Matrix.mapRectToQuad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapRectToQuad</span></code></a>(self, rect)</p></td>
+<td><p>Maps four corners of <em>rect</em> to a list of 4 <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapVector" title="animator.skia.Matrix.mapVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapVector</span></code></a>(self, dx, dy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapVectors" title="animator.skia.Matrix.mapVectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapVectors</span></code></a>(self, vecs)</p></td>
+<td><p>Maps <em>vecs</em> list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> and returns a new list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>, multiplying each vector by <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a>, treating translation as zero.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.mapXY" title="animator.skia.Matrix.mapXY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapXY</span></code></a>(self, x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.normalizePerspective" title="animator.skia.Matrix.normalizePerspective"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalizePerspective</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.postConcat" title="animator.skia.Matrix.postConcat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postConcat</span></code></a>(self, other)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.postRotate" title="animator.skia.Matrix.postRotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postRotate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.postScale" title="animator.skia.Matrix.postScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postScale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.postSkew" title="animator.skia.Matrix.postSkew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postSkew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.postTranslate" title="animator.skia.Matrix.postTranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postTranslate</span></code></a>(self, dx, dy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.preConcat" title="animator.skia.Matrix.preConcat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preConcat</span></code></a>(self, other)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.preRotate" title="animator.skia.Matrix.preRotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preRotate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.preScale" title="animator.skia.Matrix.preScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preScale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.preSkew" title="animator.skia.Matrix.preSkew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preSkew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.preTranslate" title="animator.skia.Matrix.preTranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preTranslate</span></code></a>(self, dx, dy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.preservesAxisAlignment" title="animator.skia.Matrix.preservesAxisAlignment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preservesAxisAlignment</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.preservesRightAngles" title="animator.skia.Matrix.preservesRightAngles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preservesRightAngles</span></code></a>(self[, tol])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.rc" title="animator.skia.Matrix.rc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rc</span></code></a>(self, r, c)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.rectStaysRect" title="animator.skia.Matrix.rectStaysRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rectStaysRect</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.reset" title="animator.skia.Matrix.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.set" title="animator.skia.Matrix.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set</span></code></a>(self, index, value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.set9" title="animator.skia.Matrix.set9"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set9</span></code></a>(self, buffer)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setAffine" title="animator.skia.Matrix.setAffine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAffine</span></code></a>(self, affine)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setAll" title="animator.skia.Matrix.setAll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAll</span></code></a>(self, scaleX, skewX, transX, skewY, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setConcat" title="animator.skia.Matrix.setConcat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setConcat</span></code></a>(self, a, b)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setIdentity" title="animator.skia.Matrix.setIdentity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIdentity</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setPerspX" title="animator.skia.Matrix.setPerspX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPerspX</span></code></a>(self, v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setPerspY" title="animator.skia.Matrix.setPerspY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPerspY</span></code></a>(self, v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setPolyToPoly" title="animator.skia.Matrix.setPolyToPoly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPolyToPoly</span></code></a>(self, src, dst)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setRSXform" title="animator.skia.Matrix.setRSXform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRSXform</span></code></a>(self, rsxForm)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setRectToRect" title="animator.skia.Matrix.setRectToRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRectToRect</span></code></a>(self, src, dst, stf)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setRotate" title="animator.skia.Matrix.setRotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setRotate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setScale" title="animator.skia.Matrix.setScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setScale</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setScaleTranslate" title="animator.skia.Matrix.setScaleTranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setScaleTranslate</span></code></a>(self, sx, sy, tx, ty)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setScaleX" title="animator.skia.Matrix.setScaleX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setScaleX</span></code></a>(self, v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setScaleY" title="animator.skia.Matrix.setScaleY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setScaleY</span></code></a>(self, v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setSinCos" title="animator.skia.Matrix.setSinCos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSinCos</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setSkew" title="animator.skia.Matrix.setSkew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSkew</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setSkewX" title="animator.skia.Matrix.setSkewX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSkewX</span></code></a>(self, v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setSkewY" title="animator.skia.Matrix.setSkewY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setSkewY</span></code></a>(self, v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setTranslate" title="animator.skia.Matrix.setTranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTranslate</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Matrix.setTranslateX" title="animator.skia.Matrix.setTranslateX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTranslateX</span></code></a>(self, v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Matrix.setTranslateY" title="animator.skia.Matrix.setTranslateY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setTranslateY</span></code></a>(self, v)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kAScaleX</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kAScaleY</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kASkewX</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kASkewY</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kATransX</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kATransY</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMPersp0</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMPersp1</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMPersp2</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMScaleX</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMScaleY</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMSkewX</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMSkewY</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMTransX</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kMTransY</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.Concat">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.Concat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.I">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">I</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.I" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.InvalidMatrix">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InvalidMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.InvalidMatrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.MakeAll">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scaleX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">skewX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">transX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">skewY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">transY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pers0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pers1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pers2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.MakeAll" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.MakeRectToRect">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeRectToRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix.ScaleToFit" title="animator.skia.Matrix.ScaleToFit"><span class="pre">animator.skia.Matrix.ScaleToFit</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.MakeRectToRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.RectToRect">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RectToRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src:</span> <span class="pre">animator.skia.Rect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst:</span> <span class="pre">animator.skia.Rect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode:</span> <span class="pre">animator.skia.Matrix.ScaleToFit</span> <span class="pre">=</span> <span class="pre">&lt;ScaleToFit.kFill_ScaleToFit:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.RectToRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.RotateDeg">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RotateDeg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.RotateDeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>RotateDeg(deg: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>RotateDeg(deg: float, pt: animator.skia.Point) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.RotateRad">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RotateRad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.RotateRad" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.Scale">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.Scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Matrix.ScaleToFit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScaleToFit</span></span><a class="headerlink" href="#animator.skia.Matrix.ScaleToFit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kFill_ScaleToFit</p>
+<p>kStart_ScaleToFit</p>
+<p>kCenter_ScaleToFit</p>
+<p>kEnd_ScaleToFit</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Matrix.ScaleToFit.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Matrix.ScaleToFit.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.SetAffineIdentity">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SetAffineIdentity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Matrix.SetAffineIdentity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns affine with identity values in column major order. Sets affine to:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">1 0 0 |</div>
+<div class="line">0 1 0 |</div>
+</div>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of 6 floats</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.Skew">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Skew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ky</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.Skew" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.Translate">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.Translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>Translate(dx: float, dy: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>Translate(t: animator.skia.Point) -&gt; animator.skia.Matrix</p></li>
+<li><p>Translate(t: animator.skia.IPoint) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Matrix.TypeMask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TypeMask</span></span><a class="headerlink" href="#animator.skia.Matrix.TypeMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kIdentity_Mask</p>
+<p>kTranslate_Mask</p>
+<p>kScale_Mask</p>
+<p>kAffine_Mask</p>
+<p>kPerspective_Mask</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Matrix.TypeMask.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Matrix.TypeMask.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.asAffine">
+<span class="sig-name descname"><span class="pre">asAffine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Matrix.asAffine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns affine in column major order. Sets affine to:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">scale-x  skew-x translate-x |</div>
+<div class="line">skew-y  scale-y translate-y |</div>
+</div>
+</div></blockquote>
+<p>If <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> contains perspective, returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of 6 floats or <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.decomposeScale">
+<span class="sig-name descname"><span class="pre">decomposeScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Matrix.decomposeScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decomposes <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> into scale components and whatever remains. Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if
+<a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> could not be decomposed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple of (axes scaling factors, <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> without scaling) or <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>(<a class="reference internal" href="animator.skia.Size.html#animator.skia.Size" title="animator.skia.Size"><code class="xref py py-class docutils literal notranslate"><span class="pre">Size</span></code></a>, <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a>) | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.dirtyMatrixTypeCache">
+<span class="sig-name descname"><span class="pre">dirtyMatrixTypeCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.dirtyMatrixTypeCache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.dump">
+<span class="sig-name descname"><span class="pre">dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.get9">
+<span class="sig-name descname"><span class="pre">get9</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Matrix.get9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns nine scalar values contained by <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> into list, in member value ascending order:
+kMScaleX, kMSkewX, kMTransX, kMSkewY, kMScaleY, kMTransY, kMPersp0, kMPersp1, kMPersp2.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getMaxScale">
+<span class="sig-name descname"><span class="pre">getMaxScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getMaxScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getMinMaxScales">
+<span class="sig-name descname"><span class="pre">getMinMaxScales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Matrix.getMinMaxScales" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of (minimum scaling factor, maximum scaling factor). Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if scale factors
+are not found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>minimum and maximum scale factors</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>(<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)">float</a>) | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getMinScale">
+<span class="sig-name descname"><span class="pre">getMinScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getMinScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getPerspX">
+<span class="sig-name descname"><span class="pre">getPerspX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getPerspX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getPerspY">
+<span class="sig-name descname"><span class="pre">getPerspY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getPerspY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getScaleX">
+<span class="sig-name descname"><span class="pre">getScaleX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getScaleX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getScaleY">
+<span class="sig-name descname"><span class="pre">getScaleY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getScaleY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getSkewX">
+<span class="sig-name descname"><span class="pre">getSkewX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getSkewX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getSkewY">
+<span class="sig-name descname"><span class="pre">getSkewY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getSkewY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getTranslateX">
+<span class="sig-name descname"><span class="pre">getTranslateX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getTranslateX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getTranslateY">
+<span class="sig-name descname"><span class="pre">getTranslateY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getTranslateY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.getType">
+<span class="sig-name descname"><span class="pre">getType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix.TypeMask" title="animator.skia.Matrix.TypeMask"><span class="pre">animator.skia.Matrix.TypeMask</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.getType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.hasPerspective">
+<span class="sig-name descname"><span class="pre">hasPerspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.hasPerspective" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.invert">
+<span class="sig-name descname"><span class="pre">invert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.invert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.isFinite">
+<span class="sig-name descname"><span class="pre">isFinite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.isFinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.isIdentity">
+<span class="sig-name descname"><span class="pre">isIdentity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.isIdentity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.isScaleTranslate">
+<span class="sig-name descname"><span class="pre">isScaleTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.isScaleTranslate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.isSimilarity">
+<span class="sig-name descname"><span class="pre">isSimilarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.000244140625</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.isSimilarity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.isTranslate">
+<span class="sig-name descname"><span class="pre">isTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.isTranslate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.makeInverse">
+<span class="sig-name descname"><span class="pre">makeInverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.makeInverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inverse of the matrix. If the matrix is singular, throws a ValueError.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The inverse of the matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapHomogeneousPoints">
+<span class="sig-name descname"><span class="pre">mapHomogeneousPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.mapHomogeneousPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic">
+<li><p>mapHomogeneousPoints(self: animator.skia.Matrix, src: List[animator.skia.Point3]) -&gt; List[animator.skia.Point3]</p>
+<blockquote>
+<div><p>Maps <em>src</em> list of <a class="reference internal" href="animator.skia.Point3.html#animator.skia.Point3" title="animator.skia.Point3"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point3</span></code></a> and returns a new list of <a class="reference internal" href="animator.skia.Point3.html#animator.skia.Point3" title="animator.skia.Point3"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point3</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param src</dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="animator.skia.Point3.html#animator.skia.Point3" title="animator.skia.Point3"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point3</span></code></a> to transform</p>
+</dd>
+<dt class="field-even">return</dt>
+<dd class="field-even"><p>list of mapped <a class="reference internal" href="animator.skia.Point3.html#animator.skia.Point3" title="animator.skia.Point3"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point3</span></code></a></p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>mapHomogeneousPoints(self: animator.skia.Matrix, src: List[animator.skia.Point]) -&gt; List[animator.skia.Point3]</p></li>
+</ol>
+<p>Returns homogeneous points, starting with 2D src points (with implied w = 1).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapOrigin">
+<span class="sig-name descname"><span class="pre">mapOrigin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.mapOrigin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapPoint">
+<span class="sig-name descname"><span class="pre">mapPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.mapPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapPoints">
+<span class="sig-name descname"><span class="pre">mapPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Matrix.mapPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps <em>src</em> list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> and returns a new list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>src</strong> – list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of mapped <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapRadius">
+<span class="sig-name descname"><span class="pre">mapRadius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.mapRadius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapRect">
+<span class="sig-name descname"><span class="pre">mapRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.Matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src:</span> <span class="pre">animator.skia.Rect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pc:</span> <span class="pre">animator.skia.ApplyPerspectiveClip</span> <span class="pre">=</span> <span class="pre">&lt;ApplyPerspectiveClip.kYes:</span> <span class="pre">1&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.mapRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapRectScaleTranslate">
+<span class="sig-name descname"><span class="pre">mapRectScaleTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.mapRectScaleTranslate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns bounds of src corners mapped by <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>src</strong> – <a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rect</span></code></a> to map</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bounds of mapped <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapRectToQuad">
+<span class="sig-name descname"><span class="pre">mapRectToQuad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Matrix.mapRectToQuad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps four corners of <em>rect</em> to a list of 4 <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rect</strong> – <a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rect</span></code></a> to map</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mapped corner <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapVector">
+<span class="sig-name descname"><span class="pre">mapVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.mapVector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapVectors">
+<span class="sig-name descname"><span class="pre">mapVectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">vecs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Matrix.mapVectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps <em>vecs</em> list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> and returns a new list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>, multiplying each
+vector by <a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a>, treating translation as zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vecs</strong> – list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of transformed <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.mapXY">
+<span class="sig-name descname"><span class="pre">mapXY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.mapXY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.normalizePerspective">
+<span class="sig-name descname"><span class="pre">normalizePerspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.normalizePerspective" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.postConcat">
+<span class="sig-name descname"><span class="pre">postConcat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.postConcat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.postRotate">
+<span class="sig-name descname"><span class="pre">postRotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.postRotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>postRotate(self: animator.skia.Matrix, degrees: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>postRotate(self: animator.skia.Matrix, degrees: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.postScale">
+<span class="sig-name descname"><span class="pre">postScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.postScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>postScale(self: animator.skia.Matrix, sx: float, sy: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>postScale(self: animator.skia.Matrix, sx: float, sy: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.postSkew">
+<span class="sig-name descname"><span class="pre">postSkew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.postSkew" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>postSkew(self: animator.skia.Matrix, kx: float, ky: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>postSkew(self: animator.skia.Matrix, kx: float, ky: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.postTranslate">
+<span class="sig-name descname"><span class="pre">postTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.postTranslate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.preConcat">
+<span class="sig-name descname"><span class="pre">preConcat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.preConcat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.preRotate">
+<span class="sig-name descname"><span class="pre">preRotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.preRotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>preRotate(self: animator.skia.Matrix, degrees: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>preRotate(self: animator.skia.Matrix, degrees: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.preScale">
+<span class="sig-name descname"><span class="pre">preScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.preScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>preScale(self: animator.skia.Matrix, sx: float, sy: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>preScale(self: animator.skia.Matrix, sx: float, sy: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.preSkew">
+<span class="sig-name descname"><span class="pre">preSkew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.preSkew" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>preSkew(self: animator.skia.Matrix, kx: float, ky: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>preSkew(self: animator.skia.Matrix, kx: float, ky: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.preTranslate">
+<span class="sig-name descname"><span class="pre">preTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.preTranslate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.preservesAxisAlignment">
+<span class="sig-name descname"><span class="pre">preservesAxisAlignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.preservesAxisAlignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.preservesRightAngles">
+<span class="sig-name descname"><span class="pre">preservesRightAngles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.000244140625</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.preservesRightAngles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.rc">
+<span class="sig-name descname"><span class="pre">rc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.rc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.rectStaysRect">
+<span class="sig-name descname"><span class="pre">rectStaysRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.rectStaysRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.set9">
+<span class="sig-name descname"><span class="pre">set9</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.set9" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setAffine">
+<span class="sig-name descname"><span class="pre">setAffine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">affine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setAffine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setAll">
+<span class="sig-name descname"><span class="pre">setAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">skewX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">transX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">skewY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">transY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">persp0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">persp1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">persp2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setAll" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setConcat">
+<span class="sig-name descname"><span class="pre">setConcat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setConcat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setIdentity">
+<span class="sig-name descname"><span class="pre">setIdentity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setIdentity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setPerspX">
+<span class="sig-name descname"><span class="pre">setPerspX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setPerspX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setPerspY">
+<span class="sig-name descname"><span class="pre">setPerspY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setPerspY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setPolyToPoly">
+<span class="sig-name descname"><span class="pre">setPolyToPoly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setPolyToPoly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setRSXform">
+<span class="sig-name descname"><span class="pre">setRSXform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rsxForm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.RSXform.html#animator.skia.RSXform" title="animator.skia.RSXform"><span class="pre">animator.skia.RSXform</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setRSXform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setRectToRect">
+<span class="sig-name descname"><span class="pre">setRectToRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix.ScaleToFit" title="animator.skia.Matrix.ScaleToFit"><span class="pre">animator.skia.Matrix.ScaleToFit</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setRectToRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setRotate">
+<span class="sig-name descname"><span class="pre">setRotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.setRotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>setRotate(self: animator.skia.Matrix, degrees: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>setRotate(self: animator.skia.Matrix, degrees: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setScale">
+<span class="sig-name descname"><span class="pre">setScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.setScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>setScale(self: animator.skia.Matrix, sx: float, sy: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>setScale(self: animator.skia.Matrix, sx: float, sy: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setScaleTranslate">
+<span class="sig-name descname"><span class="pre">setScaleTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setScaleTranslate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setScaleX">
+<span class="sig-name descname"><span class="pre">setScaleX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setScaleX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setScaleY">
+<span class="sig-name descname"><span class="pre">setScaleY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setScaleY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setSinCos">
+<span class="sig-name descname"><span class="pre">setSinCos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.setSinCos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>setSinCos(self: animator.skia.Matrix, sinValue: float, cosValue: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>setSinCos(self: animator.skia.Matrix, sinValue: float, cosValue: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setSkew">
+<span class="sig-name descname"><span class="pre">setSkew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.setSkew" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>setSkew(self: animator.skia.Matrix, kx: float, ky: float, px: float, py: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>setSkew(self: animator.skia.Matrix, kx: float, ky: float) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setSkewX">
+<span class="sig-name descname"><span class="pre">setSkewX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setSkewX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setSkewY">
+<span class="sig-name descname"><span class="pre">setSkewY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setSkewY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setTranslate">
+<span class="sig-name descname"><span class="pre">setTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Matrix.setTranslate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>setTranslate(self: animator.skia.Matrix, dx: float, dy: float) -&gt; animator.skia.Matrix</p></li>
+<li><p>setTranslate(self: animator.skia.Matrix, v: animator.skia.Point) -&gt; animator.skia.Matrix</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setTranslateX">
+<span class="sig-name descname"><span class="pre">setTranslateX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setTranslateX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Matrix.setTranslateY">
+<span class="sig-name descname"><span class="pre">setTranslateY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.Matrix.setTranslateY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.MaskFilter.html" title="previous chapter">animator.skia.MaskFilter</a></li>
+      <li>Next: <a href="animator.skia.MatrixPathEffect.html" title="next chapter">animator.skia.MatrixPathEffect</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.Matrix.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

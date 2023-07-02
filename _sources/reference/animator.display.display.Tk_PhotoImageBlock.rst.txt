@@ -1,0 +1,36 @@
+animator.display.display.Tk\_PhotoImageBlock
+============================================
+
+.. currentmodule:: animator.display.display
+
+.. autoclass:: Tk_PhotoImageBlock
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Tk_PhotoImageBlock.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Tk_PhotoImageBlock.height
+      ~Tk_PhotoImageBlock.offset
+      ~Tk_PhotoImageBlock.pitch
+      ~Tk_PhotoImageBlock.pixelPtr
+      ~Tk_PhotoImageBlock.pixelSize
+      ~Tk_PhotoImageBlock.width
+   
+   

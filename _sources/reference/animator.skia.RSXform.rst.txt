@@ -1,0 +1,41 @@
+animator.skia.RSXform
+=====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: RSXform
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~RSXform.Make
+      ~RSXform.MakeFromRadians
+      ~RSXform.__init__
+      ~RSXform.rectStaysRect
+      ~RSXform.set
+      ~RSXform.setIdentity
+      ~RSXform.toQuad
+      ~RSXform.toTriStrip
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~RSXform.fSCos
+      ~RSXform.fSSin
+      ~RSXform.fTx
+      ~RSXform.fTy
+   
+   

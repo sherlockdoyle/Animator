@@ -1,0 +1,26 @@
+animator.skia.DiscretePathEffect
+================================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: DiscretePathEffect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DiscretePathEffect.Make
+      ~DiscretePathEffect.__init__
+   
+   
+
+   
+   
+   

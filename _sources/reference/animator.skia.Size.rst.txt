@@ -1,0 +1,44 @@
+animator.skia.Size
+==================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Size
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Size.Make
+      ~Size.MakeEmpty
+      ~Size.__init__
+      ~Size.equals
+      ~Size.height
+      ~Size.isEmpty
+      ~Size.isZero
+      ~Size.set
+      ~Size.setEmpty
+      ~Size.toCeil
+      ~Size.toFloor
+      ~Size.toRound
+      ~Size.width
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Size.fHeight
+      ~Size.fWidth
+   
+   

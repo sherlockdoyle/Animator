@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.display.display &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-animator.display.display">
+<span id="animator-display-display"></span><h1>animator.display.display<a class="headerlink" href="#module-animator.display.display" title="Permalink to this headline">¶</a></h1>
+<p>Implementations of different display managers. This currently supports Qt (4 and 5), Tkinter (a slow and a fast
+version), OpenCV, and Matplotlib. The slower Tkinter version and OpenCV does not support transparency. The best display
+manager will be automatically selected.</p>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="animator.display.display.DM_cv2.html#animator.display.display.DM_cv2" title="animator.display.display.DM_cv2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DM_cv2</span></code></a>(scene[, delay])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="animator.display.display.DM_html.html#animator.display.display.DM_html" title="animator.display.display.DM_html"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DM_html</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="animator.display.display.DM_plt.html#animator.display.display.DM_plt" title="animator.display.display.DM_plt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DM_plt</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="animator.display.display.DM_qt.html#animator.display.display.DM_qt" title="animator.display.display.DM_qt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DM_qt</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="animator.display.display.DM_tk.html#animator.display.display.DM_tk" title="animator.display.display.DM_tk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DM_tk</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="animator.display.display.DM_tkf.html#animator.display.display.DM_tkf" title="animator.display.display.DM_tkf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DM_tkf</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="animator.display.display.Tk_PhotoImageBlock.html#animator.display.display.Tk_PhotoImageBlock" title="animator.display.display.Tk_PhotoImageBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tk_PhotoImageBlock</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="animator.display.display.c_uchar_p.html#animator.display.display.c_uchar_p" title="animator.display.display.c_uchar_p"><code class="xref py py-obj docutils literal notranslate"><span class="pre">c_uchar_p</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">animator.display.display.LP_c_ubyte</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.display.display.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

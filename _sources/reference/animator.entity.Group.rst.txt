@@ -1,0 +1,55 @@
+animator.entity.Group
+=====================
+
+.. currentmodule:: animator.entity
+
+.. autoclass:: Group
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Group.__init__
+      ~Group.add
+      ~Group.align
+      ~Group.center
+      ~Group.clear
+      ~Group.do_fill
+      ~Group.do_stroke
+      ~Group.draw
+      ~Group.get_bounds
+      ~Group.get_dimensions
+      ~Group.move
+      ~Group.on_draw
+      ~Group.reset_transform
+      ~Group.rotate
+      ~Group.scale
+      ~Group.set_relative_pos
+      ~Group.set_relative_to_entity
+      ~Group.set_scene
+      ~Group.set_visibility
+      ~Group.shift
+      ~Group.skew
+      ~Group.transform
+      ~Group.translate
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Group.absolute_position
+      ~Group.total_transformation
+      ~Group.z_index
+   
+   

@@ -1,0 +1,30 @@
+animator.skia.ColorTable
+========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorTable
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorTable.Make
+      ~ColorTable.__init__
+      ~ColorTable.alphaTable
+      ~ColorTable.blueTable
+      ~ColorTable.greenTable
+      ~ColorTable.redTable
+   
+   
+
+   
+   
+   

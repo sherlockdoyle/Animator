@@ -1,0 +1,27 @@
+animator.skia.MatrixPathEffect
+==============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: MatrixPathEffect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MatrixPathEffect.Make
+      ~MatrixPathEffect.MakeTranslate
+      ~MatrixPathEffect.__init__
+   
+   
+
+   
+   
+   

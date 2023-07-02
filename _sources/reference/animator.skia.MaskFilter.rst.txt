@@ -1,0 +1,32 @@
+animator.skia.MaskFilter
+========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: MaskFilter
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MaskFilter.Deserialize
+      ~MaskFilter.DeserializeAsType
+      ~MaskFilter.MakeBlur
+      ~MaskFilter.__init__
+      ~MaskFilter.approximateFilteredBounds
+      ~MaskFilter.getFlattenableType
+      ~MaskFilter.getTypeName
+      ~MaskFilter.serialize
+   
+   
+
+   
+   
+   

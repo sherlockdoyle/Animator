@@ -1,0 +1,32 @@
+animator.graphics.gradient.Gradient
+===================================
+
+.. currentmodule:: animator.graphics.gradient
+
+.. autoclass:: Gradient
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Gradient.Conical
+      ~Gradient.Linear
+      ~Gradient.Radial
+      ~Gradient.__init__
+      ~Gradient.add_color_stop
+      ~Gradient.add_colors
+      ~Gradient.build
+      ~Gradient.set_tile_mode
+   
+   
+
+   
+   
+   

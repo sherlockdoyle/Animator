@@ -1,0 +1,36 @@
+animator.skia.PathSegmentMask
+=============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: PathSegmentMask
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathSegmentMask.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathSegmentMask.kConic_PathSegmentMask
+      ~PathSegmentMask.kCubic_PathSegmentMask
+      ~PathSegmentMask.kLine_PathSegmentMask
+      ~PathSegmentMask.kQuad_PathSegmentMask
+      ~PathSegmentMask.name
+      ~PathSegmentMask.value
+   
+   

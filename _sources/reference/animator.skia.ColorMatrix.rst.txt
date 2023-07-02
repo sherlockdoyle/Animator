@@ -1,0 +1,36 @@
+animator.skia.ColorMatrix
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorMatrix
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorMatrix.RGBtoYUV
+      ~ColorMatrix.YUVtoRGB
+      ~ColorMatrix.__init__
+      ~ColorMatrix.getRowMajor
+      ~ColorMatrix.postConcat
+      ~ColorMatrix.postTranslate
+      ~ColorMatrix.preConcat
+      ~ColorMatrix.setConcat
+      ~ColorMatrix.setIdentity
+      ~ColorMatrix.setRowMajor
+      ~ColorMatrix.setSaturation
+      ~ColorMatrix.setScale
+   
+   
+
+   
+   
+   

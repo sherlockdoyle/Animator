@@ -1,0 +1,35 @@
+animator.display.display.DM\_plt
+================================
+
+.. currentmodule:: animator.display.display
+
+.. autoclass:: DM_plt
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DM_plt.__init__
+      ~DM_plt.close
+      ~DM_plt.get_best
+      ~DM_plt.show_frame
+      ~DM_plt.waittime
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~DM_plt.display_method
+   
+   

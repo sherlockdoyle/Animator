@@ -1,0 +1,6 @@
+animator.skia.PreMultiplyColor
+==============================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: PreMultiplyColor

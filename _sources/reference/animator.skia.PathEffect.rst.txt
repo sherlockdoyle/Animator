@@ -1,0 +1,36 @@
+animator.skia.PathEffect
+========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: PathEffect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathEffect.Deserialize
+      ~PathEffect.DeserializeAsType
+      ~PathEffect.GetFlattenableType
+      ~PathEffect.MakeCompose
+      ~PathEffect.MakeSum
+      ~PathEffect.__init__
+      ~PathEffect.asADash
+      ~PathEffect.filterPath
+      ~PathEffect.getFlattenableType
+      ~PathEffect.getTypeName
+      ~PathEffect.needsCTM
+      ~PathEffect.serialize
+   
+   
+
+   
+   
+   

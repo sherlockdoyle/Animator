@@ -1,0 +1,35 @@
+animator.display.display.DM\_tk
+===============================
+
+.. currentmodule:: animator.display.display
+
+.. autoclass:: DM_tk
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DM_tk.__init__
+      ~DM_tk.close
+      ~DM_tk.get_best
+      ~DM_tk.show_frame
+      ~DM_tk.waittime
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~DM_tk.display_method
+   
+   

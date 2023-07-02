@@ -1,0 +1,38 @@
+animator.skia.PathVerb
+======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: PathVerb
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathVerb.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathVerb.kClose
+      ~PathVerb.kConic
+      ~PathVerb.kCubic
+      ~PathVerb.kLine
+      ~PathVerb.kMove
+      ~PathVerb.kQuad
+      ~PathVerb.name
+      ~PathVerb.value
+   
+   

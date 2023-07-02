@@ -1,0 +1,54 @@
+animator.skia.PathBuilder
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: PathBuilder
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathBuilder.__init__
+      ~PathBuilder.addArc
+      ~PathBuilder.addCircle
+      ~PathBuilder.addOval
+      ~PathBuilder.addPath
+      ~PathBuilder.addPolygon
+      ~PathBuilder.addRRect
+      ~PathBuilder.addRect
+      ~PathBuilder.arcTo
+      ~PathBuilder.close
+      ~PathBuilder.computeBounds
+      ~PathBuilder.conicTo
+      ~PathBuilder.cubicTo
+      ~PathBuilder.detach
+      ~PathBuilder.fillType
+      ~PathBuilder.incReserve
+      ~PathBuilder.lineTo
+      ~PathBuilder.moveTo
+      ~PathBuilder.offset
+      ~PathBuilder.polylineTo
+      ~PathBuilder.quadTo
+      ~PathBuilder.rConicTo
+      ~PathBuilder.rCubicTo
+      ~PathBuilder.rLineTo
+      ~PathBuilder.rQuadTo
+      ~PathBuilder.reset
+      ~PathBuilder.setFillType
+      ~PathBuilder.setIsVolatile
+      ~PathBuilder.snapshot
+      ~PathBuilder.toggleInverseFillType
+   
+   
+
+   
+   
+   

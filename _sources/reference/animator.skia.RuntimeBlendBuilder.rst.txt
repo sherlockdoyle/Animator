@@ -1,0 +1,31 @@
+animator.skia.RuntimeBlendBuilder
+=================================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: RuntimeBlendBuilder
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~RuntimeBlendBuilder.__init__
+      ~RuntimeBlendBuilder.child
+      ~RuntimeBlendBuilder.children
+      ~RuntimeBlendBuilder.effect
+      ~RuntimeBlendBuilder.makeBlender
+      ~RuntimeBlendBuilder.uniform
+      ~RuntimeBlendBuilder.uniforms
+   
+   
+
+   
+   
+   

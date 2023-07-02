@@ -1,0 +1,38 @@
+animator.skia.ImageFilter
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ImageFilter
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ImageFilter.Deserialize
+      ~ImageFilter.DeserializeAsType
+      ~ImageFilter.__init__
+      ~ImageFilter.asAColorFilter
+      ~ImageFilter.canComputeFastBounds
+      ~ImageFilter.computeFastBounds
+      ~ImageFilter.countInputs
+      ~ImageFilter.filterBounds
+      ~ImageFilter.getFlattenableType
+      ~ImageFilter.getInput
+      ~ImageFilter.getTypeName
+      ~ImageFilter.isColorFilterNode
+      ~ImageFilter.makeWithLocalMatrix
+      ~ImageFilter.serialize
+   
+   
+
+   
+   
+   

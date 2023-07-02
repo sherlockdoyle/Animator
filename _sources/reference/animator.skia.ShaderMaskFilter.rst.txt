@@ -1,0 +1,26 @@
+animator.skia.ShaderMaskFilter
+==============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ShaderMaskFilter
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ShaderMaskFilter.Make
+      ~ShaderMaskFilter.__init__
+   
+   
+
+   
+   
+   

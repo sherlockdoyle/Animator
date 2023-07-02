@@ -1,0 +1,160 @@
+animator.skia
+=============
+
+.. automodule:: animator.skia
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      Color
+      ColorGetA
+      ColorGetB
+      ColorGetG
+      ColorGetR
+      ColorSetA
+      ColorSetARGB
+      ColorSetRGB
+      ColorToHSV
+      HSVToColor
+      MakeNullCanvas
+      PreMultiplyARGB
+      PreMultiplyColor
+      RGBToHSV
+      uniqueColor
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      AlphaType
+      ApplyPerspectiveClip
+      AutoCanvasRestore
+      Bitmap
+      BlendMode
+      BlendModeCoeff
+      Blender
+      Blenders
+      BlurStyle
+      Canvas
+      ClipOp
+      Color4f
+      ColorChannel
+      ColorChannelFlag
+      ColorFilter
+      ColorFilters
+      ColorInfo
+      ColorMatrix
+      ColorMatrixFilter
+      ColorSpace
+      ColorSpacePrimaries
+      ColorTable
+      ColorType
+      CornerPathEffect
+      CubicMap
+      CubicResampler
+      DashPathEffect
+      Data
+      DiscretePathEffect
+      EncodedImageFormat
+      FilterMode
+      Flattenable
+      Font
+      FontArguments
+      FontHinting
+      FontMetrics
+      FontMgr
+      FontParameters
+      FontStyle
+      FontStyleSet
+      GradientShader
+      HighContrastConfig
+      HighContrastFilter
+      IPoint
+      IRect
+      ISize
+      Image
+      ImageFilter
+      ImageFilters
+      ImageInfo
+      Line2DPathEffect
+      LumaColorFilter
+      MaskFilter
+      Matrix
+      MatrixPathEffect
+      MergePathEffect
+      MipmapMode
+      NamedGamut
+      NamedTransferFn
+      OpBuilder
+      OverdrawColorFilter
+      Paint
+      ParsePath
+      Path
+      Path1DPathEffect
+      Path2DPathEffect
+      PathBuilder
+      PathDirection
+      PathEffect
+      PathFillType
+      PathMeasure
+      PathOp
+      PathSegmentMask
+      PathVerb
+      Picture
+      PixelGeometry
+      Pixmap
+      Point
+      Point3
+      RRect
+      RSXform
+      Rect
+      Region
+      RuntimeBlendBuilder
+      RuntimeColorFilterBuilder
+      RuntimeEffect
+      RuntimeEffectBuilder
+      RuntimeShaderBuilder
+      SamplingOptions
+      Shader
+      ShaderMaskFilter
+      ShadowFlags
+      ShadowUtils
+      Size
+      StrokeAndFillPathEffect
+      StrokePathEffect
+      StrokeRec
+      Surface
+      SurfaceProps
+      TableMaskFilter
+      TextBlob
+      TextBlobBuilder
+      TextEncoding
+      TextUtils_Align
+      TileMode
+      TrimPathEffect
+      Typeface
+      Vertices
+      YUVColorSpace
+   
+   
+
+   
+   
+   
+
+
+

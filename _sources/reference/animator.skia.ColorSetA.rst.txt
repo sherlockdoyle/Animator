@@ -1,0 +1,6 @@
+animator.skia.ColorSetA
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: ColorSetA

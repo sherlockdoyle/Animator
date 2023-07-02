@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.StrokeRec &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.Surface" href="animator.skia.Surface.html" />
+    <link rel="prev" title="animator.skia.StrokePathEffect" href="animator.skia.StrokePathEffect.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-strokerec">
+<h1>animator.skia.StrokeRec<a class="headerlink" href="#animator-skia-strokerec" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">StrokeRec</span></span><a class="headerlink" href="#animator.skia.StrokeRec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.StrokeRec.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: animator.skia.StrokeRec, style: animator.skia.StrokeRec.InitStyle) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.StrokeRec, paint: animator.skia.Paint, style: animator.skia.Paint.Style, resScale: float = 1) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.StrokeRec, paint: animator.skia.Paint, resScale: float = 1) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.GetInflationRadius" title="animator.skia.StrokeRec.GetInflationRadius"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetInflationRadius</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.__init__" title="animator.skia.StrokeRec.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.applyAndGetPath" title="animator.skia.StrokeRec.applyAndGetPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">applyAndGetPath</span></code></a>(self, src)</p></td>
+<td><p>Apply the stroke parameters to the src path and return the result.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.applyToPaint" title="animator.skia.StrokeRec.applyToPaint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">applyToPaint</span></code></a>(self, paint)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.applyToPath" title="animator.skia.StrokeRec.applyToPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">applyToPath</span></code></a>(self, dst, src)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.getCap" title="animator.skia.StrokeRec.getCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getCap</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.getInflationRadius" title="animator.skia.StrokeRec.getInflationRadius"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getInflationRadius</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.getJoin" title="animator.skia.StrokeRec.getJoin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getJoin</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.getMiter" title="animator.skia.StrokeRec.getMiter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMiter</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.getPaint" title="animator.skia.StrokeRec.getPaint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPaint</span></code></a>(self)</p></td>
+<td><p>Apply the stroke parameters to a paint and return it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.getResScale" title="animator.skia.StrokeRec.getResScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getResScale</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.getStyle" title="animator.skia.StrokeRec.getStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStyle</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.getWidth" title="animator.skia.StrokeRec.getWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getWidth</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.hasEqualEffect" title="animator.skia.StrokeRec.hasEqualEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasEqualEffect</span></code></a>(self, other)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.isFillStyle" title="animator.skia.StrokeRec.isFillStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFillStyle</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.isHairlineStyle" title="animator.skia.StrokeRec.isHairlineStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isHairlineStyle</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.needToApply" title="animator.skia.StrokeRec.needToApply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needToApply</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.setFillStyle" title="animator.skia.StrokeRec.setFillStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFillStyle</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.setHairlineStyle" title="animator.skia.StrokeRec.setHairlineStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHairlineStyle</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.setResScale" title="animator.skia.StrokeRec.setResScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setResScale</span></code></a>(self, rs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.setStrokeParams" title="animator.skia.StrokeRec.setStrokeParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeParams</span></code></a>(self, cap, join, miterLimit)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.StrokeRec.setStrokeStyle" title="animator.skia.StrokeRec.setStrokeStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeStyle</span></code></a>(self, width[, strokeAndFill])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kStyleCount</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.GetInflationRadius">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GetInflationRadius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.StrokeRec.GetInflationRadius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>GetInflationRadius(paint: animator.skia.Paint, style: animator.skia.Paint.Style) -&gt; float</p></li>
+<li><p>GetInflationRadius(join: animator.skia.Paint.Join, miterLimit: float, cap: animator.skia.Paint.Cap, strokeWidth: float) -&gt; float</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.InitStyle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InitStyle</span></span><a class="headerlink" href="#animator.skia.StrokeRec.InitStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kHairline_InitStyle</p>
+<p>kFill_InitStyle</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.InitStyle.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.StrokeRec.InitStyle.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.Style">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Style</span></span><a class="headerlink" href="#animator.skia.StrokeRec.Style" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kHairline_Style</p>
+<p>kFill_Style</p>
+<p>kStroke_Style</p>
+<p>kStrokeAndFill_Style</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.Style.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.StrokeRec.Style.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.applyAndGetPath">
+<span class="sig-name descname"><span class="pre">applyAndGetPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.applyAndGetPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the stroke parameters to the src path and return the result.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.applyToPaint">
+<span class="sig-name descname"><span class="pre">applyToPaint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">paint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.applyToPaint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.applyToPath">
+<span class="sig-name descname"><span class="pre">applyToPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.applyToPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.getCap">
+<span class="sig-name descname"><span class="pre">getCap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint.Cap" title="animator.skia.Paint.Cap"><span class="pre">animator.skia.Paint.Cap</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.getCap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.getInflationRadius">
+<span class="sig-name descname"><span class="pre">getInflationRadius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.getInflationRadius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.getJoin">
+<span class="sig-name descname"><span class="pre">getJoin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint.Join" title="animator.skia.Paint.Join"><span class="pre">animator.skia.Paint.Join</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.getJoin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.getMiter">
+<span class="sig-name descname"><span class="pre">getMiter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.getMiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.getPaint">
+<span class="sig-name descname"><span class="pre">getPaint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.getPaint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the stroke parameters to a paint and return it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.getResScale">
+<span class="sig-name descname"><span class="pre">getResScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.getResScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.getStyle">
+<span class="sig-name descname"><span class="pre">getStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.StrokeRec.Style" title="animator.skia.StrokeRec.Style"><span class="pre">animator.skia.StrokeRec.Style</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.getStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.getWidth">
+<span class="sig-name descname"><span class="pre">getWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.getWidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.hasEqualEffect">
+<span class="sig-name descname"><span class="pre">hasEqualEffect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.hasEqualEffect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.isFillStyle">
+<span class="sig-name descname"><span class="pre">isFillStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.isFillStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.isHairlineStyle">
+<span class="sig-name descname"><span class="pre">isHairlineStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.isHairlineStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.needToApply">
+<span class="sig-name descname"><span class="pre">needToApply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.needToApply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.setFillStyle">
+<span class="sig-name descname"><span class="pre">setFillStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.setFillStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.setHairlineStyle">
+<span class="sig-name descname"><span class="pre">setHairlineStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.setHairlineStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.setResScale">
+<span class="sig-name descname"><span class="pre">setResScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.setResScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.setStrokeParams">
+<span class="sig-name descname"><span class="pre">setStrokeParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint.Cap" title="animator.skia.Paint.Cap"><span class="pre">animator.skia.Paint.Cap</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">join</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint.Join" title="animator.skia.Paint.Join"><span class="pre">animator.skia.Paint.Join</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">miterLimit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.setStrokeParams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.StrokeRec.setStrokeStyle">
+<span class="sig-name descname"><span class="pre">setStrokeStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.StrokeRec" title="animator.skia.StrokeRec"><span class="pre">animator.skia.StrokeRec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">strokeAndFill</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.StrokeRec.setStrokeStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.StrokePathEffect.html" title="previous chapter">animator.skia.StrokePathEffect</a></li>
+      <li>Next: <a href="animator.skia.Surface.html" title="next chapter">animator.skia.Surface</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.StrokeRec.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

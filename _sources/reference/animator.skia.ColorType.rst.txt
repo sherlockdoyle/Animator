@@ -1,0 +1,61 @@
+animator.skia.ColorType
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorType
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorType.__init__
+      ~ColorType.bytesPerPixel
+      ~ColorType.isAlwaysOpaque
+      ~ColorType.validateAlphaType
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ColorType.kA16_float_ColorType
+      ~ColorType.kA16_unorm_ColorType
+      ~ColorType.kARGB_4444_ColorType
+      ~ColorType.kAlpha_8_ColorType
+      ~ColorType.kBGRA_1010102_ColorType
+      ~ColorType.kBGRA_8888_ColorType
+      ~ColorType.kBGR_101010x_ColorType
+      ~ColorType.kBGR_101010x_XR_ColorType
+      ~ColorType.kGray_8_ColorType
+      ~ColorType.kLastEnum_ColorType
+      ~ColorType.kN32_ColorType
+      ~ColorType.kR16G16B16A16_unorm_ColorType
+      ~ColorType.kR16G16_float_ColorType
+      ~ColorType.kR16G16_unorm_ColorType
+      ~ColorType.kR8G8_unorm_ColorType
+      ~ColorType.kR8_unorm_ColorType
+      ~ColorType.kRGBA_1010102_ColorType
+      ~ColorType.kRGBA_8888_ColorType
+      ~ColorType.kRGBA_F16Norm_ColorType
+      ~ColorType.kRGBA_F16_ColorType
+      ~ColorType.kRGBA_F32_ColorType
+      ~ColorType.kRGB_101010x_ColorType
+      ~ColorType.kRGB_565_ColorType
+      ~ColorType.kRGB_888x_ColorType
+      ~ColorType.kSRGBA_8888_ColorType
+      ~ColorType.kUnknown_ColorType
+      ~ColorType.name
+      ~ColorType.value
+   
+   

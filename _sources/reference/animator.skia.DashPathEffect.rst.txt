@@ -1,0 +1,26 @@
+animator.skia.DashPathEffect
+============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: DashPathEffect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DashPathEffect.Make
+      ~DashPathEffect.__init__
+   
+   
+
+   
+   
+   

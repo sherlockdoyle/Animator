@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.PathEffect &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.PathFillType" href="animator.skia.PathFillType.html" />
+    <link rel="prev" title="animator.skia.PathDirection" href="animator.skia.PathDirection.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-patheffect">
+<h1>animator.skia.PathEffect<a class="headerlink" href="#animator-skia-patheffect" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.PathEffect">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">PathEffect</span></span><a class="headerlink" href="#animator.skia.PathEffect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><code class="xref py py-class docutils literal notranslate"><span class="pre">animator.skia.Flattenable</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.PathEffect.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathEffect.Deserialize" title="animator.skia.PathEffect.Deserialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Deserialize</span></code></a>(data)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathEffect.DeserializeAsType" title="animator.skia.PathEffect.DeserializeAsType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeserializeAsType</span></code></a>(type, data)</p></td>
+<td><p>Deserialize a flattenable of the given <em>type</em> from a buffer <em>data</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathEffect.GetFlattenableType" title="animator.skia.PathEffect.GetFlattenableType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetFlattenableType</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathEffect.MakeCompose" title="animator.skia.PathEffect.MakeCompose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeCompose</span></code></a>(outer, inner)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathEffect.MakeSum" title="animator.skia.PathEffect.MakeSum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeSum</span></code></a>(first, second)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathEffect.__init__" title="animator.skia.PathEffect.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathEffect.asADash" title="animator.skia.PathEffect.asADash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asADash</span></code></a>(self)</p></td>
+<td><p>Return a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.PathEffect.DashInfo</span></code> object with the dash information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathEffect.filterPath" title="animator.skia.PathEffect.filterPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filterPath</span></code></a>(self, src, rec, cullR, ctm)</p></td>
+<td><p>Given a <em>src</em> path (input) and a stroke-<em>rec</em> (input and output), apply this effect to the <em>src</em> path, returning the new path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathEffect.getFlattenableType" title="animator.skia.PathEffect.getFlattenableType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFlattenableType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathEffect.getTypeName" title="animator.skia.PathEffect.getTypeName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getTypeName</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathEffect.needsCTM" title="animator.skia.PathEffect.needsCTM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">needsCTM</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathEffect.serialize" title="animator.skia.PathEffect.serialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialize</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.DashInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DashInfo</span></span><a class="headerlink" href="#animator.skia.PathEffect.DashInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Contains information about a dash pattern. This also contains an extra field <code class="docutils literal notranslate"><span class="pre">fType</span></code> for the dash type.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.DashInfo.fType">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fType</span></span><a class="headerlink" href="#animator.skia.PathEffect.DashInfo.fType" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.PathEffect.DashType</span></code> of this dash.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.DashType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DashType</span></span><a class="headerlink" href="#animator.skia.PathEffect.DashType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kNone_DashType</p>
+<p>kDash_DashType</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.DashType.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.PathEffect.DashType.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.Deserialize">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Deserialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.Deserialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.DeserializeAsType">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DeserializeAsType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable.Type" title="animator.skia.Flattenable.Type"><span class="pre">animator.skia.Flattenable.Type</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">SkColorFilter</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkBlender</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkImageFilter</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkMaskFilter</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkPathEffect</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkShader</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.PathEffect.DeserializeAsType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize a flattenable of the given <em>type</em> from a buffer <em>data</em>. The return value is correctly typed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.GetFlattenableType">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GetFlattenableType</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable.Type" title="animator.skia.Flattenable.Type"><span class="pre">animator.skia.Flattenable.Type</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.GetFlattenableType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.MakeCompose">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeCompose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.MakeCompose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.MakeSum">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeSum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.MakeSum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.Type">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Type</span></span><a class="headerlink" href="#animator.skia.PathEffect.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kColorFilter_Type</p>
+<p>kBlender_Type</p>
+<p>kDrawable_Type</p>
+<p>kImageFilter_Type</p>
+<p>kMaskFilter_Type</p>
+<p>kPathEffect_Type</p>
+<p>kShader_Type</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.Type.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.PathEffect.Type.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.asADash">
+<span class="sig-name descname"><span class="pre">asADash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.PathEffect.DashInfo" title="animator.skia.PathEffect.DashInfo"><span class="pre">animator.skia.PathEffect.DashInfo</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.asADash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.PathEffect.DashInfo</span></code> object with the dash information. The returned object also
+contains an extra field <code class="docutils literal notranslate"><span class="pre">fType</span></code> for the dash type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.filterPath">
+<span class="sig-name descname"><span class="pre">filterPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.PathEffect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src:</span> <span class="pre">animator.skia.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rec:</span> <span class="pre">animator.skia.StrokeRec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cullR:</span> <span class="pre">animator.skia.Rect</span> <span class="pre">=</span> <span class="pre">&lt;animator.skia.Rect</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f20529d7330&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctm:</span> <span class="pre">animator.skia.Matrix</span> <span class="pre">=</span> <span class="pre">&lt;animator.skia.Matrix</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f20500f6f30&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.PathEffect.filterPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <em>src</em> path (input) and a stroke-<em>rec</em> (input and output), apply this effect to the <em>src</em> path,
+returning the new path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.getFlattenableType">
+<span class="sig-name descname"><span class="pre">getFlattenableType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><span class="pre">animator.skia.Flattenable</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable.Type" title="animator.skia.Flattenable.Type"><span class="pre">animator.skia.Flattenable.Type</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.getFlattenableType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.getTypeName">
+<span class="sig-name descname"><span class="pre">getTypeName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><span class="pre">animator.skia.Flattenable</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.getTypeName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.needsCTM">
+<span class="sig-name descname"><span class="pre">needsCTM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathEffect" title="animator.skia.PathEffect"><span class="pre">animator.skia.PathEffect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.needsCTM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathEffect.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><span class="pre">animator.skia.Flattenable</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><span class="pre">animator.skia.Data</span></a></span></span><a class="headerlink" href="#animator.skia.PathEffect.serialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.PathDirection.html" title="previous chapter">animator.skia.PathDirection</a></li>
+      <li>Next: <a href="animator.skia.PathFillType.html" title="next chapter">animator.skia.PathFillType</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.PathEffect.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

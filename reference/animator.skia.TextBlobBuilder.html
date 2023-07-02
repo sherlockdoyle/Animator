@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.TextBlobBuilder &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.TextEncoding" href="animator.skia.TextEncoding.html" />
+    <link rel="prev" title="animator.skia.TextBlob" href="animator.skia.TextBlob.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-textblobbuilder">
+<h1>animator.skia.TextBlobBuilder<a class="headerlink" href="#animator-skia-textblobbuilder" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">TextBlobBuilder</span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>In Skia, you call the <code class="docutils literal notranslate"><span class="pre">alloc*</span></code> methods of this class with the count of glyphs to create a <code class="docutils literal notranslate"><span class="pre">RunBuffer</span></code>
+object. Then the object is filled with the required data before the next call to another method.</p>
+<p>However, in this Python binding, the <code class="docutils literal notranslate"><span class="pre">alloc*</span></code> methods do not return the <code class="docutils literal notranslate"><span class="pre">RunBuffer</span></code> object. Instead of
+passing the count of glyphs, you need to call them with the required data directly and it’ll handle the
+allocation and data filling automatically. All the other parameters are the same as in the C++ API. You can
+optionally pass a <em>encoding</em> parameter to specify the encoding of the text. These methods return the
+<a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextBlobBuilder</span></code></a> object itself for method chaining.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.__init__" title="animator.skia.TextBlobBuilder.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.allocRun" title="animator.skia.TextBlobBuilder.allocRun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocRun</span></code></a>(self, font, text, x, y, bounds, ...)</p></td>
+<td><p>Sets a new run with glyphs for <em>text</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.allocRunPos" title="animator.skia.TextBlobBuilder.allocRunPos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocRunPos</span></code></a>(self, font, text, pos, bounds, ...)</p></td>
+<td><p>Sets a new run with glyphs for <em>text</em> at <em>pos</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.allocRunPosH" title="animator.skia.TextBlobBuilder.allocRunPosH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocRunPosH</span></code></a>(self, font, text, xpos, y, ...)</p></td>
+<td><p>Sets a new run with glyphs for <em>text</em> at <em>xpos</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.allocRunRSXform" title="animator.skia.TextBlobBuilder.allocRunRSXform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocRunRSXform</span></code></a>(self, font, text, xforms, ...)</p></td>
+<td><p>Sets a new run with glyphs for <em>text</em> with <em>xforms</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.allocRunText" title="animator.skia.TextBlobBuilder.allocRunText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocRunText</span></code></a>(self, font, text, clusters, x, ...)</p></td>
+<td><p>Sets a new run with glyphs for <em>text</em> with supporting <em>clusters</em> and <em>utf8text</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.allocRunTextPos" title="animator.skia.TextBlobBuilder.allocRunTextPos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocRunTextPos</span></code></a>(self, font, text, clusters, ...)</p></td>
+<td><p>Sets a new run with glyphs for <em>text</em> at <em>pos</em> with supporting <em>clusters</em> and <em>utf8text</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.allocRunTextPosH" title="animator.skia.TextBlobBuilder.allocRunTextPosH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocRunTextPosH</span></code></a>(self, font, text, clusters, ...)</p></td>
+<td><p>Sets a new run with glyphs for <em>text</em> at <em>xpos</em> with supporting <em>clusters</em> and <em>utf8text</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.allocRunTextRSXform" title="animator.skia.TextBlobBuilder.allocRunTextRSXform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocRunTextRSXform</span></code></a>(self, font, text, ...)</p></td>
+<td><p>Sets a new run with glyphs for <em>text</em> with <em>xforms</em> and supporting <em>clusters</em> and <em>utf8text</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.TextBlobBuilder.make" title="animator.skia.TextBlobBuilder.make"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.allocRun">
+<span class="sig-name descname"><span class="pre">allocRun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.TextBlobBuilder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font:</span> <span class="pre">animator.skia.Font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds:</span> <span class="pre">animator.skia.Rect</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.allocRun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new run with glyphs for <em>text</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.allocRunPos">
+<span class="sig-name descname"><span class="pre">allocRunPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">animator.skia.TextBlobBuilder,</span> <span class="pre">font:</span> <span class="pre">animator.skia.Font,</span> <span class="pre">text:</span> <span class="pre">str,</span> <span class="pre">pos:</span> <span class="pre">List[animator.skia.Point],</span> <span class="pre">bounds:</span> <span class="pre">animator.skia.Rect</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.allocRunPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new run with glyphs for <em>text</em> at <em>pos</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.allocRunPosH">
+<span class="sig-name descname"><span class="pre">allocRunPosH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">animator.skia.TextBlobBuilder,</span> <span class="pre">font:</span> <span class="pre">animator.skia.Font,</span> <span class="pre">text:</span> <span class="pre">str,</span> <span class="pre">xpos:</span> <span class="pre">List[float],</span> <span class="pre">y:</span> <span class="pre">float,</span> <span class="pre">bounds:</span> <span class="pre">animator.skia.Rect</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.allocRunPosH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new run with glyphs for <em>text</em> at <em>xpos</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.allocRunRSXform">
+<span class="sig-name descname"><span class="pre">allocRunRSXform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">animator.skia.TextBlobBuilder,</span> <span class="pre">font:</span> <span class="pre">animator.skia.Font,</span> <span class="pre">text:</span> <span class="pre">str,</span> <span class="pre">xforms:</span> <span class="pre">List[animator.skia.RSXform],</span> <span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.allocRunRSXform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new run with glyphs for <em>text</em> with <em>xforms</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.allocRunText">
+<span class="sig-name descname"><span class="pre">allocRunText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">animator.skia.TextBlobBuilder,</span> <span class="pre">font:</span> <span class="pre">animator.skia.Font,</span> <span class="pre">text:</span> <span class="pre">str,</span> <span class="pre">clusters:</span> <span class="pre">List[int],</span> <span class="pre">x:</span> <span class="pre">float,</span> <span class="pre">y:</span> <span class="pre">float,</span> <span class="pre">utf8text:</span> <span class="pre">str,</span> <span class="pre">bounds:</span> <span class="pre">animator.skia.Rect</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.allocRunText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new run with glyphs for <em>text</em> with supporting <em>clusters</em> and <em>utf8text</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.allocRunTextPos">
+<span class="sig-name descname"><span class="pre">allocRunTextPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">animator.skia.TextBlobBuilder,</span> <span class="pre">font:</span> <span class="pre">animator.skia.Font,</span> <span class="pre">text:</span> <span class="pre">str,</span> <span class="pre">clusters:</span> <span class="pre">List[int],</span> <span class="pre">pos:</span> <span class="pre">List[animator.skia.Point],</span> <span class="pre">utf8text:</span> <span class="pre">str,</span> <span class="pre">bounds:</span> <span class="pre">animator.skia.Rect</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.allocRunTextPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new run with glyphs for <em>text</em> at <em>pos</em> with supporting <em>clusters</em> and <em>utf8text</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.allocRunTextPosH">
+<span class="sig-name descname"><span class="pre">allocRunTextPosH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">animator.skia.TextBlobBuilder,</span> <span class="pre">font:</span> <span class="pre">animator.skia.Font,</span> <span class="pre">text:</span> <span class="pre">str,</span> <span class="pre">clusters:</span> <span class="pre">List[int],</span> <span class="pre">xpos:</span> <span class="pre">List[float],</span> <span class="pre">y:</span> <span class="pre">float,</span> <span class="pre">utf8text:</span> <span class="pre">str,</span> <span class="pre">bounds:</span> <span class="pre">animator.skia.Rect</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.allocRunTextPosH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new run with glyphs for <em>text</em> at <em>xpos</em> with supporting <em>clusters</em> and <em>utf8text</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.allocRunTextRSXform">
+<span class="sig-name descname"><span class="pre">allocRunTextRSXform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">animator.skia.TextBlobBuilder,</span> <span class="pre">font:</span> <span class="pre">animator.skia.Font,</span> <span class="pre">text:</span> <span class="pre">str,</span> <span class="pre">clusters:</span> <span class="pre">List[int],</span> <span class="pre">xforms:</span> <span class="pre">List[animator.skia.RSXform],</span> <span class="pre">utf8text:</span> <span class="pre">str,</span> <span class="pre">bounds:</span> <span class="pre">animator.skia.Rect</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.allocRunTextRSXform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a new run with glyphs for <em>text</em> with <em>xforms</em> and supporting <em>clusters</em> and <em>utf8text</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.TextBlobBuilder.make">
+<span class="sig-name descname"><span class="pre">make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.TextBlobBuilder" title="animator.skia.TextBlobBuilder"><span class="pre">animator.skia.TextBlobBuilder</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.TextBlob.html#animator.skia.TextBlob" title="animator.skia.TextBlob"><span class="pre">animator.skia.TextBlob</span></a></span></span><a class="headerlink" href="#animator.skia.TextBlobBuilder.make" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.TextBlob.html" title="previous chapter">animator.skia.TextBlob</a></li>
+      <li>Next: <a href="animator.skia.TextEncoding.html" title="next chapter">animator.skia.TextEncoding</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.TextBlobBuilder.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

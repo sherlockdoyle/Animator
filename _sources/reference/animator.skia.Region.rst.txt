@@ -1,0 +1,53 @@
+animator.skia.Region
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Region
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Region.__init__
+      ~Region.computeRegionComplexity
+      ~Region.contains
+      ~Region.getBoundaryPath
+      ~Region.getBounds
+      ~Region.intersects
+      ~Region.isComplex
+      ~Region.isEmpty
+      ~Region.isRect
+      ~Region.makeTranslate
+      ~Region.op
+      ~Region.quickContains
+      ~Region.quickReject
+      ~Region.readFromMemory
+      ~Region.set
+      ~Region.setEmpty
+      ~Region.setPath
+      ~Region.setRect
+      ~Region.setRects
+      ~Region.setRegion
+      ~Region.swap
+      ~Region.translate
+      ~Region.writeToMemory
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Region.kOpCnt
+   
+   

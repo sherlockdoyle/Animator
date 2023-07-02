@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.Paint &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.ParsePath" href="animator.skia.ParsePath.html" />
+    <link rel="prev" title="animator.skia.OverdrawColorFilter" href="animator.skia.OverdrawColorFilter.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-paint">
+<h1>animator.skia.Paint<a class="headerlink" href="#animator-skia-paint" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Paint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">Paint</span></span><a class="headerlink" href="#animator.skia.Paint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Paint.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic">
+<li><p>__init__(self: animator.skia.Paint) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.Paint, color: animator.skia.Color4f, colorSpace: animator.skia.ColorSpace = None) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.Paint, paint: animator.skia.Paint) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.Paint, <a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs) -&gt; None</p>
+<blockquote>
+<div><blockquote>
+<div><p>Construct a new paint from keyword arguments. This creates a new <a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paint</span></code></a> object and calls the
+respective setters for each keyword argument.</p>
+<p>Supported keyword arguments: <code class="docutils literal notranslate"><span class="pre">antiAlias</span></code>, <code class="docutils literal notranslate"><span class="pre">dither</span></code>, <code class="docutils literal notranslate"><span class="pre">style</span></code>, <code class="docutils literal notranslate"><span class="pre">stroke</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">color4f</span></code>,</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">argb</span></code>, <code class="docutils literal notranslate"><span class="pre">strokeWidth</span></code>, <code class="docutils literal notranslate"><span class="pre">strokeMiter</span></code>, <code class="docutils literal notranslate"><span class="pre">strokeCap</span></code>, <code class="docutils literal notranslate"><span class="pre">strokeJoin</span></code>, <code class="docutils literal notranslate"><span class="pre">shader</span></code>,
+<code class="docutils literal notranslate"><span class="pre">colorFilter</span></code>, <code class="docutils literal notranslate"><span class="pre">blendMode</span></code>, <code class="docutils literal notranslate"><span class="pre">blender</span></code>, <code class="docutils literal notranslate"><span class="pre">pathEffect</span></code>, <code class="docutils literal notranslate"><span class="pre">maskFilter</span></code>, <code class="docutils literal notranslate"><span class="pre">imageFilter</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">note</dt>
+<dd class="field-odd"><p>Later arguments override earlier ones.</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.__init__" title="animator.skia.Paint.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.asBlendMode" title="animator.skia.Paint.asBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asBlendMode</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.getAlpha" title="animator.skia.Paint.getAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getAlpha</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.getAlphaf" title="animator.skia.Paint.getAlphaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getAlphaf</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.getBlendMode_or" title="animator.skia.Paint.getBlendMode_or"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getBlendMode_or</span></code></a>(self, defaultMode)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.getBlender" title="animator.skia.Paint.getBlender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getBlender</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.getColor" title="animator.skia.Paint.getColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getColor</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.getColor4f" title="animator.skia.Paint.getColor4f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getColor4f</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.getColorFilter" title="animator.skia.Paint.getColorFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getColorFilter</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.getImageFilter" title="animator.skia.Paint.getImageFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getImageFilter</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.getMaskFilter" title="animator.skia.Paint.getMaskFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMaskFilter</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.getPathEffect" title="animator.skia.Paint.getPathEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPathEffect</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.getShader" title="animator.skia.Paint.getShader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getShader</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.getStrokeCap" title="animator.skia.Paint.getStrokeCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStrokeCap</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.getStrokeJoin" title="animator.skia.Paint.getStrokeJoin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStrokeJoin</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.getStrokeMiter" title="animator.skia.Paint.getStrokeMiter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStrokeMiter</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.getStrokeWidth" title="animator.skia.Paint.getStrokeWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStrokeWidth</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.getStyle" title="animator.skia.Paint.getStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getStyle</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.isAntiAlias" title="animator.skia.Paint.isAntiAlias"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isAntiAlias</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.isDither" title="animator.skia.Paint.isDither"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isDither</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.isSrcOver" title="animator.skia.Paint.isSrcOver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isSrcOver</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.nothingToDraw" title="animator.skia.Paint.nothingToDraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nothingToDraw</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.refBlender" title="animator.skia.Paint.refBlender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refBlender</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.refColorFilter" title="animator.skia.Paint.refColorFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refColorFilter</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.refImageFilter" title="animator.skia.Paint.refImageFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refImageFilter</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.refMaskFilter" title="animator.skia.Paint.refMaskFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refMaskFilter</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.refPathEffect" title="animator.skia.Paint.refPathEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refPathEffect</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.refShader" title="animator.skia.Paint.refShader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refShader</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.reset" title="animator.skia.Paint.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setARGB" title="animator.skia.Paint.setARGB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setARGB</span></code></a>(self, a, r, g, b)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setAlpha" title="animator.skia.Paint.setAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAlpha</span></code></a>(self, a)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setAlphaf" title="animator.skia.Paint.setAlphaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAlphaf</span></code></a>(self, a)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setAntiAlias" title="animator.skia.Paint.setAntiAlias"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setAntiAlias</span></code></a>(self, aa)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setBlendMode" title="animator.skia.Paint.setBlendMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBlendMode</span></code></a>(self, mode)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setBlender" title="animator.skia.Paint.setBlender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBlender</span></code></a>(self, blender)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setColor" title="animator.skia.Paint.setColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setColor4f" title="animator.skia.Paint.setColor4f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor4f</span></code></a>(self, color[, colorSpace])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setColorFilter" title="animator.skia.Paint.setColorFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColorFilter</span></code></a>(self, colorFilter)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setDither" title="animator.skia.Paint.setDither"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDither</span></code></a>(self, dither)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setImageFilter" title="animator.skia.Paint.setImageFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setImageFilter</span></code></a>(self, imageFilter)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setMaskFilter" title="animator.skia.Paint.setMaskFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setMaskFilter</span></code></a>(self, maskFilter)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setPathEffect" title="animator.skia.Paint.setPathEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPathEffect</span></code></a>(self, pathEffect)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setShader" title="animator.skia.Paint.setShader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setShader</span></code></a>(self, shader)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setStroke" title="animator.skia.Paint.setStroke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStroke</span></code></a>(self, isStroke)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setStrokeCap" title="animator.skia.Paint.setStrokeCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeCap</span></code></a>(self, cap)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setStrokeJoin" title="animator.skia.Paint.setStrokeJoin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeJoin</span></code></a>(self, join)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setStrokeMiter" title="animator.skia.Paint.setStrokeMiter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeMiter</span></code></a>(self, miter)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Paint.setStrokeWidth" title="animator.skia.Paint.setStrokeWidth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrokeWidth</span></code></a>(self, width)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Paint.setStyle" title="animator.skia.Paint.setStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStyle</span></code></a>(self, style)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kCapCount</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kJoinCount</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">kStyleCount</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Paint.Cap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Cap</span></span><a class="headerlink" href="#animator.skia.Paint.Cap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kButt_Cap</p>
+<p>kRound_Cap</p>
+<p>kSquare_Cap</p>
+<p>kLast_Cap</p>
+<p>kDefault_Cap</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Paint.Cap.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Paint.Cap.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Paint.Join">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Join</span></span><a class="headerlink" href="#animator.skia.Paint.Join" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kMiter_Join</p>
+<p>kRound_Join</p>
+<p>kBevel_Join</p>
+<p>kLast_Join</p>
+<p>kDefault_Join</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Paint.Join.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Paint.Join.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Paint.Style">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Style</span></span><a class="headerlink" href="#animator.skia.Paint.Style" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kFill_Style</p>
+<p>kStroke_Style</p>
+<p>kStrokeAndFill_Style</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Paint.Style.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Paint.Style.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.asBlendMode">
+<span class="sig-name descname"><span class="pre">asBlendMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.BlendMode.html#animator.skia.BlendMode" title="animator.skia.BlendMode"><span class="pre">animator.skia.BlendMode</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Paint.asBlendMode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getAlpha">
+<span class="sig-name descname"><span class="pre">getAlpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getAlpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getAlphaf">
+<span class="sig-name descname"><span class="pre">getAlphaf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getAlphaf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getBlendMode_or">
+<span class="sig-name descname"><span class="pre">getBlendMode_or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultMode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.BlendMode.html#animator.skia.BlendMode" title="animator.skia.BlendMode"><span class="pre">animator.skia.BlendMode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.BlendMode.html#animator.skia.BlendMode" title="animator.skia.BlendMode"><span class="pre">animator.skia.BlendMode</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getBlendMode_or" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getBlender">
+<span class="sig-name descname"><span class="pre">getBlender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Blender.html#animator.skia.Blender" title="animator.skia.Blender"><span class="pre">animator.skia.Blender</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getBlender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getColor">
+<span class="sig-name descname"><span class="pre">getColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getColor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getColor4f">
+<span class="sig-name descname"><span class="pre">getColor4f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getColor4f" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getColorFilter">
+<span class="sig-name descname"><span class="pre">getColorFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorFilter.html#animator.skia.ColorFilter" title="animator.skia.ColorFilter"><span class="pre">animator.skia.ColorFilter</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getColorFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getImageFilter">
+<span class="sig-name descname"><span class="pre">getImageFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SkImageFilter</span></span></span><a class="headerlink" href="#animator.skia.Paint.getImageFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getMaskFilter">
+<span class="sig-name descname"><span class="pre">getMaskFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.MaskFilter.html#animator.skia.MaskFilter" title="animator.skia.MaskFilter"><span class="pre">animator.skia.MaskFilter</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getMaskFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getPathEffect">
+<span class="sig-name descname"><span class="pre">getPathEffect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SkPathEffect</span></span></span><a class="headerlink" href="#animator.skia.Paint.getPathEffect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getShader">
+<span class="sig-name descname"><span class="pre">getShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SkShader</span></span></span><a class="headerlink" href="#animator.skia.Paint.getShader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getStrokeCap">
+<span class="sig-name descname"><span class="pre">getStrokeCap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Paint.Cap" title="animator.skia.Paint.Cap"><span class="pre">animator.skia.Paint.Cap</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getStrokeCap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getStrokeJoin">
+<span class="sig-name descname"><span class="pre">getStrokeJoin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Paint.Join" title="animator.skia.Paint.Join"><span class="pre">animator.skia.Paint.Join</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getStrokeJoin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getStrokeMiter">
+<span class="sig-name descname"><span class="pre">getStrokeMiter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getStrokeMiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getStrokeWidth">
+<span class="sig-name descname"><span class="pre">getStrokeWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getStrokeWidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.getStyle">
+<span class="sig-name descname"><span class="pre">getStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Paint.Style" title="animator.skia.Paint.Style"><span class="pre">animator.skia.Paint.Style</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.getStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.isAntiAlias">
+<span class="sig-name descname"><span class="pre">isAntiAlias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.isAntiAlias" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.isDither">
+<span class="sig-name descname"><span class="pre">isDither</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.isDither" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.isSrcOver">
+<span class="sig-name descname"><span class="pre">isSrcOver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.isSrcOver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.nothingToDraw">
+<span class="sig-name descname"><span class="pre">nothingToDraw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.nothingToDraw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.refBlender">
+<span class="sig-name descname"><span class="pre">refBlender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Blender.html#animator.skia.Blender" title="animator.skia.Blender"><span class="pre">animator.skia.Blender</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.refBlender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.refColorFilter">
+<span class="sig-name descname"><span class="pre">refColorFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ColorFilter.html#animator.skia.ColorFilter" title="animator.skia.ColorFilter"><span class="pre">animator.skia.ColorFilter</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.refColorFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.refImageFilter">
+<span class="sig-name descname"><span class="pre">refImageFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SkImageFilter</span></span></span><a class="headerlink" href="#animator.skia.Paint.refImageFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.refMaskFilter">
+<span class="sig-name descname"><span class="pre">refMaskFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.MaskFilter.html#animator.skia.MaskFilter" title="animator.skia.MaskFilter"><span class="pre">animator.skia.MaskFilter</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.refMaskFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.refPathEffect">
+<span class="sig-name descname"><span class="pre">refPathEffect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SkPathEffect</span></span></span><a class="headerlink" href="#animator.skia.Paint.refPathEffect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.refShader">
+<span class="sig-name descname"><span class="pre">refShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SkShader</span></span></span><a class="headerlink" href="#animator.skia.Paint.refShader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setARGB">
+<span class="sig-name descname"><span class="pre">setARGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setARGB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setAlpha">
+<span class="sig-name descname"><span class="pre">setAlpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setAlpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setAlphaf">
+<span class="sig-name descname"><span class="pre">setAlphaf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setAlphaf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setAntiAlias">
+<span class="sig-name descname"><span class="pre">setAntiAlias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">aa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setAntiAlias" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setBlendMode">
+<span class="sig-name descname"><span class="pre">setBlendMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.BlendMode.html#animator.skia.BlendMode" title="animator.skia.BlendMode"><span class="pre">animator.skia.BlendMode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setBlendMode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setBlender">
+<span class="sig-name descname"><span class="pre">setBlender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">blender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Blender.html#animator.skia.Blender" title="animator.skia.Blender"><span class="pre">animator.skia.Blender</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setBlender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setColor">
+<span class="sig-name descname"><span class="pre">setColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Paint.setColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>setColor(self: animator.skia.Paint, color: int) -&gt; None</p></li>
+<li><p>setColor(self: animator.skia.Paint, color: animator.skia.Color4f, colorSpace: animator.skia.ColorSpace = None) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setColor4f">
+<span class="sig-name descname"><span class="pre">setColor4f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Color4f.html#animator.skia.Color4f" title="animator.skia.Color4f"><span class="pre">animator.skia.Color4f</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorSpace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ColorSpace.html#animator.skia.ColorSpace" title="animator.skia.ColorSpace"><span class="pre">animator.skia.ColorSpace</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setColor4f" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setColorFilter">
+<span class="sig-name descname"><span class="pre">setColorFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorFilter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ColorFilter.html#animator.skia.ColorFilter" title="animator.skia.ColorFilter"><span class="pre">animator.skia.ColorFilter</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setColorFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setDither">
+<span class="sig-name descname"><span class="pre">setDither</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dither</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setDither" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setImageFilter">
+<span class="sig-name descname"><span class="pre">setImageFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">imageFilter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SkImageFilter</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setImageFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setMaskFilter">
+<span class="sig-name descname"><span class="pre">setMaskFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">maskFilter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.MaskFilter.html#animator.skia.MaskFilter" title="animator.skia.MaskFilter"><span class="pre">animator.skia.MaskFilter</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setMaskFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setPathEffect">
+<span class="sig-name descname"><span class="pre">setPathEffect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathEffect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SkPathEffect</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setPathEffect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setShader">
+<span class="sig-name descname"><span class="pre">setShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SkShader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setShader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setStroke">
+<span class="sig-name descname"><span class="pre">setStroke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">isStroke</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setStroke" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setStrokeCap">
+<span class="sig-name descname"><span class="pre">setStrokeCap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint.Cap" title="animator.skia.Paint.Cap"><span class="pre">animator.skia.Paint.Cap</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setStrokeCap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setStrokeJoin">
+<span class="sig-name descname"><span class="pre">setStrokeJoin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">join</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint.Join" title="animator.skia.Paint.Join"><span class="pre">animator.skia.Paint.Join</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setStrokeJoin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setStrokeMiter">
+<span class="sig-name descname"><span class="pre">setStrokeMiter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">miter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setStrokeMiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setStrokeWidth">
+<span class="sig-name descname"><span class="pre">setStrokeWidth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setStrokeWidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Paint.setStyle">
+<span class="sig-name descname"><span class="pre">setStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint" title="animator.skia.Paint"><span class="pre">animator.skia.Paint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Paint.Style" title="animator.skia.Paint.Style"><span class="pre">animator.skia.Paint.Style</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Paint.setStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.OverdrawColorFilter.html" title="previous chapter">animator.skia.OverdrawColorFilter</a></li>
+      <li>Next: <a href="animator.skia.ParsePath.html" title="next chapter">animator.skia.ParsePath</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.Paint.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

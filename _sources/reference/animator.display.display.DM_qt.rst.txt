@@ -1,0 +1,35 @@
+animator.display.display.DM\_qt
+===============================
+
+.. currentmodule:: animator.display.display
+
+.. autoclass:: DM_qt
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DM_qt.__init__
+      ~DM_qt.close
+      ~DM_qt.get_best
+      ~DM_qt.show_frame
+      ~DM_qt.waittime
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~DM_qt.display_method
+   
+   

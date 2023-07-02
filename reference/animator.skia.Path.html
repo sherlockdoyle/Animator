@@ -1,0 +1,1067 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.Path &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.Path1DPathEffect" href="animator.skia.Path1DPathEffect.html" />
+    <link rel="prev" title="animator.skia.ParsePath" href="animator.skia.ParsePath.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-path">
+<h1>animator.skia.Path<a class="headerlink" href="#animator-skia-path" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Path">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">Path</span></span><a class="headerlink" href="#animator.skia.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: animator.skia.Path) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.Path, path: animator.skia.Path) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.Circle" title="animator.skia.Path.Circle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Circle</span></code></a>(center_x, center_y, radius, dir)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.ConvertConicToQuads" title="animator.skia.Path.ConvertConicToQuads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConvertConicToQuads</span></code></a>(p0, p1, p2, w, pow2)</p></td>
+<td><p>Approximates conic represented by start point <em>p0</em>, control point <em>p1</em>, end point <em>p2</em> and weight <em>w</em>, with quad array and returns it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.GetFromText" title="animator.skia.Path.GetFromText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetFromText</span></code></a>(text, x, y, font, encoding)</p></td>
+<td><p>Returns the path representing the <em>text</em> using SkTextUtils.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.IsCubicDegenerate" title="animator.skia.Path.IsCubicDegenerate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IsCubicDegenerate</span></code></a>(p1, p2, p3, p4, exact)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.IsLineDegenerate" title="animator.skia.Path.IsLineDegenerate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IsLineDegenerate</span></code></a>(p1, p2, exact)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.IsQuadDegenerate" title="animator.skia.Path.IsQuadDegenerate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IsQuadDegenerate</span></code></a>(p1, p2, p3, exact)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.Line" title="animator.skia.Path.Line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Line</span></code></a>(a, b)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.Make" title="animator.skia.Path.Make"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Make</span></code></a>(pts, vbs, ws, ft[, isVolatile])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.Oval" title="animator.skia.Path.Oval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Oval</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.Polygon" title="animator.skia.Path.Polygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polygon</span></code></a>(points, isClosed, ft, isVolatile)</p></td>
+<td><p>Create a polygonal path from a list of points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.RRect" title="animator.skia.Path.RRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RRect</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.Rect" title="animator.skia.Path.Rect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Rect</span></code></a>(rect, dir, startIndex)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.__init__" title="animator.skia.Path.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.addArc" title="animator.skia.Path.addArc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addArc</span></code></a>(self, oval, startAngle, sweepAngle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.addCircle" title="animator.skia.Path.addCircle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addCircle</span></code></a>(self, x, y, radius, dir)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.addOval" title="animator.skia.Path.addOval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addOval</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.addPath" title="animator.skia.Path.addPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addPath</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.addPoly" title="animator.skia.Path.addPoly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addPoly</span></code></a>(self, pts, close)</p></td>
+<td><p>Adds contour created from <em>pts</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.addRRect" title="animator.skia.Path.addRRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addRRect</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.addRect" title="animator.skia.Path.addRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addRect</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.addRoundRect" title="animator.skia.Path.addRoundRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addRoundRect</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.approximateBytesUsed" title="animator.skia.Path.approximateBytesUsed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">approximateBytesUsed</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.arcTo" title="animator.skia.Path.arcTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arcTo</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.asWinding" title="animator.skia.Path.asWinding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asWinding</span></code></a>(self)</p></td>
+<td><p>Return the result with fill type winding to area equivalent to path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.close" title="animator.skia.Path.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.computeTightBounds" title="animator.skia.Path.computeTightBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computeTightBounds</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.conicTo" title="animator.skia.Path.conicTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conicTo</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.conservativelyContainsRect" title="animator.skia.Path.conservativelyContainsRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conservativelyContainsRect</span></code></a>(self, rect)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.contains" title="animator.skia.Path.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a>(self, x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.countPoints" title="animator.skia.Path.countPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">countPoints</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.countVerbs" title="animator.skia.Path.countVerbs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">countVerbs</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.cubicTo" title="animator.skia.Path.cubicTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cubicTo</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.dump" title="animator.skia.Path.dump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dump</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.dumpArrays" title="animator.skia.Path.dumpArrays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dumpArrays</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.dumpHex" title="animator.skia.Path.dumpHex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dumpHex</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.fillPathWithPaint" title="animator.skia.Path.fillPathWithPaint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillPathWithPaint</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.getBounds" title="animator.skia.Path.getBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getBounds</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.getFillType" title="animator.skia.Path.getFillType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFillType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.getGenerationID" title="animator.skia.Path.getGenerationID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getGenerationID</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.getLastPt" title="animator.skia.Path.getLastPt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getLastPt</span></code></a>(self)</p></td>
+<td><p>Returns last point on <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.getPoint" title="animator.skia.Path.getPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPoint</span></code></a>(self, index)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.getPoints" title="animator.skia.Path.getPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPoints</span></code></a>(self[, max])</p></td>
+<td><p>Returns a list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> representing the points in the <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>, up to a maximum of <em>max</em> points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.getSegmentMasks" title="animator.skia.Path.getSegmentMasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSegmentMasks</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.getVerbs" title="animator.skia.Path.getVerbs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getVerbs</span></code></a>(self[, max])</p></td>
+<td><p>Returns a list of <a href="#id1"><span class="problematic" id="id2">:py:enum:`Path.Verb`</span></a> representing the verbs in the <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>, up to a maximum of <em>max</em> verbs. If <em>max</em> is negative, return all verbs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.incReserve" title="animator.skia.Path.incReserve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">incReserve</span></code></a>(self, extraPtCount)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.interpolate" title="animator.skia.Path.interpolate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate</span></code></a>(self, ending, weight)</p></td>
+<td><p>Interpolates between <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> with <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array of equal size and return the result.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.iop" title="animator.skia.Path.iop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iop</span></code></a>(self, other, op)</p></td>
+<td><p>Apply the <em>op</em> to this path and the specified path in place and return itself.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.isConvex" title="animator.skia.Path.isConvex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isConvex</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.isEmpty" title="animator.skia.Path.isEmpty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isEmpty</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.isFinite" title="animator.skia.Path.isFinite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isFinite</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.isInterpolatable" title="animator.skia.Path.isInterpolatable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isInterpolatable</span></code></a>(self, compare)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.isInverseFillType" title="animator.skia.Path.isInverseFillType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isInverseFillType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.isLastContourClosed" title="animator.skia.Path.isLastContourClosed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isLastContourClosed</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.isLine" title="animator.skia.Path.isLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isLine</span></code></a>(self)</p></td>
+<td><p>If the <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> contains only one line, return the start and end points as a list of two <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.isOval" title="animator.skia.Path.isOval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isOval</span></code></a>(self[, oval])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.isRRect" title="animator.skia.Path.isRRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isRRect</span></code></a>(self[, rrect])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.isRect" title="animator.skia.Path.isRect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isRect</span></code></a>(self)</p></td>
+<td><p>Returns a tuple of (rect - storage for bounds of <a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rect</span></code></a>, isClosed - if <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> is closed, direction - <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> direcion) if :py:class`Path` is equivalent to <a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rect</span></code></a> when filled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.isValid" title="animator.skia.Path.isValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isValid</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.isVolatile" title="animator.skia.Path.isVolatile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isVolatile</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.isimplify" title="animator.skia.Path.isimplify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isimplify</span></code></a>(self)</p></td>
+<td><p>Simplify the path in place and return itself.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.lineTo" title="animator.skia.Path.lineTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineTo</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.makeOffset" title="animator.skia.Path.makeOffset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeOffset</span></code></a>(self, dx, dy)</p></td>
+<td><p>Offsets <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array by (<em>dx</em>, <em>dy</em>) and returns the result as a new <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.makeScale" title="animator.skia.Path.makeScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeScale</span></code></a>(self, sx, sy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.makeTransform" title="animator.skia.Path.makeTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeTransform</span></code></a>(self, m, pc)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.moveTo" title="animator.skia.Path.moveTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moveTo</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.offset" title="animator.skia.Path.offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offset</span></code></a>(self, dx, dy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.op" title="animator.skia.Path.op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">op</span></code></a>(self, two, op)</p></td>
+<td><p>Return the resultant path of applying the <em>op</em> to this path and the specified path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.quadTo" title="animator.skia.Path.quadTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quadTo</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.rArcTo" title="animator.skia.Path.rArcTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rArcTo</span></code></a>(self, rx, ry, xAxisRotate, largeArc, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.rConicTo" title="animator.skia.Path.rConicTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rConicTo</span></code></a>(self, dx1, dy1, dx2, dy2, w)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.rCubicTo" title="animator.skia.Path.rCubicTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rCubicTo</span></code></a>(self, dx1, dy1, dx2, dy2, dx3, dy3)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.rLineTo" title="animator.skia.Path.rLineTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rLineTo</span></code></a>(self, dx, dy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.rMoveTo" title="animator.skia.Path.rMoveTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rMoveTo</span></code></a>(self, dx, dy)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.rQuadTo" title="animator.skia.Path.rQuadTo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rQuadTo</span></code></a>(self, dx1, dy1, dx2, dy2)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.readFromMemory" title="animator.skia.Path.readFromMemory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readFromMemory</span></code></a>(self, data)</p></td>
+<td><p>Reads the path from the buffer and returns the number of bytes read.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.reset" title="animator.skia.Path.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.reverseAddPath" title="animator.skia.Path.reverseAddPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverseAddPath</span></code></a>(self, src)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.rewind" title="animator.skia.Path.rewind"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rewind</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.serialize" title="animator.skia.Path.serialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialize</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.setFillType" title="animator.skia.Path.setFillType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFillType</span></code></a>(self, ft)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.setIsVolatile" title="animator.skia.Path.setIsVolatile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setIsVolatile</span></code></a>(self, isVolatile)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.setLastPt" title="animator.skia.Path.setLastPt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLastPt</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.simplify" title="animator.skia.Path.simplify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simplify</span></code></a>(self)</p></td>
+<td><p>Return the path as a set of non-overlapping contours that describe the same area as the original path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.swap" title="animator.skia.Path.swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">swap</span></code></a>(self, other)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.tightBounds" title="animator.skia.Path.tightBounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tightBounds</span></code></a>(self)</p></td>
+<td><p>Return the resulting rectangle to the tight bounds of the path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.toggleInverseFillType" title="animator.skia.Path.toggleInverseFillType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toggleInverseFillType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Path.transform" title="animator.skia.Path.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(self, matrix, pc)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Path.updateBoundsCache" title="animator.skia.Path.updateBoundsCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateBoundsCache</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Path.AddPathMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AddPathMode</span></span><a class="headerlink" href="#animator.skia.Path.AddPathMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kAppend_AddPathMode</p>
+<p>kExtend_AddPathMode</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Path.AddPathMode.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Path.AddPathMode.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Path.ArcSize">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ArcSize</span></span><a class="headerlink" href="#animator.skia.Path.ArcSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kSmall_ArcSize</p>
+<p>kLarge_ArcSize</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Path.ArcSize.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Path.ArcSize.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.Circle">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_x:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_y:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir:</span> <span class="pre">animator.skia.PathDirection</span> <span class="pre">=</span> <span class="pre">&lt;PathDirection.kCW:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.Circle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.ConvertConicToQuads">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ConvertConicToQuads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pow2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Path.ConvertConicToQuads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximates conic represented by start point <em>p0</em>, control point <em>p1</em>, end point <em>p2</em> and weight <em>w</em>,
+with quad array and returns it. Maximum possible return array size is given by: (1 + 2 * (1 &lt;&lt; pow2)).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.GetFromText">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GetFromText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font:</span> <span class="pre">animator.skia.Font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding:</span> <span class="pre">animator.skia.TextEncoding</span> <span class="pre">=</span> <span class="pre">&lt;TextEncoding.kUTF8:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.GetFromText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the path representing the <em>text</em> using SkTextUtils.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.IsCubicDegenerate">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IsCubicDegenerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p4</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">exact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.IsCubicDegenerate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.IsLineDegenerate">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IsLineDegenerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">exact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.IsLineDegenerate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.IsQuadDegenerate">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IsQuadDegenerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">exact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.IsQuadDegenerate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.Line">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.Line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.Make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vbs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.PathFillType.html#animator.skia.PathFillType" title="animator.skia.PathFillType"><span class="pre">animator.skia.PathFillType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">isVolatile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.Make" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.Oval">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Oval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.Oval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>Oval(r: animator.skia.Rect, dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+<li><p>Oval(r: animator.skia.Rect, dir: animator.skia.PathDirection, startIndex: int) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.Polygon">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">points:</span> <span class="pre">List[animator.skia.Point],</span> <span class="pre">isClosed:</span> <span class="pre">bool,</span> <span class="pre">ft:</span> <span class="pre">animator.skia.PathFillType</span> <span class="pre">=</span> <span class="pre">&lt;PathFillType.kWinding:</span> <span class="pre">0&gt;,</span> <span class="pre">isVolatile:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.Polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a polygonal path from a list of points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.RRect">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.RRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>RRect(rr: animator.skia.RRect, dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+<li><p>RRect(rr: animator.skia.RRect, dir: animator.skia.PathDirection, startIndex: int) -&gt; animator.skia.Path</p></li>
+<li><p>RRect(bounds: animator.skia.Rect, rx: float, ry: float, dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.Rect">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect:</span> <span class="pre">animator.skia.Rect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir:</span> <span class="pre">animator.skia.PathDirection</span> <span class="pre">=</span> <span class="pre">&lt;PathDirection.kCW:</span> <span class="pre">0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startIndex:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.Rect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Path.SegmentMask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SegmentMask</span></span><a class="headerlink" href="#animator.skia.Path.SegmentMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kLine_SegmentMask</p>
+<p>kQuad_SegmentMask</p>
+<p>kConic_SegmentMask</p>
+<p>kCubic_SegmentMask</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Path.SegmentMask.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Path.SegmentMask.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Path.Verb">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Verb</span></span><a class="headerlink" href="#animator.skia.Path.Verb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kMove_Verb</p>
+<p>kLine_Verb</p>
+<p>kQuad_Verb</p>
+<p>kConic_Verb</p>
+<p>kCubic_Verb</p>
+<p>kClose_Verb</p>
+<p>kDone_Verb</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Path.Verb.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Path.Verb.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.addArc">
+<span class="sig-name descname"><span class="pre">addArc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">oval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">startAngle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sweepAngle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.addArc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.addCircle">
+<span class="sig-name descname"><span class="pre">addCircle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir:</span> <span class="pre">animator.skia.PathDirection</span> <span class="pre">=</span> <span class="pre">&lt;PathDirection.kCW:</span> <span class="pre">0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.addCircle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.addOval">
+<span class="sig-name descname"><span class="pre">addOval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.addOval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>addOval(self: animator.skia.Path, oval: animator.skia.Rect, dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+<li><p>addOval(self: animator.skia.Path, oval: animator.skia.Rect, dir: animator.skia.PathDirection, start: int) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.addPath">
+<span class="sig-name descname"><span class="pre">addPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.addPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>addPath(self: animator.skia.Path, src: animator.skia.Path, dx: float, dy: float, mode: animator.skia.Path.AddPathMode = &lt;AddPathMode.kAppend_AddPathMode: 0&gt;) -&gt; animator.skia.Path</p></li>
+<li><p>addPath(self: animator.skia.Path, src: animator.skia.Path, mode: animator.skia.Path.AddPathMode = &lt;AddPathMode.kAppend_AddPathMode: 0&gt;) -&gt; animator.skia.Path</p></li>
+<li><p>addPath(self: animator.skia.Path, src: animator.skia.Path, matrix: animator.skia.Matrix, mode: animator.skia.Path.AddPathMode = &lt;AddPathMode.kAppend_AddPathMode: 0&gt;) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.addPoly">
+<span class="sig-name descname"><span class="pre">addPoly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.addPoly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds contour created from <em>pts</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.addRRect">
+<span class="sig-name descname"><span class="pre">addRRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.addRRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>addRRect(self: animator.skia.Path, rrect: animator.skia.RRect, dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+<li><p>addRRect(self: animator.skia.Path, rrect: animator.skia.RRect, dir: animator.skia.PathDirection, start: int) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.addRect">
+<span class="sig-name descname"><span class="pre">addRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.addRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>addRect(self: animator.skia.Path, rect: animator.skia.Rect, dir: animator.skia.PathDirection, start: int) -&gt; animator.skia.Path</p></li>
+<li><p>addRect(self: animator.skia.Path, rect: animator.skia.Rect, dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+<li><p>addRect(self: animator.skia.Path, left: float, top: float, right: float, bottom: float, dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.addRoundRect">
+<span class="sig-name descname"><span class="pre">addRoundRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.addRoundRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>addRoundRect(self: animator.skia.Path, rect: animator.skia.Rect, rx: float, ry: float, dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+<li><p>addRoundRect(self: animator.skia.Path, rect: animator.skia.Rect, radii: List[float], dir: animator.skia.PathDirection = &lt;PathDirection.kCW: 0&gt;) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.approximateBytesUsed">
+<span class="sig-name descname"><span class="pre">approximateBytesUsed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Path.approximateBytesUsed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.arcTo">
+<span class="sig-name descname"><span class="pre">arcTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.arcTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>arcTo(self: animator.skia.Path, oval: animator.skia.Rect, startAngle: float, sweepAngle: float, forceMoveTo: bool) -&gt; animator.skia.Path</p></li>
+<li><p>arcTo(self: animator.skia.Path, x1: float, y1: float, x2: float, y2: float, radius: float) -&gt; animator.skia.Path</p></li>
+<li><p>arcTo(self: animator.skia.Path, p1: animator.skia.Point, p2: animator.skia.Point, radius: float) -&gt; animator.skia.Path</p></li>
+<li><p>arcTo(self: animator.skia.Path, rx: float, ry: float, xAxisRotate: float, largeArc: animator.skia.Path.ArcSize, sweep: animator.skia.PathDirection, x: float, y: float) -&gt; animator.skia.Path</p></li>
+<li><p>arcTo(self: animator.skia.Path, r: animator.skia.Point, xAxisRotate: float, largeArc: animator.skia.Path.ArcSize, sweep: animator.skia.PathDirection, xy: animator.skia.Point) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.asWinding">
+<span class="sig-name descname"><span class="pre">asWinding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.asWinding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the result with fill type winding to area equivalent to path. If the conversion fails, throws
+a runtime error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.computeTightBounds">
+<span class="sig-name descname"><span class="pre">computeTightBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></span><a class="headerlink" href="#animator.skia.Path.computeTightBounds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.conicTo">
+<span class="sig-name descname"><span class="pre">conicTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.conicTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>conicTo(self: animator.skia.Path, x1: float, y1: float, x2: float, y2: float, w: float) -&gt; animator.skia.Path</p></li>
+<li><p>conicTo(self: animator.skia.Path, p1: animator.skia.Point, p2: animator.skia.Point, w: float) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.conservativelyContainsRect">
+<span class="sig-name descname"><span class="pre">conservativelyContainsRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.conservativelyContainsRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.contains">
+<span class="sig-name descname"><span class="pre">contains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.contains" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.countPoints">
+<span class="sig-name descname"><span class="pre">countPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Path.countPoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.countVerbs">
+<span class="sig-name descname"><span class="pre">countVerbs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Path.countVerbs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.cubicTo">
+<span class="sig-name descname"><span class="pre">cubicTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.cubicTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>cubicTo(self: animator.skia.Path, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float) -&gt; animator.skia.Path</p></li>
+<li><p>cubicTo(self: animator.skia.Path, p1: animator.skia.Point, p2: animator.skia.Point, p3: animator.skia.Point) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.dump">
+<span class="sig-name descname"><span class="pre">dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.dumpArrays">
+<span class="sig-name descname"><span class="pre">dumpArrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.dumpArrays" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.dumpHex">
+<span class="sig-name descname"><span class="pre">dumpHex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.dumpHex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.fillPathWithPaint">
+<span class="sig-name descname"><span class="pre">fillPathWithPaint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.fillPathWithPaint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic">
+<li><p>fillPathWithPaint(self: animator.skia.Path, paint: SkPaint, cullRect: animator.skia.Rect = None, resScale: float = 1) -&gt; tuple</p>
+<blockquote>
+<div><p>Returns the filled equivalent of the stroked path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param paint</dt>
+<dd class="field-odd"><p><a class="reference internal" href="animator.skia.Paint.html#animator.skia.Paint" title="animator.skia.Paint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paint</span></code></a> from which attributes such as stroke cap, width, miter, and join, as
+well as pathEffect will be used</p>
+</dd>
+<dt class="field-even">param cullRect</dt>
+<dd class="field-even"><p>optional limit passed to <a class="reference internal" href="animator.skia.PathEffect.html#animator.skia.PathEffect" title="animator.skia.PathEffect"><code class="xref py py-class docutils literal notranslate"><span class="pre">PathEffect</span></code></a></p>
+</dd>
+<dt class="field-odd">param resScale</dt>
+<dd class="field-odd"><p>if &gt; 1, increase precision, else if (0 &lt; resScale &lt; 1) reduce precision to favor speed
+and size</p>
+</dd>
+<dt class="field-even">return</dt>
+<dd class="field-even"><p>a tuple of (<a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>, bool) where the bool indicates whether the path represents style
+fill or hairline (true for fill, false for hairline)</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>fillPathWithPaint(self: animator.skia.Path, paint: SkPaint, cullRect: animator.skia.Rect, ctm: animator.skia.Matrix) -&gt; tuple</p></li>
+</ol>
+<p>Returns the filled equivalent of the stroked path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.getBounds">
+<span class="sig-name descname"><span class="pre">getBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></span><a class="headerlink" href="#animator.skia.Path.getBounds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.getFillType">
+<span class="sig-name descname"><span class="pre">getFillType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.PathFillType.html#animator.skia.PathFillType" title="animator.skia.PathFillType"><span class="pre">animator.skia.PathFillType</span></a></span></span><a class="headerlink" href="#animator.skia.Path.getFillType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.getGenerationID">
+<span class="sig-name descname"><span class="pre">getGenerationID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Path.getGenerationID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.getLastPt">
+<span class="sig-name descname"><span class="pre">getLastPt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Path.getLastPt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns last point on <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>. Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array is empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.getPoint">
+<span class="sig-name descname"><span class="pre">getPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></span><a class="headerlink" href="#animator.skia.Path.getPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.getPoints">
+<span class="sig-name descname"><span class="pre">getPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Path.getPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> representing the points in the <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>, up to a maximum of
+<em>max</em> points. If <em>max</em> is negative, return all points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.getSegmentMasks">
+<span class="sig-name descname"><span class="pre">getSegmentMasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Path.getSegmentMasks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.getVerbs">
+<span class="sig-name descname"><span class="pre">getVerbs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#animator.skia.Path.Verb" title="animator.skia.Path.Verb"><span class="pre">animator.skia.Path.Verb</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Path.getVerbs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of <a href="#id3"><span class="problematic" id="id4">:py:enum:`Path.Verb`</span></a> representing the verbs in the <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>, up to a maximum
+of <em>max</em> verbs. If <em>max</em> is negative, return all verbs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.incReserve">
+<span class="sig-name descname"><span class="pre">incReserve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraPtCount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.incReserve" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.interpolate">
+<span class="sig-name descname"><span class="pre">interpolate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ending</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Path.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolates between <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> with <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array of equal size and return the result.
+If arrays were not equal size, returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ending</strong> – <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array averaged with this <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array</p></li>
+<li><p><strong>weight</strong> – contribution of this <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array, and one minus contribution of <em>ending</em>
+<a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>interpolated average or None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.iop">
+<span class="sig-name descname"><span class="pre">iop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.PathOp.html#animator.skia.PathOp" title="animator.skia.PathOp"><span class="pre">animator.skia.PathOp</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.iop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the <em>op</em> to this path and the specified path in place and return itself. If the operation fails,
+throws a runtime error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isConvex">
+<span class="sig-name descname"><span class="pre">isConvex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isConvex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isEmpty">
+<span class="sig-name descname"><span class="pre">isEmpty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isFinite">
+<span class="sig-name descname"><span class="pre">isFinite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isFinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isInterpolatable">
+<span class="sig-name descname"><span class="pre">isInterpolatable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">compare</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isInterpolatable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isInverseFillType">
+<span class="sig-name descname"><span class="pre">isInverseFillType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isInverseFillType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isLastContourClosed">
+<span class="sig-name descname"><span class="pre">isLastContourClosed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isLastContourClosed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isLine">
+<span class="sig-name descname"><span class="pre">isLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Path.isLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> contains only one line, return the start and end points as a list of two
+<a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>. If the <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> is not one line, return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>start and end points of the line or None</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a>] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isOval">
+<span class="sig-name descname"><span class="pre">isOval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">oval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isOval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isRRect">
+<span class="sig-name descname"><span class="pre">isRRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rrect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.RRect.html#animator.skia.RRect" title="animator.skia.RRect"><span class="pre">animator.skia.RRect</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isRRect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isRect">
+<span class="sig-name descname"><span class="pre">isRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Path.isRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of (rect - storage for bounds of <a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rect</span></code></a>, isClosed - if <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> is
+closed, direction - <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> direcion) if :py:class`Path` is equivalent to <a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rect</span></code></a> when
+filled. Otherwise returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[<a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rect</span></code></a>, bool, <a href="#id5"><span class="problematic" id="id6">:py:enum:`PathDirection`</span></a>] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isValid">
+<span class="sig-name descname"><span class="pre">isValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isValid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isVolatile">
+<span class="sig-name descname"><span class="pre">isVolatile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isVolatile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.isimplify">
+<span class="sig-name descname"><span class="pre">isimplify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.isimplify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simplify the path in place and return itself. If the simplify fails, throws a runtime error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.lineTo">
+<span class="sig-name descname"><span class="pre">lineTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.lineTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>lineTo(self: animator.skia.Path, x: float, y: float) -&gt; animator.skia.Path</p></li>
+<li><p>lineTo(self: animator.skia.Path, p: animator.skia.Point) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.makeOffset">
+<span class="sig-name descname"><span class="pre">makeOffset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.makeOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offsets <a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><code class="xref py py-class docutils literal notranslate"><span class="pre">Point</span></code></a> array by (<em>dx</em>, <em>dy</em>) and returns the result as a new <a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.makeScale">
+<span class="sig-name descname"><span class="pre">makeScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.makeScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.makeTransform">
+<span class="sig-name descname"><span class="pre">makeTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m:</span> <span class="pre">animator.skia.Matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pc:</span> <span class="pre">animator.skia.ApplyPerspectiveClip</span> <span class="pre">=</span> <span class="pre">&lt;ApplyPerspectiveClip.kYes:</span> <span class="pre">1&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.makeTransform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.moveTo">
+<span class="sig-name descname"><span class="pre">moveTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.moveTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>moveTo(self: animator.skia.Path, x: float, y: float) -&gt; animator.skia.Path</p></li>
+<li><p>moveTo(self: animator.skia.Path, p: animator.skia.Point) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.offset">
+<span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.offset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.op">
+<span class="sig-name descname"><span class="pre">op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">two</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.PathOp.html#animator.skia.PathOp" title="animator.skia.PathOp"><span class="pre">animator.skia.PathOp</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the resultant path of applying the <em>op</em> to this path and the specified path. If the operation
+fails, throws a runtime error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.quadTo">
+<span class="sig-name descname"><span class="pre">quadTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.quadTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>quadTo(self: animator.skia.Path, x1: float, y1: float, x2: float, y2: float) -&gt; animator.skia.Path</p></li>
+<li><p>quadTo(self: animator.skia.Path, p1: animator.skia.Point, p2: animator.skia.Point) -&gt; animator.skia.Path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.rArcTo">
+<span class="sig-name descname"><span class="pre">rArcTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">xAxisRotate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">largeArc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path.ArcSize" title="animator.skia.Path.ArcSize"><span class="pre">animator.skia.Path.ArcSize</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sweep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.PathDirection.html#animator.skia.PathDirection" title="animator.skia.PathDirection"><span class="pre">animator.skia.PathDirection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.rArcTo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.rConicTo">
+<span class="sig-name descname"><span class="pre">rConicTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.rConicTo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.rCubicTo">
+<span class="sig-name descname"><span class="pre">rCubicTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.rCubicTo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.rLineTo">
+<span class="sig-name descname"><span class="pre">rLineTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.rLineTo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.rMoveTo">
+<span class="sig-name descname"><span class="pre">rMoveTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.rMoveTo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.rQuadTo">
+<span class="sig-name descname"><span class="pre">rQuadTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.rQuadTo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.readFromMemory">
+<span class="sig-name descname"><span class="pre">readFromMemory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Path.readFromMemory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the path from the buffer and returns the number of bytes read.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.reverseAddPath">
+<span class="sig-name descname"><span class="pre">reverseAddPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.reverseAddPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.rewind">
+<span class="sig-name descname"><span class="pre">rewind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.rewind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><span class="pre">animator.skia.Data</span></a></span></span><a class="headerlink" href="#animator.skia.Path.serialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.setFillType">
+<span class="sig-name descname"><span class="pre">setFillType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.PathFillType.html#animator.skia.PathFillType" title="animator.skia.PathFillType"><span class="pre">animator.skia.PathFillType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.setFillType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.setIsVolatile">
+<span class="sig-name descname"><span class="pre">setIsVolatile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">isVolatile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.setIsVolatile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.setLastPt">
+<span class="sig-name descname"><span class="pre">setLastPt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Path.setLastPt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>setLastPt(self: animator.skia.Path, x: float, y: float) -&gt; None</p></li>
+<li><p>setLastPt(self: animator.skia.Path, p: animator.skia.Point) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.simplify">
+<span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.Path.simplify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path as a set of non-overlapping contours that describe the same area as the original path.
+If the simplify fails, throws a runtime error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.swap">
+<span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.swap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.tightBounds">
+<span class="sig-name descname"><span class="pre">tightBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></span><a class="headerlink" href="#animator.skia.Path.tightBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the resulting rectangle to the tight bounds of the path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.toggleInverseFillType">
+<span class="sig-name descname"><span class="pre">toggleInverseFillType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.toggleInverseFillType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix:</span> <span class="pre">animator.skia.Matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pc:</span> <span class="pre">animator.skia.ApplyPerspectiveClip</span> <span class="pre">=</span> <span class="pre">&lt;ApplyPerspectiveClip.kYes:</span> <span class="pre">1&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Path.updateBoundsCache">
+<span class="sig-name descname"><span class="pre">updateBoundsCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Path.updateBoundsCache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.ParsePath.html" title="previous chapter">animator.skia.ParsePath</a></li>
+      <li>Next: <a href="animator.skia.Path1DPathEffect.html" title="next chapter">animator.skia.Path1DPathEffect</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.Path.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

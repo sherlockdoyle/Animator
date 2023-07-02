@@ -1,0 +1,42 @@
+animator.skia.ISize
+===================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ISize
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ISize.Make
+      ~ISize.MakeEmpty
+      ~ISize.__init__
+      ~ISize.area
+      ~ISize.equals
+      ~ISize.height
+      ~ISize.isEmpty
+      ~ISize.isZero
+      ~ISize.set
+      ~ISize.setEmpty
+      ~ISize.width
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ISize.fHeight
+      ~ISize.fWidth
+   
+   

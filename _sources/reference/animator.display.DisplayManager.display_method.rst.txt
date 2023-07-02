@@ -1,0 +1,6 @@
+animator.display.DisplayManager.display\_method
+===============================================
+
+.. currentmodule:: animator.display
+
+.. autoattribute:: DisplayManager.display_method

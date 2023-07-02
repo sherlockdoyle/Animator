@@ -1,0 +1,98 @@
+animator.skia.Canvas
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Canvas
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Canvas.MakeRasterDirect
+      ~Canvas.MakeRasterDirectN32
+      ~Canvas.__init__
+      ~Canvas.accessTopLayerPixels
+      ~Canvas.clear
+      ~Canvas.clipIRect
+      ~Canvas.clipPath
+      ~Canvas.clipRRect
+      ~Canvas.clipRect
+      ~Canvas.clipRegion
+      ~Canvas.clipShader
+      ~Canvas.concat
+      ~Canvas.discard
+      ~Canvas.drawArc
+      ~Canvas.drawAtlas
+      ~Canvas.drawCircle
+      ~Canvas.drawColor
+      ~Canvas.drawDRRect
+      ~Canvas.drawGlyphs
+      ~Canvas.drawIRect
+      ~Canvas.drawImage
+      ~Canvas.drawImageLattice
+      ~Canvas.drawImageNine
+      ~Canvas.drawImageRect
+      ~Canvas.drawLine
+      ~Canvas.drawOval
+      ~Canvas.drawPaint
+      ~Canvas.drawParagraph
+      ~Canvas.drawPatch
+      ~Canvas.drawPath
+      ~Canvas.drawPicture
+      ~Canvas.drawPoint
+      ~Canvas.drawPoints
+      ~Canvas.drawRRect
+      ~Canvas.drawRect
+      ~Canvas.drawRegion
+      ~Canvas.drawRoundRect
+      ~Canvas.drawShadow
+      ~Canvas.drawSimpleText
+      ~Canvas.drawString
+      ~Canvas.drawText
+      ~Canvas.drawTextBlob
+      ~Canvas.drawVertices
+      ~Canvas.getBaseLayerSize
+      ~Canvas.getBaseProps
+      ~Canvas.getDeviceClipBounds
+      ~Canvas.getLocalClipBounds
+      ~Canvas.getLocalToDeviceAs3x3
+      ~Canvas.getProps
+      ~Canvas.getSaveCount
+      ~Canvas.getSurface
+      ~Canvas.getTopProps
+      ~Canvas.getTotalMatrix
+      ~Canvas.imageInfo
+      ~Canvas.isClipEmpty
+      ~Canvas.isClipRect
+      ~Canvas.makeSurface
+      ~Canvas.peekPixels
+      ~Canvas.quickReject
+      ~Canvas.readPixels
+      ~Canvas.resetMatrix
+      ~Canvas.restore
+      ~Canvas.restoreToCount
+      ~Canvas.rotate
+      ~Canvas.save
+      ~Canvas.saveLayer
+      ~Canvas.saveLayerAlpha
+      ~Canvas.saveLayerAlphaf
+      ~Canvas.scale
+      ~Canvas.setMatrix
+      ~Canvas.skew
+      ~Canvas.toarray
+      ~Canvas.translate
+      ~Canvas.writePixels
+   
+   
+
+   
+   
+   

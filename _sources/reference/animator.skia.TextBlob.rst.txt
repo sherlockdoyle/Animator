@@ -1,0 +1,36 @@
+animator.skia.TextBlob
+======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: TextBlob
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TextBlob.Deserialize
+      ~TextBlob.MakeFromPosText
+      ~TextBlob.MakeFromPosTextH
+      ~TextBlob.MakeFromRSXform
+      ~TextBlob.MakeFromString
+      ~TextBlob.MakeFromText
+      ~TextBlob.MakeOnPath
+      ~TextBlob.__init__
+      ~TextBlob.bounds
+      ~TextBlob.getIntercepts
+      ~TextBlob.serialize
+      ~TextBlob.uniqueID
+   
+   
+
+   
+   
+   

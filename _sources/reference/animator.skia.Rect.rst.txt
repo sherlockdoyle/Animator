@@ -1,0 +1,87 @@
+animator.skia.Rect
+==================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Rect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Rect.Intersects
+      ~Rect.Make
+      ~Rect.MakeEmpty
+      ~Rect.MakeIWH
+      ~Rect.MakeLTRB
+      ~Rect.MakeSize
+      ~Rect.MakeWH
+      ~Rect.MakeXYWH
+      ~Rect.__init__
+      ~Rect.asScalars
+      ~Rect.bottom
+      ~Rect.center
+      ~Rect.centerX
+      ~Rect.centerY
+      ~Rect.contains
+      ~Rect.dump
+      ~Rect.dumpHex
+      ~Rect.height
+      ~Rect.inset
+      ~Rect.intersect
+      ~Rect.intersects
+      ~Rect.isEmpty
+      ~Rect.isFinite
+      ~Rect.isSorted
+      ~Rect.join
+      ~Rect.joinNonEmptyArg
+      ~Rect.joinPossiblyEmptyRect
+      ~Rect.left
+      ~Rect.makeInset
+      ~Rect.makeOffset
+      ~Rect.makeOutset
+      ~Rect.makeSorted
+      ~Rect.offset
+      ~Rect.offsetTo
+      ~Rect.outset
+      ~Rect.right
+      ~Rect.round
+      ~Rect.roundIn
+      ~Rect.roundOut
+      ~Rect.set
+      ~Rect.setBounds
+      ~Rect.setBoundsCheck
+      ~Rect.setBoundsNoCheck
+      ~Rect.setEmpty
+      ~Rect.setIWH
+      ~Rect.setLTRB
+      ~Rect.setWH
+      ~Rect.setXYWH
+      ~Rect.sort
+      ~Rect.toQuad
+      ~Rect.top
+      ~Rect.width
+      ~Rect.x
+      ~Rect.y
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Rect.fBottom
+      ~Rect.fLeft
+      ~Rect.fRight
+      ~Rect.fTop
+   
+   

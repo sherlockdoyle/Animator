@@ -1,0 +1,59 @@
+animator.util.html.ParagraphHTMLParser
+======================================
+
+.. currentmodule:: animator.util.html
+
+.. autoclass:: ParagraphHTMLParser
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ParagraphHTMLParser.__init__
+      ~ParagraphHTMLParser.check_for_whole_start_tag
+      ~ParagraphHTMLParser.clear_cdata_mode
+      ~ParagraphHTMLParser.close
+      ~ParagraphHTMLParser.feed
+      ~ParagraphHTMLParser.get_starttag_text
+      ~ParagraphHTMLParser.getpos
+      ~ParagraphHTMLParser.goahead
+      ~ParagraphHTMLParser.handle_charref
+      ~ParagraphHTMLParser.handle_comment
+      ~ParagraphHTMLParser.handle_data
+      ~ParagraphHTMLParser.handle_decl
+      ~ParagraphHTMLParser.handle_endtag
+      ~ParagraphHTMLParser.handle_entityref
+      ~ParagraphHTMLParser.handle_pi
+      ~ParagraphHTMLParser.handle_startendtag
+      ~ParagraphHTMLParser.handle_starttag
+      ~ParagraphHTMLParser.parse_bogus_comment
+      ~ParagraphHTMLParser.parse_comment
+      ~ParagraphHTMLParser.parse_declaration
+      ~ParagraphHTMLParser.parse_endtag
+      ~ParagraphHTMLParser.parse_html_declaration
+      ~ParagraphHTMLParser.parse_marked_section
+      ~ParagraphHTMLParser.parse_pi
+      ~ParagraphHTMLParser.parse_starttag
+      ~ParagraphHTMLParser.reset
+      ~ParagraphHTMLParser.set_cdata_mode
+      ~ParagraphHTMLParser.unknown_decl
+      ~ParagraphHTMLParser.updatepos
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ParagraphHTMLParser.CDATA_CONTENT_ELEMENTS
+   
+   

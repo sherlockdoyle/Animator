@@ -1,0 +1,42 @@
+animator.skia.Surface
+=====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Surface
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Surface.Null
+      ~Surface.Raster
+      ~Surface.WrapPixels
+      ~Surface.__init__
+      ~Surface.draw
+      ~Surface.generationID
+      ~Surface.getCanvas
+      ~Surface.height
+      ~Surface.imageInfo
+      ~Surface.makeImageSnapshot
+      ~Surface.makeSurface
+      ~Surface.notifyContentWillChange
+      ~Surface.peekPixels
+      ~Surface.props
+      ~Surface.readPixels
+      ~Surface.toarray
+      ~Surface.width
+      ~Surface.writePixels
+   
+   
+
+   
+   
+   

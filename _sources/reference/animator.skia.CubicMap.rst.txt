@@ -1,0 +1,28 @@
+animator.skia.CubicMap
+======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: CubicMap
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~CubicMap.IsLinear
+      ~CubicMap.__init__
+      ~CubicMap.computeFromT
+      ~CubicMap.computeYFromX
+   
+   
+
+   
+   
+   

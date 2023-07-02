@@ -1,0 +1,37 @@
+animator.skia.BlurStyle
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: BlurStyle
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BlurStyle.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BlurStyle.kInner_BlurStyle
+      ~BlurStyle.kLastEnum_BlurStyle
+      ~BlurStyle.kNormal_BlurStyle
+      ~BlurStyle.kOuter_BlurStyle
+      ~BlurStyle.kSolid_BlurStyle
+      ~BlurStyle.name
+      ~BlurStyle.value
+   
+   

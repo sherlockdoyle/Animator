@@ -1,0 +1,37 @@
+animator.skia.ColorChannel
+==========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorChannel
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorChannel.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ColorChannel.kA
+      ~ColorChannel.kB
+      ~ColorChannel.kG
+      ~ColorChannel.kLastEnum
+      ~ColorChannel.kR
+      ~ColorChannel.name
+      ~ColorChannel.value
+   
+   

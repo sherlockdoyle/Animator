@@ -1,0 +1,36 @@
+animator.skia.NamedTransferFn
+=============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: NamedTransferFn
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~NamedTransferFn.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~NamedTransferFn.k2Dot2
+      ~NamedTransferFn.kHLG
+      ~NamedTransferFn.kLinear
+      ~NamedTransferFn.kPQ
+      ~NamedTransferFn.kRec2020
+      ~NamedTransferFn.kSRGB
+   
+   

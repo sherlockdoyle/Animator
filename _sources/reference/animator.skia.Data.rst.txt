@@ -1,0 +1,40 @@
+animator.skia.Data
+==================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Data
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Data.MakeEmpty
+      ~Data.MakeFromFileName
+      ~Data.MakeSubset
+      ~Data.MakeUninitialized
+      ~Data.MakeWithCString
+      ~Data.MakeWithCopy
+      ~Data.MakeWithoutCopy
+      ~Data.MakeZeroInitialized
+      ~Data.__init__
+      ~Data.bytes
+      ~Data.copyRange
+      ~Data.data
+      ~Data.equals
+      ~Data.isEmpty
+      ~Data.size
+      ~Data.writable_data
+   
+   
+
+   
+   
+   

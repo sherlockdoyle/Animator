@@ -1,0 +1,37 @@
+animator.graphics
+=================
+
+.. automodule:: animator.graphics
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: module.rst
+   :recursive:
+
+   animator.graphics.Context2d
+   animator.graphics.color
+   animator.graphics.font_style
+   animator.graphics.gradient
+   animator.graphics.shader
+   animator.graphics.style
+

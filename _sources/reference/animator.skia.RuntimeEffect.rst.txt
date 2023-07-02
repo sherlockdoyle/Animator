@@ -1,0 +1,42 @@
+animator.skia.RuntimeEffect
+===========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: RuntimeEffect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~RuntimeEffect.MakeForBlender
+      ~RuntimeEffect.MakeForColorFilter
+      ~RuntimeEffect.MakeForShader
+      ~RuntimeEffect.MakeTraced
+      ~RuntimeEffect.__init__
+      ~RuntimeEffect.allowBlender
+      ~RuntimeEffect.allowColorFilter
+      ~RuntimeEffect.allowShader
+      ~RuntimeEffect.children
+      ~RuntimeEffect.findChild
+      ~RuntimeEffect.findUniform
+      ~RuntimeEffect.makeBlender
+      ~RuntimeEffect.makeColorFilter
+      ~RuntimeEffect.makeImage
+      ~RuntimeEffect.makeShader
+      ~RuntimeEffect.source
+      ~RuntimeEffect.uniformSize
+      ~RuntimeEffect.uniforms
+   
+   
+
+   
+   
+   

@@ -1,0 +1,32 @@
+animator.skia.FontStyle
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: FontStyle
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FontStyle.Bold
+      ~FontStyle.BoldItalic
+      ~FontStyle.Italic
+      ~FontStyle.Normal
+      ~FontStyle.__init__
+      ~FontStyle.slant
+      ~FontStyle.weight
+      ~FontStyle.width
+   
+   
+
+   
+   
+   

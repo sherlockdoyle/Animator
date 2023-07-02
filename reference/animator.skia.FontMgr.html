@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.FontMgr &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.FontParameters" href="animator.skia.FontParameters.html" />
+    <link rel="prev" title="animator.skia.FontMetrics" href="animator.skia.FontMetrics.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-fontmgr">
+<h1>animator.skia.FontMgr<a class="headerlink" href="#animator-skia-fontmgr" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.FontMgr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">FontMgr</span></span><a class="headerlink" href="#animator.skia.FontMgr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.FontMgr.New_Custom_Data" title="animator.skia.FontMgr.New_Custom_Data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">New_Custom_Data</span></code></a>(arg0)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.FontMgr.RefDefault" title="animator.skia.FontMgr.RefDefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RefDefault</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.FontMgr.RefEmpty" title="animator.skia.FontMgr.RefEmpty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RefEmpty</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.FontMgr.__init__" title="animator.skia.FontMgr.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.FontMgr.countFamilies" title="animator.skia.FontMgr.countFamilies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">countFamilies</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.FontMgr.createStyleSet" title="animator.skia.FontMgr.createStyleSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createStyleSet</span></code></a>(self, index)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.FontMgr.getFamilyName" title="animator.skia.FontMgr.getFamilyName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFamilyName</span></code></a>(self, index)</p></td>
+<td><p>Return the name of the font family at the given <em>index</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.FontMgr.legacyMakeTypeface" title="animator.skia.FontMgr.legacyMakeTypeface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legacyMakeTypeface</span></code></a>(self, familyName, style)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.FontMgr.makeFromData" title="animator.skia.FontMgr.makeFromData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeFromData</span></code></a>(self, data[, ttcIndex])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.FontMgr.makeFromFile" title="animator.skia.FontMgr.makeFromFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeFromFile</span></code></a>(self, path[, ttcIndex])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.FontMgr.matchFamily" title="animator.skia.FontMgr.matchFamily"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matchFamily</span></code></a>(self, familyName)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.FontMgr.matchFamilyStyle" title="animator.skia.FontMgr.matchFamilyStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matchFamilyStyle</span></code></a>(self, familyName, style)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.FontMgr.matchFamilyStyleCharacter" title="animator.skia.FontMgr.matchFamilyStyleCharacter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matchFamilyStyleCharacter</span></code></a>(self, familyName, ...)</p></td>
+<td><p>Use the system fallback to find a typeface for the given character.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.New_Custom_Data">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">New_Custom_Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><span class="pre">animator.skia.Data</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.New_Custom_Data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.RefDefault">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RefDefault</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.RefDefault" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.RefEmpty">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RefEmpty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.RefEmpty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.countFamilies">
+<span class="sig-name descname"><span class="pre">countFamilies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.countFamilies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.createStyleSet">
+<span class="sig-name descname"><span class="pre">createStyleSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.FontStyleSet.html#animator.skia.FontStyleSet" title="animator.skia.FontStyleSet"><span class="pre">animator.skia.FontStyleSet</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.createStyleSet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.getFamilyName">
+<span class="sig-name descname"><span class="pre">getFamilyName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.getFamilyName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the name of the font family at the given <em>index</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.legacyMakeTypeface">
+<span class="sig-name descname"><span class="pre">legacyMakeTypeface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">familyName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.FontStyle.html#animator.skia.FontStyle" title="animator.skia.FontStyle"><span class="pre">animator.skia.FontStyle</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Typeface.html#animator.skia.Typeface" title="animator.skia.Typeface"><span class="pre">animator.skia.Typeface</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.legacyMakeTypeface" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.makeFromData">
+<span class="sig-name descname"><span class="pre">makeFromData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><span class="pre">animator.skia.Data</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttcIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Typeface.html#animator.skia.Typeface" title="animator.skia.Typeface"><span class="pre">animator.skia.Typeface</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.makeFromData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.makeFromFile">
+<span class="sig-name descname"><span class="pre">makeFromFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttcIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Typeface.html#animator.skia.Typeface" title="animator.skia.Typeface"><span class="pre">animator.skia.Typeface</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.makeFromFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.matchFamily">
+<span class="sig-name descname"><span class="pre">matchFamily</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">familyName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.FontStyleSet.html#animator.skia.FontStyleSet" title="animator.skia.FontStyleSet"><span class="pre">animator.skia.FontStyleSet</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.matchFamily" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.matchFamilyStyle">
+<span class="sig-name descname"><span class="pre">matchFamilyStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">familyName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.FontStyle.html#animator.skia.FontStyle" title="animator.skia.FontStyle"><span class="pre">animator.skia.FontStyle</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Typeface.html#animator.skia.Typeface" title="animator.skia.Typeface"><span class="pre">animator.skia.Typeface</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.matchFamilyStyle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.FontMgr.matchFamilyStyleCharacter">
+<span class="sig-name descname"><span class="pre">matchFamilyStyleCharacter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.FontMgr" title="animator.skia.FontMgr"><span class="pre">animator.skia.FontMgr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">familyName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.FontStyle.html#animator.skia.FontStyle" title="animator.skia.FontStyle"><span class="pre">animator.skia.FontStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcp47</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">character</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Typeface.html#animator.skia.Typeface" title="animator.skia.Typeface"><span class="pre">animator.skia.Typeface</span></a></span></span><a class="headerlink" href="#animator.skia.FontMgr.matchFamilyStyleCharacter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the system fallback to find a typeface for the given character. <code class="docutils literal notranslate"><span class="pre">bcp47Count</span></code> is automatically set
+to the number of strings in <em>bcp47</em>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.FontMetrics.html" title="previous chapter">animator.skia.FontMetrics</a></li>
+      <li>Next: <a href="animator.skia.FontParameters.html" title="next chapter">animator.skia.FontParameters</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.FontMgr.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

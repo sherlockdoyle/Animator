@@ -1,0 +1,75 @@
+animator.skia.Font
+==================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Font
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Font.__init__
+      ~Font.countText
+      ~Font.dump
+      ~Font.getBounds
+      ~Font.getEdging
+      ~Font.getHinting
+      ~Font.getIntercepts
+      ~Font.getMetrics
+      ~Font.getPath
+      ~Font.getPaths
+      ~Font.getPos
+      ~Font.getScaleX
+      ~Font.getSize
+      ~Font.getSkewX
+      ~Font.getSpacing
+      ~Font.getTypeface
+      ~Font.getTypefaceOrDefault
+      ~Font.getWidths
+      ~Font.getWidthsBounds
+      ~Font.getXPos
+      ~Font.isBaselineSnap
+      ~Font.isEmbeddedBitmaps
+      ~Font.isEmbolden
+      ~Font.isForceAutoHinting
+      ~Font.isLinearMetrics
+      ~Font.isSubpixel
+      ~Font.makeWithSize
+      ~Font.measureText
+      ~Font.refTypeface
+      ~Font.refTypefaceOrDefault
+      ~Font.setBaselineSnap
+      ~Font.setEdging
+      ~Font.setEmbeddedBitmaps
+      ~Font.setEmbolden
+      ~Font.setForceAutoHinting
+      ~Font.setHinting
+      ~Font.setLinearMetrics
+      ~Font.setScaleX
+      ~Font.setSize
+      ~Font.setSkewX
+      ~Font.setSubpixel
+      ~Font.setTypeface
+      ~Font.textToGlyphs
+      ~Font.unicharToGlyph
+      ~Font.unicharsToGlyphs
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Font.defaultSize
+   
+   

@@ -1,0 +1,37 @@
+animator.skia.FontMgr
+=====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: FontMgr
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FontMgr.New_Custom_Data
+      ~FontMgr.RefDefault
+      ~FontMgr.RefEmpty
+      ~FontMgr.__init__
+      ~FontMgr.countFamilies
+      ~FontMgr.createStyleSet
+      ~FontMgr.getFamilyName
+      ~FontMgr.legacyMakeTypeface
+      ~FontMgr.makeFromData
+      ~FontMgr.makeFromFile
+      ~FontMgr.matchFamily
+      ~FontMgr.matchFamilyStyle
+      ~FontMgr.matchFamilyStyleCharacter
+   
+   
+
+   
+   
+   

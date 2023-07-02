@@ -1,0 +1,41 @@
+animator.skia.PixelGeometry
+===========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: PixelGeometry
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PixelGeometry.__init__
+      ~PixelGeometry.pixelGeometryIsBGR
+      ~PixelGeometry.pixelGeometryIsH
+      ~PixelGeometry.pixelGeometryIsRGB
+      ~PixelGeometry.pixelGeometryIsV
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PixelGeometry.kBGR_H_PixelGeometry
+      ~PixelGeometry.kBGR_V_PixelGeometry
+      ~PixelGeometry.kRGB_H_PixelGeometry
+      ~PixelGeometry.kRGB_V_PixelGeometry
+      ~PixelGeometry.kUnknown_PixelGeometry
+      ~PixelGeometry.name
+      ~PixelGeometry.value
+   
+   

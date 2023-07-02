@@ -1,0 +1,67 @@
+animator.skia.RRect
+===================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: RRect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~RRect.MakeEmpty
+      ~RRect.MakeOval
+      ~RRect.MakeRect
+      ~RRect.MakeRectXY
+      ~RRect.__init__
+      ~RRect.contains
+      ~RRect.dump
+      ~RRect.getBounds
+      ~RRect.getSimpleRadii
+      ~RRect.getType
+      ~RRect.height
+      ~RRect.inset
+      ~RRect.isComplex
+      ~RRect.isEmpty
+      ~RRect.isNinePatch
+      ~RRect.isOval
+      ~RRect.isRect
+      ~RRect.isSimple
+      ~RRect.isValid
+      ~RRect.makeInset
+      ~RRect.makeOffset
+      ~RRect.makeOutset
+      ~RRect.offset
+      ~RRect.outset
+      ~RRect.radii
+      ~RRect.readFromMemory
+      ~RRect.rect
+      ~RRect.setEmpty
+      ~RRect.setNinePatch
+      ~RRect.setOval
+      ~RRect.setRect
+      ~RRect.setRectRadii
+      ~RRect.setRectXY
+      ~RRect.transform
+      ~RRect.type
+      ~RRect.width
+      ~RRect.writeToMemory
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~RRect.kSizeInMemory
+   
+   

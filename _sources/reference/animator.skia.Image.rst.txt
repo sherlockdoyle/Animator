@@ -1,0 +1,70 @@
+animator.skia.Image
+===================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Image
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Image.DeferredFromEncodedData
+      ~Image.DeferredFromPicture
+      ~Image.RasterFromBitmap
+      ~Image.RasterFromCompressedTextureData
+      ~Image.RasterFromData
+      ~Image.RasterFromPixmap
+      ~Image.RasterFromPixmapCopy
+      ~Image.__init__
+      ~Image.alphaType
+      ~Image.bitmap
+      ~Image.bounds
+      ~Image.colorSpace
+      ~Image.colorType
+      ~Image.dimensions
+      ~Image.encodeToData
+      ~Image.fromarray
+      ~Image.frombytes
+      ~Image.hasMipmaps
+      ~Image.height
+      ~Image.imageInfo
+      ~Image.isAlphaOnly
+      ~Image.isLazyGenerated
+      ~Image.isOpaque
+      ~Image.isValid
+      ~Image.makeColorSpace
+      ~Image.makeColorTypeAndColorSpace
+      ~Image.makeNonTextureImage
+      ~Image.makeRasterImage
+      ~Image.makeRawShader
+      ~Image.makeShader
+      ~Image.makeSubset
+      ~Image.makeWithFilter
+      ~Image.open
+      ~Image.peekPixels
+      ~Image.readPixels
+      ~Image.refColorSpace
+      ~Image.refEncodedData
+      ~Image.reinterpretColorSpace
+      ~Image.resize
+      ~Image.save
+      ~Image.scalePixels
+      ~Image.toarray
+      ~Image.tobytes
+      ~Image.uniqueID
+      ~Image.width
+      ~Image.withDefaultMipmaps
+   
+   
+
+   
+   
+   

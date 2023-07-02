@@ -1,0 +1,80 @@
+animator.skia.Bitmap
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Bitmap
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Bitmap.__init__
+      ~Bitmap.allocN32Pixels
+      ~Bitmap.allocPixels
+      ~Bitmap.allocPixelsFlags
+      ~Bitmap.alphaType
+      ~Bitmap.asImage
+      ~Bitmap.bounds
+      ~Bitmap.bytesPerPixel
+      ~Bitmap.colorSpace
+      ~Bitmap.colorType
+      ~Bitmap.computeByteSize
+      ~Bitmap.computeIsOpaque
+      ~Bitmap.dimensions
+      ~Bitmap.drawsNothing
+      ~Bitmap.empty
+      ~Bitmap.erase
+      ~Bitmap.eraseARGB
+      ~Bitmap.eraseColor
+      ~Bitmap.extractAlpha
+      ~Bitmap.extractSubset
+      ~Bitmap.getAlphaf
+      ~Bitmap.getBounds
+      ~Bitmap.getColor
+      ~Bitmap.getColor4f
+      ~Bitmap.getGenerationID
+      ~Bitmap.getPixels
+      ~Bitmap.getSubset
+      ~Bitmap.height
+      ~Bitmap.info
+      ~Bitmap.installPixels
+      ~Bitmap.isImmutable
+      ~Bitmap.isNull
+      ~Bitmap.isOpaque
+      ~Bitmap.makeShader
+      ~Bitmap.notifyPixelsChanged
+      ~Bitmap.peekPixels
+      ~Bitmap.pixelRefOrigin
+      ~Bitmap.pixmap
+      ~Bitmap.readPixels
+      ~Bitmap.readyToDraw
+      ~Bitmap.refColorSpace
+      ~Bitmap.reset
+      ~Bitmap.rowBytes
+      ~Bitmap.rowBytesAsPixels
+      ~Bitmap.setAlphaType
+      ~Bitmap.setImmutable
+      ~Bitmap.setInfo
+      ~Bitmap.setPixels
+      ~Bitmap.shiftPerPixel
+      ~Bitmap.swap
+      ~Bitmap.tobytes
+      ~Bitmap.tryAllocN32Pixels
+      ~Bitmap.tryAllocPixels
+      ~Bitmap.tryAllocPixelsFlags
+      ~Bitmap.width
+      ~Bitmap.writePixels
+   
+   
+
+   
+   
+   

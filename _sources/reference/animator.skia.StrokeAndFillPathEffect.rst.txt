@@ -1,0 +1,26 @@
+animator.skia.StrokeAndFillPathEffect
+=====================================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: StrokeAndFillPathEffect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~StrokeAndFillPathEffect.Make
+      ~StrokeAndFillPathEffect.__init__
+   
+   
+
+   
+   
+   

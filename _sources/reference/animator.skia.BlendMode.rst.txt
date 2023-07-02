@@ -1,0 +1,66 @@
+animator.skia.BlendMode
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: BlendMode
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BlendMode.__init__
+      ~BlendMode.asCoeff
+      ~BlendMode.name_
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BlendMode.kClear
+      ~BlendMode.kColor
+      ~BlendMode.kColorBurn
+      ~BlendMode.kColorDodge
+      ~BlendMode.kDarken
+      ~BlendMode.kDifference
+      ~BlendMode.kDst
+      ~BlendMode.kDstATop
+      ~BlendMode.kDstIn
+      ~BlendMode.kDstOut
+      ~BlendMode.kDstOver
+      ~BlendMode.kExclusion
+      ~BlendMode.kHardLight
+      ~BlendMode.kHue
+      ~BlendMode.kLastCoeffMode
+      ~BlendMode.kLastMode
+      ~BlendMode.kLastSeparableMode
+      ~BlendMode.kLighten
+      ~BlendMode.kLuminosity
+      ~BlendMode.kModulate
+      ~BlendMode.kMultiply
+      ~BlendMode.kOverlay
+      ~BlendMode.kPlus
+      ~BlendMode.kSaturation
+      ~BlendMode.kScreen
+      ~BlendMode.kSoftLight
+      ~BlendMode.kSrc
+      ~BlendMode.kSrcATop
+      ~BlendMode.kSrcIn
+      ~BlendMode.kSrcOut
+      ~BlendMode.kSrcOver
+      ~BlendMode.kXor
+      ~BlendMode.name
+      ~BlendMode.value
+   
+   

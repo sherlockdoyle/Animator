@@ -1,0 +1,30 @@
+animator.skia.FontStyleSet
+==========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: FontStyleSet
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FontStyleSet.CreateEmpty
+      ~FontStyleSet.__init__
+      ~FontStyleSet.count
+      ~FontStyleSet.createTypeface
+      ~FontStyleSet.getStyle
+      ~FontStyleSet.matchStyle
+   
+   
+
+   
+   
+   

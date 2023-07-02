@@ -1,0 +1,26 @@
+animator.skia.Path1DPathEffect
+==============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Path1DPathEffect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Path1DPathEffect.Make
+      ~Path1DPathEffect.__init__
+   
+   
+
+   
+   
+   

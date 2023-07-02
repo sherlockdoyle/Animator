@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.Shader &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.ShaderMaskFilter" href="animator.skia.ShaderMaskFilter.html" />
+    <link rel="prev" title="animator.skia.SamplingOptions" href="animator.skia.SamplingOptions.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-shader">
+<h1>animator.skia.Shader<a class="headerlink" href="#animator-skia-shader" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Shader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">Shader</span></span><a class="headerlink" href="#animator.skia.Shader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><code class="xref py py-class docutils literal notranslate"><span class="pre">animator.skia.Flattenable</span></code></a></p>
+<p>Functions from the SkShaders namespace are also available here as static methods.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Shader.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Shader.Blend" title="animator.skia.Shader.Blend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Blend</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Shader.Color" title="animator.skia.Shader.Color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Color</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Shader.CoordClamp" title="animator.skia.Shader.CoordClamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CoordClamp</span></code></a>(shader, subset)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Shader.Deserialize" title="animator.skia.Shader.Deserialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Deserialize</span></code></a>(type, data)</p></td>
+<td><p>Deserialize a flattenable of the given <em>type</em> from a buffer <em>data</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Shader.DeserializeAsType" title="animator.skia.Shader.DeserializeAsType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeserializeAsType</span></code></a>(type, data)</p></td>
+<td><p>Deserialize a flattenable of the given <em>type</em> from a buffer <em>data</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Shader.Empty" title="animator.skia.Shader.Empty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Empty</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Shader.MakeFractalNoise" title="animator.skia.Shader.MakeFractalNoise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeFractalNoise</span></code></a>(baseFrequencyX, ...[, tileSize])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Shader.MakeTurbulence" title="animator.skia.Shader.MakeTurbulence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeTurbulence</span></code></a>(baseFrequencyX, ...[, tileSize])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Shader.__init__" title="animator.skia.Shader.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Shader.getFlattenableType" title="animator.skia.Shader.getFlattenableType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getFlattenableType</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Shader.getTypeName" title="animator.skia.Shader.getTypeName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getTypeName</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Shader.isAImage" title="animator.skia.Shader.isAImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isAImage</span></code></a>(self)</p></td>
+<td><p>Iff this shader is backed by a single <a class="reference internal" href="animator.skia.Image.html#animator.skia.Image" title="animator.skia.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>, return it, the local matrix, and the tile mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Shader.isOpaque" title="animator.skia.Shader.isOpaque"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isOpaque</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Shader.makeWithColorFilter" title="animator.skia.Shader.makeWithColorFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeWithColorFilter</span></code></a>(self, filter)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Shader.makeWithLocalMatrix" title="animator.skia.Shader.makeWithLocalMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeWithLocalMatrix</span></code></a>(self, localMatrix)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Shader.serialize" title="animator.skia.Shader.serialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialize</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.Blend">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Blend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Shader.Blend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>Blend(mode: animator.skia.BlendMode, dst: animator.skia.Shader, src: animator.skia.Shader) -&gt; animator.skia.Shader</p></li>
+<li><p>Blend(blender: animator.skia.Blender, dst: animator.skia.Shader, src: animator.skia.Shader) -&gt; animator.skia.Shader</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.Color">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Shader.Color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>Color(color: int) -&gt; animator.skia.Shader</p></li>
+<li><p>Color(color: animator.skia.Color4f, space: animator.skia.ColorSpace = None) -&gt; animator.skia.Shader</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.CoordClamp">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CoordClamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.CoordClamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.Deserialize">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Deserialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable.Type" title="animator.skia.Flattenable.Type"><span class="pre">animator.skia.Flattenable.Type</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><span class="pre">animator.skia.Flattenable</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.Deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize a flattenable of the given <em>type</em> from a buffer <em>data</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.DeserializeAsType">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DeserializeAsType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable.Type" title="animator.skia.Flattenable.Type"><span class="pre">animator.skia.Flattenable.Type</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">SkColorFilter</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkBlender</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkImageFilter</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkMaskFilter</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkPathEffect</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkShader</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Shader.DeserializeAsType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize a flattenable of the given <em>type</em> from a buffer <em>data</em>. The return value is correctly typed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.Empty">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.Empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.MakeFractalNoise">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeFractalNoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseFrequencyX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseFrequencyY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">numOctaves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tileSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ISize.html#animator.skia.ISize" title="animator.skia.ISize"><span class="pre">animator.skia.ISize</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.MakeFractalNoise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.MakeTurbulence">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MakeTurbulence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseFrequencyX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseFrequencyY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">numOctaves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tileSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ISize.html#animator.skia.ISize" title="animator.skia.ISize"><span class="pre">animator.skia.ISize</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.MakeTurbulence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Shader.Type">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Type</span></span><a class="headerlink" href="#animator.skia.Shader.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kColorFilter_Type</p>
+<p>kBlender_Type</p>
+<p>kDrawable_Type</p>
+<p>kImageFilter_Type</p>
+<p>kMaskFilter_Type</p>
+<p>kPathEffect_Type</p>
+<p>kShader_Type</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Shader.Type.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Shader.Type.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.getFlattenableType">
+<span class="sig-name descname"><span class="pre">getFlattenableType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><span class="pre">animator.skia.Flattenable</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable.Type" title="animator.skia.Flattenable.Type"><span class="pre">animator.skia.Flattenable.Type</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.getFlattenableType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.getTypeName">
+<span class="sig-name descname"><span class="pre">getTypeName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><span class="pre">animator.skia.Flattenable</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.getTypeName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.isAImage">
+<span class="sig-name descname"><span class="pre">isAImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.skia.Shader.isAImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iff this shader is backed by a single <a class="reference internal" href="animator.skia.Image.html#animator.skia.Image" title="animator.skia.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>, return it, the local matrix, and the tile mode.
+Else return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.isOpaque">
+<span class="sig-name descname"><span class="pre">isOpaque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.isOpaque" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.makeWithColorFilter">
+<span class="sig-name descname"><span class="pre">makeWithColorFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ColorFilter.html#animator.skia.ColorFilter" title="animator.skia.ColorFilter"><span class="pre">animator.skia.ColorFilter</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.makeWithColorFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.makeWithLocalMatrix">
+<span class="sig-name descname"><span class="pre">makeWithLocalMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">localMatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Matrix.html#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Shader" title="animator.skia.Shader"><span class="pre">animator.skia.Shader</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.makeWithLocalMatrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Shader.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Flattenable.html#animator.skia.Flattenable" title="animator.skia.Flattenable"><span class="pre">animator.skia.Flattenable</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Data.html#animator.skia.Data" title="animator.skia.Data"><span class="pre">animator.skia.Data</span></a></span></span><a class="headerlink" href="#animator.skia.Shader.serialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.SamplingOptions.html" title="previous chapter">animator.skia.SamplingOptions</a></li>
+      <li>Next: <a href="animator.skia.ShaderMaskFilter.html" title="next chapter">animator.skia.ShaderMaskFilter</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.Shader.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

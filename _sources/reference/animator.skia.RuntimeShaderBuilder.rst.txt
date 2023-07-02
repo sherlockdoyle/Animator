@@ -1,0 +1,32 @@
+animator.skia.RuntimeShaderBuilder
+==================================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: RuntimeShaderBuilder
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~RuntimeShaderBuilder.__init__
+      ~RuntimeShaderBuilder.child
+      ~RuntimeShaderBuilder.children
+      ~RuntimeShaderBuilder.effect
+      ~RuntimeShaderBuilder.makeImage
+      ~RuntimeShaderBuilder.makeShader
+      ~RuntimeShaderBuilder.uniform
+      ~RuntimeShaderBuilder.uniforms
+   
+   
+
+   
+   
+   

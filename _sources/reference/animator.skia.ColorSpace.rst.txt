@@ -1,0 +1,47 @@
+animator.skia.ColorSpace
+========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorSpace
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorSpace.Deserialize
+      ~ColorSpace.Equals
+      ~ColorSpace.Make
+      ~ColorSpace.MakeRGB
+      ~ColorSpace.MakeSRGB
+      ~ColorSpace.MakeSRGBLinear
+      ~ColorSpace.__init__
+      ~ColorSpace.gammaCloseToSRGB
+      ~ColorSpace.gammaIsLinear
+      ~ColorSpace.gamutTransformTo
+      ~ColorSpace.hash
+      ~ColorSpace.invTransferFn
+      ~ColorSpace.isNumericalTransferFn
+      ~ColorSpace.isSRGB
+      ~ColorSpace.makeColorSpin
+      ~ColorSpace.makeLinearGamma
+      ~ColorSpace.makeSRGBGamma
+      ~ColorSpace.serialize
+      ~ColorSpace.toProfile
+      ~ColorSpace.toXYZD50
+      ~ColorSpace.toXYZD50Hash
+      ~ColorSpace.transferFn
+      ~ColorSpace.transferFnHash
+   
+   
+
+   
+   
+   

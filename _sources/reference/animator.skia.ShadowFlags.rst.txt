@@ -1,0 +1,38 @@
+animator.skia.ShadowFlags
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ShadowFlags
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ShadowFlags.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ShadowFlags.kAll_ShadowFlag
+      ~ShadowFlags.kConcaveBlurOnly_ShadowFlag
+      ~ShadowFlags.kDirectionalLight_ShadowFlag
+      ~ShadowFlags.kGeometricOnly_ShadowFlag
+      ~ShadowFlags.kNone_ShadowFlag
+      ~ShadowFlags.kTransparentOccluder_ShadowFlag
+      ~ShadowFlags.name
+      ~ShadowFlags.value
+   
+   

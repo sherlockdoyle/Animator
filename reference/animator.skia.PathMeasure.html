@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.PathMeasure &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.PathOp" href="animator.skia.PathOp.html" />
+    <link rel="prev" title="animator.skia.PathFillType" href="animator.skia.PathFillType.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-pathmeasure">
+<h1>animator.skia.PathMeasure<a class="headerlink" href="#animator-skia-pathmeasure" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">PathMeasure</span></span><a class="headerlink" href="#animator.skia.PathMeasure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.PathMeasure.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: animator.skia.PathMeasure) -&gt; None</p></li>
+<li><p>__init__(self: animator.skia.PathMeasure, path: animator.skia.Path, forceClosed: bool = False, resScale: float = 1) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathMeasure.__init__" title="animator.skia.PathMeasure.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathMeasure.getLength" title="animator.skia.PathMeasure.getLength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getLength</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathMeasure.getMatrix" title="animator.skia.PathMeasure.getMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMatrix</span></code></a>(self, distance, flags)</p></td>
+<td><p>Pins <em>distance</em> to 0 &lt;= distance &lt;= getLength(), and returns the corresponding matrix (by calling getPosTan).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathMeasure.getPosTan" title="animator.skia.PathMeasure.getPosTan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPosTan</span></code></a>(self, distance)</p></td>
+<td><p>Pins <em>distance</em> to 0 &lt;= distance &lt;= getLength(), and returns the corresponding position and tangent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathMeasure.getSegment" title="animator.skia.PathMeasure.getSegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSegment</span></code></a>(self, startD, stopD[, ...])</p></td>
+<td><p>Given a start and stop distance, return the intervening segment(s).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathMeasure.isClosed" title="animator.skia.PathMeasure.isClosed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isClosed</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.PathMeasure.nextContour" title="animator.skia.PathMeasure.nextContour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nextContour</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.PathMeasure.setPath" title="animator.skia.PathMeasure.setPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setPath</span></code></a>(self, path[, forceClosed])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.MatrixFlags">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MatrixFlags</span></span><a class="headerlink" href="#animator.skia.PathMeasure.MatrixFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kGetPosition_MatrixFlag</p>
+<p>kGetTangent_MatrixFlag</p>
+<p>kGetPosAndTan_MatrixFlag</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.MatrixFlags.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.PathMeasure.MatrixFlags.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.getLength">
+<span class="sig-name descname"><span class="pre">getLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathMeasure" title="animator.skia.PathMeasure"><span class="pre">animator.skia.PathMeasure</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#animator.skia.PathMeasure.getLength" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.getMatrix">
+<span class="sig-name descname"><span class="pre">getMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.PathMeasure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags:</span> <span class="pre">animator.skia.PathMeasure.MatrixFlags</span> <span class="pre">=</span> <span class="pre">&lt;MatrixFlags.kGetPosAndTan_MatrixFlag:</span> <span class="pre">3&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Matrix.html#animator.skia.Matrix" title="animator.skia.Matrix"><span class="pre">animator.skia.Matrix</span></a></span></span><a class="headerlink" href="#animator.skia.PathMeasure.getMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pins <em>distance</em> to 0 &lt;= distance &lt;= getLength(), and returns the corresponding matrix (by calling
+getPosTan).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.getPosTan">
+<span class="sig-name descname"><span class="pre">getPosTan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathMeasure" title="animator.skia.PathMeasure"><span class="pre">animator.skia.PathMeasure</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a></span></span><a class="headerlink" href="#animator.skia.PathMeasure.getPosTan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pins <em>distance</em> to 0 &lt;= distance &lt;= getLength(), and returns the corresponding position and tangent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.getSegment">
+<span class="sig-name descname"><span class="pre">getSegment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathMeasure" title="animator.skia.PathMeasure"><span class="pre">animator.skia.PathMeasure</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">startD</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopD</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">startWithMoveTo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></span><a class="headerlink" href="#animator.skia.PathMeasure.getSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a start and stop distance, return the intervening segment(s).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.isClosed">
+<span class="sig-name descname"><span class="pre">isClosed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathMeasure" title="animator.skia.PathMeasure"><span class="pre">animator.skia.PathMeasure</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.PathMeasure.isClosed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.nextContour">
+<span class="sig-name descname"><span class="pre">nextContour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathMeasure" title="animator.skia.PathMeasure"><span class="pre">animator.skia.PathMeasure</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.skia.PathMeasure.nextContour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.PathMeasure.setPath">
+<span class="sig-name descname"><span class="pre">setPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.PathMeasure" title="animator.skia.PathMeasure"><span class="pre">animator.skia.PathMeasure</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Path.html#animator.skia.Path" title="animator.skia.Path"><span class="pre">animator.skia.Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">forceClosed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.PathMeasure.setPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.PathFillType.html" title="previous chapter">animator.skia.PathFillType</a></li>
+      <li>Next: <a href="animator.skia.PathOp.html" title="next chapter">animator.skia.PathOp</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.PathMeasure.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

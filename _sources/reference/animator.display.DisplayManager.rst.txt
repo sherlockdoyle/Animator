@@ -1,0 +1,30 @@
+animator.display.DisplayManager
+===============================
+
+.. automodule:: animator.display.DisplayManager
+
+   
+   
+   .. rubric:: Module Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      display_method
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

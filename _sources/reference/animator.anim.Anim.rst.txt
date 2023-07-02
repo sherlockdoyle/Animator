@@ -1,0 +1,28 @@
+animator.anim.Anim
+==================
+
+.. currentmodule:: animator.anim
+
+.. autoclass:: Anim
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Anim.__init__
+      ~Anim.end
+      ~Anim.start
+      ~Anim.update
+   
+   
+
+   
+   
+   

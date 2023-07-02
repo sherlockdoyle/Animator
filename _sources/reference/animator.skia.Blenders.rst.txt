@@ -1,0 +1,26 @@
+animator.skia.Blenders
+======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Blenders
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Blenders.Arithmetic
+      ~Blenders.__init__
+   
+   
+
+   
+   
+   

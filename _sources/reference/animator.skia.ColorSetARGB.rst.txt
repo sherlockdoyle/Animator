@@ -1,0 +1,6 @@
+animator.skia.ColorSetARGB
+==========================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: ColorSetARGB

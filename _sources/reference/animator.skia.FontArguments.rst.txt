@@ -1,0 +1,31 @@
+animator.skia.FontArguments
+===========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: FontArguments
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FontArguments.__init__
+      ~FontArguments.getCollectionIndex
+      ~FontArguments.getPalette
+      ~FontArguments.getVariationDesignPosition
+      ~FontArguments.setCollectionIndex
+      ~FontArguments.setPalette
+      ~FontArguments.setVariationDesignPosition
+   
+   
+
+   
+   
+   

@@ -1,0 +1,28 @@
+animator.skia.ShadowUtils
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ShadowUtils
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ShadowUtils.ComputeTonalColors
+      ~ShadowUtils.DrawShadow
+      ~ShadowUtils.GetLocalBounds
+      ~ShadowUtils.__init__
+   
+   
+
+   
+   
+   

@@ -1,0 +1,81 @@
+animator.skia.Paint
+===================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Paint
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Paint.__init__
+      ~Paint.asBlendMode
+      ~Paint.getAlpha
+      ~Paint.getAlphaf
+      ~Paint.getBlendMode_or
+      ~Paint.getBlender
+      ~Paint.getColor
+      ~Paint.getColor4f
+      ~Paint.getColorFilter
+      ~Paint.getImageFilter
+      ~Paint.getMaskFilter
+      ~Paint.getPathEffect
+      ~Paint.getShader
+      ~Paint.getStrokeCap
+      ~Paint.getStrokeJoin
+      ~Paint.getStrokeMiter
+      ~Paint.getStrokeWidth
+      ~Paint.getStyle
+      ~Paint.isAntiAlias
+      ~Paint.isDither
+      ~Paint.isSrcOver
+      ~Paint.nothingToDraw
+      ~Paint.refBlender
+      ~Paint.refColorFilter
+      ~Paint.refImageFilter
+      ~Paint.refMaskFilter
+      ~Paint.refPathEffect
+      ~Paint.refShader
+      ~Paint.reset
+      ~Paint.setARGB
+      ~Paint.setAlpha
+      ~Paint.setAlphaf
+      ~Paint.setAntiAlias
+      ~Paint.setBlendMode
+      ~Paint.setBlender
+      ~Paint.setColor
+      ~Paint.setColor4f
+      ~Paint.setColorFilter
+      ~Paint.setDither
+      ~Paint.setImageFilter
+      ~Paint.setMaskFilter
+      ~Paint.setPathEffect
+      ~Paint.setShader
+      ~Paint.setStroke
+      ~Paint.setStrokeCap
+      ~Paint.setStrokeJoin
+      ~Paint.setStrokeMiter
+      ~Paint.setStrokeWidth
+      ~Paint.setStyle
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Paint.kCapCount
+      ~Paint.kJoinCount
+      ~Paint.kStyleCount
+   
+   

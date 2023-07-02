@@ -1,0 +1,33 @@
+animator.display
+================
+
+.. automodule:: animator.display
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: module.rst
+   :recursive:
+
+   animator.display.DisplayManager
+   animator.display.display
+

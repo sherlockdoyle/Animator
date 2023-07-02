@@ -1,0 +1,30 @@
+animator.skia.SurfaceProps
+==========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: SurfaceProps
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SurfaceProps.__init__
+      ~SurfaceProps.cloneWithPixelGeometry
+      ~SurfaceProps.flags
+      ~SurfaceProps.isAlwaysDither
+      ~SurfaceProps.isUseDeviceIndependentFonts
+      ~SurfaceProps.pixelGeometry
+   
+   
+
+   
+   
+   

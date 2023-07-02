@@ -1,0 +1,35 @@
+animator.skia.TextUtils\_Align
+==============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: TextUtils_Align
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TextUtils_Align.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~TextUtils_Align.kCenter_Align
+      ~TextUtils_Align.kLeft_Align
+      ~TextUtils_Align.kRight_Align
+      ~TextUtils_Align.name
+      ~TextUtils_Align.value
+   
+   

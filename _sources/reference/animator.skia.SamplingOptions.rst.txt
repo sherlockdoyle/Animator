@@ -1,0 +1,37 @@
+animator.skia.SamplingOptions
+=============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: SamplingOptions
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SamplingOptions.Aniso
+      ~SamplingOptions.__init__
+      ~SamplingOptions.isAniso
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SamplingOptions.cubic
+      ~SamplingOptions.filter
+      ~SamplingOptions.maxAniso
+      ~SamplingOptions.mipmap
+      ~SamplingOptions.useCubic
+   
+   

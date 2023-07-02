@@ -1,0 +1,51 @@
+animator.skia.ImageFilters
+==========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ImageFilters
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ImageFilters.Arithmetic
+      ~ImageFilters.Blend
+      ~ImageFilters.Blur
+      ~ImageFilters.ColorFilter
+      ~ImageFilters.Compose
+      ~ImageFilters.Dilate
+      ~ImageFilters.DisplacementMap
+      ~ImageFilters.DistantLitDiffuse
+      ~ImageFilters.DistantLitSpecular
+      ~ImageFilters.DropShadow
+      ~ImageFilters.DropShadowOnly
+      ~ImageFilters.Erode
+      ~ImageFilters.Image
+      ~ImageFilters.Magnifier
+      ~ImageFilters.MatrixConvolution
+      ~ImageFilters.MatrixTransform
+      ~ImageFilters.Merge
+      ~ImageFilters.Offset
+      ~ImageFilters.Picture
+      ~ImageFilters.PointLitDiffuse
+      ~ImageFilters.PointLitSpecular
+      ~ImageFilters.RuntimeShader
+      ~ImageFilters.Shader
+      ~ImageFilters.SpotLitDiffuse
+      ~ImageFilters.SpotLitSpecular
+      ~ImageFilters.Tile
+      ~ImageFilters.__init__
+   
+   
+
+   
+   
+   

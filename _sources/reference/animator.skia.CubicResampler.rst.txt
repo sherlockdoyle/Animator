@@ -1,0 +1,34 @@
+animator.skia.CubicResampler
+============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: CubicResampler
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~CubicResampler.CatmullRom
+      ~CubicResampler.Mitchell
+      ~CubicResampler.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~CubicResampler.B
+      ~CubicResampler.C
+   
+   

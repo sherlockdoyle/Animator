@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.scene.Scene &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia" href="animator.skia.html" />
+    <link rel="prev" title="animator.scene" href="animator.scene.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-scene-scene">
+<h1>animator.scene.Scene<a class="headerlink" href="#animator-scene-scene" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.scene.Scene">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.scene.</span></span><span class="sig-name descname"><span class="pre">Scene</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">854</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">480</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.scene.Scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The scene class. This is the main class for creating animations. It initializes a frame and a canvas to draw on,
+and provides methods for displaying and saving them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> – The width of the frame/scene.</p></li>
+<li><p><strong>height</strong> – The height of the frame/scene.</p></li>
+<li><p><strong>fps</strong> – The FPS used for animations.</p></li>
+<li><p><strong>frame</strong> – The internal frame (array) used for drawing. The data type is in RGBA format.</p></li>
+<li><p><strong>canvas</strong> – The <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.Canvas</span></code> used for drawing.</p></li>
+<li><p><strong>bgcolor</strong> – The background color of the scene. This is used when clearing the scene after each frame.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">854</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">480</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> – The width of the frame/scene or a string representing a resolution. Resolutions can be one of
+‘144p’, ‘240p’, ‘360p’, ‘480p’, ‘720p’, ‘hd’, ‘1080p’, ‘fhd’, ‘fullhd’, ‘1440p’, ‘2k’, ‘2160p’, ‘4k’, ‘uhd’,
+‘ultrahd’. The resolution strings are case-insensitive and may contain whitespaces.</p></li>
+<li><p><strong>height</strong> – The height of the frame/scene.</p></li>
+<li><p><strong>fps</strong> – The FPS used for saving the animation. The FPS used for displaying the animation may be different.</p></li>
+<li><p><strong>scale</strong> – Amount to scale the frame up or down. This can be a float, in which case the frame is scaled by
+that amount, or a tuple of two integers, in which case the frame is scaled to that size. This can also be a
+string representing a resolution (see <cite>width</cite> parameter). During displaying animations a large frame may cause
+lag or not fit on the screen. This factor is used to scale the frame down. By specifying a value &gt;1, the frame
+can also be scaled up. If the aspect ratio of the frame is different from that of the scene, the frame will be
+centered.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.scene.Scene.__init__" title="animator.scene.Scene.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([width, height, fps, scale])</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param width</dt>
+<dd class="field-odd"><p>The width of the frame/scene or a string representing a resolution. Resolutions can be one of</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.scene.Scene.add" title="animator.scene.Scene.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(*entities)</p></td>
+<td><p>Add one or more entities to the scene.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.scene.Scene.animate" title="animator.scene.Scene.animate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">animate</span></code></a>(*animations)</p></td>
+<td><p>Adds one or more animations to the scene.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.scene.Scene.clear" title="animator.scene.Scene.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<td><p>Clears the frame and fills it with transparency.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.scene.Scene.clear_with_bgcolor" title="animator.scene.Scene.clear_with_bgcolor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_with_bgcolor</span></code></a>()</p></td>
+<td><p>Clears the frame and fills it with the background color.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.scene.Scene.play_frames" title="animator.scene.Scene.play_frames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_frames</span></code></a>([delay, keep_open])</p></td>
+<td><p>Plays the animation by displaying each frame in the scene.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.scene.Scene.quickdraw" title="animator.scene.Scene.quickdraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quickdraw</span></code></a>()</p></td>
+<td><p>A simple way to quickly draw something on the scene.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.scene.Scene.r2a" title="animator.scene.Scene.r2a"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r2a</span></code></a>(pos[, padding])</p></td>
+<td><p>Convert a point from the scene's relative coordinate system to absolute coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.scene.Scene.r2a_bounds" title="animator.scene.Scene.r2a_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r2a_bounds</span></code></a>(bounds, pos[, anchor, padding])</p></td>
+<td><p>Convert the position of a bounding box from the scene's relative coordinate system to absolute coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.scene.Scene.save_frame" title="animator.scene.Scene.save_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_frame</span></code></a>(path[, quality])</p></td>
+<td><p>Saves the current frame to a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.scene.Scene.show_frame" title="animator.scene.Scene.show_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_frame</span></code></a>()</p></td>
+<td><p>Displays the current frame.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.scene.Scene.update" title="animator.scene.Scene.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>()</p></td>
+<td><p>Updates the scene.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.scene.Scene.wait" title="animator.scene.Scene.wait"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wait</span></code></a>(seconds)</p></td>
+<td><p>Waits for a specified amount of seconds before continuing.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.scene.Scene.context2d" title="animator.scene.Scene.context2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">context2d</span></code></a></p></td>
+<td><p>An instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Context2d</span></code> wrapping the canvas.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.entity.Entity.html#animator.entity.Entity" title="animator.entity.entity.Entity"><span class="pre">animator.entity.entity.Entity</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add one or more entities to the scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entities</strong> – The entities to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.animate">
+<span class="sig-name descname"><span class="pre">animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">animations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.anim.Anim.html#animator.anim.Anim" title="animator.anim.anim.Anim"><span class="pre">animator.anim.anim.Anim</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.animate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds one or more animations to the scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>animations</strong> – The animations to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the frame and fills it with transparency.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.clear_with_bgcolor">
+<span class="sig-name descname"><span class="pre">clear_with_bgcolor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.clear_with_bgcolor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the frame and fills it with the background color.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.scene.Scene.context2d">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">context2d</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">animator.graphics.Context2d.Context2d</span></em><a class="headerlink" href="#animator.scene.Scene.context2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>An instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Context2d</span></code> wrapping the canvas. A <code class="xref py py-class docutils literal notranslate"><span class="pre">Context2d</span></code> wraps a <code class="xref py py-class docutils literal notranslate"><span class="pre">skia.Canvas</span></code> and
+provides additional methods for drawing. A scene contains a single <code class="xref py py-class docutils literal notranslate"><span class="pre">Context2d</span></code> instance, which can be
+accessed through this method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.play_frames">
+<span class="sig-name descname"><span class="pre">play_frames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.play_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays the animation by displaying each frame in the scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delay</strong> – The delay between frames in seconds. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the delay is set to <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">fps</span></code>. If <code class="docutils literal notranslate"><span class="pre">0</span></code>, the
+animation is played as fast as possible.</p></li>
+<li><p><strong>keep_open</strong> – Whether to keep the animation open after playing. To close the animation, press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> or
+close the window.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.quickdraw">
+<span class="sig-name descname"><span class="pre">quickdraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">animator.graphics.Context2d.Context2d</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#animator.scene.Scene.quickdraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple way to quickly draw something on the scene. This method clears the scene and returns a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Context2d</span></code> for drawing. When the context manager exits, the frame is displayed.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">animator</span> <span class="k">as</span> <span class="nn">am</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scene</span> <span class="o">=</span> <span class="n">am</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">scene</span><span class="o">.</span><span class="n">quickdraw</span><span class="p">()</span> <span class="k">as</span> <span class="n">ctx</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">ctx</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">ctx</span><span class="o">.</span><span class="n">fill</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># A circle is drawn at the center with a black background.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.r2a">
+<span class="sig-name descname"><span class="pre">r2a</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.r2a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a point from the scene’s relative coordinate system to absolute coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> – The point in relative coordinates, a 2 element numpy array [x, y]. The coordinates are between -1
+and 1, where -1 is the left/top edge of the scene and 1 is the right/bottom edge.</p></li>
+<li><p><strong>padding</strong> – The extra space around the scene, in pixels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The point in absolute coordinates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.r2a_bounds">
+<span class="sig-name descname"><span class="pre">r2a_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.Rect.html#animator.skia.Rect" title="animator.skia.Rect"><span class="pre">animator.skia.Rect</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Point.html#animator.skia.Point" title="animator.skia.Point"><span class="pre">animator.skia.Point</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.r2a_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the position of a bounding box from the scene’s relative coordinate system to absolute coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bounds</strong> – The bounding box that is to be positioned.</p></li>
+<li><p><strong>pos</strong> – The position of the bounding box in relative coordinates, a 2 element numpy array [x, y]. The
+coordinates are between -1 and 1, where -1 is the left/top edge of the scene and 1 is the right/bottom edge.</p></li>
+<li><p><strong>anchor</strong> – The anchor point in the bounding box in relative coordinates, which will be positioned at <em>pos</em>.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, it’ll be same as <em>pos</em>.</p></li>
+<li><p><strong>padding</strong> – The extra space around the scene, in pixels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The position of the bounding box in absolute coordinates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.save_frame">
+<span class="sig-name descname"><span class="pre">save_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.save_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the current frame to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – The path to the file. The path may contain a <code class="docutils literal notranslate"><span class="pre">{}</span></code> placeholder, which will be replaced with the
+current frame number.</p></li>
+<li><p><strong>quality</strong> – The quality of the image, between 0 and 100. Defaults to 100.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.show_frame">
+<span class="sig-name descname"><span class="pre">show_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.show_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the current frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the scene. This method is called before each frame is drawn. It draws all entities in the scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if the animation should stop, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.scene.Scene.wait">
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.scene.Scene.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waits for a specified amount of seconds before continuing.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.scene.html">animator.scene</a><ul>
+      <li>Previous: <a href="animator.scene.html" title="previous chapter">animator.scene</a></li>
+      <li>Next: <a href="animator.skia.html" title="next chapter">animator.skia</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.scene.Scene.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

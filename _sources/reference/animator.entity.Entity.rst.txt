@@ -1,0 +1,55 @@
+animator.entity.Entity
+======================
+
+.. currentmodule:: animator.entity
+
+.. autoclass:: Entity
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Entity.__init__
+      ~Entity.add
+      ~Entity.align
+      ~Entity.center
+      ~Entity.clear
+      ~Entity.do_fill
+      ~Entity.do_stroke
+      ~Entity.draw
+      ~Entity.get_bounds
+      ~Entity.get_dimensions
+      ~Entity.move
+      ~Entity.on_draw
+      ~Entity.reset_transform
+      ~Entity.rotate
+      ~Entity.scale
+      ~Entity.set_relative_pos
+      ~Entity.set_relative_to_entity
+      ~Entity.set_scene
+      ~Entity.set_visibility
+      ~Entity.shift
+      ~Entity.skew
+      ~Entity.transform
+      ~Entity.translate
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Entity.absolute_position
+      ~Entity.total_transformation
+      ~Entity.z_index
+   
+   

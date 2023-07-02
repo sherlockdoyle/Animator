@@ -1,0 +1,26 @@
+animator.skia.Line2DPathEffect
+==============================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Line2DPathEffect
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Line2DPathEffect.Make
+      ~Line2DPathEffect.__init__
+   
+   
+
+   
+   
+   

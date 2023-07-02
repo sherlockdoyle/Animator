@@ -1,0 +1,112 @@
+animator.skia.Path
+==================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Path
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Path.Circle
+      ~Path.ConvertConicToQuads
+      ~Path.GetFromText
+      ~Path.IsCubicDegenerate
+      ~Path.IsLineDegenerate
+      ~Path.IsQuadDegenerate
+      ~Path.Line
+      ~Path.Make
+      ~Path.Oval
+      ~Path.Polygon
+      ~Path.RRect
+      ~Path.Rect
+      ~Path.__init__
+      ~Path.addArc
+      ~Path.addCircle
+      ~Path.addOval
+      ~Path.addPath
+      ~Path.addPoly
+      ~Path.addRRect
+      ~Path.addRect
+      ~Path.addRoundRect
+      ~Path.approximateBytesUsed
+      ~Path.arcTo
+      ~Path.asWinding
+      ~Path.close
+      ~Path.computeTightBounds
+      ~Path.conicTo
+      ~Path.conservativelyContainsRect
+      ~Path.contains
+      ~Path.countPoints
+      ~Path.countVerbs
+      ~Path.cubicTo
+      ~Path.dump
+      ~Path.dumpArrays
+      ~Path.dumpHex
+      ~Path.fillPathWithPaint
+      ~Path.getBounds
+      ~Path.getFillType
+      ~Path.getGenerationID
+      ~Path.getLastPt
+      ~Path.getPoint
+      ~Path.getPoints
+      ~Path.getSegmentMasks
+      ~Path.getVerbs
+      ~Path.incReserve
+      ~Path.interpolate
+      ~Path.iop
+      ~Path.isConvex
+      ~Path.isEmpty
+      ~Path.isFinite
+      ~Path.isInterpolatable
+      ~Path.isInverseFillType
+      ~Path.isLastContourClosed
+      ~Path.isLine
+      ~Path.isOval
+      ~Path.isRRect
+      ~Path.isRect
+      ~Path.isValid
+      ~Path.isVolatile
+      ~Path.isimplify
+      ~Path.lineTo
+      ~Path.makeOffset
+      ~Path.makeScale
+      ~Path.makeTransform
+      ~Path.moveTo
+      ~Path.offset
+      ~Path.op
+      ~Path.quadTo
+      ~Path.rArcTo
+      ~Path.rConicTo
+      ~Path.rCubicTo
+      ~Path.rLineTo
+      ~Path.rMoveTo
+      ~Path.rQuadTo
+      ~Path.readFromMemory
+      ~Path.reset
+      ~Path.reverseAddPath
+      ~Path.rewind
+      ~Path.serialize
+      ~Path.setFillType
+      ~Path.setIsVolatile
+      ~Path.setLastPt
+      ~Path.simplify
+      ~Path.swap
+      ~Path.tightBounds
+      ~Path.toggleInverseFillType
+      ~Path.transform
+      ~Path.updateBoundsCache
+   
+   
+
+   
+   
+   

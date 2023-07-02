@@ -1,0 +1,39 @@
+animator.skia.ColorSpacePrimaries
+=================================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ColorSpacePrimaries
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ColorSpacePrimaries.__init__
+      ~ColorSpacePrimaries.toXYZD50
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ColorSpacePrimaries.fBX
+      ~ColorSpacePrimaries.fBY
+      ~ColorSpacePrimaries.fGX
+      ~ColorSpacePrimaries.fGY
+      ~ColorSpacePrimaries.fRX
+      ~ColorSpacePrimaries.fRY
+      ~ColorSpacePrimaries.fWX
+      ~ColorSpacePrimaries.fWY
+   
+   

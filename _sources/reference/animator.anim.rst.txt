@@ -1,0 +1,31 @@
+animator.anim
+=============
+
+.. automodule:: animator.anim
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      Anim
+   
+   
+
+   
+   
+   
+
+
+

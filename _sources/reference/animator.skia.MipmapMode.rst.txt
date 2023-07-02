@@ -1,0 +1,36 @@
+animator.skia.MipmapMode
+========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: MipmapMode
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MipmapMode.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~MipmapMode.kLast
+      ~MipmapMode.kLinear
+      ~MipmapMode.kNearest
+      ~MipmapMode.kNone
+      ~MipmapMode.name
+      ~MipmapMode.value
+   
+   

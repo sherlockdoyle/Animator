@@ -1,0 +1,30 @@
+animator.skia.Flattenable
+=========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Flattenable
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Flattenable.Deserialize
+      ~Flattenable.DeserializeAsType
+      ~Flattenable.__init__
+      ~Flattenable.getFlattenableType
+      ~Flattenable.getTypeName
+      ~Flattenable.serialize
+   
+   
+
+   
+   
+   

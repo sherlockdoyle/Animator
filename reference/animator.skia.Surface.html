@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>animator.skia.Surface &#8212; animator  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="animator.skia.SurfaceProps" href="animator.skia.SurfaceProps.html" />
+    <link rel="prev" title="animator.skia.StrokeRec" href="animator.skia.StrokeRec.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="animator-skia-surface">
+<h1>animator.skia.Surface<a class="headerlink" href="#animator-skia-surface" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Surface">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">animator.skia.</span></span><span class="sig-name descname"><span class="pre">Surface</span></span><a class="headerlink" href="#animator.skia.Surface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Surface</span></code></a> is responsible for managing the pixels that a canvas draws into. Functions from the
+SkShaders namespace are also available here as static methods.</p>
+<dl>
+<dt>Example::</dt><dd><p>surface = skia.Surface(640, 480)
+with surface as canvas:</p>
+<blockquote>
+<div><p>draw(canvas)</p>
+</div></blockquote>
+<p>image = surface.makeImageSnapshot()</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Surface.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: animator.skia.Surface, array: numpy.ndarray, colorType: animator.skia.ColorType = &lt;ColorType.kRGBA_8888_ColorType: 4&gt;, alphaType: animator.skia.AlphaType = &lt;AlphaType.kUnpremul_AlphaType: 3&gt;, colorSpace: animator.skia.ColorSpace = None, surfaceProps: animator.skia.SurfaceProps = None) -&gt; None</p></li>
+</ol>
+<p>Creates <a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Surface</span></code></a> backed by numpy array.</p>
+<ol class="arabic simple" start="2">
+<li><p>__init__(self: animator.skia.Surface, width: int, height: int, surfaceProps: animator.skia.SurfaceProps = None) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.Null" title="animator.skia.Surface.Null"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Null</span></code></a>(width, height)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.Raster" title="animator.skia.Surface.Raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raster</span></code></a>(imageInfo[, rowBytes, surfaceProps])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.WrapPixels" title="animator.skia.Surface.WrapPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WrapPixels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.__init__" title="animator.skia.Surface.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.draw" title="animator.skia.Surface.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(self, canvas, x, y, sampling, paint)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.generationID" title="animator.skia.Surface.generationID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generationID</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.getCanvas" title="animator.skia.Surface.getCanvas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getCanvas</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.height" title="animator.skia.Surface.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.imageInfo" title="animator.skia.Surface.imageInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imageInfo</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.makeImageSnapshot" title="animator.skia.Surface.makeImageSnapshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeImageSnapshot</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.makeSurface" title="animator.skia.Surface.makeSurface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">makeSurface</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.notifyContentWillChange" title="animator.skia.Surface.notifyContentWillChange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notifyContentWillChange</span></code></a>(self, mode)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.peekPixels" title="animator.skia.Surface.peekPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">peekPixels</span></code></a>(self)</p></td>
+<td><p>Returns a <a class="reference internal" href="animator.skia.Pixmap.html#animator.skia.Pixmap" title="animator.skia.Pixmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pixmap</span></code></a> describing the pixel data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.props" title="animator.skia.Surface.props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">props</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.readPixels" title="animator.skia.Surface.readPixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readPixels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.toarray" title="animator.skia.Surface.toarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toarray</span></code></a>(self, srcX, srcY, colorType, ...)</p></td>
+<td><p>Returns a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> of the image's pixels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#animator.skia.Surface.width" title="animator.skia.Surface.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#animator.skia.Surface.writePixels" title="animator.skia.Surface.writePixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writePixels</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Overloaded function.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="animator.skia.Surface.ContentChangeMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ContentChangeMode</span></span><a class="headerlink" href="#animator.skia.Surface.ContentChangeMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Members:</p>
+<p>kDiscard_ContentChangeMode</p>
+<p>kRetain_ContentChangeMode</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="animator.skia.Surface.ContentChangeMode.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#animator.skia.Surface.ContentChangeMode.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.Null">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Null</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.Null" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.Raster">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imageInfo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.ImageInfo.html#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowBytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surfaceProps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="animator.skia.SurfaceProps.html#animator.skia.SurfaceProps" title="animator.skia.SurfaceProps"><span class="pre">animator.skia.SurfaceProps</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.Raster" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.WrapPixels">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WrapPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Surface.WrapPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>WrapPixels(imageInfo: animator.skia.ImageInfo, pixels: buffer, rowBytes: int = 0, surfaceProps: animator.skia.SurfaceProps = None) -&gt; animator.skia.Surface</p></li>
+</ol>
+<p>Allocates raster <a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Surface</span></code></a> with the specified <em>pixels</em>.</p>
+<ol class="arabic simple" start="2">
+<li><p>WrapPixels(pixmap: animator.skia.Pixmap, props: animator.skia.SurfaceProps = None) -&gt; animator.skia.Surface</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.Surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">canvas:</span> <span class="pre">SkCanvas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling:</span> <span class="pre">animator.skia.SamplingOptions</span> <span class="pre">=</span> <span class="pre">&lt;animator.skia.SamplingOptions</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f20500e51f0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paint:</span> <span class="pre">animator.skia.Paint</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.generationID">
+<span class="sig-name descname"><span class="pre">generationID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.generationID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.getCanvas">
+<span class="sig-name descname"><span class="pre">getCanvas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SkCanvas</span></span></span><a class="headerlink" href="#animator.skia.Surface.getCanvas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.height">
+<span class="sig-name descname"><span class="pre">height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.imageInfo">
+<span class="sig-name descname"><span class="pre">imageInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.ImageInfo.html#animator.skia.ImageInfo" title="animator.skia.ImageInfo"><span class="pre">animator.skia.ImageInfo</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.imageInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.makeImageSnapshot">
+<span class="sig-name descname"><span class="pre">makeImageSnapshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Surface.makeImageSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>makeImageSnapshot(self: animator.skia.Surface) -&gt; animator.skia.Image</p></li>
+<li><p>makeImageSnapshot(self: animator.skia.Surface, bounds: animator.skia.IRect) -&gt; animator.skia.Image</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.makeSurface">
+<span class="sig-name descname"><span class="pre">makeSurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Surface.makeSurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>makeSurface(self: animator.skia.Surface, imageInfo: animator.skia.ImageInfo) -&gt; animator.skia.Surface</p></li>
+<li><p>makeSurface(self: animator.skia.Surface, width: int, height: int) -&gt; animator.skia.Surface</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.notifyContentWillChange">
+<span class="sig-name descname"><span class="pre">notifyContentWillChange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface.ContentChangeMode" title="animator.skia.Surface.ContentChangeMode"><span class="pre">animator.skia.Surface.ContentChangeMode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.notifyContentWillChange" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.peekPixels">
+<span class="sig-name descname"><span class="pre">peekPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.Pixmap.html#animator.skia.Pixmap" title="animator.skia.Pixmap"><span class="pre">animator.skia.Pixmap</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.peekPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <a class="reference internal" href="animator.skia.Pixmap.html#animator.skia.Pixmap" title="animator.skia.Pixmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pixmap</span></code></a> describing the pixel data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.props">
+<span class="sig-name descname"><span class="pre">props</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="animator.skia.SurfaceProps.html#animator.skia.SurfaceProps" title="animator.skia.SurfaceProps"><span class="pre">animator.skia.SurfaceProps</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.readPixels">
+<span class="sig-name descname"><span class="pre">readPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Surface.readPixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>readPixels(self: animator.skia.Surface, dst: animator.skia.Pixmap, srcX: int = 0, srcY: int = 0) -&gt; bool</p></li>
+<li><p>readPixels(self: animator.skia.Surface, dstInfo: animator.skia.ImageInfo, dstPixels: buffer, dstRowBytes: int = 0, srcX: int = 0, srcY: int = 0) -&gt; bool</p></li>
+</ol>
+<p>Copies <em>dstInfo</em> pixels starting from (<em>srcX</em>, <em>srcY</em>) to <em>dstPixels</em> buffer.</p>
+<ol class="arabic simple" start="3">
+<li><p>readPixels(self: animator.skia.Surface, dst: animator.skia.Bitmap, srcX: int = 0, srcY: int = 0) -&gt; bool</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.toarray">
+<span class="sig-name descname"><span class="pre">toarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">animator.skia.Surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcX:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcY:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorType:</span> <span class="pre">animator.skia.ColorType</span> <span class="pre">=</span> <span class="pre">&lt;ColorType.kRGBA_8888_ColorType:</span> <span class="pre">4&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alphaType:</span> <span class="pre">animator.skia.AlphaType</span> <span class="pre">=</span> <span class="pre">&lt;AlphaType.kUnpremul_AlphaType:</span> <span class="pre">3&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorSpace:</span> <span class="pre">animator.skia.ColorSpace</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#animator.skia.Surface.toarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> of the image’s pixels.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.width">
+<span class="sig-name descname"><span class="pre">width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#animator.skia.Surface" title="animator.skia.Surface"><span class="pre">animator.skia.Surface</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#animator.skia.Surface.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="animator.skia.Surface.writePixels">
+<span class="sig-name descname"><span class="pre">writePixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#animator.skia.Surface.writePixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>writePixels(self: animator.skia.Surface, src: animator.skia.Pixmap, dstX: int = 0, dstY: int = 0) -&gt; None</p></li>
+<li><p>writePixels(self: animator.skia.Surface, src: animator.skia.Bitmap, dstX: int = 0, dstY: int = 0) -&gt; None</p></li>
+</ol>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">animator</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="animator.html">animator</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../reference.html">Reference</a><ul>
+  <li><a href="animator.html">animator</a><ul>
+  <li><a href="animator.skia.html">animator.skia</a><ul>
+      <li>Previous: <a href="animator.skia.StrokeRec.html" title="previous chapter">animator.skia.StrokeRec</a></li>
+      <li>Next: <a href="animator.skia.SurfaceProps.html" title="next chapter">animator.skia.SurfaceProps</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Shekhar Dutta.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/reference/animator.skia.Surface.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

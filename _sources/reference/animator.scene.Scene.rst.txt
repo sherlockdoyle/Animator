@@ -1,0 +1,43 @@
+animator.scene.Scene
+====================
+
+.. currentmodule:: animator.scene
+
+.. autoclass:: Scene
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Scene.__init__
+      ~Scene.add
+      ~Scene.animate
+      ~Scene.clear
+      ~Scene.clear_with_bgcolor
+      ~Scene.play_frames
+      ~Scene.quickdraw
+      ~Scene.r2a
+      ~Scene.r2a_bounds
+      ~Scene.save_frame
+      ~Scene.show_frame
+      ~Scene.update
+      ~Scene.wait
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Scene.context2d
+   
+   

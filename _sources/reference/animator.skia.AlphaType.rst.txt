@@ -1,0 +1,38 @@
+animator.skia.AlphaType
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: AlphaType
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~AlphaType.__init__
+      ~AlphaType.isOpaque
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~AlphaType.kLastEnum_AlphaType
+      ~AlphaType.kOpaque_AlphaType
+      ~AlphaType.kPremul_AlphaType
+      ~AlphaType.kUnknown_AlphaType
+      ~AlphaType.kUnpremul_AlphaType
+      ~AlphaType.name
+      ~AlphaType.value
+   
+   

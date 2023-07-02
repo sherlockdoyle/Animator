@@ -1,0 +1,27 @@
+animator.skia.ParsePath
+=======================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: ParsePath
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ParsePath.FromSVGString
+      ~ParsePath.ToSVGString
+      ~ParsePath.__init__
+   
+   
+
+   
+   
+   

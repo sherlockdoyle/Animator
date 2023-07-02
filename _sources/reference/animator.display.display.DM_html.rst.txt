@@ -1,0 +1,36 @@
+animator.display.display.DM\_html
+=================================
+
+.. currentmodule:: animator.display.display
+
+.. autoclass:: DM_html
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DM_html.__init__
+      ~DM_html.close
+      ~DM_html.frame_b64
+      ~DM_html.get_best
+      ~DM_html.show_frame
+      ~DM_html.waittime
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~DM_html.display_method
+   
+   

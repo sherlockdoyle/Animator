@@ -1,0 +1,37 @@
+animator.skia.PathOp
+====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: PathOp
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathOp.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathOp.kDifference_PathOp
+      ~PathOp.kIntersect_PathOp
+      ~PathOp.kReverseDifference_PathOp
+      ~PathOp.kUnion_PathOp
+      ~PathOp.kXOR_PathOp
+      ~PathOp.name
+      ~PathOp.value
+   
+   

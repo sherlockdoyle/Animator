@@ -1,0 +1,57 @@
+animator.skia.Color4f
+=====================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: Color4f
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Color4f.FromBytes_RGBA
+      ~Color4f.FromColor
+      ~Color4f.FromPMColor
+      ~Color4f.__init__
+      ~Color4f.array
+      ~Color4f.fitsInBytes
+      ~Color4f.isOpaque
+      ~Color4f.makeOpaque
+      ~Color4f.premul
+      ~Color4f.toBytes_RGBA
+      ~Color4f.toColor
+      ~Color4f.vec
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Color4f.fA
+      ~Color4f.fB
+      ~Color4f.fG
+      ~Color4f.fR
+      ~Color4f.kBlack
+      ~Color4f.kBlue
+      ~Color4f.kCyan
+      ~Color4f.kDkGray
+      ~Color4f.kGray
+      ~Color4f.kGreen
+      ~Color4f.kLtGray
+      ~Color4f.kMagenta
+      ~Color4f.kRed
+      ~Color4f.kTransparent
+      ~Color4f.kWhite
+      ~Color4f.kYellow
+   
+   

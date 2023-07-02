@@ -1,0 +1,35 @@
+animator.display.display.DM\_tkf
+================================
+
+.. currentmodule:: animator.display.display
+
+.. autoclass:: DM_tkf
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DM_tkf.__init__
+      ~DM_tkf.close
+      ~DM_tkf.get_best
+      ~DM_tkf.show_frame
+      ~DM_tkf.waittime
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~DM_tkf.display_method
+   
+   

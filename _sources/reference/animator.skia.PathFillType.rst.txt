@@ -1,0 +1,39 @@
+animator.skia.PathFillType
+==========================
+
+.. currentmodule:: animator.skia
+
+.. autoclass:: PathFillType
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathFillType.__init__
+      ~PathFillType.convertToNonInverse
+      ~PathFillType.isEvenOdd
+      ~PathFillType.isInverse
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathFillType.kEvenOdd
+      ~PathFillType.kInverseEvenOdd
+      ~PathFillType.kInverseWinding
+      ~PathFillType.kWinding
+      ~PathFillType.name
+      ~PathFillType.value
+   
+   

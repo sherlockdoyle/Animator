@@ -1,0 +1,6 @@
+animator.skia.PreMultiplyARGB
+=============================
+
+.. currentmodule:: animator.skia
+
+.. autofunction:: PreMultiplyARGB
