@@ -149,10 +149,10 @@ void initRect(py::module &m)
                      if (t.size() == 0)
                          return SkRect::MakeEmpty();
                      else if (t.size() == 2)
-                         return SkRect::MakeWH(t[0].cast<SkScalar>(), t[1].cast<SkScalar>());
+                         return SkRect::MakeWH(t[0].cast<float>(), t[1].cast<float>());
                      else if (t.size() == 4)
-                         return SkRect::MakeLTRB(t[0].cast<SkScalar>(), t[1].cast<SkScalar>(), t[2].cast<SkScalar>(),
-                                                 t[3].cast<SkScalar>());
+                         return SkRect::MakeLTRB(t[0].cast<float>(), t[1].cast<float>(), t[2].cast<float>(),
+                                                 t[3].cast<float>());
                      else
                          throw py::value_error("Invalid tuple.");
                  }),
@@ -281,11 +281,11 @@ void initRect(py::module &m)
         .def("setXYWH", &SkRect::setXYWH, "x"_a, "y"_a, "width"_a, "height"_a)
         .def("setWH", &SkRect::setWH, "width"_a, "height"_a)
         .def("setIWH", &SkRect::setIWH, "width"_a, "height"_a)
-        .def("makeOffset", py::overload_cast<SkScalar, SkScalar>(&SkRect::makeOffset, py::const_), "dx"_a, "dy"_a)
+        .def("makeOffset", py::overload_cast<float, float>(&SkRect::makeOffset, py::const_), "dx"_a, "dy"_a)
         .def("makeOffset", py::overload_cast<SkVector>(&SkRect::makeOffset, py::const_), "v"_a)
         .def("makeInset", &SkRect::makeInset, "dx"_a, "dy"_a)
         .def("makeOutset", &SkRect::makeOutset, "dx"_a, "dy"_a)
-        .def("offset", py::overload_cast<SkScalar, SkScalar>(&SkRect::offset), "dx"_a, "dy"_a)
+        .def("offset", py::overload_cast<float, float>(&SkRect::offset), "dx"_a, "dy"_a)
         .def("offset", py::overload_cast<const SkPoint &>(&SkRect::offset), "delta"_a)
         .def("offsetTo", &SkRect::offsetTo, "newX"_a, "newY"_a)
         .def("inset", &SkRect::inset, "dx"_a, "dy"_a)
@@ -297,7 +297,7 @@ void initRect(py::module &m)
         .def("join", &SkRect::join, "r"_a)
         .def("joinNonEmptyArg", &SkRect::joinNonEmptyArg, "r"_a)
         .def("joinPossiblyEmptyRect", &SkRect::joinPossiblyEmptyRect, "r"_a)
-        .def("contains", py::overload_cast<SkScalar, SkScalar>(&SkRect::contains, py::const_), "x"_a, "y"_a)
+        .def("contains", py::overload_cast<float, float>(&SkRect::contains, py::const_), "x"_a, "y"_a)
         .def(
             "__contains__", [](const SkRect &r, const SkPoint &p) { return r.contains(p.fX, p.fY); }, py::is_operator(),
             "Returns ``True`` if :py:class:`Point` is inside :py:class:`Rect`.")
@@ -314,8 +314,8 @@ void initRect(py::module &m)
             "asScalars",
             [](const SkRect &r)
             {
-                return py::memoryview::from_buffer(r.asScalars(), sizeof(SkScalar),
-                                                   py::format_descriptor<SkScalar>::value, {4}, {sizeof(SkScalar)});
+                return py::memoryview::from_buffer(r.asScalars(), sizeof(float), py::format_descriptor<float>::value,
+                                                   {4}, {sizeof(float)});
             },
             "Returns a :py:class:`memoryview` of :py:class:`Scalar` containing the :py:class:`Rect`'s coordinates.")
         .def(

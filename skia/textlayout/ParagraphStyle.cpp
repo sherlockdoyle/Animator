@@ -94,7 +94,8 @@ void initParagraphStyle(py::module &m)
                     const std::optional<const TextAlign> &textAlign, const std::optional<const size_t> &maxLines,
                     const std::optional<const std::string> &ellipsis, const std::optional<const SkScalar> &height,
                     const std::optional<const TextHeightBehavior> &textHeightBehavior,
-                    const std::optional<const bool> &replaceTabCharacters)
+                    const std::optional<const bool> &replaceTabCharacters,
+                    const std::optional<const bool> &applyRoundingHack)
                  {
                      std::unique_ptr<ParagraphStyle> self = std::make_unique<ParagraphStyle>();
                      if (strutStyle)
@@ -115,6 +116,8 @@ void initParagraphStyle(py::module &m)
                          self->setTextHeightBehavior(*textHeightBehavior);
                      if (replaceTabCharacters)
                          self->setReplaceTabCharacters(*replaceTabCharacters);
+                     if (applyRoundingHack)
+                         self->setApplyRoundingHack(*applyRoundingHack);
                      return self;
                  }),
              R"doc(
@@ -123,7 +126,8 @@ void initParagraphStyle(py::module &m)
              )doc",
              "strutStyle"_a = py::none(), "textStyle"_a = py::none(), "textDirection"_a = py::none(),
              "textAlign"_a = py::none(), "maxLines"_a = py::none(), "ellipsis"_a = py::none(), "height"_a = py::none(),
-             "textHeightBehavior"_a = py::none(), "replaceTabCharacters"_a = py::none())
+             "textHeightBehavior"_a = py::none(), "replaceTabCharacters"_a = py::none(),
+             "applyRoundingHack"_a = py::none())
         .def(py::self == py::self)
         .def("getStrutStyle", &ParagraphStyle::getStrutStyle, py::return_value_policy::reference_internal)
         .def("setStrutStyle", &ParagraphStyle::setStrutStyle, "strutStyle"_a)
@@ -152,17 +156,20 @@ void initParagraphStyle(py::module &m)
         .def("turnHintingOff", &ParagraphStyle::turnHintingOff)
         .def("getReplaceTabCharacters", &ParagraphStyle::getReplaceTabCharacters)
         .def("setReplaceTabCharacters", &ParagraphStyle::setReplaceTabCharacters, "value"_a)
+        .def("getApplyRoundingHack", &ParagraphStyle::getApplyRoundingHack)
+        .def("setApplyRoundingHack", &ParagraphStyle::setApplyRoundingHack, "value"_a)
         .def(
             "__str__",
             [](const ParagraphStyle &self)
             {
-                return "ParagraphStyle(strutStyle={}, textStyle={}, textDirection={}, textAlign={}, maxLines={}, height={}, textHeightBehavior={}{}{}, effectiveAlign={}{}{})"_s
+                return "ParagraphStyle(strutStyle={}, textStyle={}, textDirection={}, textAlign={}, maxLines={}, height={}, textHeightBehavior={}{}{}, effectiveAlign={}{}{}{})"_s
                     .format(self.getStrutStyle(), self.getTextStyle(), self.getTextDirection(), self.getTextAlign(),
                             self.getMaxLines(), self.getHeight(), self.getTextHeightBehavior(),
                             self.unlimited_lines() ? ", unlimited lines" : "",
                             self.ellipsized() ? ", ellipsized, ellipsis={}"_s.format(SkString2pyStr(self.getEllipsis()))
                                               : "",
                             self.effective_align(), self.hintingIsOn() ? ", hinting is on" : "",
-                            self.getReplaceTabCharacters() ? ", replace tab characters" : "");
+                            self.getReplaceTabCharacters() ? ", replace tab characters" : "",
+                            self.getApplyRoundingHack() ? ", apply rounding hack" : "");
             });
 }

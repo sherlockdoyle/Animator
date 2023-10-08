@@ -65,6 +65,22 @@ public:
         PYBIND11_OVERLOAD_PURE(void, Paragraph, updateBackgroundPaint, from, to, paint);
     }
     void visit(const Visitor &visitor) override { PYBIND11_OVERLOAD_PURE(void, Paragraph, visit, visitor); }
+    void extendedVisit(const ExtendedVisitor &visitor) override
+    {
+        PYBIND11_OVERLOAD_PURE(void, Paragraph, extendedVisit, visitor);
+    }
+    int getPath(int lineNumber, SkPath *dest) override
+    {
+        PYBIND11_OVERLOAD_PURE(int, Paragraph, getPath, lineNumber, dest);
+    }
+    bool containsEmoji(SkTextBlob *textBlob) override
+    {
+        PYBIND11_OVERLOAD_PURE(bool, Paragraph, containsEmoji, textBlob);
+    }
+    bool containsColorFontOrBitmap(SkTextBlob *textBlob) override
+    {
+        PYBIND11_OVERLOAD_PURE(bool, Paragraph, containsColorFontOrBitmap, textBlob);
+    }
     int getLineNumberAt(TextIndex codeUnitIndex) const override
     {
         PYBIND11_OVERLOAD_PURE(int, Paragraph, getLineNumberAt, codeUnitIndex);
@@ -240,15 +256,64 @@ void initParagraph(py::module &m)
                  return "VisitorInfo(origin={}, advanceX={}, {} glyph{}, flags={})"_s.format(
                      self.origin, self.advanceX, self.count, self.count == 1 ? "" : "s", self.flags);
              });
-    ParagraphClass
-        .def("visit",
-             [](Paragraph &self)
+    ParagraphClass.def(
+        "visit",
+        [](Paragraph &self)
+        {
+            py::list result;
+            self.visit([&result](int lineNumber, const Paragraph::VisitorInfo *info)
+                       { result.append(py::make_tuple(lineNumber, info ? py::cast(*info) : py::none())); });
+            return result;
+        },
+        "Returns a list of (lineNumber, visitorInfo) tuples.");
+
+    py::class_<Paragraph::ExtendedVisitorInfo>(ParagraphClass, "ExtendedVisitorInfo")
+        .def_property_readonly(
+            "font", [](const Paragraph::ExtendedVisitorInfo &self) { return self.font; },
+            py::return_value_policy::reference,
+            "TODO: How to bind reference fields? There's probably some memory leak here.")
+        .def_readonly("origin", &Paragraph::ExtendedVisitorInfo::origin)
+        .def_readonly("advance", &Paragraph::ExtendedVisitorInfo::advance)
+        .def_readonly("count", &Paragraph::ExtendedVisitorInfo::count)
+        .def_property_readonly("glyphs", [](const Paragraph::ExtendedVisitorInfo &self)
+                               { return std::vector<uint16_t>(self.glyphs, self.glyphs + self.count); })
+        .def_property_readonly("positions", [](const Paragraph::ExtendedVisitorInfo &self)
+                               { return std::vector<SkPoint>(self.positions, self.positions + self.count); })
+        .def_property_readonly("bounds", [](const Paragraph::ExtendedVisitorInfo &self)
+                               { return std::vector<SkRect>(self.bounds, self.bounds + self.count); })
+        .def_property_readonly("utf8Starts", [](const Paragraph::ExtendedVisitorInfo &self)
+                               { return std::vector<uint32_t>(self.utf8Starts, self.utf8Starts + self.count + 1); })
+        .def_property_readonly("flags", [](const Paragraph::ExtendedVisitorInfo &self)
+                               { return static_cast<Paragraph::VisitorFlags>(self.flags); })
+        .def("__str__",
+             [](const Paragraph::ExtendedVisitorInfo &self)
              {
-                 py::list result;
-                 self.visit([&result](int lineNumber, const Paragraph::VisitorInfo *info)
-                            { result.append(py::make_tuple(lineNumber, info ? py::cast(*info) : py::none())); });
-                 return result;
-             })
+                 return "ExtendedVisitorInfo(origin={}, advance={}, {} glyph{}, flags={})"_s.format(
+                     self.origin, self.advance, self.count, self.count == 1 ? "" : "s", self.flags);
+             });
+    ParagraphClass
+        .def(
+            "extendVisit",
+            [&](Paragraph &self)
+            {
+                py::list result;
+                self.extendedVisit([&result](int lineNumber, const Paragraph::ExtendedVisitorInfo *info)
+                                   { result.append(py::make_tuple(lineNumber, info ? py::cast(*info) : py::none())); });
+                return result;
+            },
+            "Returns a list of (lineNumber, extendedVisitorInfo) tuples.")
+        .def(
+            "getPath",
+            [](Paragraph &self, const int &lineNumber)
+            {
+                SkPath dest;
+                const int count = self.getPath(lineNumber, &dest);
+                return py::make_tuple(dest, count);
+            },
+            "Returns a tuple of (path, number of glyphs that could not be converted).", "lineNumber"_a)
+        .def_static("GetPath", &Paragraph::GetPath, "textBlob"_a)
+        .def("containsEmoji", &Paragraph::containsEmoji, "textBlob"_a)
+        .def("containsColorFontOrBitmap", &Paragraph::containsColorFontOrBitmap, "textBlob"_a)
         .def("getLineNumberAt", &Paragraph::getLineNumberAt, "codeUnitIndex"_a)
         .def(
             "getLineMetricsAt",

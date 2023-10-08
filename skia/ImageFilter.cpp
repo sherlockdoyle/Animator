@@ -1,8 +1,13 @@
 #define SK_ENABLE_SKSL
 #include "common.h"
+#include "include/core/SkBlender.h"
+#include "include/core/SkColorFilter.h"
 #include "include/core/SkImageFilter.h"
+#include "include/core/SkMatrix.h"
 #include "include/core/SkPoint3.h"
+#include "include/core/SkSamplingOptions.h"
 #include "include/effects/SkImageFilters.h"
+#include "include/effects/SkRuntimeEffect.h"
 #include <pybind11/stl.h>
 
 void initImageFilter(py::module &m)
@@ -87,6 +92,7 @@ void initImageFilter(py::module &m)
                     "input"_a = py::none(), "cropRect"_a = dcr)
         .def_static("DropShadowOnly", &SkImageFilters::DropShadowOnly, "dx"_a, "dy"_a, "sigmaX"_a, "sigmaY"_a,
                     "color"_a, "input"_a = py::none(), "cropRect"_a = dcr)
+        .def_static("Empty", &SkImageFilters::Empty)
         .def_static(
             "Image",
             [](const sk_sp<SkImage> &image, const std::optional<SkRect> &srcRect, const std::optional<SkRect> &dstRect,

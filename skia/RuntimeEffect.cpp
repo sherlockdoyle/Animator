@@ -152,34 +152,18 @@ void initRuntimeEffect(py::module &m)
     RuntimeEffect
         .def(
             "makeShader",
-            [](const SkRuntimeEffect &self, const sk_sp<SkData> &uniforms, std::vector<sk_sp<SkShader>> &children,
+            [](const SkRuntimeEffect &self, const sk_sp<const SkData> &uniforms, std::vector<sk_sp<SkShader>> &children,
                const SkMatrix *localMatrix)
             { return self.makeShader(uniforms, children.data(), children.size(), localMatrix); },
             "Create a shader from this effect with the given *uniforms* and *children*.", "uniforms"_a, "children"_a,
             "localMatrix"_a = nullptr)
         .def(
             "makeShader",
-            [](const SkRuntimeEffect &self, const sk_sp<SkData> &uniforms,
+            [](const SkRuntimeEffect &self, const sk_sp<const SkData> &uniforms,
                std::vector<SkRuntimeEffect::ChildPtr> &children, const SkMatrix *localMatrix)
             { return self.makeShader(uniforms, SkSpan(children.data(), children.size()), localMatrix); },
             "Create a shader from this effect with the given *uniforms* and *children*.", "uniforms"_a, "children"_a,
             "localMatrix"_a = nullptr)
-        .def(
-            "makeImage",
-            [](const SkRuntimeEffect &self, const sk_sp<SkData> &uniforms,
-               std::vector<SkRuntimeEffect::ChildPtr> &children, const SkImageInfo &resultInfo,
-               const SkMatrix *localMatrix, const bool &mipmapped)
-            {
-                return self.makeImage(nullptr, uniforms, SkSpan(children.data(), children.size()), localMatrix,
-                                      resultInfo, mipmapped);
-            },
-            R"doc(
-                Create an image from this effect with the given *uniforms* and *children*.
-
-                :note: The *resultInfo* and *localMatrix* parameters are swapped from the corresponding parameters in
-                    the C++ API.
-            )doc",
-            "uniforms"_a, "children"_a, "resultInfo"_a, "localMatrix"_a = nullptr, "mipmapped"_a = false)
         .def("makeColorFilter", py::overload_cast<sk_sp<const SkData>>(&SkRuntimeEffect::makeColorFilter, py::const_),
              "uniforms"_a)
         .def(
@@ -191,7 +175,7 @@ void initRuntimeEffect(py::module &m)
             "children"_a)
         .def(
             "makeColorFilter",
-            [](const SkRuntimeEffect &self, const sk_sp<SkData> &uniforms,
+            [](const SkRuntimeEffect &self, const sk_sp<const SkData> &uniforms,
                std::vector<SkRuntimeEffect::ChildPtr> &children)
             { return self.makeColorFilter(uniforms, SkSpan(children.data(), children.size())); },
             "Create a color filter from this effect with the given *uniforms* and *children*.", "uniforms"_a,
@@ -421,24 +405,13 @@ void initRuntimeEffect(py::module &m)
         .def("children",
              [](SkRuntimeEffectBuilder &self)
              {
-                 const SkSpan<SkRuntimeEffect::ChildPtr> children = self.children();
+                 const SkSpan<const SkRuntimeEffect::ChildPtr> children = self.children();
                  return std::vector<SkRuntimeEffect::ChildPtr>(children.begin(), children.end());
              });
 
     py::class_<SkRuntimeShaderBuilder, SkRuntimeEffectBuilder>(m, "RuntimeShaderBuilder")
         .def(py::init<sk_sp<SkRuntimeEffect>>(), "effect"_a)
-        .def("makeShader", &SkRuntimeShaderBuilder::makeShader, "localMatrix"_a = nullptr)
-        .def(
-            "makeImage",
-            [](SkRuntimeShaderBuilder &self, const SkImageInfo &resultInfo, const SkMatrix *localMatrix,
-               const bool &mipmapped) { return self.makeImage(nullptr, localMatrix, resultInfo, mipmapped); },
-            R"doc(
-                 Create an image from this shader builder with the given *resultInfo*.
-
-                 :note: The *resultInfo* and *localMatrix* parameters are swapped from the corresponding parameters in
-                     the C++ API.
-             )doc",
-            "resultInfo"_a, "localMatrix"_a = nullptr, "mipmapped"_a = false);
+        .def("makeShader", &SkRuntimeShaderBuilder::makeShader, "localMatrix"_a = nullptr);
 
     py::class_<SkRuntimeColorFilterBuilder, SkRuntimeEffectBuilder>(m, "RuntimeColorFilterBuilder")
         .def(py::init<sk_sp<SkRuntimeEffect>>(), "effect"_a)

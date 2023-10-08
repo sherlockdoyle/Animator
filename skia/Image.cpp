@@ -5,6 +5,7 @@
 #include "include/core/SkEncodedImageFormat.h"
 #include "include/core/SkImage.h"
 #include "include/core/SkImageFilter.h"
+#include "include/core/SkMatrix.h"
 #include "include/core/SkPaint.h"
 #include "include/core/SkPicture.h"
 #include "include/core/SkStream.h"
@@ -342,7 +343,23 @@ void initImage(py::module &m)
             [](const SkPixmap &pixmap) { return SkImages::RasterFromPixmap(pixmap, nullptr, nullptr); },
             "Creates :py:class:`Image` from *pixmap*, sharing :py:class:`Pixmap` pixels.", "pixmap"_a,
             py::keep_alive<0, 1>())
-        .def_static("RasterFromData", &SkImages::RasterFromData, "info"_a, "pixels"_a, "rowBytes"_a);
+        .def_static("RasterFromData", &SkImages::RasterFromData, "info"_a, "pixels"_a, "rowBytes"_a)
+        .def_static(
+            "MakeWithFilter",
+            [](const sk_sp<SkImage> &src, const SkImageFilter *filter, const SkIRect *subset, const SkIRect *clipBounds)
+            {
+                SkIRect outSubset;
+                SkIPoint offset;
+                const SkIRect &srcBounds = src->bounds();
+                const sk_sp<SkImage> result =
+                    SkImages::MakeWithFilter(src, filter, subset ? *subset : srcBounds,
+                                             clipBounds ? *clipBounds : srcBounds, &outSubset, &offset);
+                if (result)
+                    return py::make_tuple(result, outSubset, offset);
+                throw std::runtime_error("Image filtering failed.");
+            },
+            "Creates filtered :py:class:`Image` and returns ``(filteredImage, outSubset, offset)``.", "src"_a,
+            "filter"_a, "subset"_a = nullptr, "clipBounds"_a = nullptr);
 
     static constexpr SkSamplingOptions dso;
 
@@ -411,6 +428,7 @@ void initImage(py::module &m)
             "makeSubset", [](const SkImage &self, const SkIRect &subset) { return self.makeSubset(nullptr, subset); },
             "Returns subset of :py:class:`Image` with *subset* bounds.", "subset"_a)
         .def("hasMipmaps", &SkImage::hasMipmaps)
+        .def("isProtected", &SkImage::isProtected)
         .def("withDefaultMipmaps", &SkImage::withDefaultMipmaps)
         .def("makeNonTextureImage", [](const SkImage &self) { return self.makeNonTextureImage(nullptr); })
         .def(
@@ -418,21 +436,6 @@ void initImage(py::module &m)
             [](const SkImage &self, const SkImage::CachingHint &cachingHint)
             { return self.makeRasterImage(nullptr, cachingHint); },
             "cachingHint"_a = SkImage::CachingHint::kDisallow_CachingHint)
-        .def(
-            "makeWithFilter",
-            [](const SkImage &self, const SkImageFilter *filter, const SkIRect *subset, const SkIRect *clipBounds)
-            {
-                SkIRect outSubset;
-                SkIPoint offset;
-                const SkIRect &selfBounds = self.bounds();
-                sk_sp<SkImage> result = self.makeWithFilter(nullptr, filter, subset ? *subset : selfBounds,
-                                                            clipBounds ? *clipBounds : selfBounds, &outSubset, &offset);
-                if (result)
-                    return py::make_tuple(result, outSubset, offset);
-                throw std::runtime_error("Image filtering failed.");
-            },
-            "Creates filtered :py:class:`Image` and returns ``(filteredImage, outSubset, offset)``.", "filter"_a,
-            "subset"_a = py::none(), "clipBounds"_a = py::none())
         .def("isLazyGenerated", &SkImage::isLazyGenerated)
         .def(
             "makeColorSpace",

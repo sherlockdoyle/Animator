@@ -1,5 +1,6 @@
 #include "common.h"
 #include "include/core/SkColor.h"
+#include <cfloat>
 
 // The following contains relevant codes (simplified) to calculate rgb2hsluv and is copied from
 // https://github.com/hsluv/hsluv-c/blob/59539e04a6fa648935cbe57c2104041f23136c4a/src/hsluv.c
