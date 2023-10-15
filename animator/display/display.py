@@ -54,7 +54,10 @@ except ImportError:
         if DisplayManager.display_method is None:
             DisplayManager.display_method = 'qt'
     except ImportError:
-        pass
+
+        class QtWidgets:  # dummy class
+            class QMainWindow:
+                pass
 
 
 class DM_qt(DisplayManager):
@@ -180,6 +183,7 @@ try:
         if DisplayManager.display_method == 'tk':  # upgrade
             DisplayManager.display_method = 'tkf'
     except:
+        # in case of error, just use the slow tk display manager
         pass
 except ImportError:
     pass

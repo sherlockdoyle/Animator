@@ -1,10 +1,14 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 from html.parser import HTMLParser
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from animator import skia
-from animator.entity import Entity
 from animator.graphics import TextStyle, color
+
+if TYPE_CHECKING:
+    from animator.entity import Entity
 
 _BASIC_TAG_STYLES: dict[str, TextStyle] = {
     'b': TextStyle(fontStyle=TextStyle.FontStyle(weight=skia.FontStyle.Bold().weight())),  # type: ignore

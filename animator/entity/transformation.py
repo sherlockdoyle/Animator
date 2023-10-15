@@ -41,7 +41,7 @@ class Transformation(Affine):
 
     def __init__(self, mat: skia.Matrix) -> None:
         self._mat: skia.Matrix = mat
-        self.__do_update: bool = True
+        self._do_update: bool = True
 
     @property
     def scale(self) -> float:
@@ -53,14 +53,14 @@ class Transformation(Affine):
 
     @scale.setter
     def scale(self, value: float) -> None:
-        self.__do_update = False
+        self._do_update = False
         self.scaleX = self.scaleY = value
         self._update_mat()
-        self.__do_update = True
+        self._do_update = True
 
     def set_from_kwargs(self, **kwargs: Any) -> None:
         """Set the transformation from arguments. Supported arguments are the same as the attributes of this class."""
-        self.__do_update = False
+        self._do_update = False
         has_updated = False
         for key, value in kwargs.items():
             if hasattr(self, key) and not callable(getattr(self, key)) and not key.startswith("_"):
@@ -68,52 +68,49 @@ class Transformation(Affine):
                 has_updated = True
         if has_updated:
             self._update_mat()
-        self.__do_update = True
+        self._do_update = True
 
     @staticmethod
     def decompose_mat(
-        scale_x: float,
-        skew_x: float,
-        translate_x: float,
-        skew_y: float,
-        scale_y: float,
-        translate_y: float,
+        scale_x: float, skew_x: float, translate_x: float, skew_y: float, scale_y: float, translate_y: float
     ) -> Tuple[float, float, float, float, float, float]:
-        """Decompose the transformation matrix into its affine parts and returns them. Angles are in degrees.
+        """Decompose the transformation matrix into its affine parts and returns them. Angles are in radians.
 
-        :return: A tuple containing (scale, rotation, skewX, skewY, translateX, translateY).
+        :return: A tuple containing (rotation, skewX, scaleX, scaleY, translateX, translateY).
         """
-        s = scale_x - scale_y
-        c = skew_x + skew_y
-        v1 = skew_x * scale_y + scale_x * skew_y
-        v2 = skew_x * skew_y - scale_x * scale_y
-        if s == c == 0:  # if this is true then v1 == 0 and v2 <= 0
-            scale = math.sqrt(-v2)
-            rotation = math.atan2(skew_y, scale_x)
-        else:
-            scale = v1 / math.sqrt(c * c + s * s)
-            rotation = math.atan2(s, c)
+        n1 = scale_x * scale_y - skew_x * skew_y
+        if n1 == 0:  # singular matrix
+            return 0, 0, 0, 0, 0, 0
+
+        rotation = math.atan2(skew_y, scale_y)
+        cr = math.cos(rotation)
+        sr = math.sin(rotation)
+        d1 = cr * scale_y + sr * skew_y
         return (
-            scale,
-            math.degrees(rotation),
-            math.degrees(math.atan2(scale_x * scale_x + skew_x * skew_x + v2, v1)),  # skewX
-            math.degrees(math.atan2(skew_y * skew_y + scale_y * scale_y + v2, v1)),  # skewY
-            (translate_y * skew_x - translate_x * scale_y) / v2,  # translateX
-            (translate_x * skew_y - translate_y * scale_x) / v2,  # translateY
+            rotation,  # rotation
+            math.atan2(cr * skew_x + sr * scale_x, d1),  # skewX
+            n1 / d1,  # scaleX
+            math.hypot(skew_y, scale_y),  # scaleY
+            (translate_x * scale_y - translate_y * skew_x) / n1,  # translateX
+            (translate_y * scale_x - translate_x * skew_y) / n1,  # translateY
         )
 
     def set_from_mat(self) -> None:
         """Set the affine parts of this transformation from the transformation matrix of the entity."""
+        self._do_update = False
         self.originX = self.originY = 0
         (
-            self.scaleX,
             self.rotation,
             self.skewX,
-            self.skewY,
+            self.scaleX,
+            self.scaleY,
             self.translateX,
             self.translateY,
         ) = Transformation.decompose_mat(*self._mat.get9()[:6])
-        self.scaleY = self.scaleX
+        self.rotation = math.degrees(self.rotation)
+        self.skewX = math.degrees(self.skewX)
+        self.skewY = 0
+        self._do_update = True
 
     def _update_mat(self) -> None:
         """Update the transformation matrix of the entity."""
@@ -136,7 +133,7 @@ class Transformation(Affine):
     def __setattr__(self, name: str, value: Any) -> None:
         old_value = getattr(self, name, None)
         super().__setattr__(name, value)
-        if name in AFFINE_FIELDS and self.__do_update and value != old_value:
+        if name in AFFINE_FIELDS and self._do_update and value != old_value:
             self._update_mat()
 
     def __str__(self) -> str:

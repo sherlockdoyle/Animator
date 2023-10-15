@@ -29,12 +29,15 @@ for example, `bounce`.
     plt.show()
 """
 import math
-from re import X
 from typing import Callable
+
+from animator import skia
 
 _HALF_PI = math.pi / 2
 _PI = math.pi
 _TWO_PI = math.tau
+
+EaseFunc = Callable[[float], float]
 
 
 def linear(t: float) -> float:
@@ -126,51 +129,8 @@ def bezier(x1: float, y1: float, x2: float | None = None, y2: float | None = Non
         y1 *= 2 / 3
         x2 = x1 + 1 / 3
         y2 = y1 + 1 / 3
-    e = 1e-6
-
-    cx = 3 * x1
-    bx = 3 * (x2 - x1) - cx
-    ax = 1 - cx - bx
-    cy = 3 * y1
-    by = 3 * (y2 - y1) - cy  # type: ignore y2 will never be None
-    ay = 1 - cy - by
-
-    def X(t: float) -> float:
-        return ((ax * t + bx) * t + cx) * t
-
-    def X_inv(x: float) -> float:
-        t2 = x
-        for i in range(8):
-            x2 = X(t2) - x
-            if abs(x2) < e:
-                return t2
-            d = (3 * ax * t2 + 2 * bx) * t2 + cx
-            if abs(d) < e:
-                break
-            t2 -= x2 / d
-        t0 = 0
-        t1 = 1
-        t2 = x
-        if t2 < t0:
-            return t0
-        if t2 > t1:
-            return t1
-        while t0 < t1:
-            x2 = X(t2)
-            if abs(x2 - x) < e:
-                return t2
-            if x > x2:
-                t0 = t2
-            else:
-                t1 = t2
-            t2 = (t1 - t0) * 0.5 + t0
-        return t2
-
-    def f(t: float) -> float:
-        x = X_inv(t)
-        return ((ay * x + by) * x + cy) * x
-
-    return f
+    cubic = skia.CubicMap((x1, y1), (x2, y2))  # type: ignore y2 should never be None
+    return cubic.computeYFromX
 
 
 def get_quadish(amount: float) -> Callable[[float], float]:
@@ -344,8 +304,8 @@ elastic_inout = get_elastic_inout(1, 0.45)  #: Elastic in-out easing function.
 
 def _plot_easing_functions(f: Callable[[float], float], start: float = 0, end: float = 1, num: int = 1000) -> None:
     """Plot the given easing function from *start* to *end* with *num* points."""
-    import numpy as np
     import matplotlib.pyplot as plt
+    import numpy as np
 
     x = np.linspace(start, end, num)
     plt.plot(x, np.vectorize(f)(x))

@@ -12,9 +12,10 @@ from enum import IntEnum, IntFlag
 import numpy
 
 import animator.skia
-import animator.skia.cms as cms
-import animator.skia.sksl as sksl
-import animator.skia.textlayout as textlayout
+from animator.skia import cms as cms
+from animator.skia import plot as plot
+from animator.skia import sksl as sksl
+from animator.skia import textlayout as textlayout
 
 buffer = bytes | memoryview | bytearray | numpy.ndarray
 
@@ -119,6 +120,7 @@ __all__ = [
     "PathSegmentMask",
     "PathVerb",
     "Picture",
+    "PictureRecorder",
     "PixelGeometry",
     "Pixmap",
     "Point",
@@ -4891,7 +4893,7 @@ class Matrix:
     def rectStaysRect(self) -> bool: ...
     def reset(self) -> Matrix: ...
     def set(self, index: int, value: float) -> Matrix: ...
-    def set9(self, buffer: list[float]) -> Matrix: ...
+    def set9(self, buffer: typing.Sequence[float]) -> Matrix: ...
     def setAffine(self, affine: list[float]) -> Matrix: ...
     def setAll(
         self,
@@ -4906,6 +4908,8 @@ class Matrix:
         persp2: float,
     ) -> Matrix: ...
     def setConcat(self, a: Matrix, b: Matrix) -> Matrix: ...
+    def setFromMatrix(self, src: Matrix) -> None:
+        """Sets the values from the given matrix."""
     def setIdentity(self) -> Matrix: ...
     def setPerspX(self, v: float) -> Matrix: ...
     def setPerspY(self, v: float) -> Matrix: ...
@@ -6361,6 +6365,19 @@ class Picture:
         Returns storage containing :py:class:`Data` describing :py:class:`Picture`.
         """
     def uniqueID(self) -> int: ...
+    pass
+
+class PictureRecorder:
+    def __init__(self) -> None: ...
+    @typing.overload
+    def beginRecording(self, bounds: _Rect) -> Canvas:
+        """Returns the canvas that records the drawing commands with the bounds."""
+    @typing.overload
+    def beginRecording(self, width: float, height: float) -> Canvas:
+        """Returns the canvas that records the drawing commands with a bounding box of width and height."""
+    def finishRecordingAsPicture(self) -> Picture: ...
+    def finishRecordingAsPictureWithCull(self, cullRect: Rect) -> Picture: ...
+    def getRecordingCanvas(self) -> Canvas: ...
     pass
 
 class PixelGeometry:

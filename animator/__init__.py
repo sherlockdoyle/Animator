@@ -1,3 +1,4 @@
+from animator import extras as extras
 from animator import skia as skia
 from animator.anim import *
 from animator.entity import *

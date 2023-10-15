@@ -166,6 +166,14 @@ void initMatrix(py::module &m)
         .def("getPerspY", &SkMatrix::getPerspY)
         .def("__setitem__", &setItem, py::is_operator(), "index"_a, "value"_a)
         .def("set", &SkMatrix::set, "index"_a, "value"_a)
+        .def(
+            "setFromMatrix",
+            [](SkMatrix &self, const SkMatrix &src)
+            {
+                src.get9(&self[0]);
+                self.dirtyMatrixTypeCache();
+            },
+            "Sets the values from the given matrix.", "src"_a)
         .def("setScaleX", &SkMatrix::setScaleX, "v"_a)
         .def("setScaleY", &SkMatrix::setScaleY, "v"_a)
         .def("setSkewY", &SkMatrix::setSkewY, "v"_a)

@@ -7,7 +7,7 @@ from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_by_name, guess_lexer
 
 from animator import skia
-from animator.entity.entity import Entity
+from animator.entity import Entity
 from animator.graphics import FontStyle
 
 _TS = skia.textlayout.TextStyle

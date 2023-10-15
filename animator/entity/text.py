@@ -94,9 +94,9 @@ class TextOnPath(TextEntity):
     def do_fill(self, canvas: skia.Canvas) -> None:
         canvas.drawTextBlob(self.__blob, self.offset.fX, self.offset.fY, self.style.fill_paint)
 
-    def _transform_and_draw(self, canvas: skia.Canvas) -> None:
+    def on_draw(self, canvas: skia.Canvas) -> None:
         self.__build_blob()
-        super()._transform_and_draw(canvas)
+        super().on_draw(canvas)
 
     def get_bounds(self, transformed: bool = False) -> skia.Rect:
         self.__build_blob()

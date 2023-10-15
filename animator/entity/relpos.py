@@ -1,5 +1,4 @@
 """Contains relative positioning used by entities."""
-
 import numpy
 
 RelativePosition = numpy.ndarray

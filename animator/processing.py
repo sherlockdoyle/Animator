@@ -98,10 +98,10 @@ from typing import Callable, Sequence, Tuple, overload
 import cv2
 
 from animator import skia
-from animator._common_types import Color
 from animator.graphics import Context2d
 from animator.scene import Scene
 
+Color = tuple[float, float, float, float]
 __all__ = (
     'pvars',
     'HALF_PI',

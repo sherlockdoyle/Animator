@@ -63,6 +63,7 @@ void initPathEffect(py::module &);
 void initPathMeasure(py::module &);
 void initPicture(py::module &);
 void initPixmap(py::module &);
+void initPlot(py::module &);
 void initPoint(py::module &);
 void initRect(py::module &);
 void initRegion(py::module &);

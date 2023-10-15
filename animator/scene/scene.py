@@ -8,15 +8,20 @@ from typing import Callable, Iterator, TypeVar
 import numpy as np
 
 from animator import skia
+from animator.anim import Anim, AnimationManager
+from animator.anim.util import FuncAnim, FuncAnimFunc, Once, SyncedAnim, SyncedAnimFunc
 from animator.display import DisplayManager
 from animator.entity import Entity
 from animator.entity.entity_list import EntityList
 from animator.entity.relpos import RelativePosition
+from animator.entity.util import FuncEntity, FuncEntityFunc
 from animator.graphics import Context2d
 from animator.util.env import inside_notebook
 
-UpdateCallback = TypeVar('UpdateCallback', bound=Callable[[], bool | None])
-
+__FuncEntityFunc = TypeVar('__FuncEntityFunc', bound=FuncEntityFunc)
+__OnceFunc = TypeVar('__OnceFunc', bound=Callable)
+__FuncAnimFunc = TypeVar('__FuncAnimFunc', bound=FuncAnimFunc)
+__SyncedAnimFunc = TypeVar('__SyncedAnimFunc', bound=SyncedAnimFunc)
 
 _name2px: dict[str, tuple[int, int]] = {
     '144p': (256, 144),
@@ -61,16 +66,16 @@ class Scene:
     ) -> None:
         """
         :param width: The width of the frame/scene or a string representing a resolution. Resolutions can be one of
-        '144p', '240p', '360p', '480p', '720p', 'hd', '1080p', 'fhd', 'fullhd', '1440p', '2k', '2160p', '4k', 'uhd',
-        'ultrahd'. The resolution strings are case-insensitive and may contain whitespaces.
+          '144p', '240p', '360p', '480p', '720p', 'hd', '1080p', 'fhd', 'fullhd', '1440p', '2k', '2160p', '4k', 'uhd',
+          'ultrahd'. The resolution strings are case-insensitive and may contain whitespaces.
         :param height: The height of the frame/scene.
         :param fps: The FPS used for saving the animation. The FPS used for displaying the animation may be different.
         :param scale: Amount to scale the frame up or down. This can be a float, in which case the frame is scaled by
-            that amount, or a tuple of two integers, in which case the frame is scaled to that size. This can also be a
-            string representing a resolution (see `width` parameter). During displaying animations a large frame may
-            cause lag or not fit on the screen. This factor is used to scale the frame down. By specifying a value >1,
-            the frame can also be scaled up. If the aspect ratio of the frame is different from that of the scene, the
-            frame will be centered.
+          that amount, or a tuple of two integers, in which case the frame is scaled to that size. This can also be a
+          string representing a resolution (see `width` parameter). During displaying animations a large frame may cause
+          lag or not fit on the screen. This factor is used to scale the frame down. By specifying a value >1, the frame
+          can also be scaled up. If the aspect ratio of the frame is different from that of the scene, the frame will be
+          centered.
         """
         if isinstance(width, str):
             width = re.sub(r'[\W+]+', '', width.lower())
@@ -94,10 +99,9 @@ class Scene:
         self.fps: float = fps
 
         self.entities: EntityList = EntityList()
+        self.animation_manager = AnimationManager(self)
         self.bgcolor: skia.Color4f = skia.Color4f.kBlack
         self.__context2d: Context2d | None = None
-
-        self.__update_func: Callable[[], bool | None] | None = None
 
     def clear(self) -> None:
         """Clears the frame and fills it with transparency."""
@@ -106,6 +110,38 @@ class Scene:
     def clear_with_bgcolor(self) -> None:
         """Clears the frame and fills it with the background color."""
         self.canvas.clear(self.bgcolor)
+
+    @property
+    def context2d(self) -> Context2d:
+        """An instance of :class:`Context2d` wrapping the canvas. A :class:`Context2d` wraps a :class:`skia.Canvas` and
+        provides additional methods for drawing. A scene contains a single :class:`Context2d` instance, which can be
+        accessed through this method."""
+        if self.__context2d is None:
+            self.__context2d = Context2d(self.canvas)
+        return self.__context2d
+
+    @contextmanager
+    def quickdraw(self) -> Iterator[Context2d]:
+        """A simple way to quickly draw something on the scene. This method clears the scene and returns a
+        :class:`Context2d` for drawing. When the context manager exits, the frame is displayed.
+
+        >>> import animator as am
+        >>> scene = am.Scene()
+        >>> with scene.quickdraw() as ctx:
+        ...     ctx.circle(scene.width / 2, scene.height / 2, 120)
+        ...     ctx.fill()
+        >>> # A circle is drawn at the center with a black background.
+        """
+        try:
+            self.clear_with_bgcolor()
+            yield self.context2d
+        finally:
+            if inside_notebook():
+                from IPython.display import display
+
+                display(self)
+            else:
+                self.show_frame()
 
     def add(self, *entities: Entity) -> None:
         """Add one or more entities to the scene.
@@ -123,22 +159,53 @@ class Scene:
 
     __rmatmul__ = __matmul__
 
-    @property
-    def context2d(self) -> Context2d:
-        """An instance of :class:`Context2d` wrapping the canvas. A :class:`Context2d` wraps a :class:`skia.Canvas` and
-        provides additional methods for drawing. A scene contains a single :class:`Context2d` instance, which can be
-        accessed through this method."""
-        if self.__context2d is None:
-            self.__context2d = Context2d(self.canvas)
-        return self.__context2d
+    def on_draw(self, func: __FuncEntityFunc) -> __FuncEntityFunc:
+        """
+        Registers a function to be called for each frame. The returned value of the function is drawn.
 
-    def on_update(self, func: UpdateCallback) -> UpdateCallback:
-        """Registers a function to be called before each frame is drawn. This function can be used to update the scene
-        and its entities.
+        :param func: The function to call.
+        """
+        self.add(FuncEntity(func))
+        return func
+
+    # def __contains__(self, entity: Entity) -> bool:
+    #     if entity in self.entities:
+    #         return True
+    #     for child in self.entities:
+    #         if entity in child:
+    #             return True
+    #     return False
+
+    def animate(self, *animations: Anim) -> None:
+        """Adds one or more animations to the scene.
+
+        :param animations: The animations to add.
+        """
+        for animation in animations:
+            self.animation_manager.add(animation)
+
+    def once(self, func: __OnceFunc) -> __OnceFunc:
+        """Registers a function to be called once."""
+        self.animation_manager.add(Once(func))
+        return func
+
+    def wait(self, seconds: float = 0) -> None:
+        """Waits for a specified amount of seconds before continuing."""
+        self.animation_manager.wait(seconds)
+
+    def on_update(self, func: __FuncAnimFunc) -> __FuncAnimFunc:
+        """
+        Registers a function to be called before each frame is drawn. This function can be used to update the scene and
+        its entities.
 
         :param func: The function to call. If the function returns ``True``, the animation will stop.
         """
-        self.__update_func = func
+        self.animation_manager.add(FuncAnim(func))
+        return func
+
+    def synced_anim(self, func: __SyncedAnimFunc) -> __SyncedAnimFunc:
+        """Registers a function to run animations synchronously."""
+        self.animation_manager.add(SyncedAnim(func))
         return func
 
     def update(self) -> bool:
@@ -146,8 +213,8 @@ class Scene:
 
         :return: ``False`` if the animation should stop, ``True`` otherwise.
         """
+        more = self.animation_manager.update()
         self.clear_with_bgcolor()
-        more = True if self.__update_func is None else not self.__update_func()
         for entity in self.entities:
             entity.draw()
         return more
@@ -190,29 +257,6 @@ class Scene:
                 pass
         manager.close()
 
-    @contextmanager
-    def quickdraw(self) -> Iterator[Context2d]:
-        """A simple way to quickly draw something on the scene. This method clears the scene and returns a
-        :class:`Context2d` for drawing. When the context manager exits, the frame is displayed.
-
-        >>> import animator as am
-        >>> scene = am.Scene()
-        >>> with scene.quickdraw() as ctx:
-        ...     ctx.circle(scene.width / 2, scene.height / 2, 120)
-        ...     ctx.fill()
-        >>> # A circle is drawn at the center with a black background.
-        """
-        try:
-            self.clear_with_bgcolor()
-            yield self.context2d
-        finally:
-            if inside_notebook():
-                from IPython.display import display
-
-                display(self)
-            else:
-                self.show_frame()
-
     def r2a(self, pos: RelativePosition, padding: float = 25) -> skia.Point:
         """Convert a point from the scene's relative coordinate system to absolute coordinates.
 
@@ -242,6 +286,16 @@ class Scene:
         anchor_x = anchor[0] * (bounds.left() if anchor[0] < 0 else -bounds.right())
         anchor_y = anchor[1] * (bounds.top() if anchor[1] < 0 else -bounds.bottom())
         return self.r2a(pos, padding) + (anchor_x, anchor_y)
+
+    def print_entities(self) -> None:
+        """Utility method to print all entities and their children."""
+        stack: list[tuple[Entity, int]] = [(entity, 0) for entity in reversed(self.entities)]
+        if not stack:
+            print('<empty>')
+        while stack:
+            entity, indent = stack.pop()
+            print(f'{" " * indent}{entity.__class__.__name__}')
+            stack.extend((child, indent + 2) for child in reversed(entity.children))
 
     def _repr_png_(self) -> bytes:
         """Returns the current frame as a PNG image. This method is called when the scene is displayed in a Jupyter

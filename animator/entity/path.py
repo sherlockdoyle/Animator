@@ -82,10 +82,13 @@ class PathEntity(Entity):
     def __build_path(self) -> None:
         """Build the path if necessary."""
         if self._is_dirty or self.__old_offset != self.offset:
-            self.__path.rewind()
-            self.on_build_path()
-            self.__path.offset(*self.offset)
-            self._is_dirty = False
+            if self._is_dirty:
+                self.__path.rewind()
+                self.on_build_path()
+                self.__path.offset(*self.offset)
+                self._is_dirty = False
+            else:  # only offset changed
+                self.__path.offset(self.offset.fX - self.__old_offset.fX, self.offset.fY - self.__old_offset.fY)
             self.__old_offset.set(*self.offset)
             for text in self.__path_texts:
                 text._is_dirty = True
@@ -103,8 +106,7 @@ class PathEntity(Entity):
         """
         self.__build_path()
         return skia.ParsePath.ToSVGString(
-            self.__path,
-            skia.ParsePath.PathEncoding.Relative if relative else skia.ParsePath.PathEncoding.Absolute,
+            self.__path, skia.ParsePath.PathEncoding.Relative if relative else skia.ParsePath.PathEncoding.Absolute
         )
 
     def transform_path(self: PET, mat: skia.Matrix | None = None) -> PET:
@@ -202,7 +204,7 @@ class Rect(PathEntity):
     def __init__(self, w: float, h: float | None = None, **kwargs: Any) -> None:
         """
         :param w: Width of the rectangle.
-        :param h: Height of the rectangle.
+        :param h: Height of the rectangle. If ``None``, it'll be same as *w* and make a square.
         """
         super().__init__(**kwargs)
         self.w = w
@@ -218,16 +220,6 @@ class Rect(PathEntity):
 
     def on_build_path(self) -> None:
         self.path.addRect(0, 0, self.w, self.h)
-
-
-class Square(Rect):
-    _observed_attrs = {'w'}
-
-    def __init__(self, w: float, **kwargs: Any) -> None:
-        """
-        :param w: Width of the square.
-        """
-        super().__init__(w, w, **kwargs)
 
 
 class RoundRect(PathEntity):

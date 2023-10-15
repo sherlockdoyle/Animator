@@ -1,6 +1,5 @@
 from animator.entity import relpos as relpos
 from animator.entity.entity import Entity as Entity
-from animator.entity.entity import Group as Group
 from animator.entity.image import Image as Image
 from animator.entity.image import PaintFill as PaintFill
 from animator.entity.image import Snapshot as Snapshot
@@ -18,8 +17,8 @@ from animator.entity.path import Polygon as Polygon
 from animator.entity.path import PolyLine as PolyLine
 from animator.entity.path import Rect as Rect
 from animator.entity.path import RoundRect as RoundRect
-from animator.entity.path import Square as Square
 from animator.entity.path import Star as Star
 from animator.entity.text import SimpleText as SimpleText
 from animator.entity.text import Text as Text
 from animator.entity.text import TextOnPath as TextOnPath
+from animator.entity.util import Group as Group

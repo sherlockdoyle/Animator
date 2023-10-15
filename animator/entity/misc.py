@@ -50,21 +50,14 @@ class Vertices(Entity):
     def __build_vertices(self):
         if self._is_dirty or self.__old_offset != self.offset:
             self.__vertices = skia.Vertices(
-                self.mode,
-                skia.Point.Offset(self.positions, self.offset),
-                self.textures,
-                self.colors,
-                self.indices,
+                self.mode, skia.Point.Offset(self.positions, self.offset), self.textures, self.colors, self.indices
             )
             self._is_dirty = False
             self.__old_offset.set(*self.offset)
 
     def on_draw(self, canvas: skia.Canvas) -> None:
-        canvas.drawVertices(self.__vertices, self.blend_mode, self.style.fill_paint)
-
-    def _transform_and_draw(self, canvas: skia.Canvas) -> None:
         self.__build_vertices()
-        super()._transform_and_draw(canvas)
+        canvas.drawVertices(self.__vertices, self.blend_mode, self.style.fill_paint)
 
     def get_bounds(self, transformed: bool = False) -> skia.Rect:
         self.__build_vertices()

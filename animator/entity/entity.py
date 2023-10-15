@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import math
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, Final, Literal, TypeVar, overload
 
 from animator import skia
 from animator._common_types import PointLike
@@ -10,9 +10,9 @@ from animator.entity.entity_list import EntityList
 from animator.entity.relpos import RelativePosition
 from animator.entity.transformation import Transformation
 from animator.graphics import Style
-from animator.graphics.shader import _BlenderLike, _to_blender
 
 if TYPE_CHECKING:
+    from animator.anim import Anim
     from animator.scene import Scene
 
     ET = TypeVar('ET', bound='Entity')
@@ -22,10 +22,9 @@ class Entity:
     """The base entity class.
 
     :ivar pos: The position of the entity. This is the origin of the entity.
+    :ivar mat: The transformation matrix of the entity.
     :ivar transformation: Convenience object for applying transformations to the entity.
     :ivar offset: The extra offset to draw the entity at after applying the entity's transformation.
-    :ivar z_index: The z-index of the entity. Entities with a higher z-index are drawn on top of entities with a lower
-        z-index.
     :ivar visible: Whether the entity is drawn. This does not affect the entity's children.
     :ivar style: The :class:`Style` of the entity.
     :ivar children: The children of this entity.
@@ -40,27 +39,41 @@ class Entity:
         :param kwargs: Arguments to pass to :attr:`transformation` and :attr:`style`. See their :meth:`set_from_args`
             method for more info.
         """
-        self.pos: skia.Point = skia.Point(0, 0) if pos is None else skia.Point(*pos)
+        self.pos: Final[skia.Point] = skia.Point(0, 0) if pos is None else skia.Point(*pos)
         self.__do_center: bool = pos is None
-        self.__mat: skia.Matrix = skia.Matrix()
-        self.transformation = Transformation(self.__mat)
-        self.offset: skia.Point = skia.Point(0, 0)
-        self.z_index: int = 0
+        self.mat: Final[skia.Matrix] = skia.Matrix()
+        self.transformation: Final[Transformation] = Transformation(self.mat)
+        self.offset: Final[skia.Point] = skia.Point(0, 0)
+        self.__z_index: int = 0
         self.visible: bool = True
-        self.style: Style = Style()
+        self.style: Final[Style] = Style()
 
         self.transformation.set_from_kwargs(**kwargs)
         self.style.set_from_kwargs(**kwargs)
 
-        self.children: EntityList = EntityList()
+        self.children: Final[EntityList] = EntityList()
         self.__parent: Entity | None = None
         self._scene: Scene = None  # type: ignore lateinit
         self._is_dirty: bool = True
 
     @property
-    def mat(self) -> skia.Matrix:
-        """The transformation matrix of the entity."""
-        return self.__mat
+    def z_index(self) -> int:
+        """
+        The z-index of the entity. Entities with a higher z-index are drawn on top of entities with a lower z-index.
+        """
+        return self.__z_index
+
+    @z_index.setter
+    def z_index(self, value: int) -> None:
+        if self.__z_index != value:
+            self.__z_index = value
+            if self.__parent is None:  # no parent, so maybe direct child of its scene
+                self._scene.entities.sort()
+            else:
+                self.__parent.__sort_children()
+
+    def __sort_children(self) -> None:
+        self.children.sort()
 
     def set_scene(self, scene: Scene) -> None:
         """Set the scene of this entity and all its children."""
@@ -85,9 +98,9 @@ class Entity:
     def total_transformation(self) -> skia.Matrix:
         """The total transformation of this entity, including its parent's transformation."""
         if self.__parent is None:
-            return skia.Matrix.Translate(self.pos).preConcat(self.__mat)
+            return skia.Matrix.Translate(self.pos).preConcat(self.mat)
         else:
-            return self.__parent.total_transformation.preTranslate(*self.pos).preConcat(self.__mat)
+            return self.__parent.total_transformation.preTranslate(*self.pos).preConcat(self.mat)
 
     @property
     def absolute_position(self) -> skia.Point:
@@ -130,6 +143,35 @@ class Entity:
             if entity in child:
                 return True
         return False
+
+    def _add_sibling(self, entity: Entity) -> None:
+        """Add a new *entity* at the same level as this entity."""
+        if self.__parent is None:
+            self._scene.entities.append(entity)
+        else:
+            self.__parent.children.append(entity)
+            entity.__parent = self.__parent
+        if self._scene is not None:
+            entity.set_scene(self._scene)
+
+    def _remove(self) -> None:
+        """Remove itself from its parent, if it has one, or from the scene."""
+        if self.__parent is None:
+            self._scene.entities.remove(self)
+        else:
+            self.__parent.children.remove(self)
+
+    def _replace(self, entity: Entity) -> None:
+        """Replace this entity with another one."""
+        if self.__parent is None:
+            index = self._scene.entities.index(self)
+            self._scene.entities[index] = entity
+        else:
+            index = self.__parent.children.index(self)
+            self.__parent.children[index] = entity
+            entity.__parent = self.__parent
+        if self._scene is not None:
+            entity.set_scene(self._scene)
 
     def _mark_dirty(self) -> None:
         """
@@ -205,7 +247,7 @@ class Entity:
         :param dx: The amount to translate in the x direction.
         :param dy: The amount to translate in the y direction.
         """
-        self.__mat.preTranslate(dx, dy)
+        self.mat.preTranslate(dx, dy)
         return self
 
     def scale(self: ET, sx: float = 1, sy: float | None = None) -> ET:
@@ -214,7 +256,7 @@ class Entity:
         :param sx: The amount to scale in the x direction.
         :param sy: The amount to scale in the y direction. If ``None``, *sx* is used.
         """
-        self.__mat.preScale(sx, sx if sy is None else sy)
+        self.mat.preScale(sx, sx if sy is None else sy)
         return self
 
     def rotate(self: ET, degrees: float = 0) -> ET:
@@ -222,7 +264,7 @@ class Entity:
 
         :param degrees: The amount to rotate in degrees.
         """
-        self.__mat.preRotate(degrees)
+        self.mat.preRotate(degrees)
         return self
 
     def skew(self: ET, kx: float = 0, ky: float = 0) -> ET:
@@ -233,7 +275,7 @@ class Entity:
         """
         kx = math.tan(math.radians(kx))
         ky = math.tan(math.radians(ky))
-        self.__mat.preSkew(kx, ky)
+        self.mat.preSkew(kx, ky)
         return self
 
     def transform(self: ET, mat: skia.Matrix) -> ET:
@@ -241,12 +283,12 @@ class Entity:
 
         :param mat: The transformation matrix.
         """
-        self.__mat.preConcat(mat)
+        self.mat.preConcat(mat)
         return self
 
     def reset_transform(self: ET) -> ET:
         """Reset the transformation matrix to the identity matrix."""
-        self.__mat.reset()
+        self.mat.reset()
         return self
 
     def shift(self: ET, dx: float = 0, dy: float = 0) -> ET:
@@ -273,7 +315,8 @@ class Entity:
     def center(self: ET) -> ET:
         """Shifts the entity so that its *offset* is aligned with the center of the entity."""
         bounds = self.get_bounds(True)
-        self.offset.offset(-bounds.centerX(), -bounds.centerY())
+        center = self.mat.makeInverse().mapVector(bounds.centerX(), bounds.centerY())
+        self.offset.offset(-center.fX, -center.fY)
         return self
 
     def do_stroke(self, canvas: skia.Canvas) -> None:
@@ -316,51 +359,42 @@ class Entity:
         for child in self.children:
             child.draw()
 
+    @overload
+    def animate(self, property: Literal['z_index'], target: int, duration: float, **kwargs: Any) -> Anim:
+        pass
 
-class Group(Entity):
-    """
-    A :class:`Group` does not draw anything itself, so it's ``stroke_paint`` and ``fill_paint`` are ignored. It is
-    useful for grouping entities together, especially if you want to apply some style to all of them at once. While you
-    can add children to any entity, a group behaves a bit differently on how it draws its children.
+    @overload
+    def animate(
+        self,
+        property: Literal[
+            'transformation.originX',
+            'transformation.originY',
+            'transformation.translateX',
+            'transformation.translateY',
+            'transformation.scaleX',
+            'transformation.scaleY',
+            'transformation.scale',
+            'transformation.rotation',
+            'transformation.skewX',
+            'transformation.skewY',
+        ],
+        target: float,
+        duration: float,
+        **kwargs: Any,
+    ) -> Anim:
+        pass
 
-    Normally, an entity's ``clip`` and ``final_paint`` only apply to itself. However, a group will apply its ``clip``
-    and ``final_paint`` to all of its children. The bounds of a group is the union of all of its children's bounds. The
-    group can also be used to blend its children.
-    """
+    @overload
+    def animate(self, property: Literal['pos'], target: PointLike, duration: float, **kwargs: Any) -> Anim:
+        pass
 
-    def __init__(self, child_blender: _BlenderLike | None = None, **kwargs):
+    def animate(self, property: str, target: Any, duration: float, **kwargs: Any) -> Anim:
+        """Animates the entity.
+
+        :param property: The property to animate.
+        :param target: The target value.
+        :param duration: The duration of the animation in seconds.
         """
-        :param child_blender: If not ``None``, the blender is used for all children on top of their own blend mode.
-        """
-        super().__init__(**kwargs)
-        self.child_blender = child_blender if child_blender is None else _to_blender(child_blender)
+        from animator.anim.property import PropertyAnim  # I don't like this, but this is to prevent circular imports
 
-    def draw(self, canvas: skia.Canvas | None = None) -> None:
-        if self.style.nothing_to_draw():
-            return
-        canvas = self._scene.canvas if canvas is None else canvas
-        save_count = canvas.save()
-        if self.style.clip is not None:
-            total_matrix = canvas.getTotalMatrix()  # local stack for matrix
-            canvas.concat(self.total_transformation)
-            self.style.apply_clip(canvas)
-            canvas.setMatrix(total_matrix)
-        self.style.apply_final_paint(canvas)
-
-        canvas.translate(self.offset.fX, self.offset.fY)
-        for child in self.children:
-            if self.child_blender is not None:
-                canvas.saveLayer(None, skia.Paint(blender=self.child_blender))
-            child.draw()
-            if self.child_blender is not None:
-                canvas.restore()
-
-        canvas.restoreToCount(save_count)
-
-    def get_bounds(self, transformed: bool = False) -> skia.Rect:
-        bounds = skia.Rect.MakeEmpty()
-        for child in self.children:
-            bound = child.get_bounds()
-            bound.offset(child.pos)
-            bounds.join(self.mat.mapRect(bound, skia.ApplyPerspectiveClip.kNo) if transformed else bound)
-        return bounds
+        return PropertyAnim(self, property, target, duration, **kwargs)

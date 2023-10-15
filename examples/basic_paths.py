@@ -17,8 +17,8 @@ scene.add(
 )  # add a rectangle at (50, 50) with unique colors
 
 scene.add(
-    square := am.Square(100, fill_color=am.color('blue500'), stroke_color=am.color('redA200'))
-)  # add a square with colors from material design
+    square := am.Rect(100, fill_color=am.color('blue500'), stroke_color=am.color('redA200'))
+)  # add a square (rect with only one parameter) with colors from material design
 square.set_relative_pos(am.relpos.TR)
 
 scene.add(

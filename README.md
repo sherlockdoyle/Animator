@@ -16,19 +16,19 @@ These are the basic steps I use to build:
 export PATH="${PWD}/depot_tools:${PATH}"
 cd skia
 python3 tools/git-sync-deps
-bin/gn gen out/StaticMin --args='is_debug=false is_official_build=true skia_enable_tools=true skia_use_system_harfbuzz=false skia_use_libfuzzer_defaults=false skia_use_gl=false text_tests_enabled=false skia_enable_pdf=false skia_enable_gpu=false skia_use_dng_sdk=false skia_enable_skvm_jit_when_possible=true skia_enable_skgpu_v1=false skia_enable_fontmgr_android=false skia_enable_discrete_gpu=false skia_build_fuzzers=false paragraph_tests_enabled=false cc="clang-14" cxx="clang++-14" extra_cflags_cc=["-frtti"] extra_ldflags=["-lrt"]'
+bin/gn gen out/StaticMin --args='cc="clang-14" cxx="clang++-14" extra_cflags_cc=["-frtti"] extra_ldflags=["-lrt"] is_debug=false is_official_build=true paragraph_tests_enabled=false skia_build_fuzzers=false skia_canvaskit_enable_canvas_bindings=false skia_enable_discrete_gpu=false skia_enable_fontmgr_android=false skia_enable_gpu=false skia_enable_pdf=false skia_enable_skshaper_tests=false skia_enable_skvm_jit_when_possible=true skia_enable_tools=true skia_use_dng_sdk=false skia_use_gl=false skia_use_libfuzzer_defaults=false skia_use_perfetto=false skia_use_system_harfbuzz=false skia_use_wuffs=false text_tests_enabled=false'
 ninja -C out/StaticMin/
 ```
 
 ### Explanation of some build flags
 
-- `skia_use_system_harfbuzz=false`: Use Skia's internal HarfBuzz library. I didn't have the system HarfBuzz library installed, so I had to use Skia's internal one. You might not need this flag or need similar flags for other libraries.
-- `skia_use_gl=false`: Disable OpenGL. No GPU support in Animator yet.
-- `text_tests_enabled=false`: Disable tests.
+- `extra_cflags_cc=["-frtti"]`: Enable RTTI for pybind11.
+- `skia_enable_fontmgr_android=false`: Not building for Android.
 - `skia_enable_pdf=false`: No PDF support.
 - `skia_use_dng_sdk=false`: No DNG support, whatever that is.
-- `skia_enable_fontmgr_android=false`: Not building for Android.
-- `extra_cflags_cc=["-frtti"]`: Enable RTTI for pybind11.
+- `skia_use_gl=false`: Disable OpenGL. No GPU support in Animator yet.
+- `skia_use_system_harfbuzz=false`: Use Skia's internal HarfBuzz library. I didn't have the system HarfBuzz library installed, so I had to use Skia's internal one. You might not need this flag or need similar flags for other libraries.
+- `text_tests_enabled=false`: Disable tests.
 
 After running `ninja`, you should have 12 `*.a` (or your platform's equivalent) files in `out/StaticMin`. These should be `libharfbuzz.a`, `libpathkit.a`, `libskcms.a`, `libskia.a`, `libskottie.a`, `libskparagraph.a`, `libskresources.a`, `libsksg.a`, `libskshaper.a`, `libsktext.a`, `libskunicode.a`, `libsvg.a`. They might be different depending on the build flags you used. Copy these files to `animator/skia/lib`. Required header files are already included.
 
