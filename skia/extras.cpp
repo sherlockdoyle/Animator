@@ -3,6 +3,7 @@
 void initExtras(py::module &m)
 {
     initUniqueColor(m);
+    initPathMatcher(m);
 
     py::module plot = m.def_submodule("plot",
                                       R"doc(

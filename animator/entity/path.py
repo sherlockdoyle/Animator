@@ -328,6 +328,8 @@ Star = PolyLine.star
 class PathText(PathEntity, TextEntity):
     """Text represented by a path. Not much different from :class:`SimpleText` except being a single path."""
 
+    _observed_attrs = {'text'}
+
     def __init__(self, text: str, **kwargs: Any):
         """
         :param text: The text to display.

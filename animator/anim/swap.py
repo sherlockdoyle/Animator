@@ -7,12 +7,15 @@ children of either entity.
 """
 from __future__ import annotations
 
-from typing import Any
+import copy
+from typing import Any, Generic, TypeVar
 
 from animator import skia
 from animator.anim.anim import Anim
+from animator.anim.graphics import StyleAnim
 from animator.anim.transformation import Transform, Transform_Pow
-from animator.entity import Entity
+from animator.entity.entity import Entity
+from animator.entity.path import PathEntity
 
 
 class _PointChange:
@@ -31,16 +34,19 @@ class _ZIndexChange:
         self._diff: int = to - from_
 
 
-class __SwapAnim(Anim):
+T = TypeVar('T', bound=Entity)
+
+
+class __SwapAnim(Anim, Generic[T]):
     """Swaps an entity with another entity."""
 
     def __init__(
         self,
-        from_: Entity,
-        to: Entity,
+        from_: T,
+        to: T,
         duration: float,
         animate_pos: bool = True,
-        animate_mat: type[Transform] | type[Transform_Pow] | None = Transform_Pow,
+        animate_mat: type[Transform] | type[Transform_Pow] | None = Transform,
         animate_z_index: bool = True,
         **kwargs: Any,
     ) -> None:
@@ -54,8 +60,8 @@ class __SwapAnim(Anim):
         :param animate_z_index: If ``True``, the z-index of the entity will be animated.
         """
         super().__init__(duration, **kwargs)
-        self._initial_entity: Entity = from_
-        self._target_entity: Entity = to
+        self._initial_entity: T = from_
+        self._target_entity: T = to
 
         self.__animate_pos: bool = animate_pos
         self.__animate_mat: type[Transform] | type[Transform_Pow] | None = animate_mat
@@ -103,7 +109,7 @@ class __SwapAnim(Anim):
             z._entity.z_index = z._to
 
 
-class Dissolve(__SwapAnim):
+class Dissolve(__SwapAnim[Entity]):
     class __Entity(Entity):
         def __init__(self, width: float, height: float) -> None:
             super().__init__()
@@ -186,7 +192,7 @@ class Dissolve(__SwapAnim):
         self.__anim_entity._replace(self._target_entity)
 
 
-class FadeInOut(__SwapAnim):
+class FadeInOut(__SwapAnim[Entity]):
     def __init__(self, from_: Entity, to: Entity, duration: float, **kwargs: Any) -> None:
         super().__init__(from_, to, duration, **kwargs)
         self.__initial_opacity: float = None  # type: ignore lateinit
@@ -220,3 +226,55 @@ class FadeInOut(__SwapAnim):
         self._target_entity.style.opacity = self.__target_opacity
         super().end()
         self._initial_entity._remove()
+
+
+class Morph(__SwapAnim[PathEntity]):
+    class __Entity(PathEntity):
+        def __init__(self, entity: PathEntity) -> None:
+            super().__init__()
+            self._path = entity.built_path
+            self.style = copy.copy(entity.style)  # type: ignore initialize style for animation
+
+        def on_build_path(self) -> None:
+            self.path.addPath(self._path)
+
+    def __init__(
+        self,
+        from_: PathEntity,
+        to: PathEntity,
+        duration: float,
+        dist_factor: float = 1.0,
+        match_type: skia.PathMatcher.MatchType = skia.PathMatcher.MatchType.split,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(from_, to, duration, **kwargs)
+        self.__anim_entity: PathEntity = None  # type: ignore lateinit
+        self.__dist_factor: float = dist_factor
+        self.__match_type: skia.PathMatcher.MatchType = match_type
+        self.__matcher: skia.PathMatcher = None  # type: ignore lateinit
+        self.__style_anim: StyleAnim = None  # type: ignore lateinit
+
+    def start(self) -> None:
+        self._target_entity.set_scene(self._initial_entity._scene)
+
+        self.__matcher = skia.PathMatcher(
+            self._initial_entity.built_path, self._target_entity.built_path, self.__dist_factor, self.__match_type
+        )
+
+        self.__anim_entity = Morph.__Entity(self._initial_entity)
+        self._initial_entity._replace(self.__anim_entity)
+        self._add_pos_anim(self.__anim_entity, self._initial_entity.pos, self._target_entity.pos)
+        self._add_mat_anim(self.__anim_entity, self._initial_entity.mat, self._target_entity.mat)
+        self._add_z_index_anim(self.__anim_entity, self._initial_entity.z_index, self._target_entity.z_index)
+        self.__style_anim = StyleAnim(
+            self.__anim_entity, self._target_entity.style, self._duration, ease=self.ease_func
+        )
+        self.__style_anim.start()
+
+    def update(self, t: float) -> None:
+        self.__matcher.interpolate(t, self.__anim_entity.path)
+        super().update(t)
+        self.__style_anim.update(t)
+
+    def end(self) -> None:
+        self.__anim_entity._replace(self._target_entity)

@@ -428,6 +428,13 @@ class Style:
         style.__fill_paint = skia.Paint(self.__fill_paint)
         style.__stroke_paint = skia.Paint(self.__stroke_paint)
         style.__final_paint = skia.Paint(self.__final_paint)
+        style.clip = (
+            self.clip.__class__(*self.clip)  # type: ignore union type matches
+            if isinstance(self.clip, (skia.IRect, skia.Rect))
+            else self.clip.__class__(self.clip)  # type: ignore union type matches
+            if isinstance(self.clip, (skia.Path, skia.RRect, skia.Region))
+            else self.clip
+        )
         style.paint_style = self.paint_style
         style.optimization = self.optimization
         return style
@@ -463,7 +470,7 @@ class Style:
                     canvas.clipRect(self.clip, doAntiAlias=True)
                     break
             else:  # all ints
-                canvas.clipIRect(tuple(int(i) for i in self.clip))
+                canvas.clipIRect(tuple(int(i) for i in self.clip))  # type: ignore tuple has correct number of elements
 
     def apply_final_paint(self, canvas: skia.Canvas) -> None:
         """Apply the final paint to the canvas."""

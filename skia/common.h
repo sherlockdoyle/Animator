@@ -60,6 +60,7 @@ void initParagraph(py::module &);
 void initParagraphStyle(py::module &);
 void initPath(py::module &);
 void initPathEffect(py::module &);
+void initPathMatcher(py::module &);
 void initPathMeasure(py::module &);
 void initPicture(py::module &);
 void initPixmap(py::module &);

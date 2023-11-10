@@ -6,6 +6,7 @@ from animator import skia
 from animator._common_types import ColorLike
 from animator.anim.anim import Anim
 from animator.graphics import color as parse_color
+from animator.graphics.style import Style
 
 if TYPE_CHECKING:
     from animator.entity import Entity
@@ -127,7 +128,7 @@ class ColorAnim(Anim):
         :param stroke_color: The new stroke color or shader. If ``None``, the stroke color will not be animated.
         """
         super().__init__(duration, **kwargs)
-        self.__entity: Entity = entity
+        self._entity: Entity = entity
         self.__target_fill_color: _ColorOrShader | None = parse_if_color(fill_color)
         self.__target_stroke_color: _ColorOrShader | None = parse_if_color(stroke_color)
         self.__anims: set[Anim] = set()
@@ -141,8 +142,8 @@ class ColorAnim(Anim):
             self.__anims.add(PaintColorAnim(paint, color, self._duration, ease=self.ease_func))
 
     def start(self) -> None:
-        self._add_anim(self.__entity.style.fill_paint, self.__target_fill_color)
-        self._add_anim(self.__entity.style.stroke_paint, self.__target_stroke_color)
+        self._add_anim(self._entity.style.fill_paint, self.__target_fill_color)
+        self._add_anim(self._entity.style.stroke_paint, self.__target_stroke_color)
         for anim in self.__anims:
             anim.start()
 
@@ -153,3 +154,47 @@ class ColorAnim(Anim):
     def end(self) -> None:
         for anim in self.__anims:
             anim.end()
+
+
+def _get_color_from_paint(paint: skia.Paint) -> _ColorOrShader:
+    shader = paint.getShader()
+    if shader is not None:
+        return shader
+    return paint.getColor4f()
+
+
+class StyleAnim(ColorAnim):
+    """Animate the style of an entity. Only animates the fill and stroke color/shader and stroke width."""
+
+    def __init__(self, entity: Entity, style: Style, duration: float, **kwargs: Any) -> None:
+        super().__init__(
+            entity,
+            duration,
+            _get_color_from_paint(style.fill_paint),
+            _get_color_from_paint(style.stroke_paint),
+            **kwargs,
+        )
+        self.__target_style: Style = style
+        self.__initial_stroke_width: float = None  # type: ignore
+        self.__diff_stroke_width: float = None  # type: ignore lateinit
+        self.__target_stroke_width: float = (
+            0 if style.paint_style == Style.PaintStyle.FILL_ONLY else style.stroke_width
+        )  # TODO: use opacity instead
+
+    def start(self) -> None:
+        super().start()
+        initial_style = self._entity.style
+        if initial_style.paint_style == Style.PaintStyle.FILL_ONLY:
+            initial_style.paint_style = self.__target_style.paint_style
+            self.__initial_stroke_width = 0
+        else:
+            self.__initial_stroke_width = initial_style.stroke_width
+        self.__diff_stroke_width = self.__target_stroke_width - self.__initial_stroke_width
+
+    def update(self, t: float) -> None:
+        super().update(t)
+        self._entity.style.stroke_width = self.__initial_stroke_width + self.__diff_stroke_width * t
+
+    def end(self) -> None:
+        super().end()
+        self._entity.style.stroke_width = self.__target_stroke_width

@@ -115,6 +115,7 @@ __all__ = [
     "PathDirection",
     "PathEffect",
     "PathFillType",
+    "PathMatcher",
     "PathMeasure",
     "PathOp",
     "PathSegmentMask",
@@ -160,6 +161,7 @@ __all__ = [
     "YUVColorSpace",
     "cms",
     "kTileModeCount",
+    "plot",
     "sksl",
     "textlayout",
     "uniqueColor",
@@ -1591,10 +1593,7 @@ class ColorFilters:
     def Table(table: list[int]) -> ColorFilter: ...
     @staticmethod
     def TableARGB(
-        tableA: list[int] | None,
-        tableR: list[int] | None,
-        tableG: list[int] | None,
-        tableB: list[int] | None,
+        tableA: list[int] | None, tableR: list[int] | None, tableG: list[int] | None, tableB: list[int] | None
     ) -> ColorFilter: ...
     pass
 
@@ -4368,10 +4367,7 @@ class ImageFilters:
     ) -> ImageFilter: ...
     @staticmethod
     def Image(
-        image: Image,
-        srcRect: _Rect | None = None,
-        dstRect: _Rect | None | None = None,
-        sampling: SamplingOptions = ...,
+        image: Image, srcRect: _Rect | None = None, dstRect: _Rect | None | None = None, sampling: SamplingOptions = ...
     ) -> ImageFilter: ...
     @staticmethod
     def Magnifier(
@@ -5503,11 +5499,7 @@ class Path:
     def Line(a: _Point, b: _Point) -> Path: ...
     @staticmethod
     def Make(
-        pts: list[_Point],
-        vbs: list[int],
-        ws: list[float],
-        ft: PathFillType,
-        isVolatile: bool = False,
+        pts: list[_Point], vbs: list[int], ws: list[float], ft: PathFillType, isVolatile: bool = False
     ) -> Path: ...
     @staticmethod
     @typing.overload
@@ -6119,6 +6111,44 @@ class PathFillType:
     kInverseWinding: animator.skia.PathFillType  # value = <PathFillType.kInverseWinding: 2>
     kWinding: animator.skia.PathFillType  # value = <PathFillType.kWinding: 0>
     pass
+
+class PathMatcher:
+    """Make two path interpolatable."""
+
+    class MatchType:
+        """
+        Members:
+
+          inBetween
+
+          atEnd
+        """
+
+        __members__: typing.ClassVar[
+            dict[str, PathMatcher.MatchType]
+        ]  # value = {'inBetween': <MatchType.inBetween: 0>, 'split': <MatchType.split: 1>}
+        inBetween: typing.ClassVar[PathMatcher.MatchType]  # value = <MatchType.inBetween: 0>
+        split: typing.ClassVar[PathMatcher.MatchType]  # value = <MatchType.split: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __getstate__(self) -> int: ...
+        def __hash__(self) -> int: ...
+        def __index__(self) -> int: ...
+        def __init__(self, value: int) -> None: ...
+        def __int__(self) -> int: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __repr__(self) -> str: ...
+        def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
+        @property
+        def name(self) -> str: ...
+        @property
+        def value(self) -> int: ...
+
+    def __init__(
+        self, path0: Path, path1: Path, distFactor: float = 1.0, matchType: PathMatcher.MatchType = ...
+    ) -> None: ...
+    def interpolate(self, weight: float, out: Path) -> None:
+        """Interpolate two paths by weight."""
 
 class PathMeasure:
     class MatrixFlags(IntEnum):
@@ -8327,11 +8357,7 @@ class TextBlob:
         Returns a :py:class:`TextBlob` built from a single run of *text* along *path* starting at *offset*.
         """
     def __init__(
-        self,
-        text: str,
-        font: Font,
-        pos: list[_Point] | None = None,
-        encoding: TextEncoding = TextEncoding.kUTF8,
+        self, text: str, font: Font, pos: list[_Point] | None = None, encoding: TextEncoding = TextEncoding.kUTF8
     ) -> None:
         """
         Creates a :py:class:`TextBlob` with a single run of *text* and optional *pos*.

@@ -10,7 +10,12 @@ ParallelCompile(default=2, max=4, needs_recompile=naive_recompile).install()
 ext_modules = [
     Pybind11Extension(
         'animator.skia',
-        sources=sorted(glob('skia/*.cpp') + glob('skia/extras/*.cpp') + glob('skia/textlayout/*.cpp')),
+        sources=sorted(
+            glob('skia/*.cpp')
+            + glob('skia/extras/*.cpp')
+            + glob('skia/extras/pm/*.cpp')
+            + glob('skia/textlayout/*.cpp')
+        ),
         include_dirs=['skia'],
         libraries=['png', 'fontconfig', 'icuuc'],
         extra_objects=sorted(glob('skia/lib/*.a')),
