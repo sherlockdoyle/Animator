@@ -28,7 +28,7 @@ class PlaceholderStyle:
     margin: float | None = None
 
 
-def _attrs_to_styles(attrs: list[tuple[str, str | None]]) -> tuple[dict[str, Any], list[str]]:
+def _attrs_to_styles_and_classes(attrs: list[tuple[str, str | None]]) -> tuple[dict[str, Any], list[str]]:
     styles: dict[str, Any] = {}
     classes: list[str] = []
     for attr, value in attrs:
@@ -127,7 +127,7 @@ class ParagraphHTMLParser(HTMLParser):
             self.__set_placeholder_style(attrs)
             return
 
-        styles, classes = _attrs_to_styles(attrs)
+        styles, classes = _attrs_to_styles_and_classes(attrs)
         current_style = self.builder.peekStyle()
         if tag in _BASIC_TAG_STYLES:
             new_style = _BASIC_TAG_STYLES[tag]

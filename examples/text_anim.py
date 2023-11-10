@@ -5,11 +5,7 @@ scene = am.Scene()
 
 scene.add(
     simple_text := am.SimpleText(  # change SimpleText to PathText for a different animation
-        'Hello, world!',
-        font_name='serif',
-        font_size=100,
-        paint_style=am.Style.PaintStyle.STROKE_ONLY,
-        stroke_width=2,
+        'Hello, world!', font_name='serif', font_size=100, paint_style=am.Style.PaintStyle.STROKE_ONLY, stroke_width=2
     )
 )  # add some simple text to the scene
 simple_text.center()  # center the text
@@ -28,8 +24,21 @@ text_on_path = line.add_text_on_path(
 
 scene.add(
     emoji := am.SimpleText('🌲🐻🐰🐿️⛺️🌳🌞💧🌈🍔🍿🎥📚🔥💤', font_name='Noto Color Emoji', font_size=20)
-)  # add some colorful emoji
+)  # add some colorful emoji, need to install Noto Color Emoji
 emoji.set_relative_pos(am.relpos.TL)  # position the emoji in the top left corner
+
+scene.add(path_text := am.PathText('A', font_name='mono', font_size=100))  # add some text made of a path
+path_text.set_relative_pos(am.relpos.TR)  # position the text in the top right corner
+scene.animation_manager.add(
+    am.Morph(  # morph between two path entities
+        path_text,
+        (scene @ am.extras.Arrow((200, 200))).set_relative_pos(
+            am.relpos.TR
+        ),  # attach (with @) a scene to the arrow, then position it to the top right corner
+        5,
+    ),
+    1,  # add the animation at the 1 second mark
+)
 
 
 scene.add(
@@ -54,6 +63,21 @@ Some code: <code>print('Hello, world!')</code>
     )
 )  # add some text with html-like formatting
 text.set_relative_pos(am.relpos.BL)  # position the text in the bottom left corner
+
+scene.add(
+    code := am.extras.Code(
+        """
+import animator as am
+# a circle at the center of the scene
+scene = am.Scene()
+scene.add(am.Circle(100))
+scene.update()
+scene.save_frame()
+        """.strip(),
+        style='dracula',
+    )
+)  # add some formatted code, need to install pygments
+code.set_relative_pos(am.relpos.BR)  # position the code in the bottom right corner
 
 
 t = 0  # a variable to keep track of the time

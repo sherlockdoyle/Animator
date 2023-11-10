@@ -18,6 +18,8 @@ from animator.entity.util import FuncEntity, FuncEntityFunc
 from animator.graphics import Context2d
 from animator.util.env import inside_notebook
 
+__Entity = TypeVar('__Entity', bound=Entity)
+
 __FuncEntityFunc = TypeVar('__FuncEntityFunc', bound=FuncEntityFunc)
 __OnceFunc = TypeVar('__OnceFunc', bound=Callable)
 __FuncAnimFunc = TypeVar('__FuncAnimFunc', bound=FuncAnimFunc)
@@ -152,7 +154,7 @@ class Scene:
         for entity in entities:
             entity.set_scene(self)
 
-    def __matmul__(self, entity: Entity) -> Entity:
+    def __matmul__(self, entity: __Entity) -> __Entity:
         """Sets the scene of an entity withouth adding it to the scene."""
         entity.set_scene(self)
         return entity
