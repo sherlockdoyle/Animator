@@ -121,5 +121,6 @@ class AnimationManager:
         if self._animations:
             self._handle_end()
             self._handle_progress()
-            return self._is_pending()
-        return False
+        else:
+            self._current_frame += 1
+        return self._is_pending()

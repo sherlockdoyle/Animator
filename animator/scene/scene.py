@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Callable, Iterator, TypeVar
+from typing import Any, Callable, Iterator, TypeVar
 
 import numpy as np
 
@@ -11,6 +11,7 @@ from animator import skia
 from animator.anim import Anim, AnimationManager
 from animator.anim.util import FuncAnim, FuncAnimFunc, Once, SyncedAnim, SyncedAnimFunc
 from animator.display import DisplayManager
+from animator.display.save import SaveManager, SM_ffmpeg
 from animator.entity import Entity
 from animator.entity.entity_list import EntityList
 from animator.entity.relpos import RelativePosition
@@ -234,7 +235,7 @@ class Scene:
         :param path: The path to the file. The path may contain a ``{}`` placeholder, which will be replaced with the
             current frame number.
         :param quality: The quality of the image, between 0 and 100. Defaults to 100."""
-        path_obj = Path(path.format(0)).expanduser().resolve()
+        path_obj = Path(path.format(self.animation_manager._current_frame)).expanduser().resolve()
         ext = path_obj.suffix[1:]
         try:
             skia.Image.fromarray(self.frame, copy=False).save(str(path_obj), _ext2format[ext], quality)
@@ -257,6 +258,15 @@ class Scene:
         if keep_open:
             while manager.show_frame():
                 pass
+        manager.close()
+
+    def save_frames(self, path: str, saver: type[SaveManager] = SM_ffmpeg, **kwargs: Any) -> None:
+        """Saves the animation to a file at *path*."""
+        path_obj = Path(path).expanduser().resolve()
+        manager = saver(self, str(path_obj), **kwargs)
+        while self.update():
+            manager.save_frame()
+        manager.save_frame()
         manager.close()
 
     def r2a(self, pos: RelativePosition, padding: float = 25) -> skia.Point:
