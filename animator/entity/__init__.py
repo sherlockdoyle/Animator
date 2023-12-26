@@ -17,6 +17,7 @@ from animator.entity.path import Polygon as Polygon
 from animator.entity.path import PolyLine as PolyLine
 from animator.entity.path import Rect as Rect
 from animator.entity.path import RoundRect as RoundRect
+from animator.entity.path import Square as Square
 from animator.entity.path import Star as Star
 from animator.entity.text import SimpleText as SimpleText
 from animator.entity.text import Text as Text

@@ -235,8 +235,8 @@ class Morph(__SwapAnim[PathEntity]):
             self._path = entity.built_path
             self.style = copy.copy(entity.style)  # type: ignore initialize style for animation
 
-        def on_build_path(self) -> None:
-            self.path.addPath(self._path)
+        def on_build_path(self, path: skia.Path) -> None:
+            path.addPath(self._path)
 
     def __init__(
         self,

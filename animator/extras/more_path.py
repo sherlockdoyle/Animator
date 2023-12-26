@@ -19,9 +19,9 @@ class Ring(PathEntity):
         self.r0 = r0
         self.r1 = r1
 
-    def on_build_path(self) -> None:
-        self.path.addCircle(0, 0, self.r0, skia.PathDirection.kCW)
-        self.path.addCircle(0, 0, self.r1, skia.PathDirection.kCCW)
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addCircle(0, 0, self.r0, skia.PathDirection.kCW)
+        path.addCircle(0, 0, self.r1, skia.PathDirection.kCCW)
 
 
 class Arrow(PathEntity):
@@ -45,15 +45,15 @@ class Arrow(PathEntity):
         self.from_: skia.Point = skia.Point(*from_)
         self.arrow_head_size: float = self.style.stroke_width * 2 if arrow_head_size is None else arrow_head_size
 
-    def on_build_path(self) -> None:
-        self.path.moveTo(self.from_)
-        self.path.lineTo(self.to)
+    def on_build_path(self, path: skia.Path) -> None:
+        path.moveTo(self.from_)
+        path.lineTo(self.to)
 
         angle = math.atan2(self.to.fY - self.from_.fY, self.to.fX - self.from_.fX)
         sa = math.sin(angle)
         ca = math.cos(angle)
         dx = -self.arrow_head_size * (ca + sa)
         dy = self.arrow_head_size * (ca - sa)
-        self.path.rMoveTo(dx, dy)
-        self.path.lineTo(self.to)
-        self.path.rLineTo(-dy, dx)
+        path.rMoveTo(dx, dy)
+        path.lineTo(self.to)
+        path.rLineTo(-dy, dx)

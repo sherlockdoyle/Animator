@@ -72,7 +72,10 @@ class CodeParser(HTMLParser):
 
 
 class Code(Entity):
-    """A code entity."""
+    """A code entity.
+
+    :ivar bgcolor: Stores the background color for the current style. Use it to set the background color of the scene.
+    """
 
     def __init__(
         self,

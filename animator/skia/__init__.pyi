@@ -7090,7 +7090,7 @@ class Rect:
     def set(self, p0: _Point, p1: _Point) -> None: ...
     @typing.overload
     def set(self, src: _IRect) -> None: ...
-    def setBounds(self, points: list[_Point]) -> None:
+    def setBounds(self, points: typing.Sequence[_Point]) -> None:
         """
         Sets to bounds of :py:class:`Point` list. If list is empty, or contains an infinity or NaN, sets to
         (0, 0, 0, 0). Result is either empty or sorted: fLeft is less than or equal to fRight, and fTop is less

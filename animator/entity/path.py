@@ -75,7 +75,7 @@ class PathEntity(Entity):
         self.__path_texts.add(text_on_path)
         return text_on_path
 
-    def on_build_path(self) -> None:
+    def on_build_path(self, path: skia.Path) -> None:
         """Build the path. This method should be overridden."""
         pass
 
@@ -84,7 +84,7 @@ class PathEntity(Entity):
         if self._is_dirty or self.__old_offset != self.offset:
             if self._is_dirty:
                 self.__path.rewind()
-                self.on_build_path()
+                self.on_build_path(self.__path)
                 self.__path.offset(*self.offset)
                 self._is_dirty = False
             else:  # only offset changed
@@ -164,8 +164,8 @@ class Path(PathEntity):
         super().__init__(**kwargs)
         self.__svg_path = skia.ParsePath.FromSVGString(path) if isinstance(path, str) else path
 
-    def on_build_path(self) -> None:
-        self.path.addPath(self.__svg_path)
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addPath(self.__svg_path)
 
 
 class Circle(PathEntity):
@@ -178,8 +178,8 @@ class Circle(PathEntity):
         super().__init__(**kwargs)
         self.r = r
 
-    def on_build_path(self) -> None:
-        self.path.addCircle(0, 0, self.r)
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addCircle(0, 0, self.r)
 
 
 class Ellipse(PathEntity):
@@ -194,8 +194,8 @@ class Ellipse(PathEntity):
         self.rx = rx
         self.ry = rx if ry is None else ry
 
-    def on_build_path(self) -> None:
-        self.path.addOval(skia.Rect.MakeLTRB(-self.rx, -self.ry, self.rx, self.ry))
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addOval(skia.Rect.MakeLTRB(-self.rx, -self.ry, self.rx, self.ry))
 
 
 class Rect(PathEntity):
@@ -211,15 +211,28 @@ class Rect(PathEntity):
         self.h = w if h is None else h
 
     @classmethod
-    def from_ltrb(cls, l: float, t: float, r: float, b: float, **kwargs: Any) -> Rect:
+    def from_ltrb(cls, l: float, t: float, r: float, b: float, pos: PointLike = (0, 0), **kwargs: Any) -> Rect:
         """Create a rectangle from left, top, right, and bottom coordinates."""
-        kwargs.setdefault('pos', (0, 0))
-        rect = cls(r - l, b - t, **kwargs)
+        rect = cls(r - l, b - t, pos=pos, **kwargs)
         rect.offset.set(l, t)
         return rect
 
-    def on_build_path(self) -> None:
-        self.path.addRect(0, 0, self.w, self.h)
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addRect(0, 0, self.w, self.h)
+
+
+class Square(PathEntity):
+    _observed_attrs = {'w'}
+
+    def __init__(self, w: float, **kwargs: Any) -> None:
+        """
+        :param w: Width of the square.
+        """
+        super().__init__(**kwargs)
+        self.w = w
+
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addRect(0, 0, self.w, self.w)
 
 
 class RoundRect(PathEntity):
@@ -241,8 +254,8 @@ class RoundRect(PathEntity):
         self.h = w if h is None else h
         self.r = Context2d.parse_RR_radius(r)
 
-    def on_build_path(self) -> None:
-        self.path.addRoundRect(skia.Rect.MakeLTRB(0, 0, self.w, self.h), self.r)
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addRoundRect(skia.Rect.MakeLTRB(0, 0, self.w, self.h), self.r)
 
 
 class Point(PathEntity):
@@ -254,8 +267,8 @@ class Point(PathEntity):
         if width is not None:
             self.style.stroke_width = width
 
-    def on_build_path(self) -> None:
-        self.path.moveTo(0, 0).close()
+    def on_build_path(self, path: skia.Path) -> None:
+        path.moveTo(0, 0).close()
 
 
 class PolyLine(PathEntity):
@@ -270,8 +283,8 @@ class PolyLine(PathEntity):
         self.points: list[skia.Point] = [skia.Point(*p) for p in points]
         self.closed: bool = closed
 
-    def on_build_path(self) -> None:
-        self.path.addPoly(self.points, self.closed)
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addPoly(self.points, self.closed)
 
     @classmethod
     def from_flat(cls, flat: list[float], closed: bool = False, **kwargs: Any) -> PolyLine:
@@ -337,5 +350,5 @@ class PathText(PathEntity, TextEntity):
         super().__init__(**kwargs)
         self.text: str = text
 
-    def on_build_path(self) -> None:
-        self.path.addPath(skia.Path.GetFromText(self.text, 0, 0, self.font_style.font))
+    def on_build_path(self, path: skia.Path) -> None:
+        path.addPath(skia.Path.GetFromText(self.text, 0, 0, self.font_style.font))
