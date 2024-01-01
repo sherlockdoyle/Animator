@@ -54,7 +54,7 @@ There are more examples in the [`examples`](/examples) directory.
 
 ## Testing
 
-No tests. Animator is a visual library, so tests are visual! I'll add some tests later.
+There are some visual tests implemented in `run_tests.py` which runs the examples and makes sure that their outputs matches the saved output. Run the file to run the tests.
 
 ## Contributing
 
