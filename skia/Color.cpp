@@ -228,13 +228,8 @@ void initColor(py::module &m)
                 :return: ARGB color
             )doc")
         .def("__len__", [](const SkColor4f &) { return 4; })
-        .def("__str__",
-             [](const SkColor4f &color4f)
-             {
-                 std::stringstream s;
-                 s << "Color4f(" << color4f.fR << ", " << color4f.fG << ", " << color4f.fB << ", " << color4f.fA << ")";
-                 return s.str();
-             })
+        .def("__str__", [](const SkColor4f &color4f)
+             { return "Color4f(r={}, g={}, b={}, a={})"_s.format(color4f.fR, color4f.fG, color4f.fB, color4f.fA); })
         .def_readonly_static("kTransparent", &SkColors::kTransparent)
         .def_readonly_static("kBlack", &SkColors::kBlack)
         .def_readonly_static("kDkGray", &SkColors::kDkGray)

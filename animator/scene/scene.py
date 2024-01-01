@@ -49,7 +49,13 @@ _ext2format: dict[str, skia.EncodedImageFormat] = {
     'jpeg': skia.EncodedImageFormat.kJPEG,
     'webp': skia.EncodedImageFormat.kWEBP,
 }
-_clear_paint: skia.Paint = skia.Paint(blendMode=skia.BlendMode.kClear)
+
+
+def _str2px(res: str) -> tuple[int, int]:
+    res = res.strip()
+    need_flip = res.startswith('-')
+    px = _name2px[re.sub(r'[\W+]+', '', res.lower())]
+    return (px[1], px[0]) if need_flip else px
 
 
 class Scene:
@@ -70,7 +76,8 @@ class Scene:
         """
         :param width: The width of the frame/scene or a string representing a resolution. Resolutions can be one of
           '144p', '240p', '360p', '480p', '720p', 'hd', '1080p', 'fhd', 'fullhd', '1440p', '2k', '2160p', '4k', 'uhd',
-          'ultrahd'. The resolution strings are case-insensitive and may contain whitespaces.
+          'ultrahd'. The resolution strings are case-insensitive and may contain whitespaces. If the string starts with
+          a '-' the width and height will be flipped thereby giving a portrait mode scene.
         :param height: The height of the frame/scene.
         :param fps: The FPS used for saving the animation. The FPS used for displaying the animation may be different.
         :param scale: Amount to scale the frame up or down. This can be a float, in which case the frame is scaled by
@@ -81,19 +88,18 @@ class Scene:
           centered.
         """
         if isinstance(width, str):
-            width = re.sub(r'[\W+]+', '', width.lower())
-            width, height = _name2px[width]
+            width, height = _str2px(width)
         self.width: int = width
         self.height: int = height
 
         if isinstance(scale, (str, tuple)):
             if isinstance(scale, str):
-                scale = _name2px[re.sub(r'[\W+]+', '', scale.lower())]
+                scale = _str2px(scale)
             frame_width, frame_height = scale
         else:
             frame_width = int(width * scale)
             frame_height = int(height * scale)
-        self.frame: np.ndarray = np.zeros(shape=(frame_height, frame_width, 4), dtype=np.uint8)
+        self.frame: np.ndarray = np.empty(shape=(frame_height, frame_width, 4), dtype=np.uint8)
         self.canvas = skia.Canvas(self.frame)
         scale = min(frame_width / width, frame_height / height)
         self.canvas.translate((frame_width - width * scale) / 2, (frame_height - height * scale) / 2)
@@ -106,9 +112,14 @@ class Scene:
         self.bgcolor: skia.Color4f = skia.Color4f.kBlack
         self.__context2d: Context2d | None = None
 
+    def clip(self) -> None:
+        """Clears and clips the frame to the drawable area."""
+        self.clear()
+        self.canvas.clipRect((0, 0, self.width, self.height))
+
     def clear(self) -> None:
         """Clears the frame and fills it with transparency."""
-        self.canvas.drawPaint(_clear_paint)
+        self.frame.fill(0)
 
     def clear_with_bgcolor(self) -> None:
         """Clears the frame and fills it with the background color."""

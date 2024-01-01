@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import re
 from enum import Enum
-from typing import Literal
+from typing import Any, Literal
 
 from animator import skia
 from animator._common_types import ClipLike, ColorLike
@@ -40,6 +40,12 @@ def _calculate_path_effect_needs(effect: skia.PathEffect) -> tuple[bool, bool]:
     return bool(types & __stroke), bool(types & __fill)
 
 
+def _set_paint_attribute(paint: skia.Paint, key: str, value: Any):
+    method = 'set' + ''.join(t.capitalize() for t in key.split('_')[1:])
+    if hasattr(paint, method):
+        getattr(paint, method)(value)
+
+
 class Style:
     """
     The style of an entity. This class initializes with the default style values, which can be changed.
@@ -49,7 +55,7 @@ class Style:
     :ivar optimization: Optimization to apply for the final paint since applying the final paint can be expensive.
     """
 
-    STROKE_WIDTH: float = 5
+    STROKE_WIDTH: float = 4
     STROKE_CAP: skia.Paint.Cap = skia.Paint.Cap.kRound_Cap
     STROKE_JOIN: skia.Paint.Join = skia.Paint.Join.kRound_Join
     STROKE_MITER: float = 10
@@ -258,14 +264,14 @@ class Style:
         """
         self.set_shadow(0, 0, sigma, sigma, color, glow_only)
 
-    def set_fill_color(self, c: ColorLike, *args, **kwargs) -> None:
+    def set_fill_color(self, c: ColorLike, *args: Any, **kwargs: Any) -> None:
         """Set the fill color of the entity. This takes the same arguments as :func:`animator.color`.
 
         :note: Modifies ``fill_paint``.
         """
         self.__fill_paint.setColor4f(parse_color(c, *args, **kwargs))
 
-    def set_stroke_color(self, c: ColorLike, *args, **kwargs) -> None:
+    def set_stroke_color(self, c: ColorLike, *args: Any, **kwargs: Any) -> None:
         """Set the stroke color of the entity. This takes the same arguments as :func:`animator.color`.
 
         :note: Modifies ``stroke_paint``.
@@ -286,7 +292,7 @@ class Style:
         """
         self.__stroke_paint.setShader(shader)
 
-    def set_fill_color_or_shader(self, c: ColorLike | skia.Shader, *args, **kwargs) -> None:
+    def set_fill_color_or_shader(self, c: ColorLike | skia.Shader, *args: Any, **kwargs: Any) -> None:
         """Set the fill color or shader of the entity.
 
         :note: Modifies ``fill_paint``.
@@ -296,7 +302,7 @@ class Style:
         else:
             self.set_fill_color(c, *args, **kwargs)
 
-    def set_stroke_color_or_shader(self, c: ColorLike | skia.Shader, *args, **kwargs) -> None:
+    def set_stroke_color_or_shader(self, c: ColorLike | skia.Shader, *args: Any, **kwargs: Any) -> None:
         """Set the stroke color or shader of the entity.
 
         :note: Modifies ``stroke_paint``.
@@ -305,6 +311,19 @@ class Style:
             self.set_stroke_shader(c)
         else:
             self.set_stroke_color(c, *args, **kwargs)
+
+    def set_color_or_shader(self, c: ColorLike | skia.Shader, *args: Any, **kwargs: Any) -> None:
+        """Set the same fill and stroke color or shader of the entity.
+
+        :note: Modifies ``fill_paint`` and ``stroke_paint``.
+        """
+        if isinstance(c, skia.Shader):
+            self.__fill_paint.setShader(c)
+            self.__stroke_paint.setShader(c)
+        else:
+            color = parse_color(c, *args, **kwargs)
+            self.__fill_paint.setColor4f(color)
+            self.__stroke_paint.setColor4f(color)
 
     def set_image_filter(
         self, filter: skia.ImageFilter | skia.ColorFilter | skia.Image | skia.Picture | skia.Shader | None
@@ -374,10 +393,12 @@ class Style:
             if needs_fill:
                 self.__fill_paint.setPathEffect(effect)
 
-    def set_from_kwargs(self, **kwargs) -> None:
+    def set_from_kwargs(self, **kwargs: Any) -> None:
         """
         Set the style from arguments. Supported arguments are the same as the attributes of this class and
 
+            - ``color``: The same fill and stroke color or shader of the entity. Takes all the arguments of
+              :func:`animator.color`.
             - ``fill_color``: The fill color or shader of the entity. Takes all the arguments of :func:`animator.color`.
             - ``stroke_color``: The stroke color or shader of the entity. Takes all the arguments of
               :func:`animator.color`.
@@ -394,9 +415,14 @@ class Style:
             - ``trim``: The trim of the stroke. Can be ``None`` or a tuple of ``(start, end)``.
             - ``style``: The style of the paint. Can be ``'fill'``, ``'stroke'``, ``'fill-stroke'`` (default) or
               ``'stroke-fill'``.
+            - ``fill_*``, ``stroke_*``, ``final_*``: Whatever snake_case attribute follows the prefix, the corresponding
+              CamelCase setter of the corresponding paint is called. (``fill_alpha=123`` will call
+              ``style.fill_paint.setAlpha(123)``).
         """
         for key, value in kwargs.items():
-            if key == 'fill_color':
+            if key == 'color':
+                self.set_color_or_shader(value)
+            elif key == 'fill_color':
                 self.set_fill_color_or_shader(value)
             elif key == 'stroke_color':
                 self.set_stroke_color_or_shader(value)
@@ -420,7 +446,16 @@ class Style:
             elif key == 'style':
                 self.paint_style = Style.PaintStyle.from_style_str(value)
             elif hasattr(self, key) and not callable(getattr(self, key)) and not key.startswith("_"):
-                setattr(self, key, value)
+                try:
+                    setattr(self, key, value)
+                except AttributeError:
+                    pass
+            elif key.startswith('fill_'):
+                _set_paint_attribute(self.__fill_paint, key, value)
+            elif key.startswith('stroke_'):
+                _set_paint_attribute(self.__stroke_paint, key, value)
+            elif key.startswith('final_'):
+                _set_paint_attribute(self.__final_paint, key, value)
 
     def __copy__(self) -> Style:
         """Return a copy of the style."""

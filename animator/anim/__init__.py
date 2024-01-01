@@ -22,5 +22,6 @@ from animator.anim.swap import FadeInOut as FadeInOut
 from animator.anim.swap import Morph as Morph
 from animator.anim.transformation import Transform as Transform
 from animator.anim.transformation import Transform_Pow as Transform_Pow
+from animator.anim.util import FuncAnim as FuncAnim
 from animator.anim.util import Once as Once
 from animator.anim.util import Wait as Wait
