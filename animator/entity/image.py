@@ -16,11 +16,7 @@ class Image(Entity):
     """Image entity only uses ``fill_paint``."""
 
     def __init__(
-        self,
-        path: str | BinaryIO | skia.Image,
-        width: int | None = None,
-        height: int | None = None,
-        **kwargs: Any,
+        self, path: str | BinaryIO | skia.Image, width: int | None = None, height: int | None = None, **kwargs: Any
     ) -> None:
         """
         Create an image entity from the given *path*. If both *width* and *height* are ``None``, they will be set to the
@@ -31,10 +27,10 @@ class Image(Entity):
         :param height: Height of image. If ``None``, will be calculated from *width* to preserve aspect ratio.
         """
         super().__init__(**kwargs)
-        self.__image = path if isinstance(path, skia.Image) else skia.Image.open(path)
+        self.__image: skia.Image = path if isinstance(path, skia.Image) else skia.Image.open(path)
 
-        self.width = self.__image.width() if width is None else width
-        self.height = self.__image.height() if height is None else height
+        self.width: int = self.__image.width() if width is None else width
+        self.height: int = self.__image.height() if height is None else height
         if width is None and height is not None:
             self.width = self.__image.width() * height // self.__image.height()
         if height is None and width is not None:
@@ -146,7 +142,10 @@ class Snapshot(Entity):
 
 
 class PaintFill(Entity):
-    """Fills the whole scene with the ``fill_paint``."""
+    """
+    Fills the whole scene with the ``fill_paint``. To simply set a background color for the scene, set ``scene.bgcolor``
+    instead.
+    """
 
     def __init__(self, pos: PointLike = (0, 0), **kwargs: Any) -> None:
         super().__init__(pos=pos, **kwargs)

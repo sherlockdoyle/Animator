@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import math
-from typing import TYPE_CHECKING, Any, Final, Literal, TypeVar, overload
+from typing import TYPE_CHECKING, Any, Final, Generator, Literal, TypeVar, overload
 
 from animator import skia
 from animator._common_types import PointLike
@@ -80,7 +80,7 @@ class Entity:
         self._scene = scene
         if self.__do_center and self.__parent is None:
             self.pos.offset(scene.width / 2, scene.height / 2)
-            self.__do_center = False
+        self.__do_center = False
         for child in self.children:
             child.set_scene(scene)
 
@@ -123,13 +123,13 @@ class Entity:
             child.__parent = None
         self.children.clear()
 
-    def __getitem__(self: ET, children: Entity | tuple[Entity, ...]) -> ET:
+    def __getitem__(self: ET, children: Entity | tuple[Entity, ...] | Generator[Entity, None, None]) -> ET:
         """Clear the children of this entity and add the given children."""
         self.clear()
-        if isinstance(children, tuple):
-            self.add(*children)
-        else:
+        if isinstance(children, Entity):
             self.add(children)
+        else:
+            self.add(*children)
         return self
 
     def __contains__(self, entity: Entity) -> bool:
@@ -198,7 +198,7 @@ class Entity:
     def set_relative_pos(
         self: ET, pos: RelativePosition, anchor: RelativePosition | None = None, padding: float = 25
     ) -> ET:
-        """Set the position of this entity relative to its scene.
+        """Set the position of this entity relative to its scene. Doesn't work for child entities.
 
         :param pos: The position of the entity relative to the scene, a 2 element numpy array [x, y]. The coordinates
             are between -1 and 1, where -1 is the left/top of the scene and 1 is the right/bottom of the scene.
@@ -273,9 +273,7 @@ class Entity:
         :param kx: The amount (in degrees) to skew in the x direction.
         :param ky: The amount (in degrees) to skew in the y direction.
         """
-        kx = math.tan(math.radians(kx))
-        ky = math.tan(math.radians(ky))
-        self.mat.preSkew(kx, ky)
+        self.mat.preSkew(math.tan(math.radians(kx)), math.tan(math.radians(ky)))
         return self
 
     def transform(self: ET, mat: skia.Matrix) -> ET:
@@ -307,9 +305,10 @@ class Entity:
             and 1, where -1 is the left/top of the entity and 1 is the right/bottom of the entity.
         """
         bounds = self.get_bounds(True)
-        self.offset.offset(
-            -(pos[0] + 1) * bounds.width() / 2 - bounds.left(), -(pos[1] + 1) * bounds.height() / 2 - bounds.top()
+        point = self.mat.makeInverse().mapVector(
+            (pos[0] + 1) * bounds.width() / 2 + bounds.fLeft, (pos[1] + 1) * bounds.height() / 2 + bounds.fTop
         )
+        self.offset.offset(-point.fX, -point.fY)
         return self
 
     def center(self: ET) -> ET:
@@ -339,12 +338,11 @@ class Entity:
         if self.style.paint_style == Style.PaintStyle.FILL_THEN_STROKE:
             self.do_stroke(canvas)
 
-    def _transform_and_draw(self, canvas: skia.Canvas) -> None:
+    def draw_self(self, canvas: skia.Canvas) -> None:
         """Draw the entity on the given *canvas*."""
         if self.style.nothing_to_draw():
             return
         save_count = canvas.save()
-        canvas.concat(self.total_transformation)
         self.style.apply_clip(canvas)
         self.style.apply_final_paint(canvas)
 
@@ -352,12 +350,20 @@ class Entity:
 
         canvas.restoreToCount(save_count)
 
-    def draw(self, canvas: skia.Canvas | None = None) -> None:
+    def draw(self) -> None:
         """Draw the entity and its children."""
+        canvas = self._scene.canvas
+        save_count = canvas.save()
+        if self.visible or self.children:
+            canvas.translate(*self.pos)
+            canvas.concat(self.mat)
+
         if self.visible:
-            self._transform_and_draw(self._scene.canvas if canvas is None else canvas)
+            self.draw_self(self._scene.canvas if canvas is None else canvas)
         for child in self.children:
             child.draw()
+
+        canvas.restoreToCount(save_count)
 
     @overload
     def animate(self, property: Literal['z_index'], target: int, duration: float, **kwargs: Any) -> Anim:
@@ -398,3 +404,47 @@ class Entity:
         from animator.anim.property import PropertyAnim  # I don't like this, but this is to prevent circular imports
 
         return PropertyAnim(self, property, target, duration, **kwargs)
+
+
+class Group(Entity):
+    """
+    An entity that doesn't draw anything of its own but draws its children. A :class:`Group` also applies its ``offset``
+    to its children. The bounds of a group is the union of all of its children's bounds.
+    """
+
+    @property
+    def total_transformation(self) -> skia.Matrix:
+        return super().total_transformation.preTranslate(*self.offset)
+
+    def get_bounds(self, transformed: bool = False) -> skia.Rect:
+        if not self.children:
+            return skia.Rect.MakeEmpty()
+
+        bounds = self.children[0].get_bounds(True)
+        bounds.offset(self.children[0].pos)
+        mat = skia.Matrix.Translate(self.offset).postConcat(self.mat)
+        points: list[skia.Point] = mat.mapRectToQuad(bounds) if transformed else []
+        for i in range(1, len(self.children)):
+            child = self.children[i]
+            bound = child.get_bounds(True)
+            bound.offset(child.pos)
+            if transformed:
+                points.extend(mat.mapRectToQuad(bound))
+            else:
+                bounds.join(bound)
+        if transformed:
+            bounds.setBounds(points)
+        return bounds
+
+    def draw(self) -> None:
+        canvas = self._scene.canvas
+        save_count = canvas.save()
+        if self.children:
+            canvas.translate(*self.pos)
+            canvas.concat(self.mat)
+            canvas.translate(*self.offset)
+
+        for child in self.children:
+            child.draw()
+
+        canvas.restoreToCount(save_count)

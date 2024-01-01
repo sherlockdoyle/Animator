@@ -1,5 +1,6 @@
 from animator.entity import relpos as relpos
 from animator.entity.entity import Entity as Entity
+from animator.entity.entity import Group as Group
 from animator.entity.image import Image as Image
 from animator.entity.image import PaintFill as PaintFill
 from animator.entity.image import Snapshot as Snapshot
@@ -22,4 +23,5 @@ from animator.entity.path import Star as Star
 from animator.entity.text import SimpleText as SimpleText
 from animator.entity.text import Text as Text
 from animator.entity.text import TextOnPath as TextOnPath
-from animator.entity.util import Group as Group
+from animator.entity.util import FuncEntity as FuncEntity
+from animator.entity.util import StyledGroup as StyledGroup

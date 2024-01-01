@@ -4,7 +4,7 @@ scene = am.Scene(1050, 750)
 
 
 def RectAndBars(x: float, y: float, side: float):  # create an entity that returns a complex entity
-    return am.Group(pos=(x, y))[  # create a group; the square bracket syntax is a shortcut for adding children
+    return am.StyledGroup(pos=(x, y))[  # create a group; the square bracket syntax is a shortcut for adding children
         am.Rect(side, side / 2, fill_color='blue', style='fill'),  # add a blue filled rectangle
         am.Line(0, 6 * side / 10, side, 6 * side / 10, stroke_color='red500'),  # add a horizontal red line
         am.Line(0, 7 * side / 10, side, 7 * side / 10, stroke_color='blue500'),  # add a horizontal blue line
@@ -18,7 +18,7 @@ def EllipseAndBars(
 ):  # create another complex entity with a blend mode
     # we also add a clip, otherwise the blend mode will be applied to the whole scene
     # the 5px offset is to account for the stroke width and round caps
-    return am.Group(pos=(x, y), blend_mode=blend_mode, clip=(-5, -5, SIDE + 5, SIDE + 5))[  # create a group
+    return am.StyledGroup(pos=(x, y), blend_mode=blend_mode, clip=(-5, -5, SIDE + 5, SIDE + 5))[  # create a group
         am.Ellipse(side / 4, side / 2, fill_color='red', style='fill').shift(
             side / 4, side / 2
         ),  # add a red ellipse, shift it to bring the origin to the top left corner
@@ -80,7 +80,7 @@ scene.add(am.SimpleText('Arithmatic', pos=(x + 8, y + 18)))  # add the label
 
 scene.add(
     # the child_blender property of a group will apply the blend mode to all its children
-    am.Group(child_blender=am.skia.BlendMode.kExclusion, pos=(900, 5), clip=(-5, -5, 155, 155))[
+    am.StyledGroup(child_blender=am.skia.BlendMode.kExclusion, pos=(900, 5), clip=(-5, -5, 155, 155))[
         am.Circle(50, pos=(50, 50), fill_color=0xFFFF0000),
         am.Circle(50, pos=(100, 50), fill_color=0xFF00FF00),
         am.Circle(50, pos=(75, 86.6), fill_color=0xFF0000FF),
@@ -91,7 +91,7 @@ scene.add(am.SimpleText('Group', pos=(903, 18)))
 scene.add(am.PaintFill(fill_color='white', clip=am.skia.Rect.MakeXYWH(900, 150, 150, 150)))  # add some background
 scene.add(
     # the blender property can also be set by name
-    am.Group(child_blender='multiply', pos=(900, 155), clip=(-5, -5, 155, 155))[
+    am.StyledGroup(child_blender='multiply', pos=(900, 155), clip=(-5, -5, 155, 155))[
         am.Circle(50, pos=(50, 50), fill_color=0xFF00FFFF),
         am.Circle(50, pos=(100, 50), fill_color=0xFFFF00FF),
         am.Circle(50, pos=(75, 86.6), fill_color=0xFFFFFF00),

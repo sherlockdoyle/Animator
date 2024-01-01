@@ -135,11 +135,11 @@ class BackDrop(Entity):
         self.filter: skia.ImageFilter = filter
         self.style.clip = clip
 
-    def _transform_and_draw(self, canvas: skia.Canvas) -> None:
+    def draw_self(self, canvas: skia.Canvas) -> None:
         if self.style.nothing_to_draw():
             return
         save_count = canvas.save()
-        canvas.concat(self.total_transformation)
+        canvas.translate(*self.offset)
         self.style.apply_clip(canvas)
 
         optimization = self.style.optimization
@@ -159,21 +159,22 @@ class BackDrop(Entity):
         clip = self.style.clip
         if isinstance(clip, (skia.Path, skia.Region)):
             if isinstance(clip, skia.Path):
-                path = clip.makeTransform(self.mat, skia.ApplyPerspectiveClip.kNo) if transformed else clip
+                path = clip.makeOffset(*self.offset)
             else:
                 path = skia.Path()
-                clip.getBoundaryPath(path)
-                if transformed:
-                    path.transform(self.mat, skia.ApplyPerspectiveClip.kNo)
+                clip.makeTranslate(*self.offset).getBoundaryPath(path)
+            if transformed:
+                path.transform(self.mat, skia.ApplyPerspectiveClip.kNo)
             return path.computeTightBounds()
         if isinstance(clip, skia.Rect):
-            bounds = clip
+            bounds = skia.Rect(*clip)
         elif isinstance(clip, (skia.IRect, tuple)):
             bounds = skia.Rect(clip)
-        elif isinstance(clip, (skia.RRect)):
+        elif isinstance(clip, skia.RRect):
             bounds = clip.getBounds()
         else:
             bounds = skia.Rect.MakeEmpty()
+        bounds.offset(self.offset)
         if transformed:
             return self.mat.mapRect(bounds, skia.ApplyPerspectiveClip.kNo)
         return bounds
