@@ -4,6 +4,7 @@ from animator.entity.entity import Group as Group
 from animator.entity.image import Image as Image
 from animator.entity.image import PaintFill as PaintFill
 from animator.entity.image import Snapshot as Snapshot
+from animator.entity.layout import Container as Container
 from animator.entity.misc import BackDrop as BackDrop
 from animator.entity.misc import Patch as Patch
 from animator.entity.misc import Vertices as Vertices

@@ -12,6 +12,8 @@ from animator.anim.infinite import Scaling as Scaling
 from animator.anim.infinite import Skewing as Skewing
 from animator.anim.infinite import Translating as Translating
 from animator.anim.manager import AnimationManager as AnimationManager
+from animator.anim.movement import ArcMove as ArcMove
+from animator.anim.movement import Move as Move
 from animator.anim.property import PropertyAnim as PropertyAnim
 from animator.anim.remove import DrawOut as DrawOut
 from animator.anim.remove import FadeOut as FadeOut

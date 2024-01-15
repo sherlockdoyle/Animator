@@ -174,8 +174,11 @@ void initTextStyle(py::module &m)
                              self->setLocale(SkString(value.cast<std::string>()));
                          else if (key == "textBaseline")
                              self->setTextBaseline(value.cast<TextBaseline>());
-                         else if (key == "placeholder" && value.cast<bool>())
-                             self->setPlaceholder();
+                         else if (key == "placeholder")
+                         {
+                             if (value.cast<bool>())
+                                 self->setPlaceholder();
+                         }
                          else
                              throw py::key_error(key);
                      }

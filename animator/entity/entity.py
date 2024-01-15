@@ -209,17 +209,12 @@ class Entity:
         self.pos.set(*self._scene.r2a_bounds(self.get_bounds(True), pos, anchor, padding))
         return self
 
-    def set_relative_to_entity(
-        self: ET, other: Entity, pos: RelativePosition, anchor: RelativePosition | None = None, padding: float = 25
-    ) -> ET:
-        """Set the position of this entity relative to another entity.
-
-        :param other: The entity to which the position is relative.
-        :param pos: The position of the entity relative to *other*, a 2 element numpy array [x, y]. The coordinates are
-            between -1 and 1, where -1 is the left/top of the entity and 1 is the right/bottom of the entity.
-        :param anchor: The anchor point of the entity in relative coordinates, which will be positioned at *pos*. If
-            ``None``, it'll be same as *pos*.
-        :param padding: The extra space around the entity, in pixels.
+    def get_pos_relative_to_entity(
+        self, other: Entity, pos: RelativePosition, anchor: RelativePosition | None = None, padding: float = 25
+    ) -> skia.Point:
+        """
+        Get the position of this entity relative to another entity. Takes the same parameters as
+        :meth:`set_relative_to_entity`. Doesn't work for child entities.
         """
         if anchor is None:
             anchor = -pos
@@ -229,7 +224,21 @@ class Entity:
         self_pos_y = anchor[1] * ((self_bounds.top() if anchor[1] < 0 else -self_bounds.bottom()) - padding)
         other_pos_x = pos[0] * (-other_bounds.left() if pos[0] < 0 else other_bounds.right())
         other_pos_y = pos[1] * (-other_bounds.top() if pos[1] < 0 else other_bounds.bottom())
-        self.pos.set(other.pos.fX + self_pos_x + other_pos_x, other.pos.fY + self_pos_y + other_pos_y)
+        return skia.Point(other.pos.fX + self_pos_x + other_pos_x, other.pos.fY + self_pos_y + other_pos_y)
+
+    def set_relative_to_entity(
+        self: ET, other: Entity, pos: RelativePosition, anchor: RelativePosition | None = None, padding: float = 25
+    ) -> ET:
+        """Set the position of this entity relative to another entity. Doesn't work for child entities.
+
+        :param other: The entity to which the position is relative.
+        :param pos: The position of the entity relative to *other*, a 2 element numpy array [x, y]. The coordinates are
+            between -1 and 1, where -1 is the left/top of the entity and 1 is the right/bottom of the entity.
+        :param anchor: The anchor point of the entity in relative coordinates, which will be positioned at *pos*. If
+            ``None``, it'll be same as -*pos*.
+        :param padding: The extra space around the entity, in pixels.
+        """
+        self.pos.set(*self.get_pos_relative_to_entity(other, pos, anchor, padding))
         return self
 
     def move(self: ET, dx: float = 0, dy: float = 0) -> ET:

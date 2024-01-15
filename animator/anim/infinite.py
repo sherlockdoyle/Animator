@@ -22,6 +22,7 @@ class Rotating(Anim):
 
     def start(self) -> None:
         self._rate /= self._scene.fps
+        self._entity.transformation.set_from_mat()
 
     def update(self, t: float) -> None:
         self._entity.transformation.rotation += self._rate
@@ -44,6 +45,7 @@ class Scaling(Anim):
     def start(self) -> None:
         self._rateX /= self._scene.fps
         self._rateY /= self._scene.fps
+        self._entity.transformation.set_from_mat()
 
     def update(self, t: float) -> None:
         self._entity.transformation._do_update = False
@@ -70,6 +72,7 @@ class Skewing(Anim):
     def start(self) -> None:
         self._rateX /= self._scene.fps
         self._rateY /= self._scene.fps
+        self._entity.transformation.set_from_mat()
 
     def update(self, t: float) -> None:
         self._entity.transformation._do_update = False
@@ -96,6 +99,7 @@ class Translating(Anim):
     def start(self) -> None:
         self._rateX /= self._scene.fps
         self._rateY /= self._scene.fps
+        self._entity.transformation.set_from_mat()
 
     def update(self, t: float) -> None:
         self._entity.transformation._do_update = False
