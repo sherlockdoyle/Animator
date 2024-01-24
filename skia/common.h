@@ -3,6 +3,7 @@
 
 #include "include/core/SkImageInfo.h"
 #include "include/core/SkRefCnt.h"
+#include "include/core/SkSamplingOptions.h"
 #include "include/core/SkString.h"
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
@@ -34,6 +35,8 @@ py::array readToNumpy(T &readable, int srcX, int srcY, SkColorType ct, SkAlphaTy
         return array;
     throw py::value_error("Failed to read pixels.");
 }
+
+inline constexpr SkSamplingOptions dso;
 
 static inline py::str SkString2pyStr(const SkString &s) { return py::str(s.c_str(), s.size()); }
 

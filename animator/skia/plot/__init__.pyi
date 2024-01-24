@@ -8,7 +8,7 @@ import numpy
 
 import animator.skia
 
-__all__ = ["Canvas_drawPoints", "Point_Polygon"]
+__all__ = ['Canvas_drawPoints', 'Point_Polygon']
 
 def Canvas_drawPoints(
     canvas: animator.skia.Canvas,
@@ -17,12 +17,13 @@ def Canvas_drawPoints(
     matrix: animator.skia.Matrix,
     paint: animator.skia.Paint,
 ) -> None:
-    """Draw points, *pts*, with the specified *mode* and *paint* after transforming by *matrix*."""
+    """
+    Draw points, *pts*, with the specified *mode* and *paint* after transforming by *matrix*.
+    """
 
 def Point_Polygon(
     points: numpy.ndarray,
     isClosed: bool,
     ft: animator.skia.PathFillType = animator.skia.PathFillType.kWinding,
     isVolatile: bool = False,
-) -> animator.skia.Path:
-    pass
+) -> animator.skia.Path: ...

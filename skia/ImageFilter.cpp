@@ -8,7 +8,11 @@
 #include "include/core/SkSamplingOptions.h"
 #include "include/effects/SkImageFilters.h"
 #include "include/effects/SkRuntimeEffect.h"
+#include <pybind11/operators.h>
 #include <pybind11/stl.h>
+
+static const SkImageFilters::CropRect dcr;                                     // default crop rect
+static constexpr SkSamplingOptions dso_mitchell(SkCubicResampler::Mitchell()); // default sampling options
 
 void initImageFilter(py::module &m)
 {
@@ -18,7 +22,7 @@ void initImageFilter(py::module &m)
         .value("kForward_MapDirection", SkImageFilter::kForward_MapDirection)
         .value("kReverse_MapDirection", SkImageFilter::kReverse_MapDirection);
     ImageFilter
-        .def("filterBounds", &SkImageFilter::filterBounds, "src"_a, "ctm"_a, "direction"_a, "inputRect"_a = py::none())
+        .def("filterBounds", &SkImageFilter::filterBounds, "src"_a, "ctm"_a, "direction"_a, "inputRect"_a = nullptr)
         .def("isColorFilterNode",
              [](const SkImageFilter &self) -> std::optional<sk_sp<SkColorFilter>>
              {
@@ -53,45 +57,49 @@ void initImageFilter(py::module &m)
 
     py::class_<SkImageFilters::CropRect>(ImageFilters, "CropRect")
         .def(py::init())
-        .def(py::init<std::nullptr_t>(), "crop"_a)
         .def(py::init<const SkIRect &>(), "crop"_a)
         .def(py::init<const SkRect &>(), "crop"_a)
-        .def_readwrite("fCropRect", &SkImageFilters::CropRect::fCropRect)
+        .def(py::init<const std::optional<SkRect> &>(), "crop"_a)
+        .def(py::init<const std::nullptr_t &>())
+        .def(py::init<std::nullptr_t>())
+        .def(py::init<const SkIRect *>(), "optionalCrop"_a)
+        .def(py::init<const SkRect *>(), "optionalCrop"_a)
+        .def(py::self == py::self)
         .def("__str__",
              [](const SkImageFilters::CropRect &self)
              {
-                 return "CropRect({}, {}, {}, {})"_s.format(self.fCropRect.fLeft, self.fCropRect.fTop,
-                                                            self.fCropRect.fRight, self.fCropRect.fBottom);
+                 return "CropRect({})"_s.format(
+                     self.has_value() ? "{}, {}, {}, {}"_s.format(self->fLeft, self->fTop, self->fRight, self->fBottom)
+                                      : "empty");
              });
     py::implicitly_convertible<py::tuple, SkImageFilters::CropRect>();
 
-    static const SkImageFilters::CropRect dcr = {};                   // default crop rect
-    static const SkSamplingOptions dso(SkCubicResampler::Mitchell()); // default sampling options
     ImageFilters
         .def_static("Arithmetic", &SkImageFilters::Arithmetic, "k1"_a, "k2"_a, "k3"_a, "k4"_a,
-                    "enforcePMColor"_a = false, "background"_a = py::none(), "foreground"_a = py::none(),
-                    "cropRect"_a = dcr)
+                    "enforcePMColor"_a = false, "background"_a = nullptr, "foreground"_a = nullptr, "cropRect"_a = dcr)
         .def_static("Blend",
                     py::overload_cast<SkBlendMode, sk_sp<SkImageFilter>, sk_sp<SkImageFilter>,
                                       const SkImageFilters::CropRect &>(&SkImageFilters::Blend),
-                    "mode"_a, "background"_a, "foreground"_a = py::none(), "cropRect"_a = dcr)
+                    "mode"_a, "background"_a, "foreground"_a = nullptr, "cropRect"_a = dcr)
         .def_static("Blend",
                     py::overload_cast<sk_sp<SkBlender>, sk_sp<SkImageFilter>, sk_sp<SkImageFilter>,
                                       const SkImageFilters::CropRect &>(&SkImageFilters::Blend),
-                    "blender"_a, "background"_a, "foreground"_a = py::none(), "cropRect"_a = dcr)
+                    "blender"_a, "background"_a, "foreground"_a = nullptr, "cropRect"_a = dcr)
         .def_static(
             "Blur",
             py::overload_cast<SkScalar, SkScalar, SkTileMode, sk_sp<SkImageFilter>, const SkImageFilters::CropRect &>(
                 &SkImageFilters::Blur),
-            "sigmaX"_a, "sigmaY"_a, "tileMode"_a = SkTileMode::kDecal, "input"_a = py::none(), "cropRect"_a = dcr)
-        .def_static("ColorFilter", &SkImageFilters::ColorFilter, "cf"_a, "input"_a = py::none(), "cropRect"_a = dcr)
+            "sigmaX"_a, "sigmaY"_a, "tileMode"_a = SkTileMode::kDecal, "input"_a = nullptr, "cropRect"_a = dcr)
+        .def_static("ColorFilter", &SkImageFilters::ColorFilter, "cf"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("Compose", &SkImageFilters::Compose, "outer"_a, "inner"_a)
+        .def_static("Crop", py::overload_cast<const SkRect &, SkTileMode, sk_sp<SkImageFilter>>(&SkImageFilters::Crop),
+                    "rect"_a, "tileMode"_a = SkTileMode::kDecal, "input"_a = nullptr)
         .def_static("DisplacementMap", &SkImageFilters::DisplacementMap, "xChannelSelector"_a, "yChannelSelector"_a,
-                    "scale"_a, "displacement"_a, "color"_a = py::none(), "cropRect"_a = dcr)
+                    "scale"_a, "displacement"_a, "color"_a = nullptr, "cropRect"_a = dcr)
         .def_static("DropShadow", &SkImageFilters::DropShadow, "dx"_a, "dy"_a, "sigmaX"_a, "sigmaY"_a, "color"_a,
-                    "input"_a = py::none(), "cropRect"_a = dcr)
+                    "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("DropShadowOnly", &SkImageFilters::DropShadowOnly, "dx"_a, "dy"_a, "sigmaX"_a, "sigmaY"_a,
-                    "color"_a, "input"_a = py::none(), "cropRect"_a = dcr)
+                    "color"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("Empty", &SkImageFilters::Empty)
         .def_static(
             "Image",
@@ -102,9 +110,9 @@ void initImageFilter(py::module &m)
                     return SkImageFilters::Image(image, sampling);
                 return SkImageFilters::Image(image, *srcRect, *dstRect, sampling);
             },
-            "image"_a, "srcRect"_a = py::none(), "dstRect"_a = py::none(), "sampling"_a = dso)
+            "image"_a, "srcRect"_a = nullptr, "dstRect"_a = nullptr, "sampling"_a = dso_mitchell)
         .def_static("Magnifier", &SkImageFilters::Magnifier, "lensBounds"_a, "zoomAmount"_a, "inset"_a,
-                    "sampling"_a = dso, "input"_a = nullptr, "cropRect"_a = dcr)
+                    "sampling"_a = dso_mitchell, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static(
             "MatrixConvolution",
             [](const SkISize &kernelSize, const std::vector<SkScalar> &kernel, const SkScalar &gain,
@@ -121,8 +129,8 @@ void initImageFilter(py::module &m)
             },
             "If *kernelOffset* is not specified, it is assumed to be half the kernel width and height.", "kernelSize"_a,
             "kernel"_a, "gain"_a = 1, "bias"_a = 0, "kernelOffset"_a = std::nullopt, "tileMode"_a = SkTileMode::kClamp,
-            "convolveAlpha"_a = false, "input"_a = py::none(), "cropRect"_a = dcr)
-        .def_static("MatrixTransform", &SkImageFilters::MatrixTransform, "matrix"_a, "sampling"_a = dso,
+            "convolveAlpha"_a = false, "input"_a = nullptr, "cropRect"_a = dcr)
+        .def_static("MatrixTransform", &SkImageFilters::MatrixTransform, "matrix"_a, "sampling"_a = dso_mitchell,
                     "input"_a = nullptr)
         .def_static(
             "Merge",
@@ -146,7 +154,7 @@ void initImageFilter(py::module &m)
                     py::overload_cast<sk_sp<SkImageFilter>, sk_sp<SkImageFilter>, const SkImageFilters::CropRect &>(
                         &SkImageFilters::Merge),
                     "first"_a, "second"_a, "cropRect"_a = dcr)
-        .def_static("Offset", &SkImageFilters::Offset, "dx"_a, "dy"_a, "input"_a = py::none(), "cropRect"_a = dcr)
+        .def_static("Offset", &SkImageFilters::Offset, "dx"_a, "dy"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("Picture", py::overload_cast<sk_sp<SkPicture>, const SkRect &>(&SkImageFilters::Picture), "pic"_a,
                     "targetRect"_a)
         .def_static("Picture", py::overload_cast<sk_sp<SkPicture>>(&SkImageFilters::Picture), "pic"_a)
@@ -178,23 +186,21 @@ void initImageFilter(py::module &m)
                     py::overload_cast<sk_sp<SkShader>, SkImageFilters::Dither, const SkImageFilters::CropRect &>(
                         &SkImageFilters::Shader),
                     "shader"_a, "dither"_a = SkImageFilters::Dither::kNo, "cropRect"_a = dcr)
-        .def_static("Tile", &SkImageFilters::Tile, "src"_a, "dst"_a, "input"_a = py::none())
-        .def_static("Dilate", &SkImageFilters::Dilate, "radiusX"_a, "radiusY"_a, "input"_a = py::none(),
+        .def_static("Tile", &SkImageFilters::Tile, "src"_a, "dst"_a, "input"_a = nullptr)
+        .def_static("Dilate", &SkImageFilters::Dilate, "radiusX"_a, "radiusY"_a, "input"_a = nullptr,
                     "cropRect"_a = dcr)
-        .def_static("Erode", &SkImageFilters::Erode, "radiusX"_a, "radiusY"_a, "input"_a = py::none(),
-                    "cropRect"_a = dcr)
+        .def_static("Erode", &SkImageFilters::Erode, "radiusX"_a, "radiusY"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("DistantLitDiffuse", &SkImageFilters::DistantLitDiffuse, "direction"_a, "lightColor"_a,
-                    "surfaceScale"_a, "kd"_a, "input"_a = py::none(), "cropRect"_a = dcr)
+                    "surfaceScale"_a, "kd"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("PointLitDiffuse", &SkImageFilters::PointLitDiffuse, "location"_a, "lightColor"_a, "surfaceScale"_a,
-                    "kd"_a, "input"_a = py::none(), "cropRect"_a = dcr)
+                    "kd"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("SpotLitDiffuse", &SkImageFilters::SpotLitDiffuse, "location"_a, "target"_a, "falloffExponent"_a,
-                    "cutoffAngle"_a, "lightColor"_a, "surfaceScale"_a, "kd"_a, "input"_a = py::none(),
-                    "cropRect"_a = dcr)
+                    "cutoffAngle"_a, "lightColor"_a, "surfaceScale"_a, "kd"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("DistantLitSpecular", &SkImageFilters::DistantLitSpecular, "direction"_a, "lightColor"_a,
-                    "surfaceScale"_a, "ks"_a, "shininess"_a, "input"_a = py::none(), "cropRect"_a = dcr)
+                    "surfaceScale"_a, "ks"_a, "shininess"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("PointLitSpecular", &SkImageFilters::PointLitSpecular, "location"_a, "lightColor"_a,
-                    "surfaceScale"_a, "ks"_a, "shininess"_a, "input"_a = py::none(), "cropRect"_a = dcr)
+                    "surfaceScale"_a, "ks"_a, "shininess"_a, "input"_a = nullptr, "cropRect"_a = dcr)
         .def_static("SpotLitSpecular", &SkImageFilters::SpotLitSpecular, "location"_a, "target"_a, "falloffExponent"_a,
-                    "cutoffAngle"_a, "lightColor"_a, "surfaceScale"_a, "ks"_a, "shininess"_a, "input"_a = py::none(),
+                    "cutoffAngle"_a, "lightColor"_a, "surfaceScale"_a, "ks"_a, "shininess"_a, "input"_a = nullptr,
                     "cropRect"_a = dcr);
 }

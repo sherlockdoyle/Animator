@@ -272,8 +272,6 @@ void initCanvas(py::module &m)
         .def("drawImage", py::overload_cast<const sk_sp<SkImage> &, SkScalar, SkScalar>(&SkCanvas::drawImage),
              "image"_a, "left"_a, "top"_a);
 
-    static constexpr SkSamplingOptions dso;
-
     py::enum_<SkCanvas::SrcRectConstraint>(Canvas, "SrcRectConstraint")
         .value("kStrict_SrcRectConstraint", SkCanvas::SrcRectConstraint::kStrict_SrcRectConstraint)
         .value("kFast_SrcRectConstraint", SkCanvas::SrcRectConstraint::kFast_SrcRectConstraint);

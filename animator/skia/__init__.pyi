@@ -11,160 +11,152 @@ from enum import IntEnum, IntFlag
 
 import numpy
 
-import animator.skia
-from animator.skia import cms as cms
-from animator.skia import plot as plot
-from animator.skia import sksl as sksl
-from animator.skia import textlayout as textlayout
+from . import cms, plot, sksl, textlayout
 
 buffer = bytes | memoryview | bytearray | numpy.ndarray
 
 __all__ = [
-    "AlphaOPAQUE",
-    "AlphaTRANSPARENT",
-    "AlphaType",
-    "ApplyPerspectiveClip",
-    "AutoCanvasRestore",
-    "Bitmap",
-    "BlendMode",
-    "BlendModeCoeff",
-    "Blender",
-    "Blenders",
-    "BlurStyle",
-    "Canvas",
-    "ClipOp",
-    "Color",
-    "Color4f",
-    "ColorBLACK",
-    "ColorBLUE",
-    "ColorCYAN",
-    "ColorChannel",
-    "ColorChannelFlag",
-    "ColorDKGRAY",
-    "ColorFilter",
-    "ColorFilters",
-    "ColorGRAY",
-    "ColorGREEN",
-    "ColorGetA",
-    "ColorGetB",
-    "ColorGetG",
-    "ColorGetR",
-    "ColorInfo",
-    "ColorLTGRAY",
-    "ColorMAGENTA",
-    "ColorMatrix",
-    "ColorMatrixFilter",
-    "ColorRED",
-    "ColorSetA",
-    "ColorSetARGB",
-    "ColorSetRGB",
-    "ColorSpace",
-    "ColorSpacePrimaries",
-    "ColorTRANSPARENT",
-    "ColorTable",
-    "ColorToHSV",
-    "ColorType",
-    "ColorWHITE",
-    "ColorYELLOW",
-    "CornerPathEffect",
-    "CubicMap",
-    "CubicResampler",
-    "DashPathEffect",
-    "Data",
-    "DiscretePathEffect",
-    "EncodedImageFormat",
-    "FilterMode",
-    "Flattenable",
-    "Font",
-    "FontArguments",
-    "FontHinting",
-    "FontMetrics",
-    "FontMgr",
-    "FontParameters",
-    "FontStyle",
-    "FontStyleSet",
-    "GradientShader",
-    "HSVToColor",
-    "HighContrastConfig",
-    "HighContrastFilter",
-    "IPoint",
-    "IRect",
-    "ISize",
-    "Image",
-    "ImageFilter",
-    "ImageFilters",
-    "ImageInfo",
-    "Line2DPathEffect",
-    "LumaColorFilter",
-    "MakeNullCanvas",
-    "MaskFilter",
-    "Matrix",
-    "MatrixPathEffect",
-    "MergePathEffect",
-    "MipmapMode",
-    "NamedGamut",
-    "NamedTransferFn",
-    "OpBuilder",
-    "OverdrawColorFilter",
-    "Paint",
-    "ParsePath",
-    "Path",
-    "Path1DPathEffect",
-    "Path2DPathEffect",
-    "PathBuilder",
-    "PathDirection",
-    "PathEffect",
-    "PathFillType",
-    "PathMatcher",
-    "PathMeasure",
-    "PathOp",
-    "PathSegmentMask",
-    "PathVerb",
-    "Picture",
-    "PictureRecorder",
-    "PixelGeometry",
-    "Pixmap",
-    "Point",
-    "Point3",
-    "PreMultiplyARGB",
-    "PreMultiplyColor",
-    "RGBToHSV",
-    "RRect",
-    "RSXform",
-    "Rect",
-    "Region",
-    "RuntimeBlendBuilder",
-    "RuntimeColorFilterBuilder",
-    "RuntimeEffect",
-    "RuntimeEffectBuilder",
-    "RuntimeShaderBuilder",
-    "SamplingOptions",
-    "Shader",
-    "ShaderMaskFilter",
-    "ShadowFlags",
-    "ShadowUtils",
-    "Size",
-    "StrokeAndFillPathEffect",
-    "StrokePathEffect",
-    "StrokeRec",
-    "Surface",
-    "SurfaceProps",
-    "TableMaskFilter",
-    "TextBlob",
-    "TextBlobBuilder",
-    "TextEncoding",
-    "TextUtils_Align",
-    "TileMode",
-    "TrimPathEffect",
-    "Typeface",
-    "Vertices",
-    "YUVColorSpace",
-    "cms",
-    "kTileModeCount",
-    "plot",
-    "sksl",
-    "textlayout",
-    "uniqueColor",
+    'AlphaOPAQUE',
+    'AlphaTRANSPARENT',
+    'AlphaType',
+    'ApplyPerspectiveClip',
+    'AutoCanvasRestore',
+    'Bitmap',
+    'BlendMode',
+    'BlendModeCoeff',
+    'Blender',
+    'Blenders',
+    'BlurStyle',
+    'Canvas',
+    'ClipOp',
+    'Color',
+    'Color4f',
+    'ColorBLACK',
+    'ColorBLUE',
+    'ColorCYAN',
+    'ColorChannel',
+    'ColorChannelFlag',
+    'ColorDKGRAY',
+    'ColorFilter',
+    'ColorFilters',
+    'ColorGRAY',
+    'ColorGREEN',
+    'ColorGetA',
+    'ColorGetB',
+    'ColorGetG',
+    'ColorGetR',
+    'ColorInfo',
+    'ColorLTGRAY',
+    'ColorMAGENTA',
+    'ColorMatrix',
+    'ColorMatrixFilter',
+    'ColorRED',
+    'ColorSetA',
+    'ColorSetARGB',
+    'ColorSetRGB',
+    'ColorSpace',
+    'ColorSpacePrimaries',
+    'ColorTRANSPARENT',
+    'ColorTable',
+    'ColorToHSV',
+    'ColorType',
+    'ColorWHITE',
+    'ColorYELLOW',
+    'CornerPathEffect',
+    'CubicMap',
+    'CubicResampler',
+    'DashPathEffect',
+    'Data',
+    'DiscretePathEffect',
+    'EncodedImageFormat',
+    'FilterMode',
+    'Flattenable',
+    'Font',
+    'FontArguments',
+    'FontHinting',
+    'FontMetrics',
+    'FontMgr',
+    'FontParameters',
+    'FontStyle',
+    'FontStyleSet',
+    'GradientShader',
+    'HSVToColor',
+    'HighContrastConfig',
+    'HighContrastFilter',
+    'IPoint',
+    'IRect',
+    'ISize',
+    'Image',
+    'ImageFilter',
+    'ImageFilters',
+    'ImageInfo',
+    'Line2DPathEffect',
+    'LumaColorFilter',
+    'MakeNullCanvas',
+    'MaskFilter',
+    'Matrix',
+    'MipmapMode',
+    'NamedGamut',
+    'NamedTransferFn',
+    'OpBuilder',
+    'OverdrawColorFilter',
+    'Paint',
+    'ParsePath',
+    'Path',
+    'Path1DPathEffect',
+    'Path2DPathEffect',
+    'PathBuilder',
+    'PathDirection',
+    'PathEffect',
+    'PathFillType',
+    'PathMatcher',
+    'PathMeasure',
+    'PathOp',
+    'PathSegmentMask',
+    'PathVerb',
+    'Picture',
+    'PictureRecorder',
+    'PixelGeometry',
+    'Pixmap',
+    'Point',
+    'Point3',
+    'PreMultiplyARGB',
+    'PreMultiplyColor',
+    'RGBToHSV',
+    'RRect',
+    'RSXform',
+    'Rect',
+    'Region',
+    'RuntimeBlendBuilder',
+    'RuntimeColorFilterBuilder',
+    'RuntimeEffect',
+    'RuntimeEffectBuilder',
+    'RuntimeShaderBuilder',
+    'SamplingOptions',
+    'Shader',
+    'ShaderMaskFilter',
+    'ShadowFlags',
+    'ShadowUtils',
+    'Size',
+    'StrokeRec',
+    'Surface',
+    'SurfaceProps',
+    'TableMaskFilter',
+    'TextBlob',
+    'TextBlobBuilder',
+    'TextEncoding',
+    'TextUtils_Align',
+    'TileMode',
+    'TrimPathEffect',
+    'Typeface',
+    'Vertices',
+    'YUVColorSpace',
+    'cms',
+    'kTileModeCount',
+    'plot',
+    'sksl',
+    'textlayout',
+    'uniqueColor',
 ]
 
 class AlphaType:
@@ -182,15 +174,24 @@ class AlphaType:
       kLastEnum_AlphaType
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, AlphaType]
+    ]  # value = {'kUnknown_AlphaType': <AlphaType.kUnknown_AlphaType: 0>, 'kOpaque_AlphaType': <AlphaType.kOpaque_AlphaType: 1>, 'kPremul_AlphaType': <AlphaType.kPremul_AlphaType: 2>, 'kUnpremul_AlphaType': <AlphaType.kUnpremul_AlphaType: 3>, 'kLastEnum_AlphaType': <AlphaType.kUnpremul_AlphaType: 3>}
+    kLastEnum_AlphaType: typing.ClassVar[AlphaType]  # value = <AlphaType.kUnpremul_AlphaType: 3>
+    kOpaque_AlphaType: typing.ClassVar[AlphaType]  # value = <AlphaType.kOpaque_AlphaType: 1>
+    kPremul_AlphaType: typing.ClassVar[AlphaType]  # value = <AlphaType.kPremul_AlphaType: 2>
+    kUnknown_AlphaType: typing.ClassVar[AlphaType]  # value = <AlphaType.kUnknown_AlphaType: 0>
+    kUnpremul_AlphaType: typing.ClassVar[AlphaType]  # value = <AlphaType.kUnpremul_AlphaType: 3>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     def isOpaque(self) -> bool:
         """
         Returns true if this alpha type is opaque (*kOpaque_AlphaType*).
@@ -200,22 +201,9 @@ class AlphaType:
         opaque, then the result of drawing any pixel with a alpha value less than 1.0 is undefined.
         """
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kUnknown_AlphaType': <AlphaType.kUnknown_AlphaType: 0>, 'kOpaque_AlphaType': <AlphaType.kOpaque_AlphaType: 1>, 'kPremul_AlphaType': <AlphaType.kPremul_AlphaType: 2>, 'kUnpremul_AlphaType': <AlphaType.kUnpremul_AlphaType: 3>, 'kLastEnum_AlphaType': <AlphaType.kUnpremul_AlphaType: 3>}
-    kLastEnum_AlphaType: animator.skia.AlphaType  # value = <AlphaType.kUnpremul_AlphaType: 3>
-    kOpaque_AlphaType: animator.skia.AlphaType  # value = <AlphaType.kOpaque_AlphaType: 1>
-    kPremul_AlphaType: animator.skia.AlphaType  # value = <AlphaType.kPremul_AlphaType: 2>
-    kUnknown_AlphaType: animator.skia.AlphaType  # value = <AlphaType.kUnknown_AlphaType: 0>
-    kUnpremul_AlphaType: animator.skia.AlphaType  # value = <AlphaType.kUnpremul_AlphaType: 3>
-    pass
+    def value(self) -> int: ...
 
 class ApplyPerspectiveClip:
     """
@@ -226,36 +214,31 @@ class ApplyPerspectiveClip:
       kYes
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, ApplyPerspectiveClip]
+    ]  # value = {'kNo': <ApplyPerspectiveClip.kNo: 0>, 'kYes': <ApplyPerspectiveClip.kYes: 1>}
+    kNo: typing.ClassVar[ApplyPerspectiveClip]  # value = <ApplyPerspectiveClip.kNo: 0>
+    kYes: typing.ClassVar[ApplyPerspectiveClip]  # value = <ApplyPerspectiveClip.kYes: 1>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kNo': <ApplyPerspectiveClip.kNo: 0>, 'kYes': <ApplyPerspectiveClip.kYes: 1>}
-    kNo: animator.skia.ApplyPerspectiveClip  # value = <ApplyPerspectiveClip.kNo: 0>
-    kYes: animator.skia.ApplyPerspectiveClip  # value = <ApplyPerspectiveClip.kYes: 1>
-    pass
+    def value(self) -> int: ...
 
 class AutoCanvasRestore:
     def __enter__(self) -> None: ...
     def __exit__(self, *args) -> None: ...
     def __init__(self, canvas: Canvas, doSave: bool = True) -> None: ...
     def restore(self) -> None: ...
-    pass
 
 class Bitmap:
     """
@@ -280,39 +263,36 @@ class Bitmap:
           kZeroPixels_AllocFlag
         """
 
-        def __and__(self, other: object) -> object: ...
-        def __eq__(self, other: object) -> bool: ...
-        def __ge__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Bitmap.AllocFlags]
+        ]  # value = {'kZeroPixels_AllocFlag': <AllocFlags.kZeroPixels_AllocFlag: 1>}
+        kZeroPixels_AllocFlag: typing.ClassVar[Bitmap.AllocFlags]  # value = <AllocFlags.kZeroPixels_AllocFlag: 1>
+        def __and__(self, other: typing.Any) -> typing.Any: ...
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __ge__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
-        def __gt__(self, other: object) -> bool: ...
+        def __gt__(self, other: typing.Any) -> bool: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __invert__(self) -> object: ...
-        def __le__(self, other: object) -> bool: ...
-        def __lt__(self, other: object) -> bool: ...
-        def __ne__(self, other: object) -> bool: ...
-        def __or__(self, other: object) -> object: ...
-        def __rand__(self, other: object) -> object: ...
+        def __invert__(self) -> typing.Any: ...
+        def __le__(self, other: typing.Any) -> bool: ...
+        def __lt__(self, other: typing.Any) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __or__(self, other: typing.Any) -> typing.Any: ...
+        def __rand__(self, other: typing.Any) -> typing.Any: ...
         def __repr__(self) -> str: ...
-        def __ror__(self, other: object) -> object: ...
-        def __rxor__(self, other: object) -> object: ...
+        def __ror__(self, other: typing.Any) -> typing.Any: ...
+        def __rxor__(self, other: typing.Any) -> typing.Any: ...
         def __setstate__(self, state: int) -> None: ...
-        def __xor__(self, other: object) -> object: ...
+        def __str__(self) -> str: ...
+        def __xor__(self, other: typing.Any) -> typing.Any: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kZeroPixels_AllocFlag': <AllocFlags.kZeroPixels_AllocFlag: 1>}
-        kZeroPixels_AllocFlag: animator.skia.Bitmap.AllocFlags  # value = <AllocFlags.kZeroPixels_AllocFlag: 1>
-        pass
+        def value(self) -> int: ...
+
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
@@ -320,11 +300,11 @@ class Bitmap:
     def __str__(self) -> str: ...
     def allocN32Pixels(self, width: int, height: int, isOpaque: bool = False) -> None: ...
     @typing.overload
-    def allocPixels(self) -> None: ...
+    def allocPixels(self, info: ImageInfo, rowBytes: int) -> None: ...
     @typing.overload
     def allocPixels(self, info: ImageInfo) -> None: ...
     @typing.overload
-    def allocPixels(self, info: ImageInfo, rowBytes: int) -> None: ...
+    def allocPixels(self) -> None: ...
     def allocPixelsFlags(self, info: ImageInfo, flags: int = 0) -> None: ...
     def alphaType(self) -> AlphaType: ...
     def asImage(self) -> Image: ...
@@ -396,14 +376,14 @@ class Bitmap:
     def pixelRefOrigin(self) -> IPoint: ...
     def pixmap(self) -> Pixmap: ...
     @typing.overload
-    def readPixels(self, dst: Pixmap, srcX: int = 0, srcY: int = 0) -> bool: ...
-    @typing.overload
     def readPixels(
         self, dstInfo: ImageInfo, dstPixels: buffer, dstRowBytes: int = 0, srcX: int = 0, srcY: int = 0
     ) -> bool:
         """
         Copies *dstInfo* pixels starting from (*srcX*, *srcY*) to *dstPixels* buffer.
         """
+    @typing.overload
+    def readPixels(self, dst: Pixmap, srcX: int = 0, srcY: int = 0) -> bool: ...
     def readyToDraw(self) -> bool: ...
     def refColorSpace(self) -> ColorSpace: ...
     def reset(self) -> None: ...
@@ -426,15 +406,14 @@ class Bitmap:
         """
     def tryAllocN32Pixels(self, width: int, height: int, isOpaque: bool = False) -> bool: ...
     @typing.overload
-    def tryAllocPixels(self) -> bool: ...
+    def tryAllocPixels(self, info: ImageInfo, rowBytes: int) -> bool: ...
     @typing.overload
     def tryAllocPixels(self, info: ImageInfo) -> bool: ...
     @typing.overload
-    def tryAllocPixels(self, info: ImageInfo, rowBytes: int) -> bool: ...
+    def tryAllocPixels(self) -> bool: ...
     def tryAllocPixelsFlags(self, info: ImageInfo, flags: int = 0) -> bool: ...
     def width(self) -> int: ...
     def writePixels(self, src: Pixmap, dstX: int = 0, dstY: int = 0) -> bool: ...
-    pass
 
 class BlendMode:
     """
@@ -505,15 +484,51 @@ class BlendMode:
       kLastMode
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, BlendMode]
+    ]  # value = {'kClear': <BlendMode.kClear: 0>, 'kSrc': <BlendMode.kSrc: 1>, 'kDst': <BlendMode.kDst: 2>, 'kSrcOver': <BlendMode.kSrcOver: 3>, 'kDstOver': <BlendMode.kDstOver: 4>, 'kSrcIn': <BlendMode.kSrcIn: 5>, 'kDstIn': <BlendMode.kDstIn: 6>, 'kSrcOut': <BlendMode.kSrcOut: 7>, 'kDstOut': <BlendMode.kDstOut: 8>, 'kSrcATop': <BlendMode.kSrcATop: 9>, 'kDstATop': <BlendMode.kDstATop: 10>, 'kXor': <BlendMode.kXor: 11>, 'kPlus': <BlendMode.kPlus: 12>, 'kModulate': <BlendMode.kModulate: 13>, 'kScreen': <BlendMode.kScreen: 14>, 'kOverlay': <BlendMode.kOverlay: 15>, 'kDarken': <BlendMode.kDarken: 16>, 'kLighten': <BlendMode.kLighten: 17>, 'kColorDodge': <BlendMode.kColorDodge: 18>, 'kColorBurn': <BlendMode.kColorBurn: 19>, 'kHardLight': <BlendMode.kHardLight: 20>, 'kSoftLight': <BlendMode.kSoftLight: 21>, 'kDifference': <BlendMode.kDifference: 22>, 'kExclusion': <BlendMode.kExclusion: 23>, 'kMultiply': <BlendMode.kMultiply: 24>, 'kHue': <BlendMode.kHue: 25>, 'kSaturation': <BlendMode.kSaturation: 26>, 'kColor': <BlendMode.kColor: 27>, 'kLuminosity': <BlendMode.kLuminosity: 28>, 'kLastCoeffMode': <BlendMode.kScreen: 14>, 'kLastSeparableMode': <BlendMode.kMultiply: 24>, 'kLastMode': <BlendMode.kLuminosity: 28>}
+    kClear: typing.ClassVar[BlendMode]  # value = <BlendMode.kClear: 0>
+    kColor: typing.ClassVar[BlendMode]  # value = <BlendMode.kColor: 27>
+    kColorBurn: typing.ClassVar[BlendMode]  # value = <BlendMode.kColorBurn: 19>
+    kColorDodge: typing.ClassVar[BlendMode]  # value = <BlendMode.kColorDodge: 18>
+    kDarken: typing.ClassVar[BlendMode]  # value = <BlendMode.kDarken: 16>
+    kDifference: typing.ClassVar[BlendMode]  # value = <BlendMode.kDifference: 22>
+    kDst: typing.ClassVar[BlendMode]  # value = <BlendMode.kDst: 2>
+    kDstATop: typing.ClassVar[BlendMode]  # value = <BlendMode.kDstATop: 10>
+    kDstIn: typing.ClassVar[BlendMode]  # value = <BlendMode.kDstIn: 6>
+    kDstOut: typing.ClassVar[BlendMode]  # value = <BlendMode.kDstOut: 8>
+    kDstOver: typing.ClassVar[BlendMode]  # value = <BlendMode.kDstOver: 4>
+    kExclusion: typing.ClassVar[BlendMode]  # value = <BlendMode.kExclusion: 23>
+    kHardLight: typing.ClassVar[BlendMode]  # value = <BlendMode.kHardLight: 20>
+    kHue: typing.ClassVar[BlendMode]  # value = <BlendMode.kHue: 25>
+    kLastCoeffMode: typing.ClassVar[BlendMode]  # value = <BlendMode.kScreen: 14>
+    kLastMode: typing.ClassVar[BlendMode]  # value = <BlendMode.kLuminosity: 28>
+    kLastSeparableMode: typing.ClassVar[BlendMode]  # value = <BlendMode.kMultiply: 24>
+    kLighten: typing.ClassVar[BlendMode]  # value = <BlendMode.kLighten: 17>
+    kLuminosity: typing.ClassVar[BlendMode]  # value = <BlendMode.kLuminosity: 28>
+    kModulate: typing.ClassVar[BlendMode]  # value = <BlendMode.kModulate: 13>
+    kMultiply: typing.ClassVar[BlendMode]  # value = <BlendMode.kMultiply: 24>
+    kOverlay: typing.ClassVar[BlendMode]  # value = <BlendMode.kOverlay: 15>
+    kPlus: typing.ClassVar[BlendMode]  # value = <BlendMode.kPlus: 12>
+    kSaturation: typing.ClassVar[BlendMode]  # value = <BlendMode.kSaturation: 26>
+    kScreen: typing.ClassVar[BlendMode]  # value = <BlendMode.kScreen: 14>
+    kSoftLight: typing.ClassVar[BlendMode]  # value = <BlendMode.kSoftLight: 21>
+    kSrc: typing.ClassVar[BlendMode]  # value = <BlendMode.kSrc: 1>
+    kSrcATop: typing.ClassVar[BlendMode]  # value = <BlendMode.kSrcATop: 9>
+    kSrcIn: typing.ClassVar[BlendMode]  # value = <BlendMode.kSrcIn: 5>
+    kSrcOut: typing.ClassVar[BlendMode]  # value = <BlendMode.kSrcOut: 7>
+    kSrcOver: typing.ClassVar[BlendMode]  # value = <BlendMode.kSrcOver: 3>
+    kXor: typing.ClassVar[BlendMode]  # value = <BlendMode.kXor: 11>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     def asCoeff(self) -> tuple[BlendModeCoeff, BlendModeCoeff] | None:
         """
         Returns the source and destination coefficients for the coeffient-based blend mode, or None otherwise.
@@ -523,49 +538,9 @@ class BlendMode:
         Returns name of blend mode as returned by the C++ API.
         """
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kClear': <BlendMode.kClear: 0>, 'kSrc': <BlendMode.kSrc: 1>, 'kDst': <BlendMode.kDst: 2>, 'kSrcOver': <BlendMode.kSrcOver: 3>, 'kDstOver': <BlendMode.kDstOver: 4>, 'kSrcIn': <BlendMode.kSrcIn: 5>, 'kDstIn': <BlendMode.kDstIn: 6>, 'kSrcOut': <BlendMode.kSrcOut: 7>, 'kDstOut': <BlendMode.kDstOut: 8>, 'kSrcATop': <BlendMode.kSrcATop: 9>, 'kDstATop': <BlendMode.kDstATop: 10>, 'kXor': <BlendMode.kXor: 11>, 'kPlus': <BlendMode.kPlus: 12>, 'kModulate': <BlendMode.kModulate: 13>, 'kScreen': <BlendMode.kScreen: 14>, 'kOverlay': <BlendMode.kOverlay: 15>, 'kDarken': <BlendMode.kDarken: 16>, 'kLighten': <BlendMode.kLighten: 17>, 'kColorDodge': <BlendMode.kColorDodge: 18>, 'kColorBurn': <BlendMode.kColorBurn: 19>, 'kHardLight': <BlendMode.kHardLight: 20>, 'kSoftLight': <BlendMode.kSoftLight: 21>, 'kDifference': <BlendMode.kDifference: 22>, 'kExclusion': <BlendMode.kExclusion: 23>, 'kMultiply': <BlendMode.kMultiply: 24>, 'kHue': <BlendMode.kHue: 25>, 'kSaturation': <BlendMode.kSaturation: 26>, 'kColor': <BlendMode.kColor: 27>, 'kLuminosity': <BlendMode.kLuminosity: 28>, 'kLastCoeffMode': <BlendMode.kScreen: 14>, 'kLastSeparableMode': <BlendMode.kMultiply: 24>, 'kLastMode': <BlendMode.kLuminosity: 28>}
-    kClear: animator.skia.BlendMode  # value = <BlendMode.kClear: 0>
-    kColor: animator.skia.BlendMode  # value = <BlendMode.kColor: 27>
-    kColorBurn: animator.skia.BlendMode  # value = <BlendMode.kColorBurn: 19>
-    kColorDodge: animator.skia.BlendMode  # value = <BlendMode.kColorDodge: 18>
-    kDarken: animator.skia.BlendMode  # value = <BlendMode.kDarken: 16>
-    kDifference: animator.skia.BlendMode  # value = <BlendMode.kDifference: 22>
-    kDst: animator.skia.BlendMode  # value = <BlendMode.kDst: 2>
-    kDstATop: animator.skia.BlendMode  # value = <BlendMode.kDstATop: 10>
-    kDstIn: animator.skia.BlendMode  # value = <BlendMode.kDstIn: 6>
-    kDstOut: animator.skia.BlendMode  # value = <BlendMode.kDstOut: 8>
-    kDstOver: animator.skia.BlendMode  # value = <BlendMode.kDstOver: 4>
-    kExclusion: animator.skia.BlendMode  # value = <BlendMode.kExclusion: 23>
-    kHardLight: animator.skia.BlendMode  # value = <BlendMode.kHardLight: 20>
-    kHue: animator.skia.BlendMode  # value = <BlendMode.kHue: 25>
-    kLastCoeffMode: animator.skia.BlendMode  # value = <BlendMode.kScreen: 14>
-    kLastMode: animator.skia.BlendMode  # value = <BlendMode.kLuminosity: 28>
-    kLastSeparableMode: animator.skia.BlendMode  # value = <BlendMode.kMultiply: 24>
-    kLighten: animator.skia.BlendMode  # value = <BlendMode.kLighten: 17>
-    kLuminosity: animator.skia.BlendMode  # value = <BlendMode.kLuminosity: 28>
-    kModulate: animator.skia.BlendMode  # value = <BlendMode.kModulate: 13>
-    kMultiply: animator.skia.BlendMode  # value = <BlendMode.kMultiply: 24>
-    kOverlay: animator.skia.BlendMode  # value = <BlendMode.kOverlay: 15>
-    kPlus: animator.skia.BlendMode  # value = <BlendMode.kPlus: 12>
-    kSaturation: animator.skia.BlendMode  # value = <BlendMode.kSaturation: 26>
-    kScreen: animator.skia.BlendMode  # value = <BlendMode.kScreen: 14>
-    kSoftLight: animator.skia.BlendMode  # value = <BlendMode.kSoftLight: 21>
-    kSrc: animator.skia.BlendMode  # value = <BlendMode.kSrc: 1>
-    kSrcATop: animator.skia.BlendMode  # value = <BlendMode.kSrcATop: 9>
-    kSrcIn: animator.skia.BlendMode  # value = <BlendMode.kSrcIn: 5>
-    kSrcOut: animator.skia.BlendMode  # value = <BlendMode.kSrcOut: 7>
-    kSrcOver: animator.skia.BlendMode  # value = <BlendMode.kSrcOver: 3>
-    kXor: animator.skia.BlendMode  # value = <BlendMode.kXor: 11>
-    pass
+    def value(self) -> int: ...
 
 class BlendModeCoeff:
     """
@@ -594,110 +569,42 @@ class BlendModeCoeff:
       kCoeffCount
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, BlendModeCoeff]
+    ]  # value = {'kZero': <BlendModeCoeff.kZero: 0>, 'kOne': <BlendModeCoeff.kOne: 1>, 'kSC': <BlendModeCoeff.kSC: 2>, 'kISC': <BlendModeCoeff.kISC: 3>, 'kDC': <BlendModeCoeff.kDC: 4>, 'kIDC': <BlendModeCoeff.kIDC: 5>, 'kSA': <BlendModeCoeff.kSA: 6>, 'kISA': <BlendModeCoeff.kISA: 7>, 'kDA': <BlendModeCoeff.kDA: 8>, 'kIDA': <BlendModeCoeff.kIDA: 9>, 'kCoeffCount': <BlendModeCoeff.kCoeffCount: 10>}
+    kCoeffCount: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kCoeffCount: 10>
+    kDA: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kDA: 8>
+    kDC: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kDC: 4>
+    kIDA: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kIDA: 9>
+    kIDC: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kIDC: 5>
+    kISA: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kISA: 7>
+    kISC: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kISC: 3>
+    kOne: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kOne: 1>
+    kSA: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kSA: 6>
+    kSC: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kSC: 2>
+    kZero: typing.ClassVar[BlendModeCoeff]  # value = <BlendModeCoeff.kZero: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
-    @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
-    @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kZero': <BlendModeCoeff.kZero: 0>, 'kOne': <BlendModeCoeff.kOne: 1>, 'kSC': <BlendModeCoeff.kSC: 2>, 'kISC': <BlendModeCoeff.kISC: 3>, 'kDC': <BlendModeCoeff.kDC: 4>, 'kIDC': <BlendModeCoeff.kIDC: 5>, 'kSA': <BlendModeCoeff.kSA: 6>, 'kISA': <BlendModeCoeff.kISA: 7>, 'kDA': <BlendModeCoeff.kDA: 8>, 'kIDA': <BlendModeCoeff.kIDA: 9>, 'kCoeffCount': <BlendModeCoeff.kCoeffCount: 10>}
-    kCoeffCount: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kCoeffCount: 10>
-    kDA: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kDA: 8>
-    kDC: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kDC: 4>
-    kIDA: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kIDA: 9>
-    kIDC: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kIDC: 5>
-    kISA: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kISA: 7>
-    kISC: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kISC: 3>
-    kOne: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kOne: 1>
-    kSA: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kSA: 6>
-    kSC: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kSC: 2>
-    kZero: animator.skia.BlendModeCoeff  # value = <BlendModeCoeff.kZero: 0>
-    pass
-
-class Flattenable:
-    class Type:
-        """
-        Members:
-
-          kColorFilter_Type
-
-          kBlender_Type
-
-          kDrawable_Type
-
-          kImageFilter_Type
-
-          kMaskFilter_Type
-
-          kPathEffect_Type
-
-          kShader_Type
-        """
-
-        def __eq__(self, other: object) -> bool: ...
-        def __getstate__(self) -> int: ...
-        def __hash__(self) -> int: ...
-        def __index__(self) -> int: ...
-        def __init__(self, value: int) -> None: ...
-        def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
-        def __repr__(self) -> str: ...
-        def __setstate__(self, state: int) -> None: ...
-        @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
-        @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kColorFilter_Type': <Type.kColorFilter_Type: 0>, 'kBlender_Type': <Type.kBlender_Type: 1>, 'kDrawable_Type': <Type.kDrawable_Type: 2>, 'kImageFilter_Type': <Type.kImageFilter_Type: 4>, 'kMaskFilter_Type': <Type.kMaskFilter_Type: 5>, 'kPathEffect_Type': <Type.kPathEffect_Type: 6>, 'kShader_Type': <Type.kShader_Type: 7>}
-        kBlender_Type: animator.skia.Flattenable.Type  # value = <Type.kBlender_Type: 1>
-        kColorFilter_Type: animator.skia.Flattenable.Type  # value = <Type.kColorFilter_Type: 0>
-        kDrawable_Type: animator.skia.Flattenable.Type  # value = <Type.kDrawable_Type: 2>
-        kImageFilter_Type: animator.skia.Flattenable.Type  # value = <Type.kImageFilter_Type: 4>
-        kMaskFilter_Type: animator.skia.Flattenable.Type  # value = <Type.kMaskFilter_Type: 5>
-        kPathEffect_Type: animator.skia.Flattenable.Type  # value = <Type.kPathEffect_Type: 6>
-        kShader_Type: animator.skia.Flattenable.Type  # value = <Type.kShader_Type: 7>
-        pass
-    @staticmethod
-    def Deserialize(type: Flattenable.Type, data: buffer) -> Flattenable:
-        """
-        Deserialize a flattenable of the given *type* from a buffer *data*.
-        """
-    @staticmethod
-    def DeserializeAsType(
-        type: Flattenable.Type, data: buffer
-    ) -> ColorFilter | Blender | ImageFilter | MaskFilter | PathEffect | Shader:
-        """
-        Deserialize a flattenable of the given *type* from a buffer *data*. The return value is correctly typed.
-        """
-    def __init__(self) -> None: ...
     def __str__(self) -> str: ...
-    def getFlattenableType(self) -> Flattenable.Type: ...
-    def getTypeName(self) -> str: ...
-    def serialize(self) -> Data: ...
-    pass
+    @property
+    def name(self) -> str: ...
+    @property
+    def value(self) -> int: ...
+
+class Blender(Flattenable):
+    @staticmethod
+    def Mode(mode: BlendMode) -> Blender: ...
 
 class Blenders:
     @staticmethod
     def Arithmetic(k1: float, k2: float, k3: float, k4: float, enforcePremul: bool = False) -> Blender: ...
-    pass
 
 class BlurStyle(IntEnum):
     """
@@ -714,43 +621,39 @@ class BlurStyle(IntEnum):
       kLastEnum_BlurStyle
     """
 
-    def __and__(self, other: object) -> object: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ge__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, BlurStyle]
+    ]  # value = {'kNormal_BlurStyle': <BlurStyle.kNormal_BlurStyle: 0>, 'kSolid_BlurStyle': <BlurStyle.kSolid_BlurStyle: 1>, 'kOuter_BlurStyle': <BlurStyle.kOuter_BlurStyle: 2>, 'kInner_BlurStyle': <BlurStyle.kInner_BlurStyle: 3>, 'kLastEnum_BlurStyle': <BlurStyle.kInner_BlurStyle: 3>}
+    kInner_BlurStyle: typing.ClassVar[BlurStyle]  # value = <BlurStyle.kInner_BlurStyle: 3>
+    kLastEnum_BlurStyle: typing.ClassVar[BlurStyle]  # value = <BlurStyle.kInner_BlurStyle: 3>
+    kNormal_BlurStyle: typing.ClassVar[BlurStyle]  # value = <BlurStyle.kNormal_BlurStyle: 0>
+    kOuter_BlurStyle: typing.ClassVar[BlurStyle]  # value = <BlurStyle.kOuter_BlurStyle: 2>
+    kSolid_BlurStyle: typing.ClassVar[BlurStyle]  # value = <BlurStyle.kSolid_BlurStyle: 1>
+    def __and__(self, other: typing.Any) -> typing.Any: ...
+    def __eq__(self, other: typing.Any) -> bool: ...
+    def __ge__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
-    def __gt__(self, other: object) -> bool: ...
+    def __gt__(self, other: typing.Any) -> bool: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __invert__(self) -> object: ...
-    def __le__(self, other: object) -> bool: ...
-    def __lt__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
-    def __or__(self, other: object) -> object: ...
-    def __rand__(self, other: object) -> object: ...
+    def __invert__(self) -> typing.Any: ...
+    def __le__(self, other: typing.Any) -> bool: ...
+    def __lt__(self, other: typing.Any) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
+    def __or__(self, other: typing.Any) -> typing.Any: ...
+    def __rand__(self, other: typing.Any) -> typing.Any: ...
     def __repr__(self) -> str: ...
-    def __ror__(self, other: object) -> object: ...
-    def __rxor__(self, other: object) -> object: ...
+    def __ror__(self, other: typing.Any) -> typing.Any: ...
+    def __rxor__(self, other: typing.Any) -> typing.Any: ...
     def __setstate__(self, state: int) -> None: ...
-    def __xor__(self, other: object) -> object: ...
+    def __str__(self) -> str: ...
+    def __xor__(self, other: typing.Any) -> typing.Any: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kNormal_BlurStyle': <BlurStyle.kNormal_BlurStyle: 0>, 'kSolid_BlurStyle': <BlurStyle.kSolid_BlurStyle: 1>, 'kOuter_BlurStyle': <BlurStyle.kOuter_BlurStyle: 2>, 'kInner_BlurStyle': <BlurStyle.kInner_BlurStyle: 3>, 'kLastEnum_BlurStyle': <BlurStyle.kInner_BlurStyle: 3>}
-    kInner_BlurStyle: animator.skia.BlurStyle  # value = <BlurStyle.kInner_BlurStyle: 3>
-    kLastEnum_BlurStyle: animator.skia.BlurStyle  # value = <BlurStyle.kInner_BlurStyle: 3>
-    kNormal_BlurStyle: animator.skia.BlurStyle  # value = <BlurStyle.kNormal_BlurStyle: 0>
-    kOuter_BlurStyle: animator.skia.BlurStyle  # value = <BlurStyle.kOuter_BlurStyle: 2>
-    kSolid_BlurStyle: animator.skia.BlurStyle  # value = <BlurStyle.kSolid_BlurStyle: 1>
-    pass
+    def value(self) -> int: ...
 
 class Canvas:
     class Lattice:
@@ -765,30 +668,27 @@ class Canvas:
               kFixedColor
             """
 
-            def __eq__(self, other: object) -> bool: ...
+            __members__: typing.ClassVar[
+                dict[str, Canvas.Lattice.RectType]
+            ]  # value = {'kDefault': <RectType.kDefault: 0>, 'kTransparent': <RectType.kTransparent: 1>, 'kFixedColor': <RectType.kFixedColor: 2>}
+            kDefault: typing.ClassVar[Canvas.Lattice.RectType]  # value = <RectType.kDefault: 0>
+            kFixedColor: typing.ClassVar[Canvas.Lattice.RectType]  # value = <RectType.kFixedColor: 2>
+            kTransparent: typing.ClassVar[Canvas.Lattice.RectType]  # value = <RectType.kTransparent: 1>
+            def __eq__(self, other: typing.Any) -> bool: ...
             def __getstate__(self) -> int: ...
             def __hash__(self) -> int: ...
             def __index__(self) -> int: ...
             def __init__(self, value: int) -> None: ...
             def __int__(self) -> int: ...
-            def __ne__(self, other: object) -> bool: ...
+            def __ne__(self, other: typing.Any) -> bool: ...
             def __repr__(self) -> str: ...
             def __setstate__(self, state: int) -> None: ...
+            def __str__(self) -> str: ...
             @property
-            def name(self) -> str:
-                """
-                :type: str
-                """
+            def name(self) -> str: ...
             @property
-            def value(self) -> int:
-                """
-                :type: int
-                """
-            __members__: dict  # value = {'kDefault': <RectType.kDefault: 0>, 'kTransparent': <RectType.kTransparent: 1>, 'kFixedColor': <RectType.kFixedColor: 2>}
-            kDefault: animator.skia.Canvas.Lattice.RectType  # value = <RectType.kDefault: 0>
-            kFixedColor: animator.skia.Canvas.Lattice.RectType  # value = <RectType.kFixedColor: 2>
-            kTransparent: animator.skia.Canvas.Lattice.RectType  # value = <RectType.kTransparent: 1>
-            pass
+            def value(self) -> int: ...
+
         def __init__(
             self,
             fXDivs: list,
@@ -796,43 +696,25 @@ class Canvas:
             fRectTypes: list | None = None,
             fBounds: _IRect | None = None,
             fColors: list | None = None,
-        ) -> None: ...
+        ) -> None:
+            """
+            Constructs a lattice from the given divs, rectTypes, bounds, and colors.
+            """
         def __str__(self) -> str: ...
         @property
-        def fBounds(self) -> IRect:
-            """
-            :type: IRect
-            """
+        def fBounds(self) -> IRect: ...
         @property
-        def fColors(self) -> list[int] | None:
-            """
-            :type: list[int] | None
-            """
+        def fColors(self) -> list[int] | None: ...
         @property
-        def fRectTypes(self) -> list[Canvas.Lattice.RectType] | None:
-            """
-            :type: list[Canvas.Lattice.RectType] | None
-            """
+        def fRectTypes(self) -> list[Canvas.Lattice.RectType] | None: ...
         @property
-        def fXCount(self) -> int:
-            """
-            :type: int
-            """
+        def fXCount(self) -> int: ...
         @property
-        def fXDivs(self) -> list[int]:
-            """
-            :type: list[int]
-            """
+        def fXDivs(self) -> list[int]: ...
         @property
-        def fYCount(self) -> int:
-            """
-            :type: int
-            """
+        def fYCount(self) -> int: ...
         @property
-        def fYDivs(self) -> list[int]:
-            """
-            :type: list[int]
-            """
+        def fYDivs(self) -> list[int]: ...
 
     class PointMode:
         """
@@ -845,30 +727,26 @@ class Canvas:
           kPolygon_PointMode
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Canvas.PointMode]
+        ]  # value = {'kPoints_PointMode': <PointMode.kPoints_PointMode: 0>, 'kLines_PointMode': <PointMode.kLines_PointMode: 1>, 'kPolygon_PointMode': <PointMode.kPolygon_PointMode: 2>}
+        kLines_PointMode: typing.ClassVar[Canvas.PointMode]  # value = <PointMode.kLines_PointMode: 1>
+        kPoints_PointMode: typing.ClassVar[Canvas.PointMode]  # value = <PointMode.kPoints_PointMode: 0>
+        kPolygon_PointMode: typing.ClassVar[Canvas.PointMode]  # value = <PointMode.kPolygon_PointMode: 2>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kPoints_PointMode': <PointMode.kPoints_PointMode: 0>, 'kLines_PointMode': <PointMode.kLines_PointMode: 1>, 'kPolygon_PointMode': <PointMode.kPolygon_PointMode: 2>}
-        kLines_PointMode: animator.skia.Canvas.PointMode  # value = <PointMode.kLines_PointMode: 1>
-        kPoints_PointMode: animator.skia.Canvas.PointMode  # value = <PointMode.kPoints_PointMode: 0>
-        kPolygon_PointMode: animator.skia.Canvas.PointMode  # value = <PointMode.kPolygon_PointMode: 2>
-        pass
+        def value(self) -> int: ...
 
     class SaveLayerFlags(IntFlag):
         """
@@ -881,45 +759,53 @@ class Canvas:
           kF16ColorType
         """
 
-        def __and__(self, other: object) -> object: ...
-        def __eq__(self, other: object) -> bool: ...
-        def __ge__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Canvas.SaveLayerFlags]
+        ]  # value = {'kPreserveLCDText_SaveLayerFlag': <SaveLayerFlags.kPreserveLCDText_SaveLayerFlag: 2>, 'kInitWithPrevious_SaveLayerFlag': <SaveLayerFlags.kInitWithPrevious_SaveLayerFlag: 4>, 'kF16ColorType': <SaveLayerFlags.kF16ColorType: 16>}
+        kF16ColorType: typing.ClassVar[Canvas.SaveLayerFlags]  # value = <SaveLayerFlags.kF16ColorType: 16>
+        kInitWithPrevious_SaveLayerFlag: typing.ClassVar[
+            Canvas.SaveLayerFlags
+        ]  # value = <SaveLayerFlags.kInitWithPrevious_SaveLayerFlag: 4>
+        kPreserveLCDText_SaveLayerFlag: typing.ClassVar[
+            Canvas.SaveLayerFlags
+        ]  # value = <SaveLayerFlags.kPreserveLCDText_SaveLayerFlag: 2>
+        def __and__(self, other: typing.Any) -> typing.Any: ...
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __ge__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
-        def __gt__(self, other: object) -> bool: ...
+        def __gt__(self, other: typing.Any) -> bool: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __invert__(self) -> object: ...
-        def __le__(self, other: object) -> bool: ...
-        def __lt__(self, other: object) -> bool: ...
-        def __ne__(self, other: object) -> bool: ...
-        def __or__(self, other: object) -> object: ...
-        def __rand__(self, other: object) -> object: ...
+        def __invert__(self) -> typing.Any: ...
+        def __le__(self, other: typing.Any) -> bool: ...
+        def __lt__(self, other: typing.Any) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __or__(self, other: typing.Any) -> typing.Any: ...
+        def __rand__(self, other: typing.Any) -> typing.Any: ...
         def __repr__(self) -> str: ...
-        def __ror__(self, other: object) -> object: ...
-        def __rxor__(self, other: object) -> object: ...
+        def __ror__(self, other: typing.Any) -> typing.Any: ...
+        def __rxor__(self, other: typing.Any) -> typing.Any: ...
         def __setstate__(self, state: int) -> None: ...
-        def __xor__(self, other: object) -> object: ...
+        def __str__(self) -> str: ...
+        def __xor__(self, other: typing.Any) -> typing.Any: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kPreserveLCDText_SaveLayerFlag': <SaveLayerFlags.kPreserveLCDText_SaveLayerFlag: 2>, 'kInitWithPrevious_SaveLayerFlag': <SaveLayerFlags.kInitWithPrevious_SaveLayerFlag: 4>, 'kF16ColorType': <SaveLayerFlags.kF16ColorType: 16>}
-        kF16ColorType: animator.skia.Canvas.SaveLayerFlags  # value = <SaveLayerFlags.kF16ColorType: 16>
-        kInitWithPrevious_SaveLayerFlag: animator.skia.Canvas.SaveLayerFlags  # value = <SaveLayerFlags.kInitWithPrevious_SaveLayerFlag: 4>
-        kPreserveLCDText_SaveLayerFlag: animator.skia.Canvas.SaveLayerFlags  # value = <SaveLayerFlags.kPreserveLCDText_SaveLayerFlag: 2>
-        pass
+        def value(self) -> int: ...
 
     class SaveLayerRec:
+        fBackdrop: ImageFilter
+        fBounds: Rect
+        fPaint: Paint
+        fSaveLayerFlags: int
         @typing.overload
         def __init__(self) -> None: ...
+        @typing.overload
+        def __init__(
+            self, bounds: _Rect | None = None, paint: Paint | None = None, saveLayerFlags: int = 0
+        ) -> None: ...
         @typing.overload
         def __init__(
             self,
@@ -928,43 +814,6 @@ class Canvas:
             backdrop: ImageFilter | None = None,
             saveLayerFlags: int = 0,
         ) -> None: ...
-        @typing.overload
-        def __init__(
-            self, bounds: _Rect | None = None, paint: Paint | None = None, saveLayerFlags: int = 0
-        ) -> None: ...
-        @property
-        def fBackdrop(self) -> ImageFilter:
-            """
-            :type: ImageFilter
-            """
-        @fBackdrop.setter
-        def fBackdrop(self, arg0: ImageFilter) -> None:
-            pass
-        @property
-        def fBounds(self) -> Rect:
-            """
-            :type: _Rect
-            """
-        @fBounds.setter
-        def fBounds(self, arg0: _Rect) -> None:
-            pass
-        @property
-        def fPaint(self) -> Paint:
-            """
-            :type: Paint
-            """
-        @fPaint.setter
-        def fPaint(self, arg0: Paint) -> None:
-            pass
-        @property
-        def fSaveLayerFlags(self) -> int:
-            """
-            :type: int
-            """
-        @fSaveLayerFlags.setter
-        def fSaveLayerFlags(self, arg0: int) -> None:
-            pass
-        pass
 
     class SrcRectConstraint:
         """
@@ -975,29 +824,30 @@ class Canvas:
           kFast_SrcRectConstraint
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Canvas.SrcRectConstraint]
+        ]  # value = {'kStrict_SrcRectConstraint': <SrcRectConstraint.kStrict_SrcRectConstraint: 0>, 'kFast_SrcRectConstraint': <SrcRectConstraint.kFast_SrcRectConstraint: 1>}
+        kFast_SrcRectConstraint: typing.ClassVar[
+            Canvas.SrcRectConstraint
+        ]  # value = <SrcRectConstraint.kFast_SrcRectConstraint: 1>
+        kStrict_SrcRectConstraint: typing.ClassVar[
+            Canvas.SrcRectConstraint
+        ]  # value = <SrcRectConstraint.kStrict_SrcRectConstraint: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kStrict_SrcRectConstraint': <SrcRectConstraint.kStrict_SrcRectConstraint: 0>, 'kFast_SrcRectConstraint': <SrcRectConstraint.kFast_SrcRectConstraint: 1>}
-        kFast_SrcRectConstraint: animator.skia.Canvas.SrcRectConstraint  # value = <SrcRectConstraint.kFast_SrcRectConstraint: 1>
-        kStrict_SrcRectConstraint: animator.skia.Canvas.SrcRectConstraint  # value = <SrcRectConstraint.kStrict_SrcRectConstraint: 0>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def MakeRasterDirect(
         info: ImageInfo, pixels: buffer, rowBytes: int = 0, props: SurfaceProps | None = None
@@ -1015,8 +865,6 @@ class Canvas:
         """
         Allocates raster :py:class:`Canvas` that will draw directly into pixel buffer.
         """
-    @typing.overload
-    def __init__(self) -> None: ...
     @typing.overload
     def __init__(
         self,
@@ -1037,11 +885,13 @@ class Canvas:
         :param surfaceProps: optional surface properties
         """
     @typing.overload
+    def __init__(self) -> None: ...
+    @typing.overload
+    def __init__(self, width: int, height: int, props: SurfaceProps | None = None) -> None: ...
+    @typing.overload
     def __init__(self, bitmap: Bitmap) -> None: ...
     @typing.overload
     def __init__(self, bitmap: Bitmap, props: SurfaceProps) -> None: ...
-    @typing.overload
-    def __init__(self, width: int, height: int, props: SurfaceProps | None = None) -> None: ...
     def __str__(self) -> str: ...
     def accessTopLayerPixels(self) -> tuple | None:
         """
@@ -1049,9 +899,9 @@ class Canvas:
         Otherwise, returns ``None``.
         """
     @typing.overload
-    def clear(self, color: _Color4f) -> None: ...
-    @typing.overload
     def clear(self, color: _Color) -> None: ...
+    @typing.overload
+    def clear(self, color: _Color4f) -> None: ...
     def clipIRect(self, irect: _IRect, op: ClipOp = ClipOp.kIntersect) -> None: ...
     def clipPath(self, path: Path, op: ClipOp = ClipOp.kIntersect, doAntiAlias: bool = False) -> None: ...
     def clipRRect(self, rrect: RRect, op: ClipOp = ClipOp.kIntersect, doAntiAlias: bool = False) -> None: ...
@@ -1076,13 +926,13 @@ class Canvas:
         Draws a set of sprites from *atlas*, defined by *xform*, *tex*, and *colors* using *mode* and *sampling*.
         """
     @typing.overload
-    def drawCircle(self, center: _Point, radius: float, paint: Paint) -> None: ...
-    @typing.overload
     def drawCircle(self, cx: float, cy: float, radius: float, paint: Paint) -> None: ...
     @typing.overload
-    def drawColor(self, color: _Color4f, mode: BlendMode = BlendMode.kSrcOver) -> None: ...
+    def drawCircle(self, center: _Point, radius: float, paint: Paint) -> None: ...
     @typing.overload
     def drawColor(self, color: _Color, mode: BlendMode = BlendMode.kSrcOver) -> None: ...
+    @typing.overload
+    def drawColor(self, color: _Color4f, mode: BlendMode = BlendMode.kSrcOver) -> None: ...
     def drawDRRect(self, outer: RRect, inner: RRect, paint: Paint) -> None: ...
     @typing.overload
     def drawGlyphs(
@@ -1125,10 +975,6 @@ class Canvas:
     ) -> None: ...
     @typing.overload
     def drawImageRect(
-        self, image: Image, dst: _Rect, sampling: SamplingOptions = ..., paint: Paint | None = None
-    ) -> None: ...
-    @typing.overload
-    def drawImageRect(
         self,
         image: Image,
         src: _Rect,
@@ -1138,9 +984,13 @@ class Canvas:
         constraint: Canvas.SrcRectConstraint = SrcRectConstraint.kFast_SrcRectConstraint,
     ) -> None: ...
     @typing.overload
-    def drawLine(self, p0: _Point, p1: _Point, paint: Paint) -> None: ...
+    def drawImageRect(
+        self, image: Image, dst: _Rect, sampling: SamplingOptions = ..., paint: Paint | None = None
+    ) -> None: ...
     @typing.overload
     def drawLine(self, x0: float, y0: float, x1: float, y1: float, paint: Paint) -> None: ...
+    @typing.overload
+    def drawLine(self, p0: _Point, p1: _Point, paint: Paint) -> None: ...
     def drawOval(self, oval: _Rect, paint: Paint) -> None: ...
     def drawPaint(self, paint: Paint) -> None: ...
     def drawParagraph(self, paragraph: textlayout.Paragraph, x: float, y: float) -> None:
@@ -1158,9 +1008,9 @@ class Canvas:
     def drawPath(self, path: Path, paint: Paint) -> None: ...
     def drawPicture(self, picture: Picture, matrix: Matrix | None = None, paint: Paint | None = None) -> None: ...
     @typing.overload
-    def drawPoint(self, p: _Point, paint: Paint) -> None: ...
-    @typing.overload
     def drawPoint(self, x: float, y: float, paint: Paint) -> None: ...
+    @typing.overload
+    def drawPoint(self, p: _Point, paint: Paint) -> None: ...
     def drawPoints(self, mode: Canvas.PointMode, pts: list[_Point], paint: Paint) -> None:
         """
         Draw a list of points, *pts*, with the specified *mode* and *paint*.
@@ -1225,11 +1075,9 @@ class Canvas:
         Returns a :py:class:`Pixmap` describing the pixel data.
         """
     @typing.overload
-    def quickReject(self, path: Path) -> bool: ...
-    @typing.overload
     def quickReject(self, rect: _Rect) -> bool: ...
     @typing.overload
-    def readPixels(self, bitmap: Bitmap, srcX: int = 0, srcY: int = 0) -> bool: ...
+    def quickReject(self, path: Path) -> bool: ...
     @typing.overload
     def readPixels(
         self, dstInfo: ImageInfo, dstPixels: buffer, dstRowBytes: int = 0, srcX: int = 0, srcY: int = 0
@@ -1239,6 +1087,8 @@ class Canvas:
         """
     @typing.overload
     def readPixels(self, pixmap: Pixmap, srcX: int = 0, srcY: int = 0) -> bool: ...
+    @typing.overload
+    def readPixels(self, bitmap: Bitmap, srcX: int = 0, srcY: int = 0) -> bool: ...
     def resetMatrix(self) -> None: ...
     def restore(self) -> None: ...
     def restoreToCount(self, saveCount: int) -> None: ...
@@ -1269,12 +1119,12 @@ class Canvas:
         """
     def translate(self, dx: float, dy: float) -> None: ...
     @typing.overload
-    def writePixels(self, bitmap: Bitmap, x: int = 0, y: int = 0) -> bool: ...
-    @typing.overload
     def writePixels(self, info: ImageInfo, pixels: buffer, rowBytes: int = 0, x: int = 0, y: int = 0) -> bool:
         """
         Writes *pixels* from a buffer to the canvas.
         """
+    @typing.overload
+    def writePixels(self, bitmap: Bitmap, x: int = 0, y: int = 0) -> bool: ...
 
 class ClipOp:
     """
@@ -1287,32 +1137,45 @@ class ClipOp:
       kMax_EnumValue
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, ClipOp]
+    ]  # value = {'kDifference': <ClipOp.kDifference: 0>, 'kIntersect': <ClipOp.kIntersect: 1>, 'kMax_EnumValue': <ClipOp.kIntersect: 1>}
+    kDifference: typing.ClassVar[ClipOp]  # value = <ClipOp.kDifference: 0>
+    kIntersect: typing.ClassVar[ClipOp]  # value = <ClipOp.kIntersect: 1>
+    kMax_EnumValue: typing.ClassVar[ClipOp]  # value = <ClipOp.kIntersect: 1>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kDifference': <ClipOp.kDifference: 0>, 'kIntersect': <ClipOp.kIntersect: 1>, 'kMax_EnumValue': <ClipOp.kIntersect: 1>}
-    kDifference: animator.skia.ClipOp  # value = <ClipOp.kDifference: 0>
-    kIntersect: animator.skia.ClipOp  # value = <ClipOp.kIntersect: 1>
-    kMax_EnumValue: animator.skia.ClipOp  # value = <ClipOp.kIntersect: 1>
-    pass
+    def value(self) -> int: ...
 
 class Color4f:
+    __hash__: typing.ClassVar[None] = None
+    kBlack: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kBlue: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kCyan: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kDkGray: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kGray: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kGreen: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kLtGray: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kMagenta: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kRed: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kTransparent: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kWhite: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    kYellow: typing.ClassVar[Color4f]  # value = <animator.skia.Color4f object>
+    fA: float
+    fB: float
+    fG: float
+    fR: float
     @staticmethod
     def FromBytes_RGBA(color: _Color) -> Color4f: ...
     @staticmethod
@@ -1353,9 +1216,9 @@ class Color4f:
         """
     def __len__(self) -> int: ...
     @typing.overload
-    def __mul__(self, scale: _Color4f) -> Color4f: ...
-    @typing.overload
     def __mul__(self, scale: float) -> Color4f: ...
+    @typing.overload
+    def __mul__(self, scale: _Color4f) -> Color4f: ...
     def __ne__(self, other: _Color4f) -> bool: ...
     def __setitem__(self, index: int, value: float) -> None: ...
     def __str__(self) -> str: ...
@@ -1372,51 +1235,6 @@ class Color4f:
     def toBytes_RGBA(self) -> int: ...
     def toColor(self) -> int: ...
     def vec(self) -> memoryview: ...
-    @property
-    def fA(self) -> float:
-        """
-        :type: float
-        """
-    @fA.setter
-    def fA(self, arg0: float) -> None:
-        pass
-    @property
-    def fB(self) -> float:
-        """
-        :type: float
-        """
-    @fB.setter
-    def fB(self, arg0: float) -> None:
-        pass
-    @property
-    def fG(self) -> float:
-        """
-        :type: float
-        """
-    @fG.setter
-    def fG(self, arg0: float) -> None:
-        pass
-    @property
-    def fR(self) -> float:
-        """
-        :type: float
-        """
-    @fR.setter
-    def fR(self, arg0: float) -> None:
-        pass
-    kBlack: animator.skia.Color4f
-    kBlue: animator.skia.Color4f
-    kCyan: animator.skia.Color4f
-    kDkGray: animator.skia.Color4f
-    kGray: animator.skia.Color4f
-    kGreen: animator.skia.Color4f
-    kLtGray: animator.skia.Color4f
-    kMagenta: animator.skia.Color4f
-    kRed: animator.skia.Color4f
-    kTransparent: animator.skia.Color4f
-    kWhite: animator.skia.Color4f
-    kYellow: animator.skia.Color4f
-    pass
 
 _Color4f = Color4f | int | tuple[float, float, float, float]
 _Color = int | Color4f
@@ -1436,32 +1254,28 @@ class ColorChannel:
       kLastEnum
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, ColorChannel]
+    ]  # value = {'kR': <ColorChannel.kR: 0>, 'kG': <ColorChannel.kG: 1>, 'kB': <ColorChannel.kB: 2>, 'kA': <ColorChannel.kA: 3>, 'kLastEnum': <ColorChannel.kA: 3>}
+    kA: typing.ClassVar[ColorChannel]  # value = <ColorChannel.kA: 3>
+    kB: typing.ClassVar[ColorChannel]  # value = <ColorChannel.kB: 2>
+    kG: typing.ClassVar[ColorChannel]  # value = <ColorChannel.kG: 1>
+    kLastEnum: typing.ClassVar[ColorChannel]  # value = <ColorChannel.kA: 3>
+    kR: typing.ClassVar[ColorChannel]  # value = <ColorChannel.kR: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kR': <ColorChannel.kR: 0>, 'kG': <ColorChannel.kG: 1>, 'kB': <ColorChannel.kB: 2>, 'kA': <ColorChannel.kA: 3>, 'kLastEnum': <ColorChannel.kA: 3>}
-    kA: animator.skia.ColorChannel  # value = <ColorChannel.kA: 3>
-    kB: animator.skia.ColorChannel  # value = <ColorChannel.kB: 2>
-    kG: animator.skia.ColorChannel  # value = <ColorChannel.kG: 1>
-    kLastEnum: animator.skia.ColorChannel  # value = <ColorChannel.kA: 3>
-    kR: animator.skia.ColorChannel  # value = <ColorChannel.kR: 0>
-    pass
+    def value(self) -> int: ...
 
 class ColorChannelFlag(IntEnum):
     """
@@ -1486,47 +1300,45 @@ class ColorChannelFlag(IntEnum):
       kRGBA_ColorChannelFlags
     """
 
-    def __and__(self, other: object) -> object: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ge__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, ColorChannelFlag]
+    ]  # value = {'kRed_ColorChannelFlag': <ColorChannelFlag.kRed_ColorChannelFlag: 1>, 'kGreen_ColorChannelFlag': <ColorChannelFlag.kGreen_ColorChannelFlag: 2>, 'kBlue_ColorChannelFlag': <ColorChannelFlag.kBlue_ColorChannelFlag: 4>, 'kAlpha_ColorChannelFlag': <ColorChannelFlag.kAlpha_ColorChannelFlag: 8>, 'kGray_ColorChannelFlag': <ColorChannelFlag.kGray_ColorChannelFlag: 16>, 'kGrayAlpha_ColorChannelFlags': <ColorChannelFlag.kGrayAlpha_ColorChannelFlags: 24>, 'kRG_ColorChannelFlags': <ColorChannelFlag.kRG_ColorChannelFlags: 3>, 'kRGB_ColorChannelFlags': <ColorChannelFlag.kRGB_ColorChannelFlags: 7>, 'kRGBA_ColorChannelFlags': <ColorChannelFlag.kRGBA_ColorChannelFlags: 15>}
+    kAlpha_ColorChannelFlag: typing.ClassVar[ColorChannelFlag]  # value = <ColorChannelFlag.kAlpha_ColorChannelFlag: 8>
+    kBlue_ColorChannelFlag: typing.ClassVar[ColorChannelFlag]  # value = <ColorChannelFlag.kBlue_ColorChannelFlag: 4>
+    kGrayAlpha_ColorChannelFlags: typing.ClassVar[
+        ColorChannelFlag
+    ]  # value = <ColorChannelFlag.kGrayAlpha_ColorChannelFlags: 24>
+    kGray_ColorChannelFlag: typing.ClassVar[ColorChannelFlag]  # value = <ColorChannelFlag.kGray_ColorChannelFlag: 16>
+    kGreen_ColorChannelFlag: typing.ClassVar[ColorChannelFlag]  # value = <ColorChannelFlag.kGreen_ColorChannelFlag: 2>
+    kRGBA_ColorChannelFlags: typing.ClassVar[ColorChannelFlag]  # value = <ColorChannelFlag.kRGBA_ColorChannelFlags: 15>
+    kRGB_ColorChannelFlags: typing.ClassVar[ColorChannelFlag]  # value = <ColorChannelFlag.kRGB_ColorChannelFlags: 7>
+    kRG_ColorChannelFlags: typing.ClassVar[ColorChannelFlag]  # value = <ColorChannelFlag.kRG_ColorChannelFlags: 3>
+    kRed_ColorChannelFlag: typing.ClassVar[ColorChannelFlag]  # value = <ColorChannelFlag.kRed_ColorChannelFlag: 1>
+    def __and__(self, other: typing.Any) -> typing.Any: ...
+    def __eq__(self, other: typing.Any) -> bool: ...
+    def __ge__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
-    def __gt__(self, other: object) -> bool: ...
+    def __gt__(self, other: typing.Any) -> bool: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __invert__(self) -> object: ...
-    def __le__(self, other: object) -> bool: ...
-    def __lt__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
-    def __or__(self, other: object) -> object: ...
-    def __rand__(self, other: object) -> object: ...
+    def __invert__(self) -> typing.Any: ...
+    def __le__(self, other: typing.Any) -> bool: ...
+    def __lt__(self, other: typing.Any) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
+    def __or__(self, other: typing.Any) -> typing.Any: ...
+    def __rand__(self, other: typing.Any) -> typing.Any: ...
     def __repr__(self) -> str: ...
-    def __ror__(self, other: object) -> object: ...
-    def __rxor__(self, other: object) -> object: ...
+    def __ror__(self, other: typing.Any) -> typing.Any: ...
+    def __rxor__(self, other: typing.Any) -> typing.Any: ...
     def __setstate__(self, state: int) -> None: ...
-    def __xor__(self, other: object) -> object: ...
+    def __str__(self) -> str: ...
+    def __xor__(self, other: typing.Any) -> typing.Any: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kRed_ColorChannelFlag': <ColorChannelFlag.kRed_ColorChannelFlag: 1>, 'kGreen_ColorChannelFlag': <ColorChannelFlag.kGreen_ColorChannelFlag: 2>, 'kBlue_ColorChannelFlag': <ColorChannelFlag.kBlue_ColorChannelFlag: 4>, 'kAlpha_ColorChannelFlag': <ColorChannelFlag.kAlpha_ColorChannelFlag: 8>, 'kGray_ColorChannelFlag': <ColorChannelFlag.kGray_ColorChannelFlag: 16>, 'kGrayAlpha_ColorChannelFlags': <ColorChannelFlag.kGrayAlpha_ColorChannelFlags: 24>, 'kRG_ColorChannelFlags': <ColorChannelFlag.kRG_ColorChannelFlags: 3>, 'kRGB_ColorChannelFlags': <ColorChannelFlag.kRGB_ColorChannelFlags: 7>, 'kRGBA_ColorChannelFlags': <ColorChannelFlag.kRGBA_ColorChannelFlags: 15>}
-    kAlpha_ColorChannelFlag: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kAlpha_ColorChannelFlag: 8>
-    kBlue_ColorChannelFlag: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kBlue_ColorChannelFlag: 4>
-    kGrayAlpha_ColorChannelFlags: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kGrayAlpha_ColorChannelFlags: 24>
-    kGray_ColorChannelFlag: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kGray_ColorChannelFlag: 16>
-    kGreen_ColorChannelFlag: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kGreen_ColorChannelFlag: 2>
-    kRGBA_ColorChannelFlags: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kRGBA_ColorChannelFlags: 15>
-    kRGB_ColorChannelFlags: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kRGB_ColorChannelFlags: 7>
-    kRG_ColorChannelFlags: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kRG_ColorChannelFlags: 3>
-    kRed_ColorChannelFlag: animator.skia.ColorChannelFlag  # value = <ColorChannelFlag.kRed_ColorChannelFlag: 1>
-    pass
+    def value(self) -> int: ...
 
 class ColorFilter(Flattenable):
     @staticmethod
@@ -1554,7 +1366,7 @@ class ColorFilter(Flattenable):
     def filterColor4f(self, srcColor: _Color4f, srcCS: ColorSpace, dstCS: ColorSpace) -> Color4f: ...
     def isAlphaUnchanged(self) -> bool: ...
     def makeComposed(self, inner: ColorFilter) -> ColorFilter: ...
-    pass
+    def makeWithWorkingColorSpace(self, workingSpace: ColorSpace) -> ColorFilter: ...
 
 class ColorFilters:
     @staticmethod
@@ -1587,24 +1399,24 @@ class ColorFilters:
     def SRGBToLinearGamma() -> ColorFilter: ...
     @staticmethod
     @typing.overload
-    def Table(table: ColorTable) -> ColorFilter: ...
+    def Table(table: list[int]) -> ColorFilter: ...
     @staticmethod
     @typing.overload
-    def Table(table: list[int]) -> ColorFilter: ...
+    def Table(table: ColorTable) -> ColorFilter: ...
     @staticmethod
     def TableARGB(
         tableA: list[int] | None, tableR: list[int] | None, tableG: list[int] | None, tableB: list[int] | None
     ) -> ColorFilter: ...
-    pass
 
 class ColorInfo:
+    __hash__: typing.ClassVar[None] = None
     def __eq__(self, arg0: ColorInfo) -> bool: ...
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
-    def __init__(self, arg0: ColorInfo) -> None: ...
-    @typing.overload
     def __init__(self, ct: ColorType, at: AlphaType, cs: ColorSpace | None = None) -> None: ...
+    @typing.overload
+    def __init__(self, arg0: ColorInfo) -> None: ...
     def __ne__(self, arg0: ColorInfo) -> bool: ...
     def __str__(self) -> str: ...
     def alphaType(self) -> AlphaType: ...
@@ -1618,7 +1430,6 @@ class ColorInfo:
     def makeColorType(self, newColorType: ColorType) -> ColorInfo: ...
     def refColorSpace(self) -> ColorSpace: ...
     def shiftPerPixel(self) -> int: ...
-    pass
 
 class ColorMatrix:
     @staticmethod
@@ -1669,12 +1480,10 @@ class ColorMatrix:
     def setRowMajor(self, src: list[float]) -> None: ...
     def setSaturation(self, sat: float) -> None: ...
     def setScale(self, rScale: float, gScale: float, bScale: float, aScale: float = 1) -> None: ...
-    pass
 
-class ColorMatrixFilter(ColorFilter, Flattenable):
+class ColorMatrixFilter(ColorFilter):
     @staticmethod
     def MakeLightingFilter(mul: int, add: int) -> ColorFilter: ...
-    pass
 
 class ColorSpace:
     @staticmethod
@@ -1741,9 +1550,16 @@ class ColorSpace:
         Returns the transfer function from this color space.
         """
     def transferFnHash(self) -> int: ...
-    pass
 
 class ColorSpacePrimaries:
+    fBX: float
+    fBY: float
+    fGX: float
+    fGY: float
+    fRX: float
+    fRY: float
+    fWX: float
+    fWY: float
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
@@ -1751,71 +1567,6 @@ class ColorSpacePrimaries:
         self, fRX: float, fRY: float, fGX: float, fGY: float, fBX: float, fBY: float, fWX: float, fWY: float
     ) -> None: ...
     def toXYZD50(self) -> cms.Matrix3x3: ...
-    @property
-    def fBX(self) -> float:
-        """
-        :type: float
-        """
-    @fBX.setter
-    def fBX(self, arg0: float) -> None:
-        pass
-    @property
-    def fBY(self) -> float:
-        """
-        :type: float
-        """
-    @fBY.setter
-    def fBY(self, arg0: float) -> None:
-        pass
-    @property
-    def fGX(self) -> float:
-        """
-        :type: float
-        """
-    @fGX.setter
-    def fGX(self, arg0: float) -> None:
-        pass
-    @property
-    def fGY(self) -> float:
-        """
-        :type: float
-        """
-    @fGY.setter
-    def fGY(self, arg0: float) -> None:
-        pass
-    @property
-    def fRX(self) -> float:
-        """
-        :type: float
-        """
-    @fRX.setter
-    def fRX(self, arg0: float) -> None:
-        pass
-    @property
-    def fRY(self) -> float:
-        """
-        :type: float
-        """
-    @fRY.setter
-    def fRY(self, arg0: float) -> None:
-        pass
-    @property
-    def fWX(self) -> float:
-        """
-        :type: float
-        """
-    @fWX.setter
-    def fWX(self, arg0: float) -> None:
-        pass
-    @property
-    def fWY(self) -> float:
-        """
-        :type: float
-        """
-    @fWY.setter
-    def fWY(self, arg0: float) -> None:
-        pass
-    pass
 
 class ColorTable:
     @staticmethod
@@ -1836,7 +1587,6 @@ class ColorTable:
     def blueTable(self) -> memoryview: ...
     def greenTable(self) -> memoryview: ...
     def redTable(self) -> memoryview: ...
-    pass
 
 class ColorType:
     """
@@ -1865,6 +1615,8 @@ class ColorType:
       kBGR_101010x_ColorType
 
       kBGR_101010x_XR_ColorType
+
+      kRGBA_10x6_ColorType
 
       kGray_8_ColorType
 
@@ -1895,15 +1647,46 @@ class ColorType:
       kN32_ColorType
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, ColorType]
+    ]  # value = {'kUnknown_ColorType': <ColorType.kUnknown_ColorType: 0>, 'kAlpha_8_ColorType': <ColorType.kAlpha_8_ColorType: 1>, 'kRGB_565_ColorType': <ColorType.kRGB_565_ColorType: 2>, 'kARGB_4444_ColorType': <ColorType.kARGB_4444_ColorType: 3>, 'kRGBA_8888_ColorType': <ColorType.kRGBA_8888_ColorType: 4>, 'kRGB_888x_ColorType': <ColorType.kRGB_888x_ColorType: 5>, 'kBGRA_8888_ColorType': <ColorType.kBGRA_8888_ColorType: 6>, 'kRGBA_1010102_ColorType': <ColorType.kRGBA_1010102_ColorType: 7>, 'kBGRA_1010102_ColorType': <ColorType.kBGRA_1010102_ColorType: 8>, 'kRGB_101010x_ColorType': <ColorType.kRGB_101010x_ColorType: 9>, 'kBGR_101010x_ColorType': <ColorType.kBGR_101010x_ColorType: 10>, 'kBGR_101010x_XR_ColorType': <ColorType.kBGR_101010x_XR_ColorType: 11>, 'kRGBA_10x6_ColorType': <ColorType.kRGBA_10x6_ColorType: 12>, 'kGray_8_ColorType': <ColorType.kGray_8_ColorType: 13>, 'kRGBA_F16Norm_ColorType': <ColorType.kRGBA_F16Norm_ColorType: 14>, 'kRGBA_F16_ColorType': <ColorType.kRGBA_F16_ColorType: 15>, 'kRGBA_F32_ColorType': <ColorType.kRGBA_F32_ColorType: 16>, 'kR8G8_unorm_ColorType': <ColorType.kR8G8_unorm_ColorType: 17>, 'kA16_float_ColorType': <ColorType.kA16_float_ColorType: 18>, 'kR16G16_float_ColorType': <ColorType.kR16G16_float_ColorType: 19>, 'kA16_unorm_ColorType': <ColorType.kA16_unorm_ColorType: 20>, 'kR16G16_unorm_ColorType': <ColorType.kR16G16_unorm_ColorType: 21>, 'kR16G16B16A16_unorm_ColorType': <ColorType.kR16G16B16A16_unorm_ColorType: 22>, 'kSRGBA_8888_ColorType': <ColorType.kSRGBA_8888_ColorType: 23>, 'kR8_unorm_ColorType': <ColorType.kR8_unorm_ColorType: 24>, 'kLastEnum_ColorType': <ColorType.kR8_unorm_ColorType: 24>, 'kN32_ColorType': <ColorType.kRGBA_8888_ColorType: 4>}
+    kA16_float_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kA16_float_ColorType: 18>
+    kA16_unorm_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kA16_unorm_ColorType: 20>
+    kARGB_4444_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kARGB_4444_ColorType: 3>
+    kAlpha_8_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kAlpha_8_ColorType: 1>
+    kBGRA_1010102_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kBGRA_1010102_ColorType: 8>
+    kBGRA_8888_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kBGRA_8888_ColorType: 6>
+    kBGR_101010x_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kBGR_101010x_ColorType: 10>
+    kBGR_101010x_XR_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kBGR_101010x_XR_ColorType: 11>
+    kGray_8_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kGray_8_ColorType: 13>
+    kLastEnum_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kR8_unorm_ColorType: 24>
+    kN32_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGBA_8888_ColorType: 4>
+    kR16G16B16A16_unorm_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kR16G16B16A16_unorm_ColorType: 22>
+    kR16G16_float_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kR16G16_float_ColorType: 19>
+    kR16G16_unorm_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kR16G16_unorm_ColorType: 21>
+    kR8G8_unorm_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kR8G8_unorm_ColorType: 17>
+    kR8_unorm_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kR8_unorm_ColorType: 24>
+    kRGBA_1010102_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGBA_1010102_ColorType: 7>
+    kRGBA_10x6_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGBA_10x6_ColorType: 12>
+    kRGBA_8888_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGBA_8888_ColorType: 4>
+    kRGBA_F16Norm_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGBA_F16Norm_ColorType: 14>
+    kRGBA_F16_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGBA_F16_ColorType: 15>
+    kRGBA_F32_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGBA_F32_ColorType: 16>
+    kRGB_101010x_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGB_101010x_ColorType: 9>
+    kRGB_565_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGB_565_ColorType: 2>
+    kRGB_888x_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kRGB_888x_ColorType: 5>
+    kSRGBA_8888_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kSRGBA_8888_ColorType: 23>
+    kUnknown_ColorType: typing.ClassVar[ColorType]  # value = <ColorType.kUnknown_ColorType: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     def bytesPerPixel(self) -> int:
         """
         Returns the number of bytes required to store a pixel, including unused padding. Returns zero if this
@@ -1930,48 +1713,13 @@ class ColorType:
         :rtype: :py:class:`AlphaType` | None
         """
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kUnknown_ColorType': <ColorType.kUnknown_ColorType: 0>, 'kAlpha_8_ColorType': <ColorType.kAlpha_8_ColorType: 1>, 'kRGB_565_ColorType': <ColorType.kRGB_565_ColorType: 2>, 'kARGB_4444_ColorType': <ColorType.kARGB_4444_ColorType: 3>, 'kRGBA_8888_ColorType': <ColorType.kRGBA_8888_ColorType: 4>, 'kRGB_888x_ColorType': <ColorType.kRGB_888x_ColorType: 5>, 'kBGRA_8888_ColorType': <ColorType.kBGRA_8888_ColorType: 6>, 'kRGBA_1010102_ColorType': <ColorType.kRGBA_1010102_ColorType: 7>, 'kBGRA_1010102_ColorType': <ColorType.kBGRA_1010102_ColorType: 8>, 'kRGB_101010x_ColorType': <ColorType.kRGB_101010x_ColorType: 9>, 'kBGR_101010x_ColorType': <ColorType.kBGR_101010x_ColorType: 10>, 'kBGR_101010x_XR_ColorType': <ColorType.kBGR_101010x_XR_ColorType: 11>, 'kGray_8_ColorType': <ColorType.kGray_8_ColorType: 12>, 'kRGBA_F16Norm_ColorType': <ColorType.kRGBA_F16Norm_ColorType: 13>, 'kRGBA_F16_ColorType': <ColorType.kRGBA_F16_ColorType: 14>, 'kRGBA_F32_ColorType': <ColorType.kRGBA_F32_ColorType: 15>, 'kR8G8_unorm_ColorType': <ColorType.kR8G8_unorm_ColorType: 16>, 'kA16_float_ColorType': <ColorType.kA16_float_ColorType: 17>, 'kR16G16_float_ColorType': <ColorType.kR16G16_float_ColorType: 18>, 'kA16_unorm_ColorType': <ColorType.kA16_unorm_ColorType: 19>, 'kR16G16_unorm_ColorType': <ColorType.kR16G16_unorm_ColorType: 20>, 'kR16G16B16A16_unorm_ColorType': <ColorType.kR16G16B16A16_unorm_ColorType: 21>, 'kSRGBA_8888_ColorType': <ColorType.kSRGBA_8888_ColorType: 22>, 'kR8_unorm_ColorType': <ColorType.kR8_unorm_ColorType: 23>, 'kLastEnum_ColorType': <ColorType.kR8_unorm_ColorType: 23>, 'kN32_ColorType': <ColorType.kRGBA_8888_ColorType: 4>}
-    kA16_float_ColorType: animator.skia.ColorType  # value = <ColorType.kA16_float_ColorType: 17>
-    kA16_unorm_ColorType: animator.skia.ColorType  # value = <ColorType.kA16_unorm_ColorType: 19>
-    kARGB_4444_ColorType: animator.skia.ColorType  # value = <ColorType.kARGB_4444_ColorType: 3>
-    kAlpha_8_ColorType: animator.skia.ColorType  # value = <ColorType.kAlpha_8_ColorType: 1>
-    kBGRA_1010102_ColorType: animator.skia.ColorType  # value = <ColorType.kBGRA_1010102_ColorType: 8>
-    kBGRA_8888_ColorType: animator.skia.ColorType  # value = <ColorType.kBGRA_8888_ColorType: 6>
-    kBGR_101010x_ColorType: animator.skia.ColorType  # value = <ColorType.kBGR_101010x_ColorType: 10>
-    kBGR_101010x_XR_ColorType: animator.skia.ColorType  # value = <ColorType.kBGR_101010x_XR_ColorType: 11>
-    kGray_8_ColorType: animator.skia.ColorType  # value = <ColorType.kGray_8_ColorType: 12>
-    kLastEnum_ColorType: animator.skia.ColorType  # value = <ColorType.kR8_unorm_ColorType: 23>
-    kN32_ColorType: animator.skia.ColorType  # value = <ColorType.kRGBA_8888_ColorType: 4>
-    kR16G16B16A16_unorm_ColorType: animator.skia.ColorType  # value = <ColorType.kR16G16B16A16_unorm_ColorType: 21>
-    kR16G16_float_ColorType: animator.skia.ColorType  # value = <ColorType.kR16G16_float_ColorType: 18>
-    kR16G16_unorm_ColorType: animator.skia.ColorType  # value = <ColorType.kR16G16_unorm_ColorType: 20>
-    kR8G8_unorm_ColorType: animator.skia.ColorType  # value = <ColorType.kR8G8_unorm_ColorType: 16>
-    kR8_unorm_ColorType: animator.skia.ColorType  # value = <ColorType.kR8_unorm_ColorType: 23>
-    kRGBA_1010102_ColorType: animator.skia.ColorType  # value = <ColorType.kRGBA_1010102_ColorType: 7>
-    kRGBA_8888_ColorType: animator.skia.ColorType  # value = <ColorType.kRGBA_8888_ColorType: 4>
-    kRGBA_F16Norm_ColorType: animator.skia.ColorType  # value = <ColorType.kRGBA_F16Norm_ColorType: 13>
-    kRGBA_F16_ColorType: animator.skia.ColorType  # value = <ColorType.kRGBA_F16_ColorType: 14>
-    kRGBA_F32_ColorType: animator.skia.ColorType  # value = <ColorType.kRGBA_F32_ColorType: 15>
-    kRGB_101010x_ColorType: animator.skia.ColorType  # value = <ColorType.kRGB_101010x_ColorType: 9>
-    kRGB_565_ColorType: animator.skia.ColorType  # value = <ColorType.kRGB_565_ColorType: 2>
-    kRGB_888x_ColorType: animator.skia.ColorType  # value = <ColorType.kRGB_888x_ColorType: 5>
-    kSRGBA_8888_ColorType: animator.skia.ColorType  # value = <ColorType.kSRGBA_8888_ColorType: 22>
-    kUnknown_ColorType: animator.skia.ColorType  # value = <ColorType.kUnknown_ColorType: 0>
-    pass
+    def value(self) -> int: ...
 
 class CornerPathEffect:
     @staticmethod
     def Make(radius: float) -> PathEffect: ...
-    pass
 
 class CubicMap:
     @staticmethod
@@ -1981,34 +1729,18 @@ class CubicMap:
     def computeYFromX(self, x: float) -> float: ...
 
 class CubicResampler:
+    B: float
+    C: float
     @staticmethod
     def CatmullRom() -> CubicResampler: ...
     @staticmethod
     def Mitchell() -> CubicResampler: ...
     def __init__(self, B: float, C: float) -> None: ...
     def __str__(self) -> str: ...
-    @property
-    def B(self) -> float:
-        """
-        :type: float
-        """
-    @B.setter
-    def B(self, arg0: float) -> None:
-        pass
-    @property
-    def C(self) -> float:
-        """
-        :type: float
-        """
-    @C.setter
-    def C(self, arg0: float) -> None:
-        pass
-    pass
 
 class DashPathEffect:
     @staticmethod
     def Make(intervals: list[float], phase: float = 0) -> PathEffect: ...
-    pass
 
 class Data:
     """
@@ -2022,6 +1754,7 @@ class Data:
     :note: Remember to keep a reference to :py:class:`Data` when converting to Python buffer types.
     """
 
+    __hash__: typing.ClassVar[None] = None
     @staticmethod
     def MakeEmpty() -> Data: ...
     @staticmethod
@@ -2083,7 +1816,6 @@ class Data:
 class DiscretePathEffect:
     @staticmethod
     def Make(segLength: float, dev: float, seedAssist: int = 0) -> PathEffect: ...
-    pass
 
 class EncodedImageFormat:
     """
@@ -2118,41 +1850,37 @@ class EncodedImageFormat:
       kJPEGXL
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, EncodedImageFormat]
+    ]  # value = {'kBMP': <EncodedImageFormat.kBMP: 0>, 'kGIF': <EncodedImageFormat.kGIF: 1>, 'kICO': <EncodedImageFormat.kICO: 2>, 'kJPEG': <EncodedImageFormat.kJPEG: 3>, 'kPNG': <EncodedImageFormat.kPNG: 4>, 'kWBMP': <EncodedImageFormat.kWBMP: 5>, 'kWEBP': <EncodedImageFormat.kWEBP: 6>, 'kPKM': <EncodedImageFormat.kPKM: 7>, 'kKTX': <EncodedImageFormat.kKTX: 8>, 'kASTC': <EncodedImageFormat.kASTC: 9>, 'kDNG': <EncodedImageFormat.kDNG: 10>, 'kHEIF': <EncodedImageFormat.kHEIF: 11>, 'kAVIF': <EncodedImageFormat.kAVIF: 12>, 'kJPEGXL': <EncodedImageFormat.kJPEGXL: 13>}
+    kASTC: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kASTC: 9>
+    kAVIF: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kAVIF: 12>
+    kBMP: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kBMP: 0>
+    kDNG: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kDNG: 10>
+    kGIF: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kGIF: 1>
+    kHEIF: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kHEIF: 11>
+    kICO: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kICO: 2>
+    kJPEG: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kJPEG: 3>
+    kJPEGXL: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kJPEGXL: 13>
+    kKTX: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kKTX: 8>
+    kPKM: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kPKM: 7>
+    kPNG: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kPNG: 4>
+    kWBMP: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kWBMP: 5>
+    kWEBP: typing.ClassVar[EncodedImageFormat]  # value = <EncodedImageFormat.kWEBP: 6>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kBMP': <EncodedImageFormat.kBMP: 0>, 'kGIF': <EncodedImageFormat.kGIF: 1>, 'kICO': <EncodedImageFormat.kICO: 2>, 'kJPEG': <EncodedImageFormat.kJPEG: 3>, 'kPNG': <EncodedImageFormat.kPNG: 4>, 'kWBMP': <EncodedImageFormat.kWBMP: 5>, 'kWEBP': <EncodedImageFormat.kWEBP: 6>, 'kPKM': <EncodedImageFormat.kPKM: 7>, 'kKTX': <EncodedImageFormat.kKTX: 8>, 'kASTC': <EncodedImageFormat.kASTC: 9>, 'kDNG': <EncodedImageFormat.kDNG: 10>, 'kHEIF': <EncodedImageFormat.kHEIF: 11>, 'kAVIF': <EncodedImageFormat.kAVIF: 12>, 'kJPEGXL': <EncodedImageFormat.kJPEGXL: 13>}
-    kASTC: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kASTC: 9>
-    kAVIF: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kAVIF: 12>
-    kBMP: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kBMP: 0>
-    kDNG: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kDNG: 10>
-    kGIF: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kGIF: 1>
-    kHEIF: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kHEIF: 11>
-    kICO: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kICO: 2>
-    kJPEG: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kJPEG: 3>
-    kJPEGXL: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kJPEGXL: 13>
-    kKTX: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kKTX: 8>
-    kPKM: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kPKM: 7>
-    kPNG: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kPNG: 4>
-    kWBMP: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kWBMP: 5>
-    kWEBP: animator.skia.EncodedImageFormat  # value = <EncodedImageFormat.kWEBP: 6>
-    pass
+    def value(self) -> int: ...
 
 class FilterMode:
     """
@@ -2165,35 +1893,89 @@ class FilterMode:
       kLast
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, FilterMode]
+    ]  # value = {'kNearest': <FilterMode.kNearest: 0>, 'kLinear': <FilterMode.kLinear: 1>, 'kLast': <FilterMode.kLinear: 1>}
+    kLast: typing.ClassVar[FilterMode]  # value = <FilterMode.kLinear: 1>
+    kLinear: typing.ClassVar[FilterMode]  # value = <FilterMode.kLinear: 1>
+    kNearest: typing.ClassVar[FilterMode]  # value = <FilterMode.kNearest: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kNearest': <FilterMode.kNearest: 0>, 'kLinear': <FilterMode.kLinear: 1>, 'kLast': <FilterMode.kLinear: 1>}
-    kLast: animator.skia.FilterMode  # value = <FilterMode.kLinear: 1>
-    kLinear: animator.skia.FilterMode  # value = <FilterMode.kLinear: 1>
-    kNearest: animator.skia.FilterMode  # value = <FilterMode.kNearest: 0>
-    pass
+    def value(self) -> int: ...
 
-class Blender(Flattenable):
+class Flattenable:
+    class Type:
+        """
+        Members:
+
+          kColorFilter_Type
+
+          kBlender_Type
+
+          kDrawable_Type
+
+          kImageFilter_Type
+
+          kMaskFilter_Type
+
+          kPathEffect_Type
+
+          kShader_Type
+        """
+
+        __members__: typing.ClassVar[
+            dict[str, Flattenable.Type]
+        ]  # value = {'kColorFilter_Type': <Type.kColorFilter_Type: 0>, 'kBlender_Type': <Type.kBlender_Type: 1>, 'kDrawable_Type': <Type.kDrawable_Type: 2>, 'kImageFilter_Type': <Type.kImageFilter_Type: 4>, 'kMaskFilter_Type': <Type.kMaskFilter_Type: 5>, 'kPathEffect_Type': <Type.kPathEffect_Type: 6>, 'kShader_Type': <Type.kShader_Type: 7>}
+        kBlender_Type: typing.ClassVar[Flattenable.Type]  # value = <Type.kBlender_Type: 1>
+        kColorFilter_Type: typing.ClassVar[Flattenable.Type]  # value = <Type.kColorFilter_Type: 0>
+        kDrawable_Type: typing.ClassVar[Flattenable.Type]  # value = <Type.kDrawable_Type: 2>
+        kImageFilter_Type: typing.ClassVar[Flattenable.Type]  # value = <Type.kImageFilter_Type: 4>
+        kMaskFilter_Type: typing.ClassVar[Flattenable.Type]  # value = <Type.kMaskFilter_Type: 5>
+        kPathEffect_Type: typing.ClassVar[Flattenable.Type]  # value = <Type.kPathEffect_Type: 6>
+        kShader_Type: typing.ClassVar[Flattenable.Type]  # value = <Type.kShader_Type: 7>
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __getstate__(self) -> int: ...
+        def __hash__(self) -> int: ...
+        def __index__(self) -> int: ...
+        def __init__(self, value: int) -> None: ...
+        def __int__(self) -> int: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __repr__(self) -> str: ...
+        def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
+        @property
+        def name(self) -> str: ...
+        @property
+        def value(self) -> int: ...
+
     @staticmethod
-    def Mode(mode: BlendMode) -> Blender: ...
-    pass
+    def Deserialize(type: Flattenable.Type, data: buffer) -> Flattenable:
+        """
+        Deserialize a flattenable of the given *type* from a buffer *data*.
+        """
+    @staticmethod
+    def DeserializeAsType(
+        type: Flattenable.Type, data: buffer
+    ) -> ColorFilter | Blender | ImageFilter | MaskFilter | PathEffect | Shader:
+        """
+        Deserialize a flattenable of the given *type* from a buffer *data*. The return value is correctly typed.
+        """
+    def __init__(self) -> None: ...
+    def __str__(self) -> str: ...
+    def getFlattenableType(self) -> Flattenable.Type: ...
+    def getTypeName(self) -> str: ...
+    def serialize(self) -> Data: ...
 
 class Font:
     class Edging:
@@ -2207,37 +1989,35 @@ class Font:
           kSubpixelAntiAlias
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Font.Edging]
+        ]  # value = {'kAlias': <Edging.kAlias: 0>, 'kAntiAlias': <Edging.kAntiAlias: 1>, 'kSubpixelAntiAlias': <Edging.kSubpixelAntiAlias: 2>}
+        kAlias: typing.ClassVar[Font.Edging]  # value = <Edging.kAlias: 0>
+        kAntiAlias: typing.ClassVar[Font.Edging]  # value = <Edging.kAntiAlias: 1>
+        kSubpixelAntiAlias: typing.ClassVar[Font.Edging]  # value = <Edging.kSubpixelAntiAlias: 2>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kAlias': <Edging.kAlias: 0>, 'kAntiAlias': <Edging.kAntiAlias: 1>, 'kSubpixelAntiAlias': <Edging.kSubpixelAntiAlias: 2>}
-        kAlias: animator.skia.Font.Edging  # value = <Edging.kAlias: 0>
-        kAntiAlias: animator.skia.Font.Edging  # value = <Edging.kAntiAlias: 1>
-        kSubpixelAntiAlias: animator.skia.Font.Edging  # value = <Edging.kSubpixelAntiAlias: 2>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
+    defaultSize: typing.ClassVar[float] = 12.0
     def __eq__(self, arg0: Font) -> bool: ...
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
-    def __init__(self, typeface: Typeface) -> None: ...
-    @typing.overload
     def __init__(self, typeface: Typeface, size: float) -> None: ...
+    @typing.overload
+    def __init__(self, typeface: Typeface) -> None: ...
     @typing.overload
     def __init__(self, typeface: Typeface, size: float, scaleX: float, skewX: float) -> None: ...
     def __ne__(self, arg0: Font) -> bool: ...
@@ -2285,7 +2065,6 @@ class Font:
     def getSkewX(self) -> float: ...
     def getSpacing(self) -> float: ...
     def getTypeface(self) -> Typeface: ...
-    def getTypefaceOrDefault(self) -> Typeface: ...
     def getWidths(self, glyphs: list[int]) -> list[float]:
         """
         Returns the advance for each glyph in *glyphs*.
@@ -2319,7 +2098,6 @@ class Font:
         :rtpye: Tuple[float, :py:class:`Rect`]
         """
     def refTypeface(self) -> Typeface: ...
-    def refTypefaceOrDefault(self) -> Typeface: ...
     def setBaselineSnap(self, baselineSnap: bool) -> None: ...
     def setEdging(self, edging: Font.Edging) -> None: ...
     def setEmbeddedBitmaps(self, embeddedBitmaps: bool) -> None: ...
@@ -2338,31 +2116,14 @@ class Font:
         """
     def unicharToGlyph(self, uni: int) -> int: ...
     def unicharsToGlyphs(self, uni: list[int]) -> list[int]: ...
-    defaultSize = 12.0
-    pass
 
 class FontArguments:
     class Palette:
         class Override:
-            def __init__(self, index: int, color: _Color) -> None: ...
+            color: int
+            index: int
+            def __init__(self, index: int, color: int) -> None: ...
             def __str__(self) -> str: ...
-            @property
-            def color(self) -> int:
-                """
-                :type: int
-                """
-            @color.setter
-            def color(self, arg0: int) -> None:
-                pass
-            @property
-            def index(self) -> int:
-                """
-                :type: int
-                """
-            @index.setter
-            def index(self, arg0: int) -> None:
-                pass
-            pass
 
         class OverrideVector:
             def __bool__(self) -> bool:
@@ -2380,12 +2141,12 @@ class FontArguments:
                 Delete list elements using a slice object
                 """
             @typing.overload
-            def __getitem__(self, arg0: int) -> FontArguments.Palette.Override: ...
-            @typing.overload
             def __getitem__(self, s: slice) -> FontArguments.Palette.OverrideVector:
                 """
                 Retrieve list elements using a slice object
                 """
+            @typing.overload
+            def __getitem__(self, arg0: int) -> FontArguments.Palette.Override: ...
             @typing.overload
             def __init__(self) -> None: ...
             @typing.overload
@@ -2436,52 +2197,19 @@ class FontArguments:
                 """
                 Remove and return the item at index ``i``
                 """
+        index: int
+        overrides: FontArguments.Palette.OverrideVector
         def __init__(self, index: int, overrides: FontArguments.Palette.OverrideVector) -> None: ...
         def __str__(self) -> str: ...
         @property
-        def index(self) -> int:
-            """
-            :type: int
-            """
-        @index.setter
-        def index(self, arg0: int) -> None:
-            pass
-        @property
-        def overrideCount(self) -> int:
-            """
-            :type: int
-            """
-        @property
-        def overrides(self) -> FontArguments.Palette.OverrideVector:
-            """
-            :type: FontArguments.Palette.OverrideVector
-            """
-        @overrides.setter
-        def overrides(self, arg1: FontArguments.Palette.OverrideVector) -> None:
-            pass
-        pass
+        def overrideCount(self) -> int: ...
 
     class VariationPosition:
         class Coordinate:
+            axis: int
+            value: float
             def __init__(self, axis: int, value: float) -> None: ...
             def __str__(self) -> str: ...
-            @property
-            def axis(self) -> int:
-                """
-                :type: int
-                """
-            @axis.setter
-            def axis(self, arg0: int) -> None:
-                pass
-            @property
-            def value(self) -> float:
-                """
-                :type: float
-                """
-            @value.setter
-            def value(self, arg0: float) -> None:
-                pass
-            pass
 
         class CoordinateVector:
             def __bool__(self) -> bool:
@@ -2499,12 +2227,12 @@ class FontArguments:
                 Delete list elements using a slice object
                 """
             @typing.overload
-            def __getitem__(self, arg0: int) -> FontArguments.VariationPosition.Coordinate: ...
-            @typing.overload
             def __getitem__(self, s: slice) -> FontArguments.VariationPosition.CoordinateVector:
                 """
                 Retrieve list elements using a slice object
                 """
+            @typing.overload
+            def __getitem__(self, arg0: int) -> FontArguments.VariationPosition.Coordinate: ...
             @typing.overload
             def __init__(self) -> None: ...
             @typing.overload
@@ -2555,22 +2283,12 @@ class FontArguments:
                 """
                 Remove and return the item at index ``i``
                 """
+        coordinates: FontArguments.VariationPosition.CoordinateVector
         def __init__(self, coordinates: FontArguments.VariationPosition.CoordinateVector) -> None: ...
         def __str__(self) -> str: ...
         @property
-        def coordinateCount(self) -> int:
-            """
-            :type: int
-            """
-        @property
-        def coordinates(self) -> FontArguments.VariationPosition.CoordinateVector:
-            """
-            :type: FontArguments.VariationPosition.CoordinateVector
-            """
-        @coordinates.setter
-        def coordinates(self, arg1: FontArguments.VariationPosition.CoordinateVector) -> None:
-            pass
-        pass
+        def coordinateCount(self) -> int: ...
+
     def __init__(self) -> None: ...
     def getCollectionIndex(self) -> int: ...
     def getPalette(self) -> FontArguments.Palette: ...
@@ -2578,7 +2296,6 @@ class FontArguments:
     def setCollectionIndex(self, collectionIndex: int) -> FontArguments: ...
     def setPalette(self, palette: FontArguments.Palette) -> FontArguments: ...
     def setVariationDesignPosition(self, position: FontArguments.VariationPosition) -> FontArguments: ...
-    pass
 
 class FontHinting:
     """
@@ -2593,31 +2310,27 @@ class FontHinting:
       kFull
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, FontHinting]
+    ]  # value = {'kNone': <FontHinting.kNone: 0>, 'kSlight': <FontHinting.kSlight: 1>, 'kNormal': <FontHinting.kNormal: 2>, 'kFull': <FontHinting.kFull: 3>}
+    kFull: typing.ClassVar[FontHinting]  # value = <FontHinting.kFull: 3>
+    kNone: typing.ClassVar[FontHinting]  # value = <FontHinting.kNone: 0>
+    kNormal: typing.ClassVar[FontHinting]  # value = <FontHinting.kNormal: 2>
+    kSlight: typing.ClassVar[FontHinting]  # value = <FontHinting.kSlight: 1>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kNone': <FontHinting.kNone: 0>, 'kSlight': <FontHinting.kSlight: 1>, 'kNormal': <FontHinting.kNormal: 2>, 'kFull': <FontHinting.kFull: 3>}
-    kFull: animator.skia.FontHinting  # value = <FontHinting.kFull: 3>
-    kNone: animator.skia.FontHinting  # value = <FontHinting.kNone: 0>
-    kNormal: animator.skia.FontHinting  # value = <FontHinting.kNormal: 2>
-    kSlight: animator.skia.FontHinting  # value = <FontHinting.kSlight: 1>
-    pass
+    def value(self) -> int: ...
 
 class FontMetrics:
     class FontMetricsFlags(IntEnum):
@@ -2635,43 +2348,66 @@ class FontMetrics:
           kBoundsInvalid_Flag
         """
 
-        def __and__(self, other: object) -> object: ...
-        def __eq__(self, other: object) -> bool: ...
-        def __ge__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, FontMetrics.FontMetricsFlags]
+        ]  # value = {'kUnderlineThicknessIsValid_Flag': <FontMetricsFlags.kUnderlineThicknessIsValid_Flag: 1>, 'kUnderlinePositionIsValid_Flag': <FontMetricsFlags.kUnderlinePositionIsValid_Flag: 2>, 'kStrikeoutThicknessIsValid_Flag': <FontMetricsFlags.kStrikeoutThicknessIsValid_Flag: 4>, 'kStrikeoutPositionIsValid_Flag': <FontMetricsFlags.kStrikeoutPositionIsValid_Flag: 8>, 'kBoundsInvalid_Flag': <FontMetricsFlags.kBoundsInvalid_Flag: 16>}
+        kBoundsInvalid_Flag: typing.ClassVar[
+            FontMetrics.FontMetricsFlags
+        ]  # value = <FontMetricsFlags.kBoundsInvalid_Flag: 16>
+        kStrikeoutPositionIsValid_Flag: typing.ClassVar[
+            FontMetrics.FontMetricsFlags
+        ]  # value = <FontMetricsFlags.kStrikeoutPositionIsValid_Flag: 8>
+        kStrikeoutThicknessIsValid_Flag: typing.ClassVar[
+            FontMetrics.FontMetricsFlags
+        ]  # value = <FontMetricsFlags.kStrikeoutThicknessIsValid_Flag: 4>
+        kUnderlinePositionIsValid_Flag: typing.ClassVar[
+            FontMetrics.FontMetricsFlags
+        ]  # value = <FontMetricsFlags.kUnderlinePositionIsValid_Flag: 2>
+        kUnderlineThicknessIsValid_Flag: typing.ClassVar[
+            FontMetrics.FontMetricsFlags
+        ]  # value = <FontMetricsFlags.kUnderlineThicknessIsValid_Flag: 1>
+        def __and__(self, other: typing.Any) -> typing.Any: ...
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __ge__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
-        def __gt__(self, other: object) -> bool: ...
+        def __gt__(self, other: typing.Any) -> bool: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __invert__(self) -> object: ...
-        def __le__(self, other: object) -> bool: ...
-        def __lt__(self, other: object) -> bool: ...
-        def __ne__(self, other: object) -> bool: ...
-        def __or__(self, other: object) -> object: ...
-        def __rand__(self, other: object) -> object: ...
+        def __invert__(self) -> typing.Any: ...
+        def __le__(self, other: typing.Any) -> bool: ...
+        def __lt__(self, other: typing.Any) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __or__(self, other: typing.Any) -> typing.Any: ...
+        def __rand__(self, other: typing.Any) -> typing.Any: ...
         def __repr__(self) -> str: ...
-        def __ror__(self, other: object) -> object: ...
-        def __rxor__(self, other: object) -> object: ...
+        def __ror__(self, other: typing.Any) -> typing.Any: ...
+        def __rxor__(self, other: typing.Any) -> typing.Any: ...
         def __setstate__(self, state: int) -> None: ...
-        def __xor__(self, other: object) -> object: ...
+        def __str__(self) -> str: ...
+        def __xor__(self, other: typing.Any) -> typing.Any: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kUnderlineThicknessIsValid_Flag': <FontMetricsFlags.kUnderlineThicknessIsValid_Flag: 1>, 'kUnderlinePositionIsValid_Flag': <FontMetricsFlags.kUnderlinePositionIsValid_Flag: 2>, 'kStrikeoutThicknessIsValid_Flag': <FontMetricsFlags.kStrikeoutThicknessIsValid_Flag: 4>, 'kStrikeoutPositionIsValid_Flag': <FontMetricsFlags.kStrikeoutPositionIsValid_Flag: 8>, 'kBoundsInvalid_Flag': <FontMetricsFlags.kBoundsInvalid_Flag: 16>}
-        kBoundsInvalid_Flag: animator.skia.FontMetrics.FontMetricsFlags  # value = <FontMetricsFlags.kBoundsInvalid_Flag: 16>
-        kStrikeoutPositionIsValid_Flag: animator.skia.FontMetrics.FontMetricsFlags  # value = <FontMetricsFlags.kStrikeoutPositionIsValid_Flag: 8>
-        kStrikeoutThicknessIsValid_Flag: animator.skia.FontMetrics.FontMetricsFlags  # value = <FontMetricsFlags.kStrikeoutThicknessIsValid_Flag: 4>
-        kUnderlinePositionIsValid_Flag: animator.skia.FontMetrics.FontMetricsFlags  # value = <FontMetricsFlags.kUnderlinePositionIsValid_Flag: 2>
-        kUnderlineThicknessIsValid_Flag: animator.skia.FontMetrics.FontMetricsFlags  # value = <FontMetricsFlags.kUnderlineThicknessIsValid_Flag: 1>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
+    fAscent: float
+    fAvgCharWidth: float
+    fBottom: float
+    fCapHeight: float
+    fDescent: float
+    fFlags: int
+    fLeading: float
+    fMaxCharWidth: float
+    fStrikeoutPosition: float
+    fStrikeoutThickness: float
+    fTop: float
+    fUnderlinePosition: float
+    fUnderlineThickness: float
+    fXHeight: float
+    fXMax: float
+    fXMin: float
     def __eq__(self, other: FontMetrics) -> bool: ...
     def __init__(self) -> None: ...
     def __str__(self) -> str: ...
@@ -2692,135 +2428,6 @@ class FontMetrics:
         """
         Returns the underline thickness if it is valid, otherwise ``None``.
         """
-    @property
-    def fAscent(self) -> float:
-        """
-        :type: float
-        """
-    @fAscent.setter
-    def fAscent(self, arg0: float) -> None:
-        pass
-    @property
-    def fAvgCharWidth(self) -> float:
-        """
-        :type: float
-        """
-    @fAvgCharWidth.setter
-    def fAvgCharWidth(self, arg0: float) -> None:
-        pass
-    @property
-    def fBottom(self) -> float:
-        """
-        :type: float
-        """
-    @fBottom.setter
-    def fBottom(self, arg0: float) -> None:
-        pass
-    @property
-    def fCapHeight(self) -> float:
-        """
-        :type: float
-        """
-    @fCapHeight.setter
-    def fCapHeight(self, arg0: float) -> None:
-        pass
-    @property
-    def fDescent(self) -> float:
-        """
-        :type: float
-        """
-    @fDescent.setter
-    def fDescent(self, arg0: float) -> None:
-        pass
-    @property
-    def fFlags(self) -> int:
-        """
-        :type: int
-        """
-    @fFlags.setter
-    def fFlags(self, arg0: int) -> None:
-        pass
-    @property
-    def fLeading(self) -> float:
-        """
-        :type: float
-        """
-    @fLeading.setter
-    def fLeading(self, arg0: float) -> None:
-        pass
-    @property
-    def fMaxCharWidth(self) -> float:
-        """
-        :type: float
-        """
-    @fMaxCharWidth.setter
-    def fMaxCharWidth(self, arg0: float) -> None:
-        pass
-    @property
-    def fStrikeoutPosition(self) -> float:
-        """
-        :type: float
-        """
-    @fStrikeoutPosition.setter
-    def fStrikeoutPosition(self, arg0: float) -> None:
-        pass
-    @property
-    def fStrikeoutThickness(self) -> float:
-        """
-        :type: float
-        """
-    @fStrikeoutThickness.setter
-    def fStrikeoutThickness(self, arg0: float) -> None:
-        pass
-    @property
-    def fTop(self) -> float:
-        """
-        :type: float
-        """
-    @fTop.setter
-    def fTop(self, arg0: float) -> None:
-        pass
-    @property
-    def fUnderlinePosition(self) -> float:
-        """
-        :type: float
-        """
-    @fUnderlinePosition.setter
-    def fUnderlinePosition(self, arg0: float) -> None:
-        pass
-    @property
-    def fUnderlineThickness(self) -> float:
-        """
-        :type: float
-        """
-    @fUnderlineThickness.setter
-    def fUnderlineThickness(self, arg0: float) -> None:
-        pass
-    @property
-    def fXHeight(self) -> float:
-        """
-        :type: float
-        """
-    @fXHeight.setter
-    def fXHeight(self, arg0: float) -> None:
-        pass
-    @property
-    def fXMax(self) -> float:
-        """
-        :type: float
-        """
-    @fXMax.setter
-    def fXMax(self, arg0: float) -> None:
-        pass
-    @property
-    def fXMin(self) -> float:
-        """
-        :type: float
-        """
-    @fXMin.setter
-    def fXMin(self, arg0: float) -> None:
-        pass
-    pass
 
 class FontMgr:
     @staticmethod
@@ -2858,6 +2465,10 @@ class FontMgr:
 class FontParameters:
     class Variation:
         class Axis:
+            def_: float
+            max: float
+            min: float
+            tag: int
             @typing.overload
             def __init__(self) -> None: ...
             @typing.overload
@@ -2865,41 +2476,6 @@ class FontParameters:
             def __str__(self) -> str: ...
             def isHidden(self) -> bool: ...
             def setHidden(self, hidden: bool) -> None: ...
-            @property
-            def def_(self) -> float:
-                """
-                :type: float
-                """
-            @def_.setter
-            def def_(self, arg0: float) -> None:
-                pass
-            @property
-            def max(self) -> float:
-                """
-                :type: float
-                """
-            @max.setter
-            def max(self, arg0: float) -> None:
-                pass
-            @property
-            def min(self) -> float:
-                """
-                :type: float
-                """
-            @min.setter
-            def min(self, arg0: float) -> None:
-                pass
-            @property
-            def tag(self) -> int:
-                """
-                :type: int
-                """
-            @tag.setter
-            def tag(self, arg0: int) -> None:
-                pass
-            pass
-        pass
-    pass
 
 class FontStyle:
     class Slant:
@@ -2913,30 +2489,26 @@ class FontStyle:
           kOblique_Slant
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, FontStyle.Slant]
+        ]  # value = {'kUpright_Slant': <Slant.kUpright_Slant: 0>, 'kItalic_Slant': <Slant.kItalic_Slant: 1>, 'kOblique_Slant': <Slant.kOblique_Slant: 2>}
+        kItalic_Slant: typing.ClassVar[FontStyle.Slant]  # value = <Slant.kItalic_Slant: 1>
+        kOblique_Slant: typing.ClassVar[FontStyle.Slant]  # value = <Slant.kOblique_Slant: 2>
+        kUpright_Slant: typing.ClassVar[FontStyle.Slant]  # value = <Slant.kUpright_Slant: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kUpright_Slant': <Slant.kUpright_Slant: 0>, 'kItalic_Slant': <Slant.kItalic_Slant: 1>, 'kOblique_Slant': <Slant.kOblique_Slant: 2>}
-        kItalic_Slant: animator.skia.FontStyle.Slant  # value = <Slant.kItalic_Slant: 1>
-        kOblique_Slant: animator.skia.FontStyle.Slant  # value = <Slant.kOblique_Slant: 2>
-        kUpright_Slant: animator.skia.FontStyle.Slant  # value = <Slant.kUpright_Slant: 0>
-        pass
+        def value(self) -> int: ...
 
     class Weight(IntEnum):
         """
@@ -2965,38 +2537,34 @@ class FontStyle:
           kExtraBlack_Weight
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, FontStyle.Weight]
+        ]  # value = {'kInvisible_Weight': <Weight.kInvisible_Weight: 0>, 'kThin_Weight': <Weight.kThin_Weight: 100>, 'kExtraLight_Weight': <Weight.kExtraLight_Weight: 200>, 'kLight_Weight': <Weight.kLight_Weight: 300>, 'kNormal_Weight': <Weight.kNormal_Weight: 400>, 'kMedium_Weight': <Weight.kMedium_Weight: 500>, 'kSemiBold_Weight': <Weight.kSemiBold_Weight: 600>, 'kBold_Weight': <Weight.kBold_Weight: 700>, 'kExtraBold_Weight': <Weight.kExtraBold_Weight: 800>, 'kBlack_Weight': <Weight.kBlack_Weight: 900>, 'kExtraBlack_Weight': <Weight.kExtraBlack_Weight: 1000>}
+        kBlack_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kBlack_Weight: 900>
+        kBold_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kBold_Weight: 700>
+        kExtraBlack_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kExtraBlack_Weight: 1000>
+        kExtraBold_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kExtraBold_Weight: 800>
+        kExtraLight_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kExtraLight_Weight: 200>
+        kInvisible_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kInvisible_Weight: 0>
+        kLight_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kLight_Weight: 300>
+        kMedium_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kMedium_Weight: 500>
+        kNormal_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kNormal_Weight: 400>
+        kSemiBold_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kSemiBold_Weight: 600>
+        kThin_Weight: typing.ClassVar[FontStyle.Weight]  # value = <Weight.kThin_Weight: 100>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kInvisible_Weight': <Weight.kInvisible_Weight: 0>, 'kThin_Weight': <Weight.kThin_Weight: 100>, 'kExtraLight_Weight': <Weight.kExtraLight_Weight: 200>, 'kLight_Weight': <Weight.kLight_Weight: 300>, 'kNormal_Weight': <Weight.kNormal_Weight: 400>, 'kMedium_Weight': <Weight.kMedium_Weight: 500>, 'kSemiBold_Weight': <Weight.kSemiBold_Weight: 600>, 'kBold_Weight': <Weight.kBold_Weight: 700>, 'kExtraBold_Weight': <Weight.kExtraBold_Weight: 800>, 'kBlack_Weight': <Weight.kBlack_Weight: 900>, 'kExtraBlack_Weight': <Weight.kExtraBlack_Weight: 1000>}
-        kBlack_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kBlack_Weight: 900>
-        kBold_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kBold_Weight: 700>
-        kExtraBlack_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kExtraBlack_Weight: 1000>
-        kExtraBold_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kExtraBold_Weight: 800>
-        kExtraLight_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kExtraLight_Weight: 200>
-        kInvisible_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kInvisible_Weight: 0>
-        kLight_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kLight_Weight: 300>
-        kMedium_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kMedium_Weight: 500>
-        kNormal_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kNormal_Weight: 400>
-        kSemiBold_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kSemiBold_Weight: 600>
-        kThin_Weight: animator.skia.FontStyle.Weight  # value = <Weight.kThin_Weight: 100>
-        pass
+        def value(self) -> int: ...
 
     class Width(IntEnum):
         """
@@ -3021,36 +2589,33 @@ class FontStyle:
           kUltraExpanded_Width
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, FontStyle.Width]
+        ]  # value = {'kUltraCondensed_Width': <Width.kUltraCondensed_Width: 1>, 'kExtraCondensed_Width': <Width.kExtraCondensed_Width: 2>, 'kCondensed_Width': <Width.kCondensed_Width: 3>, 'kSemiCondensed_Width': <Width.kSemiCondensed_Width: 4>, 'kNormal_Width': <Width.kNormal_Width: 5>, 'kSemiExpanded_Width': <Width.kSemiExpanded_Width: 6>, 'kExpanded_Width': <Width.kExpanded_Width: 7>, 'kExtraExpanded_Width': <Width.kExtraExpanded_Width: 8>, 'kUltraExpanded_Width': <Width.kUltraExpanded_Width: 9>}
+        kCondensed_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kCondensed_Width: 3>
+        kExpanded_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kExpanded_Width: 7>
+        kExtraCondensed_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kExtraCondensed_Width: 2>
+        kExtraExpanded_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kExtraExpanded_Width: 8>
+        kNormal_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kNormal_Width: 5>
+        kSemiCondensed_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kSemiCondensed_Width: 4>
+        kSemiExpanded_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kSemiExpanded_Width: 6>
+        kUltraCondensed_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kUltraCondensed_Width: 1>
+        kUltraExpanded_Width: typing.ClassVar[FontStyle.Width]  # value = <Width.kUltraExpanded_Width: 9>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kUltraCondensed_Width': <Width.kUltraCondensed_Width: 1>, 'kExtraCondensed_Width': <Width.kExtraCondensed_Width: 2>, 'kCondensed_Width': <Width.kCondensed_Width: 3>, 'kSemiCondensed_Width': <Width.kSemiCondensed_Width: 4>, 'kNormal_Width': <Width.kNormal_Width: 5>, 'kSemiExpanded_Width': <Width.kSemiExpanded_Width: 6>, 'kExpanded_Width': <Width.kExpanded_Width: 7>, 'kExtraExpanded_Width': <Width.kExtraExpanded_Width: 8>, 'kUltraExpanded_Width': <Width.kUltraExpanded_Width: 9>}
-        kCondensed_Width: animator.skia.FontStyle.Width  # value = <Width.kCondensed_Width: 3>
-        kExpanded_Width: animator.skia.FontStyle.Width  # value = <Width.kExpanded_Width: 7>
-        kExtraCondensed_Width: animator.skia.FontStyle.Width  # value = <Width.kExtraCondensed_Width: 2>
-        kExtraExpanded_Width: animator.skia.FontStyle.Width  # value = <Width.kExtraExpanded_Width: 8>
-        kNormal_Width: animator.skia.FontStyle.Width  # value = <Width.kNormal_Width: 5>
-        kSemiCondensed_Width: animator.skia.FontStyle.Width  # value = <Width.kSemiCondensed_Width: 4>
-        kSemiExpanded_Width: animator.skia.FontStyle.Width  # value = <Width.kSemiExpanded_Width: 6>
-        kUltraCondensed_Width: animator.skia.FontStyle.Width  # value = <Width.kUltraCondensed_Width: 1>
-        kUltraExpanded_Width: animator.skia.FontStyle.Width  # value = <Width.kUltraExpanded_Width: 9>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
     @staticmethod
     def Bold() -> FontStyle: ...
     @staticmethod
@@ -3061,19 +2626,18 @@ class FontStyle:
     def Normal() -> FontStyle: ...
     def __eq__(self, arg0: FontStyle) -> bool: ...
     @typing.overload
-    def __init__(self) -> None: ...
-    @typing.overload
     def __init__(
         self,
         weight: FontStyle.Weight = Weight.kNormal_Weight,
         width: FontStyle.Width = Width.kNormal_Width,
         slant: FontStyle.Slant = Slant.kUpright_Slant,
     ) -> None: ...
+    @typing.overload
+    def __init__(self) -> None: ...
     def __str__(self) -> str: ...
     def slant(self) -> FontStyle.Slant: ...
     def weight(self) -> int: ...
     def width(self) -> int: ...
-    pass
 
 class FontStyleSet:
     @staticmethod
@@ -3091,7 +2655,6 @@ class FontStyleSet:
         Return a tuple of (font style, style name) for the given *index*.
         """
     def matchStyle(self, pattern: FontStyle) -> Typeface: ...
-    pass
 
 class GradientShader:
     class Flags(IntEnum):
@@ -3101,39 +2664,37 @@ class GradientShader:
           kInterpolateColorsInPremul_Flag
         """
 
-        def __and__(self, other: object) -> object: ...
-        def __eq__(self, other: object) -> bool: ...
-        def __ge__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, GradientShader.Flags]
+        ]  # value = {'kInterpolateColorsInPremul_Flag': <Flags.kInterpolateColorsInPremul_Flag: 1>}
+        kInterpolateColorsInPremul_Flag: typing.ClassVar[
+            GradientShader.Flags
+        ]  # value = <Flags.kInterpolateColorsInPremul_Flag: 1>
+        def __and__(self, other: typing.Any) -> typing.Any: ...
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __ge__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
-        def __gt__(self, other: object) -> bool: ...
+        def __gt__(self, other: typing.Any) -> bool: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __invert__(self) -> object: ...
-        def __le__(self, other: object) -> bool: ...
-        def __lt__(self, other: object) -> bool: ...
-        def __ne__(self, other: object) -> bool: ...
-        def __or__(self, other: object) -> object: ...
-        def __rand__(self, other: object) -> object: ...
+        def __invert__(self) -> typing.Any: ...
+        def __le__(self, other: typing.Any) -> bool: ...
+        def __lt__(self, other: typing.Any) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __or__(self, other: typing.Any) -> typing.Any: ...
+        def __rand__(self, other: typing.Any) -> typing.Any: ...
         def __repr__(self) -> str: ...
-        def __ror__(self, other: object) -> object: ...
-        def __rxor__(self, other: object) -> object: ...
+        def __ror__(self, other: typing.Any) -> typing.Any: ...
+        def __rxor__(self, other: typing.Any) -> typing.Any: ...
         def __setstate__(self, state: int) -> None: ...
-        def __xor__(self, other: object) -> object: ...
+        def __str__(self) -> str: ...
+        def __xor__(self, other: typing.Any) -> typing.Any: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kInterpolateColorsInPremul_Flag': <Flags.kInterpolateColorsInPremul_Flag: 1>}
-        kInterpolateColorsInPremul_Flag: animator.skia.GradientShader.Flags  # value = <Flags.kInterpolateColorsInPremul_Flag: 1>
-        pass
+        def value(self) -> int: ...
 
     class Interpolation:
         class ColorSpace(IntEnum):
@@ -3161,41 +2722,39 @@ class GradientShader:
               kLastColorSpace
             """
 
-            def __eq__(self, other: object) -> bool: ...
-            def __ge__(self, other: object) -> bool: ...
+            __members__: typing.ClassVar[
+                dict[str, GradientShader.Interpolation.ColorSpace]
+            ]  # value = {'kDestination': <ColorSpace.kDestination: 0>, 'kSRGBLinear': <ColorSpace.kSRGBLinear: 1>, 'kLab': <ColorSpace.kLab: 2>, 'kOKLab': <ColorSpace.kOKLab: 3>, 'kLCH': <ColorSpace.kLCH: 4>, 'kOKLCH': <ColorSpace.kOKLCH: 5>, 'kSRGB': <ColorSpace.kSRGB: 6>, 'kHSL': <ColorSpace.kHSL: 7>, 'kHWB': <ColorSpace.kHWB: 8>, 'kLastColorSpace': <ColorSpace.kHWB: 8>}
+            kDestination: typing.ClassVar[
+                GradientShader.Interpolation.ColorSpace
+            ]  # value = <ColorSpace.kDestination: 0>
+            kHSL: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kHSL: 7>
+            kHWB: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kHWB: 8>
+            kLCH: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kLCH: 4>
+            kLab: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kLab: 2>
+            kLastColorSpace: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kHWB: 8>
+            kOKLCH: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kOKLCH: 5>
+            kOKLab: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kOKLab: 3>
+            kSRGB: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kSRGB: 6>
+            kSRGBLinear: typing.ClassVar[GradientShader.Interpolation.ColorSpace]  # value = <ColorSpace.kSRGBLinear: 1>
+            def __eq__(self, other: typing.Any) -> bool: ...
+            def __ge__(self, other: typing.Any) -> bool: ...
             def __getstate__(self) -> int: ...
-            def __gt__(self, other: object) -> bool: ...
+            def __gt__(self, other: typing.Any) -> bool: ...
             def __hash__(self) -> int: ...
             def __index__(self) -> int: ...
             def __init__(self, value: int) -> None: ...
             def __int__(self) -> int: ...
-            def __le__(self, other: object) -> bool: ...
-            def __lt__(self, other: object) -> bool: ...
-            def __ne__(self, other: object) -> bool: ...
+            def __le__(self, other: typing.Any) -> bool: ...
+            def __lt__(self, other: typing.Any) -> bool: ...
+            def __ne__(self, other: typing.Any) -> bool: ...
             def __repr__(self) -> str: ...
             def __setstate__(self, state: int) -> None: ...
+            def __str__(self) -> str: ...
             @property
-            def name(self) -> str:
-                """
-                :type: str
-                """
+            def name(self) -> str: ...
             @property
-            def value(self) -> int:
-                """
-                :type: int
-                """
-            __members__: dict  # value = {'kDestination': <ColorSpace.kDestination: 0>, 'kSRGBLinear': <ColorSpace.kSRGBLinear: 1>, 'kLab': <ColorSpace.kLab: 2>, 'kOKLab': <ColorSpace.kOKLab: 3>, 'kLCH': <ColorSpace.kLCH: 4>, 'kOKLCH': <ColorSpace.kOKLCH: 5>, 'kSRGB': <ColorSpace.kSRGB: 6>, 'kHSL': <ColorSpace.kHSL: 7>, 'kHWB': <ColorSpace.kHWB: 8>, 'kLastColorSpace': <ColorSpace.kHWB: 8>}
-            kDestination: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kDestination: 0>
-            kHSL: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kHSL: 7>
-            kHWB: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kHWB: 8>
-            kLCH: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kLCH: 4>
-            kLab: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kLab: 2>
-            kLastColorSpace: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kHWB: 8>
-            kOKLCH: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kOKLCH: 5>
-            kOKLab: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kOKLab: 3>
-            kSRGB: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kSRGB: 6>
-            kSRGBLinear: animator.skia.GradientShader.Interpolation.ColorSpace  # value = <ColorSpace.kSRGBLinear: 1>
-            pass
+            def value(self) -> int: ...
 
         class HueMethod(IntEnum):
             """
@@ -3212,36 +2771,34 @@ class GradientShader:
               kLastHueMethod
             """
 
-            def __eq__(self, other: object) -> bool: ...
-            def __ge__(self, other: object) -> bool: ...
+            __members__: typing.ClassVar[
+                dict[str, GradientShader.Interpolation.HueMethod]
+            ]  # value = {'kShorter': <HueMethod.kShorter: 0>, 'kLonger': <HueMethod.kLonger: 1>, 'kIncreasing': <HueMethod.kIncreasing: 2>, 'kDecreasing': <HueMethod.kDecreasing: 3>, 'kLastHueMethod': <HueMethod.kDecreasing: 3>}
+            kDecreasing: typing.ClassVar[GradientShader.Interpolation.HueMethod]  # value = <HueMethod.kDecreasing: 3>
+            kIncreasing: typing.ClassVar[GradientShader.Interpolation.HueMethod]  # value = <HueMethod.kIncreasing: 2>
+            kLastHueMethod: typing.ClassVar[
+                GradientShader.Interpolation.HueMethod
+            ]  # value = <HueMethod.kDecreasing: 3>
+            kLonger: typing.ClassVar[GradientShader.Interpolation.HueMethod]  # value = <HueMethod.kLonger: 1>
+            kShorter: typing.ClassVar[GradientShader.Interpolation.HueMethod]  # value = <HueMethod.kShorter: 0>
+            def __eq__(self, other: typing.Any) -> bool: ...
+            def __ge__(self, other: typing.Any) -> bool: ...
             def __getstate__(self) -> int: ...
-            def __gt__(self, other: object) -> bool: ...
+            def __gt__(self, other: typing.Any) -> bool: ...
             def __hash__(self) -> int: ...
             def __index__(self) -> int: ...
             def __init__(self, value: int) -> None: ...
             def __int__(self) -> int: ...
-            def __le__(self, other: object) -> bool: ...
-            def __lt__(self, other: object) -> bool: ...
-            def __ne__(self, other: object) -> bool: ...
+            def __le__(self, other: typing.Any) -> bool: ...
+            def __lt__(self, other: typing.Any) -> bool: ...
+            def __ne__(self, other: typing.Any) -> bool: ...
             def __repr__(self) -> str: ...
             def __setstate__(self, state: int) -> None: ...
+            def __str__(self) -> str: ...
             @property
-            def name(self) -> str:
-                """
-                :type: str
-                """
+            def name(self) -> str: ...
             @property
-            def value(self) -> int:
-                """
-                :type: int
-                """
-            __members__: dict  # value = {'kShorter': <HueMethod.kShorter: 0>, 'kLonger': <HueMethod.kLonger: 1>, 'kIncreasing': <HueMethod.kIncreasing: 2>, 'kDecreasing': <HueMethod.kDecreasing: 3>, 'kLastHueMethod': <HueMethod.kDecreasing: 3>}
-            kDecreasing: animator.skia.GradientShader.Interpolation.HueMethod  # value = <HueMethod.kDecreasing: 3>
-            kIncreasing: animator.skia.GradientShader.Interpolation.HueMethod  # value = <HueMethod.kIncreasing: 2>
-            kLastHueMethod: animator.skia.GradientShader.Interpolation.HueMethod  # value = <HueMethod.kDecreasing: 3>
-            kLonger: animator.skia.GradientShader.Interpolation.HueMethod  # value = <HueMethod.kLonger: 1>
-            kShorter: animator.skia.GradientShader.Interpolation.HueMethod  # value = <HueMethod.kShorter: 0>
-            pass
+            def value(self) -> int: ...
 
         class InPremul:
             """
@@ -3252,64 +2809,38 @@ class GradientShader:
               kYes
             """
 
-            def __eq__(self, other: object) -> bool: ...
+            __members__: typing.ClassVar[
+                dict[str, GradientShader.Interpolation.InPremul]
+            ]  # value = {'kNo': <InPremul.kNo: 0>, 'kYes': <InPremul.kYes: 1>}
+            kNo: typing.ClassVar[GradientShader.Interpolation.InPremul]  # value = <InPremul.kNo: 0>
+            kYes: typing.ClassVar[GradientShader.Interpolation.InPremul]  # value = <InPremul.kYes: 1>
+            def __eq__(self, other: typing.Any) -> bool: ...
             def __getstate__(self) -> int: ...
             def __hash__(self) -> int: ...
             def __index__(self) -> int: ...
             def __init__(self, value: int) -> None: ...
             def __int__(self) -> int: ...
-            def __ne__(self, other: object) -> bool: ...
+            def __ne__(self, other: typing.Any) -> bool: ...
             def __repr__(self) -> str: ...
             def __setstate__(self, state: int) -> None: ...
+            def __str__(self) -> str: ...
             @property
-            def name(self) -> str:
-                """
-                :type: str
-                """
+            def name(self) -> str: ...
             @property
-            def value(self) -> int:
-                """
-                :type: int
-                """
-            __members__: dict  # value = {'kNo': <InPremul.kNo: 0>, 'kYes': <InPremul.kYes: 1>}
-            kNo: animator.skia.GradientShader.Interpolation.InPremul  # value = <InPremul.kNo: 0>
-            kYes: animator.skia.GradientShader.Interpolation.InPremul  # value = <InPremul.kYes: 1>
-            pass
+            def value(self) -> int: ...
+        kColorSpaceCount: typing.ClassVar[int] = 9
+        kHueMethodCount: typing.ClassVar[int] = 4
+        fColorSpace: GradientShader.Interpolation.ColorSpace
+        fHueMethod: GradientShader.Interpolation.HueMethod
+        fInPremul: GradientShader.Interpolation.InPremul
         @staticmethod
         def FromFlags(flags: int) -> GradientShader.Interpolation: ...
-        @property
-        def fColorSpace(self) -> GradientShader.Interpolation.ColorSpace:
-            """
-            :type: GradientShader.Interpolation.ColorSpace
-            """
-        @fColorSpace.setter
-        def fColorSpace(self, arg0: GradientShader.Interpolation.ColorSpace) -> None:
-            pass
-        @property
-        def fHueMethod(self) -> GradientShader.Interpolation.HueMethod:
-            """
-            :type: GradientShader.Interpolation.HueMethod
-            """
-        @fHueMethod.setter
-        def fHueMethod(self, arg0: GradientShader.Interpolation.HueMethod) -> None:
-            pass
-        @property
-        def fInPremul(self) -> GradientShader.Interpolation.InPremul:
-            """
-            :type: GradientShader.Interpolation.InPremul
-            """
-        @fInPremul.setter
-        def fInPremul(self, arg0: GradientShader.Interpolation.InPremul) -> None:
-            pass
-        kColorSpaceCount = 9
-        kHueMethodCount = 4
-        pass
+
     @staticmethod
     @typing.overload
     def MakeLinear(
         pts: typing.Sequence[_Point],
-        colors: typing.Sequence[_Color4f],
-        colorSpace: ColorSpace | None = None,
+        colors: typing.Sequence[_Color],
         pos: list[float] | None = None,
         mode: TileMode = TileMode.kClamp,
         flags: int = 0,
@@ -3336,7 +2867,8 @@ class GradientShader:
     @typing.overload
     def MakeLinear(
         pts: typing.Sequence[_Point],
-        colors: typing.Sequence[_Color],
+        colors: typing.Sequence[_Color4f],
+        colorSpace: ColorSpace | None = None,
         pos: list[float] | None = None,
         mode: TileMode = TileMode.kClamp,
         flags: int = 0,
@@ -3350,8 +2882,7 @@ class GradientShader:
     def MakeRadial(
         center: _Point,
         radius: float,
-        colors: typing.Sequence[_Color4f],
-        colorSpace: ColorSpace | None = None,
+        colors: typing.Sequence[_Color],
         pos: list[float] | None = None,
         mode: TileMode = TileMode.kClamp,
         flags: int = 0,
@@ -3380,7 +2911,8 @@ class GradientShader:
     def MakeRadial(
         center: _Point,
         radius: float,
-        colors: typing.Sequence[_Color],
+        colors: typing.Sequence[_Color4f],
+        colorSpace: ColorSpace | None = None,
         pos: list[float] | None = None,
         mode: TileMode = TileMode.kClamp,
         flags: int = 0,
@@ -3394,8 +2926,7 @@ class GradientShader:
     def MakeSweep(
         cx: float,
         cy: float,
-        colors: typing.Sequence[_Color4f],
-        colorSpace: ColorSpace | None = None,
+        colors: typing.Sequence[_Color],
         pos: list[float] | None = None,
         mode: TileMode = TileMode.kClamp,
         startAngle: float = 0,
@@ -3428,7 +2959,8 @@ class GradientShader:
     def MakeSweep(
         cx: float,
         cy: float,
-        colors: typing.Sequence[_Color],
+        colors: typing.Sequence[_Color4f],
+        colorSpace: ColorSpace | None = None,
         pos: list[float] | None = None,
         mode: TileMode = TileMode.kClamp,
         startAngle: float = 0,
@@ -3446,8 +2978,7 @@ class GradientShader:
         startRadius: float,
         end: _Point,
         endRadius: float,
-        colors: typing.Sequence[_Color4f],
-        colorSpace: ColorSpace | None = None,
+        colors: typing.Sequence[_Color],
         pos: list[float] | None = None,
         mode: TileMode = TileMode.kClamp,
         flags: int = 0,
@@ -3482,7 +3013,8 @@ class GradientShader:
         startRadius: float,
         end: _Point,
         endRadius: float,
-        colors: typing.Sequence[_Color],
+        colors: typing.Sequence[_Color4f],
+        colorSpace: ColorSpace | None = None,
         pos: list[float] | None = None,
         mode: TileMode = TileMode.kClamp,
         flags: int = 0,
@@ -3507,31 +3039,30 @@ class HighContrastConfig:
           kLast
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, HighContrastConfig.InvertStyle]
+        ]  # value = {'kNoInvert': <InvertStyle.kNoInvert: 0>, 'kInvertBrightness': <InvertStyle.kInvertBrightness: 1>, 'kInvertLightness': <InvertStyle.kInvertLightness: 2>, 'kLast': <InvertStyle.kInvertLightness: 2>}
+        kInvertBrightness: typing.ClassVar[HighContrastConfig.InvertStyle]  # value = <InvertStyle.kInvertBrightness: 1>
+        kInvertLightness: typing.ClassVar[HighContrastConfig.InvertStyle]  # value = <InvertStyle.kInvertLightness: 2>
+        kLast: typing.ClassVar[HighContrastConfig.InvertStyle]  # value = <InvertStyle.kInvertLightness: 2>
+        kNoInvert: typing.ClassVar[HighContrastConfig.InvertStyle]  # value = <InvertStyle.kNoInvert: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kNoInvert': <InvertStyle.kNoInvert: 0>, 'kInvertBrightness': <InvertStyle.kInvertBrightness: 1>, 'kInvertLightness': <InvertStyle.kInvertLightness: 2>, 'kLast': <InvertStyle.kInvertLightness: 2>}
-        kInvertBrightness: animator.skia.HighContrastConfig.InvertStyle  # value = <InvertStyle.kInvertBrightness: 1>
-        kInvertLightness: animator.skia.HighContrastConfig.InvertStyle  # value = <InvertStyle.kInvertLightness: 2>
-        kLast: animator.skia.HighContrastConfig.InvertStyle  # value = <InvertStyle.kInvertLightness: 2>
-        kNoInvert: animator.skia.HighContrastConfig.InvertStyle  # value = <InvertStyle.kNoInvert: 0>
-        pass
+        def value(self) -> int: ...
+    fContrast: float
+    fGrayscale: bool
+    fInvertStyle: HighContrastConfig.InvertStyle
     def __init__(
         self,
         grayscale: bool = False,
@@ -3539,38 +3070,15 @@ class HighContrastConfig:
         contrast: float = 0,
     ) -> None: ...
     def isValid(self) -> bool: ...
-    @property
-    def fContrast(self) -> float:
-        """
-        :type: float
-        """
-    @fContrast.setter
-    def fContrast(self, arg0: float) -> None:
-        pass
-    @property
-    def fGrayscale(self) -> bool:
-        """
-        :type: bool
-        """
-    @fGrayscale.setter
-    def fGrayscale(self, arg0: bool) -> None:
-        pass
-    @property
-    def fInvertStyle(self) -> HighContrastConfig.InvertStyle:
-        """
-        :type: HighContrastConfig.InvertStyle
-        """
-    @fInvertStyle.setter
-    def fInvertStyle(self, arg0: HighContrastConfig.InvertStyle) -> None:
-        pass
-    pass
 
 class HighContrastFilter:
     @staticmethod
     def Make(config: HighContrastConfig) -> ColorFilter: ...
-    pass
 
 class IPoint:
+    __hash__: typing.ClassVar[None] = None
+    fX: int
+    fY: int
     @staticmethod
     def Make(x: int, y: int) -> IPoint: ...
     def __add__(self, other: IPoint) -> IPoint: ...
@@ -3597,25 +3105,13 @@ class IPoint:
     def set(self, x: int, y: int) -> None: ...
     def x(self) -> int: ...
     def y(self) -> int: ...
-    @property
-    def fX(self) -> int:
-        """
-        :type: int
-        """
-    @fX.setter
-    def fX(self, arg0: int) -> None:
-        pass
-    @property
-    def fY(self) -> int:
-        """
-        :type: int
-        """
-    @fY.setter
-    def fY(self, arg0: int) -> None:
-        pass
-    pass
 
 class IRect:
+    __hash__: typing.ClassVar[None] = None
+    fBottom: int
+    fLeft: int
+    fRight: int
+    fTop: int
     @staticmethod
     def Intersects(a: _IRect, b: _IRect) -> bool: ...
     @staticmethod
@@ -3644,11 +3140,41 @@ class IRect:
     def __contains__(self, arg0: _Rect) -> bool: ...
     def __eq__(self, other: _IRect) -> bool: ...
     @typing.overload
+    def __init__(self, t: tuple) -> None:
+        """
+        Create an :py:class:`IRect` from a tuple of 0, 2, or 4 integers.
+        """
+    @typing.overload
     def __init__(self) -> None:
         """
         Constructs an :py:class:`IRect` set to (0, 0, 0, 0). Many other rectangles are empty; if left is equal
         to or greater than right, or if top is equal to or greater than bottom. Setting all members to zero is
         a convenience, but does not designate a special empty rectangle.
+        """
+    @typing.overload
+    def __init__(self, w: int, h: int) -> None:
+        """
+        Constructs an :py:class:`IRect` set to (0, 0, w, h). Does not validate input; w or h may be negative.
+
+        :param int w: width of constructed :py:class:`IRect`
+        :param int h: height of constructed :py:class:`IRect`
+        """
+    @typing.overload
+    def __init__(self, size: _ISize) -> None:
+        """
+        Constructs an :py:class:`IRect` set to (0, 0, size.width(), size.height()). Does not validate input;
+        size.width() or size.height() may be negative.
+
+        :param ISize size: values for :py:class:`IRect` width and height
+        """
+    @typing.overload
+    def __init__(self, pt: IPoint, size: _ISize) -> None:
+        """
+        Constructs an :py:class:`IRect` set to (pt.x(), pt.y(), pt.x() + size.width(), pt.y() + size.height()).
+        Does not validate input; size.width() or size.height() may be negative.
+
+        :param IPoint pt: values for :py:class:`IRect` fLeft and fTop
+        :param ISize size: values for :py:class:`IRect` width and height
         """
     @typing.overload
     def __init__(self, l: int, t: int, r: int, b: int) -> None:
@@ -3661,36 +3187,6 @@ class IRect:
         :param int r: value for :py:class:`IRect` fRight
         :param int b: value for :py:class:`IRect` fBottom
         """
-    @typing.overload
-    def __init__(self, pt: IPoint, size: _ISize) -> None:
-        """
-        Constructs an :py:class:`IRect` set to (pt.x(), pt.y(), pt.x() + size.width(), pt.y() + size.height()).
-        Does not validate input; size.width() or size.height() may be negative.
-
-        :param IPoint pt: values for :py:class:`IRect` fLeft and fTop
-        :param ISize size: values for :py:class:`IRect` width and height
-        """
-    @typing.overload
-    def __init__(self, size: _ISize) -> None:
-        """
-        Constructs an :py:class:`IRect` set to (0, 0, size.width(), size.height()). Does not validate input;
-        size.width() or size.height() may be negative.
-
-        :param ISize size: values for :py:class:`IRect` width and height
-        """
-    @typing.overload
-    def __init__(self, t: tuple) -> None:
-        """
-        Create an :py:class:`IRect` from a tuple of 0, 2, or 4 integers.
-        """
-    @typing.overload
-    def __init__(self, w: int, h: int) -> None:
-        """
-        Constructs an :py:class:`IRect` set to (0, 0, w, h). Does not validate input; w or h may be negative.
-
-        :param int w: width of constructed :py:class:`IRect`
-        :param int h: height of constructed :py:class:`IRect`
-        """
     def __iter__(self) -> typing.Iterator: ...
     def __len__(self) -> int: ...
     def __ne__(self, other: _IRect) -> bool: ...
@@ -3698,19 +3194,19 @@ class IRect:
     def adjust(self, dL: int, dT: int, dR: int, dB: int) -> None: ...
     def bottom(self) -> int: ...
     @typing.overload
+    def contains(self, x: int, y: int) -> bool: ...
+    @typing.overload
     def contains(self, r: _IRect) -> bool: ...
     @typing.overload
     def contains(self, r: _Rect) -> bool: ...
-    @typing.overload
-    def contains(self, x: int, y: int) -> bool: ...
     def containsNoEmptyCheck(self, r: _IRect) -> bool: ...
     def height(self) -> int: ...
     def height64(self) -> int: ...
     def inset(self, dx: int, dy: int) -> None: ...
     @typing.overload
-    def intersect(self, a: _IRect, b: _IRect) -> bool: ...
-    @typing.overload
     def intersect(self, r: _IRect) -> bool: ...
+    @typing.overload
+    def intersect(self, a: _IRect, b: _IRect) -> bool: ...
     def isEmpty(self) -> bool: ...
     def isEmpty64(self) -> bool: ...
     def join(self, r: _IRect) -> None: ...
@@ -3723,9 +3219,9 @@ class IRect:
     def makeOutset(self, dx: int, dy: int) -> IRect: ...
     def makeSorted(self) -> IRect: ...
     @typing.overload
-    def offset(self, delta: IPoint) -> None: ...
-    @typing.overload
     def offset(self, dx: int, dy: int) -> None: ...
+    @typing.overload
+    def offset(self, delta: IPoint) -> None: ...
     def offsetTo(self, newX: int, newY: int) -> None: ...
     def outset(self, dx: int, dy: int) -> None: ...
     def right(self) -> int: ...
@@ -3742,50 +3238,18 @@ class IRect:
     def width64(self) -> int: ...
     def x(self) -> int: ...
     def y(self) -> int: ...
-    @property
-    def fBottom(self) -> int:
-        """
-        :type: int
-        """
-    @fBottom.setter
-    def fBottom(self, arg0: int) -> None:
-        pass
-    @property
-    def fLeft(self) -> int:
-        """
-        :type: int
-        """
-    @fLeft.setter
-    def fLeft(self, arg0: int) -> None:
-        pass
-    @property
-    def fRight(self) -> int:
-        """
-        :type: int
-        """
-    @fRight.setter
-    def fRight(self, arg0: int) -> None:
-        pass
-    @property
-    def fTop(self) -> int:
-        """
-        :type: int
-        """
-    @fTop.setter
-    def fTop(self, arg0: int) -> None:
-        pass
-    pass
 
 _IRect = IRect | tuple[()] | tuple[int, int] | tuple[int, int, int, int]
 
 class ISize:
+    __hash__: typing.ClassVar[None] = None
+    fHeight: int
+    fWidth: int
     @staticmethod
     def Make(w: int, h: int) -> ISize: ...
     @staticmethod
     def MakeEmpty() -> ISize: ...
     def __eq__(self, other: _ISize) -> bool: ...
-    @typing.overload
-    def __init__(self) -> None: ...
     @typing.overload
     def __init__(self, t: tuple) -> None:
         """
@@ -3795,6 +3259,8 @@ class ISize:
         """
     @typing.overload
     def __init__(self, w: int, h: int) -> None: ...
+    @typing.overload
+    def __init__(self) -> None: ...
     def __iter__(self) -> typing.Iterator: ...
     def __len__(self) -> int: ...
     def __ne__(self, other: _ISize) -> bool: ...
@@ -3807,23 +3273,6 @@ class ISize:
     def set(self, w: int, h: int) -> None: ...
     def setEmpty(self) -> None: ...
     def width(self) -> int: ...
-    @property
-    def fHeight(self) -> int:
-        """
-        :type: int
-        """
-    @fHeight.setter
-    def fHeight(self, arg0: int) -> None:
-        pass
-    @property
-    def fWidth(self) -> int:
-        """
-        :type: int
-        """
-    @fWidth.setter
-    def fWidth(self, arg0: int) -> None:
-        pass
-    pass
 
 _ISize = ISize | tuple[int, int]
 
@@ -3858,29 +3307,25 @@ class Image:
           kF16
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Image.BitDepth]
+        ]  # value = {'kU8': <BitDepth.kU8: 0>, 'kF16': <BitDepth.kF16: 1>}
+        kF16: typing.ClassVar[Image.BitDepth]  # value = <BitDepth.kF16: 1>
+        kU8: typing.ClassVar[Image.BitDepth]  # value = <BitDepth.kU8: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kU8': <BitDepth.kU8: 0>, 'kF16': <BitDepth.kF16: 1>}
-        kF16: animator.skia.Image.BitDepth  # value = <BitDepth.kF16: 1>
-        kU8: animator.skia.Image.BitDepth  # value = <BitDepth.kU8: 0>
-        pass
+        def value(self) -> int: ...
 
     class CachingHint:
         """
@@ -3891,29 +3336,25 @@ class Image:
           kDisallow_CachingHint
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Image.CachingHint]
+        ]  # value = {'kAllow_CachingHint': <CachingHint.kAllow_CachingHint: 0>, 'kDisallow_CachingHint': <CachingHint.kDisallow_CachingHint: 1>}
+        kAllow_CachingHint: typing.ClassVar[Image.CachingHint]  # value = <CachingHint.kAllow_CachingHint: 0>
+        kDisallow_CachingHint: typing.ClassVar[Image.CachingHint]  # value = <CachingHint.kDisallow_CachingHint: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kAllow_CachingHint': <CachingHint.kAllow_CachingHint: 0>, 'kDisallow_CachingHint': <CachingHint.kDisallow_CachingHint: 1>}
-        kAllow_CachingHint: animator.skia.Image.CachingHint  # value = <CachingHint.kAllow_CachingHint: 0>
-        kDisallow_CachingHint: animator.skia.Image.CachingHint  # value = <CachingHint.kDisallow_CachingHint: 1>
-        pass
+        def value(self) -> int: ...
 
     class TextureCompressionType:
         """
@@ -3932,33 +3373,38 @@ class Image:
           kETC1_RGB8
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Image.TextureCompressionType]
+        ]  # value = {'kNone': <TextureCompressionType.kNone: 0>, 'kETC2_RGB8_UNORM': <TextureCompressionType.kETC2_RGB8_UNORM: 1>, 'kBC1_RGB8_UNORM': <TextureCompressionType.kBC1_RGB8_UNORM: 2>, 'kBC1_RGBA8_UNORM': <TextureCompressionType.kBC1_RGBA8_UNORM: 3>, 'kLast': <TextureCompressionType.kBC1_RGBA8_UNORM: 3>, 'kETC1_RGB8': <TextureCompressionType.kETC2_RGB8_UNORM: 1>}
+        kBC1_RGB8_UNORM: typing.ClassVar[
+            Image.TextureCompressionType
+        ]  # value = <TextureCompressionType.kBC1_RGB8_UNORM: 2>
+        kBC1_RGBA8_UNORM: typing.ClassVar[
+            Image.TextureCompressionType
+        ]  # value = <TextureCompressionType.kBC1_RGBA8_UNORM: 3>
+        kETC1_RGB8: typing.ClassVar[
+            Image.TextureCompressionType
+        ]  # value = <TextureCompressionType.kETC2_RGB8_UNORM: 1>
+        kETC2_RGB8_UNORM: typing.ClassVar[
+            Image.TextureCompressionType
+        ]  # value = <TextureCompressionType.kETC2_RGB8_UNORM: 1>
+        kLast: typing.ClassVar[Image.TextureCompressionType]  # value = <TextureCompressionType.kBC1_RGBA8_UNORM: 3>
+        kNone: typing.ClassVar[Image.TextureCompressionType]  # value = <TextureCompressionType.kNone: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kNone': <TextureCompressionType.kNone: 0>, 'kETC2_RGB8_UNORM': <TextureCompressionType.kETC2_RGB8_UNORM: 1>, 'kBC1_RGB8_UNORM': <TextureCompressionType.kBC1_RGB8_UNORM: 2>, 'kBC1_RGBA8_UNORM': <TextureCompressionType.kBC1_RGBA8_UNORM: 3>, 'kLast': <TextureCompressionType.kBC1_RGBA8_UNORM: 3>, 'kETC1_RGB8': <TextureCompressionType.kETC2_RGB8_UNORM: 1>}
-        kBC1_RGB8_UNORM: animator.skia.Image.TextureCompressionType  # value = <TextureCompressionType.kBC1_RGB8_UNORM: 2>
-        kBC1_RGBA8_UNORM: animator.skia.Image.TextureCompressionType  # value = <TextureCompressionType.kBC1_RGBA8_UNORM: 3>
-        kETC1_RGB8: animator.skia.Image.TextureCompressionType  # value = <TextureCompressionType.kETC2_RGB8_UNORM: 1>
-        kETC2_RGB8_UNORM: animator.skia.Image.TextureCompressionType  # value = <TextureCompressionType.kETC2_RGB8_UNORM: 1>
-        kLast: animator.skia.Image.TextureCompressionType  # value = <TextureCompressionType.kBC1_RGBA8_UNORM: 3>
-        kNone: animator.skia.Image.TextureCompressionType  # value = <TextureCompressionType.kNone: 0>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def DeferredFromEncodedData(encoded: Data, alphaType: AlphaType | None = None) -> Image: ...
     @staticmethod
@@ -3971,6 +3417,13 @@ class Image:
         colorSpace: ColorSpace | None = None,
         props: SurfaceProps = ...,
     ) -> Image: ...
+    @staticmethod
+    def MakeWithFilter(
+        src: Image, filter: ImageFilter, subset: _IRect | None = None, clipBounds: _IRect | None = None
+    ) -> tuple:
+        """
+        Creates filtered :py:class:`Image` and returns ``(filteredImage, outSubset, offset)``.
+        """
     @staticmethod
     def RasterFromBitmap(bitmap: Bitmap) -> Image: ...
     @staticmethod
@@ -3986,25 +3439,6 @@ class Image:
         """
     @staticmethod
     def RasterFromPixmapCopy(pixmap: Pixmap) -> Image: ...
-    def __str__(self) -> str: ...
-    def _repr_png_(self) -> bytes: ...
-    def alphaType(self) -> AlphaType: ...
-    def bitmap(
-        self,
-        colorType: ColorType = ColorType.kUnknown_ColorType,
-        alphaType: AlphaType = AlphaType.kUnknown_AlphaType,
-        colorSpace: ColorSpace | None = None,
-    ) -> Bitmap:
-        """
-        Creates a new :py:class:`Bitmap` from :py:class:`Image` with a copy of pixels.
-        """
-    def bounds(self) -> IRect: ...
-    def colorSpace(self) -> ColorSpace: ...
-    def colorType(self) -> ColorType: ...
-    def dimensions(self) -> ISize: ...
-    def encodeToData(
-        self, encodedImageFormat: EncodedImageFormat = EncodedImageFormat.kPNG, quality: int = 100
-    ) -> Data: ...
     @staticmethod
     def fromarray(
         array: numpy.ndarray,
@@ -4045,12 +3479,37 @@ class Image:
         :return: A new :py:class:`Image` sharing the data in the buffer if copy is ``False``, or a new
             :py:class:`Image` with a copy of the data if copy is ``True``.
         """
+    @staticmethod
+    def open(fp: typing.Any) -> Image:
+        """
+        Opens an image from a file like object or a path.
+        """
+    def __str__(self) -> str: ...
+    def _repr_png_(self) -> bytes: ...
+    def alphaType(self) -> AlphaType: ...
+    def bitmap(
+        self,
+        colorType: ColorType = ColorType.kUnknown_ColorType,
+        alphaType: AlphaType = AlphaType.kUnknown_AlphaType,
+        colorSpace: ColorSpace | None = None,
+    ) -> Bitmap:
+        """
+        Creates a new :py:class:`Bitmap` from :py:class:`Image` with a copy of pixels.
+        """
+    def bounds(self) -> IRect: ...
+    def colorSpace(self) -> ColorSpace: ...
+    def colorType(self) -> ColorType: ...
+    def dimensions(self) -> ISize: ...
+    def encodeToData(
+        self, encodedImageFormat: EncodedImageFormat = EncodedImageFormat.kPNG, quality: int = 100
+    ) -> Data: ...
     def hasMipmaps(self) -> bool: ...
     def height(self) -> int: ...
     def imageInfo(self) -> ImageInfo: ...
     def isAlphaOnly(self) -> bool: ...
     def isLazyGenerated(self) -> bool: ...
     def isOpaque(self) -> bool: ...
+    def isProtected(self) -> bool: ...
     def isValid(self) -> bool:
         """
         Returns ``True`` if :py:class:`Image` can be drawn on raster surface.
@@ -4083,27 +3542,9 @@ class Image:
         """
         Returns subset of :py:class:`Image` with *subset* bounds.
         """
-    def makeWithFilter(
-        self, filter: ImageFilter, subset: _IRect | None = None, clipBounds: _IRect | None = None
-    ) -> tuple:
-        """
-        Creates filtered :py:class:`Image` and returns ``(filteredImage, outSubset, offset)``.
-        """
-    @staticmethod
-    def open(fp: object) -> Image:
-        """
-        Opens an image from a file like object or a path.
-        """
     def peekPixels(self) -> Pixmap:
         """
         Returns a :py:class:`Pixmap` describing the pixel data.
-        """
-    @typing.overload
-    def readPixels(
-        self, dst: Pixmap, srcX: int = 0, srcY: int = 0, cachingHint: Image.CachingHint = CachingHint.kAllow_CachingHint
-    ) -> bool:
-        """
-        Copies pixels starting from (*srcX*, *srcY*) to *dst* :py:class:`Pixmap`.
         """
     @typing.overload
     def readPixels(
@@ -4117,6 +3558,13 @@ class Image:
     ) -> bool:
         """
         Copies *dstInfo* pixels starting from (*srcX*, *srcY*) to *dstPixels* buffer.
+        """
+    @typing.overload
+    def readPixels(
+        self, dst: Pixmap, srcX: int = 0, srcY: int = 0, cachingHint: Image.CachingHint = CachingHint.kAllow_CachingHint
+    ) -> bool:
+        """
+        Copies pixels starting from (*srcX*, *srcY*) to *dst* :py:class:`Pixmap`.
         """
     def refColorSpace(self) -> ColorSpace: ...
     def refEncodedData(self) -> Data: ...
@@ -4132,7 +3580,7 @@ class Image:
         Creates a new :py:class:`Image` by scaling pixels to fit *width* and *height*.
         """
     def save(
-        self, fp: object, encodedImageFormat: EncodedImageFormat = EncodedImageFormat.kPNG, quality: int = 100
+        self, fp: typing.Any, encodedImageFormat: EncodedImageFormat = EncodedImageFormat.kPNG, quality: int = 100
     ) -> None:
         """
         Saves the image to a file like object or a path.
@@ -4166,7 +3614,6 @@ class Image:
     def uniqueID(self) -> int: ...
     def width(self) -> int: ...
     def withDefaultMipmaps(self) -> Image: ...
-    pass
 
 class ImageFilter(Flattenable):
     class MapDirection:
@@ -4178,29 +3625,30 @@ class ImageFilter(Flattenable):
           kReverse_MapDirection
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, ImageFilter.MapDirection]
+        ]  # value = {'kForward_MapDirection': <MapDirection.kForward_MapDirection: 0>, 'kReverse_MapDirection': <MapDirection.kReverse_MapDirection: 1>}
+        kForward_MapDirection: typing.ClassVar[
+            ImageFilter.MapDirection
+        ]  # value = <MapDirection.kForward_MapDirection: 0>
+        kReverse_MapDirection: typing.ClassVar[
+            ImageFilter.MapDirection
+        ]  # value = <MapDirection.kReverse_MapDirection: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kForward_MapDirection': <MapDirection.kForward_MapDirection: 0>, 'kReverse_MapDirection': <MapDirection.kReverse_MapDirection: 1>}
-        kForward_MapDirection: animator.skia.ImageFilter.MapDirection  # value = <MapDirection.kForward_MapDirection: 0>
-        kReverse_MapDirection: animator.skia.ImageFilter.MapDirection  # value = <MapDirection.kReverse_MapDirection: 1>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def Deserialize(data: buffer) -> ImageFilter: ...
     def asAColorFilter(self) -> ColorFilter | None: ...
@@ -4213,28 +3661,28 @@ class ImageFilter(Flattenable):
     def getInput(self, i: int) -> ImageFilter: ...
     def isColorFilterNode(self) -> ColorFilter | None: ...
     def makeWithLocalMatrix(self, matrix: Matrix) -> ImageFilter: ...
-    pass
 
 class ImageFilters:
     class CropRect:
+        __hash__: typing.ClassVar[None] = None
+        def __eq__(self, arg0: ImageFilters.CropRect) -> bool: ...
         @typing.overload
         def __init__(self) -> None: ...
         @typing.overload
         def __init__(self, crop: _IRect) -> None: ...
         @typing.overload
-        def __init__(self, crop: None) -> None: ...
-        @typing.overload
         def __init__(self, crop: _Rect) -> None: ...
+        @typing.overload
+        def __init__(self, crop: _Rect | None) -> None: ...
+        @typing.overload
+        def __init__(self, arg0: None) -> None: ...
+        @typing.overload
+        def __init__(self, arg0: None) -> None: ...
+        @typing.overload
+        def __init__(self, optionalCrop: _IRect) -> None: ...
+        @typing.overload
+        def __init__(self, optionalCrop: _Rect) -> None: ...
         def __str__(self) -> str: ...
-        @property
-        def fCropRect(self) -> Rect:
-            """
-            :type: _Rect
-            """
-        @fCropRect.setter
-        def fCropRect(self, arg0: _Rect) -> None:
-            pass
-        pass
 
     class Dither:
         """
@@ -4245,29 +3693,26 @@ class ImageFilters:
           kYes
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, ImageFilters.Dither]
+        ]  # value = {'kNo': <Dither.kNo: 0>, 'kYes': <Dither.kYes: 1>}
+        kNo: typing.ClassVar[ImageFilters.Dither]  # value = <Dither.kNo: 0>
+        kYes: typing.ClassVar[ImageFilters.Dither]  # value = <Dither.kYes: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kNo': <Dither.kNo: 0>, 'kYes': <Dither.kYes: 1>}
-        kNo: animator.skia.ImageFilters.Dither  # value = <Dither.kNo: 0>
-        kYes: animator.skia.ImageFilters.Dither  # value = <Dither.kYes: 1>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def Arithmetic(
         k1: float,
@@ -4282,7 +3727,7 @@ class ImageFilters:
     @staticmethod
     @typing.overload
     def Blend(
-        blender: Blender,
+        mode: BlendMode,
         background: ImageFilter,
         foreground: ImageFilter | None = None,
         cropRect: ImageFilters.CropRect = ...,
@@ -4290,7 +3735,7 @@ class ImageFilters:
     @staticmethod
     @typing.overload
     def Blend(
-        mode: BlendMode,
+        blender: Blender,
         background: ImageFilter,
         foreground: ImageFilter | None = None,
         cropRect: ImageFilters.CropRect = ...,
@@ -4309,6 +3754,8 @@ class ImageFilters:
     ) -> ImageFilter: ...
     @staticmethod
     def Compose(outer: ImageFilter, inner: ImageFilter) -> ImageFilter: ...
+    @staticmethod
+    def Crop(rect: _Rect, tileMode: TileMode = ..., input: ImageFilter | None = None) -> ImageFilter: ...
     @staticmethod
     def Dilate(
         radiusX: float, radiusY: float, input: ImageFilter | None = None, cropRect: ImageFilters.CropRect = ...
@@ -4362,12 +3809,14 @@ class ImageFilters:
         cropRect: ImageFilters.CropRect = ...,
     ) -> ImageFilter: ...
     @staticmethod
+    def Empty() -> ImageFilter: ...
+    @staticmethod
     def Erode(
         radiusX: float, radiusY: float, input: ImageFilter | None = None, cropRect: ImageFilters.CropRect = ...
     ) -> ImageFilter: ...
     @staticmethod
     def Image(
-        image: Image, srcRect: _Rect | None = None, dstRect: _Rect | None | None = None, sampling: SamplingOptions = ...
+        image: Image, srcRect: _Rect | None = None, dstRect: _Rect | None = None, sampling: SamplingOptions = ...
     ) -> ImageFilter: ...
     @staticmethod
     def Magnifier(
@@ -4413,10 +3862,10 @@ class ImageFilters:
     ) -> ImageFilter: ...
     @staticmethod
     @typing.overload
-    def Picture(pic: Picture) -> ImageFilter: ...
+    def Picture(pic: Picture, targetRect: _Rect) -> ImageFilter: ...
     @staticmethod
     @typing.overload
-    def Picture(pic: Picture, targetRect: _Rect) -> ImageFilter: ...
+    def Picture(pic: Picture) -> ImageFilter: ...
     @staticmethod
     def PointLitDiffuse(
         location: _Point3,
@@ -4440,18 +3889,21 @@ class ImageFilters:
     @typing.overload
     def RuntimeShader(
         builder: RuntimeShaderBuilder,
-        childShaderNames: list[str],
-        inputs: list[ImageFilter],
-        maxSampleRadius: float = 0,
+        sampleRadius: float = 0,
+        childShaderName: str = '',
+        input: ImageFilter | None = None,
     ) -> ImageFilter: ...
     @staticmethod
     @typing.overload
     def RuntimeShader(
         builder: RuntimeShaderBuilder,
-        sampleRadius: float = 0,
-        childShaderName: str = '',
-        input: ImageFilter | None = None,
-    ) -> ImageFilter: ...
+        childShaderNames: list[str],
+        inputs: list[ImageFilter],
+        maxSampleRadius: float = 0,
+    ) -> ImageFilter:
+        """
+        Note that the *maxSampleRadius* parameter is at the end of the argument list, unlike the C++ API.
+        """
     @staticmethod
     def Shader(
         shader: Shader, dither: ImageFilters.Dither = Dither.kNo, cropRect: ImageFilters.CropRect = ...
@@ -4483,55 +3935,55 @@ class ImageFilters:
     ) -> ImageFilter: ...
     @staticmethod
     def Tile(src: _Rect, dst: _Rect, input: ImageFilter | None = None) -> ImageFilter: ...
-    pass
 
 class ImageInfo:
     """
     :note: The :py:meth:`~ImageInfo.Make` methods are also available as constructors.
     """
 
+    __hash__: typing.ClassVar[None] = None
     @staticmethod
     def ByteSizeOverflowed(byteSize: int) -> bool: ...
-    @staticmethod
-    @typing.overload
-    def Make(dimensions: _ISize, colorInfo: ColorInfo) -> ImageInfo: ...
-    @staticmethod
-    @typing.overload
-    def Make(dimensions: _ISize, ct: ColorType, at: AlphaType, cs: ColorSpace | None = None) -> ImageInfo: ...
     @staticmethod
     @typing.overload
     def Make(width: int, height: int, ct: ColorType, at: AlphaType, cs: ColorSpace | None = None) -> ImageInfo: ...
     @staticmethod
     @typing.overload
-    def MakeA8(dimensions: _ISize) -> ImageInfo: ...
+    def Make(dimensions: _ISize, ct: ColorType, at: AlphaType, cs: ColorSpace | None = None) -> ImageInfo: ...
+    @staticmethod
+    @typing.overload
+    def Make(dimensions: _ISize, colorInfo: ColorInfo) -> ImageInfo: ...
     @staticmethod
     @typing.overload
     def MakeA8(width: int, height: int) -> ImageInfo: ...
     @staticmethod
-    def MakeN32(width: int, height: int, at: AlphaType, cs: ColorSpace | None = None) -> ImageInfo: ...
-    @staticmethod
     @typing.overload
-    def MakeN32Premul(dimensions: _ISize, cs: ColorSpace | None = None) -> ImageInfo: ...
+    def MakeA8(dimensions: _ISize) -> ImageInfo: ...
+    @staticmethod
+    def MakeN32(width: int, height: int, at: AlphaType, cs: ColorSpace | None = None) -> ImageInfo: ...
     @staticmethod
     @typing.overload
     def MakeN32Premul(width: int, height: int, cs: ColorSpace | None = None) -> ImageInfo: ...
     @staticmethod
+    @typing.overload
+    def MakeN32Premul(dimensions: _ISize, cs: ColorSpace | None = None) -> ImageInfo: ...
+    @staticmethod
     def MakeS32(width: int, height: int, at: AlphaType) -> ImageInfo: ...
     @staticmethod
     @typing.overload
-    def MakeUnknown() -> ImageInfo: ...
+    def MakeUnknown(width: int, height: int) -> ImageInfo: ...
     @staticmethod
     @typing.overload
-    def MakeUnknown(width: int, height: int) -> ImageInfo: ...
+    def MakeUnknown() -> ImageInfo: ...
     def __eq__(self, arg0: ImageInfo) -> bool: ...
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
-    def __init__(self, dimensions: _ISize, colorInfo: ColorInfo) -> None: ...
+    def __init__(self, width: int, height: int, ct: ColorType, at: AlphaType, cs: ColorSpace | None = None) -> None: ...
     @typing.overload
     def __init__(self, dimensions: _ISize, ct: ColorType, at: AlphaType, cs: ColorSpace | None = None) -> None: ...
     @typing.overload
-    def __init__(self, width: int, height: int, ct: ColorType, at: AlphaType, cs: ColorSpace | None = None) -> None: ...
+    def __init__(self, dimensions: _ISize, colorInfo: ColorInfo) -> None: ...
     def __ne__(self, arg0: ImageInfo) -> bool: ...
     def __str__(self) -> str: ...
     def alphaType(self) -> AlphaType: ...
@@ -4560,17 +4012,14 @@ class ImageInfo:
     def shiftPerPixel(self) -> int: ...
     def validRowBytes(self, rowBytes: int) -> bool: ...
     def width(self) -> int: ...
-    pass
 
 class Line2DPathEffect:
     @staticmethod
     def Make(width: float, matrix: Matrix) -> PathEffect: ...
-    pass
 
 class LumaColorFilter:
     @staticmethod
     def Make() -> ColorFilter: ...
-    pass
 
 class MaskFilter(Flattenable):
     @staticmethod
@@ -4578,7 +4027,6 @@ class MaskFilter(Flattenable):
     @staticmethod
     def MakeBlur(style: BlurStyle, sigma: float, respectCTM: bool = True) -> MaskFilter: ...
     def approximateFilteredBounds(self, src: _Rect) -> Rect: ...
-    pass
 
 class Matrix:
     class ScaleToFit:
@@ -4594,31 +4042,27 @@ class Matrix:
           kEnd_ScaleToFit
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Matrix.ScaleToFit]
+        ]  # value = {'kFill_ScaleToFit': <ScaleToFit.kFill_ScaleToFit: 0>, 'kStart_ScaleToFit': <ScaleToFit.kStart_ScaleToFit: 1>, 'kCenter_ScaleToFit': <ScaleToFit.kCenter_ScaleToFit: 2>, 'kEnd_ScaleToFit': <ScaleToFit.kEnd_ScaleToFit: 3>}
+        kCenter_ScaleToFit: typing.ClassVar[Matrix.ScaleToFit]  # value = <ScaleToFit.kCenter_ScaleToFit: 2>
+        kEnd_ScaleToFit: typing.ClassVar[Matrix.ScaleToFit]  # value = <ScaleToFit.kEnd_ScaleToFit: 3>
+        kFill_ScaleToFit: typing.ClassVar[Matrix.ScaleToFit]  # value = <ScaleToFit.kFill_ScaleToFit: 0>
+        kStart_ScaleToFit: typing.ClassVar[Matrix.ScaleToFit]  # value = <ScaleToFit.kStart_ScaleToFit: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kFill_ScaleToFit': <ScaleToFit.kFill_ScaleToFit: 0>, 'kStart_ScaleToFit': <ScaleToFit.kStart_ScaleToFit: 1>, 'kCenter_ScaleToFit': <ScaleToFit.kCenter_ScaleToFit: 2>, 'kEnd_ScaleToFit': <ScaleToFit.kEnd_ScaleToFit: 3>}
-        kCenter_ScaleToFit: animator.skia.Matrix.ScaleToFit  # value = <ScaleToFit.kCenter_ScaleToFit: 2>
-        kEnd_ScaleToFit: animator.skia.Matrix.ScaleToFit  # value = <ScaleToFit.kEnd_ScaleToFit: 3>
-        kFill_ScaleToFit: animator.skia.Matrix.ScaleToFit  # value = <ScaleToFit.kFill_ScaleToFit: 0>
-        kStart_ScaleToFit: animator.skia.Matrix.ScaleToFit  # value = <ScaleToFit.kStart_ScaleToFit: 1>
-        pass
+        def value(self) -> int: ...
 
     class TypeMask(IntEnum):
         """
@@ -4635,43 +4079,55 @@ class Matrix:
           kPerspective_Mask
         """
 
-        def __and__(self, other: object) -> object: ...
-        def __eq__(self, other: object) -> bool: ...
-        def __ge__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Matrix.TypeMask]
+        ]  # value = {'kIdentity_Mask': <TypeMask.kIdentity_Mask: 0>, 'kTranslate_Mask': <TypeMask.kTranslate_Mask: 1>, 'kScale_Mask': <TypeMask.kScale_Mask: 2>, 'kAffine_Mask': <TypeMask.kAffine_Mask: 4>, 'kPerspective_Mask': <TypeMask.kPerspective_Mask: 8>}
+        kAffine_Mask: typing.ClassVar[Matrix.TypeMask]  # value = <TypeMask.kAffine_Mask: 4>
+        kIdentity_Mask: typing.ClassVar[Matrix.TypeMask]  # value = <TypeMask.kIdentity_Mask: 0>
+        kPerspective_Mask: typing.ClassVar[Matrix.TypeMask]  # value = <TypeMask.kPerspective_Mask: 8>
+        kScale_Mask: typing.ClassVar[Matrix.TypeMask]  # value = <TypeMask.kScale_Mask: 2>
+        kTranslate_Mask: typing.ClassVar[Matrix.TypeMask]  # value = <TypeMask.kTranslate_Mask: 1>
+        def __and__(self, other: typing.Any) -> typing.Any: ...
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __ge__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
-        def __gt__(self, other: object) -> bool: ...
+        def __gt__(self, other: typing.Any) -> bool: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __invert__(self) -> object: ...
-        def __le__(self, other: object) -> bool: ...
-        def __lt__(self, other: object) -> bool: ...
-        def __ne__(self, other: object) -> bool: ...
-        def __or__(self, other: object) -> object: ...
-        def __rand__(self, other: object) -> object: ...
+        def __invert__(self) -> typing.Any: ...
+        def __le__(self, other: typing.Any) -> bool: ...
+        def __lt__(self, other: typing.Any) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __or__(self, other: typing.Any) -> typing.Any: ...
+        def __rand__(self, other: typing.Any) -> typing.Any: ...
         def __repr__(self) -> str: ...
-        def __ror__(self, other: object) -> object: ...
-        def __rxor__(self, other: object) -> object: ...
+        def __ror__(self, other: typing.Any) -> typing.Any: ...
+        def __rxor__(self, other: typing.Any) -> typing.Any: ...
         def __setstate__(self, state: int) -> None: ...
-        def __xor__(self, other: object) -> object: ...
+        def __str__(self) -> str: ...
+        def __xor__(self, other: typing.Any) -> typing.Any: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kIdentity_Mask': <TypeMask.kIdentity_Mask: 0>, 'kTranslate_Mask': <TypeMask.kTranslate_Mask: 1>, 'kScale_Mask': <TypeMask.kScale_Mask: 2>, 'kAffine_Mask': <TypeMask.kAffine_Mask: 4>, 'kPerspective_Mask': <TypeMask.kPerspective_Mask: 8>}
-        kAffine_Mask: animator.skia.Matrix.TypeMask  # value = <TypeMask.kAffine_Mask: 4>
-        kIdentity_Mask: animator.skia.Matrix.TypeMask  # value = <TypeMask.kIdentity_Mask: 0>
-        kPerspective_Mask: animator.skia.Matrix.TypeMask  # value = <TypeMask.kPerspective_Mask: 8>
-        kScale_Mask: animator.skia.Matrix.TypeMask  # value = <TypeMask.kScale_Mask: 2>
-        kTranslate_Mask: animator.skia.Matrix.TypeMask  # value = <TypeMask.kTranslate_Mask: 1>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
+    kAScaleX: typing.ClassVar[int] = 0
+    kAScaleY: typing.ClassVar[int] = 3
+    kASkewX: typing.ClassVar[int] = 2
+    kASkewY: typing.ClassVar[int] = 1
+    kATransX: typing.ClassVar[int] = 4
+    kATransY: typing.ClassVar[int] = 5
+    kMPersp0: typing.ClassVar[int] = 6
+    kMPersp1: typing.ClassVar[int] = 7
+    kMPersp2: typing.ClassVar[int] = 8
+    kMScaleX: typing.ClassVar[int] = 0
+    kMScaleY: typing.ClassVar[int] = 4
+    kMSkewX: typing.ClassVar[int] = 1
+    kMSkewY: typing.ClassVar[int] = 3
+    kMTransX: typing.ClassVar[int] = 2
+    kMTransY: typing.ClassVar[int] = 5
     @staticmethod
     def Concat(a: Matrix, b: Matrix) -> Matrix: ...
     @staticmethod
@@ -4721,10 +4177,10 @@ class Matrix:
     def Translate(dx: float, dy: float) -> Matrix: ...
     @staticmethod
     @typing.overload
-    def Translate(t: IPoint) -> Matrix: ...
+    def Translate(t: _Point) -> Matrix: ...
     @staticmethod
     @typing.overload
-    def Translate(t: _Point) -> Matrix: ...
+    def Translate(t: IPoint) -> Matrix: ...
     def __eq__(self, arg0: Matrix) -> bool: ...
     def __getitem__(self, index: int) -> float: ...
     def __imatmul__(self, other: Matrix) -> Matrix:
@@ -4733,12 +4189,12 @@ class Matrix:
         ``self.preConcat(other)``.
         """
     @typing.overload
-    def __init__(self) -> None: ...
-    @typing.overload
     def __init__(self, array: numpy.ndarray) -> None:
         """
         Creates a :py:class:`Matrix` from 3x3 float32 NumPy array.
         """
+    @typing.overload
+    def __init__(self) -> None: ...
     def __matmul__(self, other: Matrix) -> Matrix:
         """
         Returns the result of multiplying this :py:class:`Matrix` by *other*. Same as :py:meth:`Matrix.Concat`.
@@ -4857,31 +4313,31 @@ class Matrix:
     def normalizePerspective(self) -> None: ...
     def postConcat(self, other: Matrix) -> Matrix: ...
     @typing.overload
-    def postRotate(self, degrees: float) -> Matrix: ...
-    @typing.overload
     def postRotate(self, degrees: float, px: float, py: float) -> Matrix: ...
     @typing.overload
-    def postScale(self, sx: float, sy: float) -> Matrix: ...
+    def postRotate(self, degrees: float) -> Matrix: ...
     @typing.overload
     def postScale(self, sx: float, sy: float, px: float, py: float) -> Matrix: ...
     @typing.overload
-    def postSkew(self, kx: float, ky: float) -> Matrix: ...
+    def postScale(self, sx: float, sy: float) -> Matrix: ...
     @typing.overload
     def postSkew(self, kx: float, ky: float, px: float, py: float) -> Matrix: ...
+    @typing.overload
+    def postSkew(self, kx: float, ky: float) -> Matrix: ...
     def postTranslate(self, dx: float, dy: float) -> Matrix: ...
     def preConcat(self, other: Matrix) -> Matrix: ...
     @typing.overload
-    def preRotate(self, degrees: float) -> Matrix: ...
-    @typing.overload
     def preRotate(self, degrees: float, px: float, py: float) -> Matrix: ...
     @typing.overload
-    def preScale(self, sx: float, sy: float) -> Matrix: ...
+    def preRotate(self, degrees: float) -> Matrix: ...
     @typing.overload
     def preScale(self, sx: float, sy: float, px: float, py: float) -> Matrix: ...
     @typing.overload
-    def preSkew(self, kx: float, ky: float) -> Matrix: ...
+    def preScale(self, sx: float, sy: float) -> Matrix: ...
     @typing.overload
     def preSkew(self, kx: float, ky: float, px: float, py: float) -> Matrix: ...
+    @typing.overload
+    def preSkew(self, kx: float, ky: float) -> Matrix: ...
     def preTranslate(self, dx: float, dy: float) -> Matrix: ...
     def preservesAxisAlignment(self) -> bool: ...
     def preservesRightAngles(self, tol: float = 0.000244140625) -> bool: ...
@@ -4913,24 +4369,24 @@ class Matrix:
     def setRSXform(self, rsxForm: RSXform) -> Matrix: ...
     def setRectToRect(self, src: _Rect, dst: _Rect, stf: Matrix.ScaleToFit) -> bool: ...
     @typing.overload
-    def setRotate(self, degrees: float) -> Matrix: ...
-    @typing.overload
     def setRotate(self, degrees: float, px: float, py: float) -> Matrix: ...
     @typing.overload
-    def setScale(self, sx: float, sy: float) -> Matrix: ...
+    def setRotate(self, degrees: float) -> Matrix: ...
     @typing.overload
     def setScale(self, sx: float, sy: float, px: float, py: float) -> Matrix: ...
+    @typing.overload
+    def setScale(self, sx: float, sy: float) -> Matrix: ...
     def setScaleTranslate(self, sx: float, sy: float, tx: float, ty: float) -> None: ...
     def setScaleX(self, v: float) -> Matrix: ...
     def setScaleY(self, v: float) -> Matrix: ...
     @typing.overload
-    def setSinCos(self, sinValue: float, cosValue: float) -> Matrix: ...
-    @typing.overload
     def setSinCos(self, sinValue: float, cosValue: float, px: float, py: float) -> Matrix: ...
     @typing.overload
-    def setSkew(self, kx: float, ky: float) -> Matrix: ...
+    def setSinCos(self, sinValue: float, cosValue: float) -> Matrix: ...
     @typing.overload
     def setSkew(self, kx: float, ky: float, px: float, py: float) -> Matrix: ...
+    @typing.overload
+    def setSkew(self, kx: float, ky: float) -> Matrix: ...
     def setSkewX(self, v: float) -> Matrix: ...
     def setSkewY(self, v: float) -> Matrix: ...
     @typing.overload
@@ -4939,34 +4395,6 @@ class Matrix:
     def setTranslate(self, v: _Point) -> Matrix: ...
     def setTranslateX(self, v: float) -> Matrix: ...
     def setTranslateY(self, v: float) -> Matrix: ...
-    kAScaleX = 0
-    kAScaleY = 3
-    kASkewX = 2
-    kASkewY = 1
-    kATransX = 4
-    kATransY = 5
-    kMPersp0 = 6
-    kMPersp1 = 7
-    kMPersp2 = 8
-    kMScaleX = 0
-    kMScaleY = 4
-    kMSkewX = 1
-    kMSkewY = 3
-    kMTransX = 2
-    kMTransY = 5
-    pass
-
-class MatrixPathEffect:
-    @staticmethod
-    def Make(matrix: Matrix) -> PathEffect: ...
-    @staticmethod
-    def MakeTranslate(dx: float, dy: float) -> PathEffect: ...
-    pass
-
-class MergePathEffect:
-    @staticmethod
-    def Make(one: PathEffect, two: PathEffect, op: PathOp) -> PathEffect: ...
-    pass
 
 class MipmapMode:
     """
@@ -4981,48 +4409,42 @@ class MipmapMode:
       kLast
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, MipmapMode]
+    ]  # value = {'kNone': <MipmapMode.kNone: 0>, 'kNearest': <MipmapMode.kNearest: 1>, 'kLinear': <MipmapMode.kLinear: 2>, 'kLast': <MipmapMode.kLinear: 2>}
+    kLast: typing.ClassVar[MipmapMode]  # value = <MipmapMode.kLinear: 2>
+    kLinear: typing.ClassVar[MipmapMode]  # value = <MipmapMode.kLinear: 2>
+    kNearest: typing.ClassVar[MipmapMode]  # value = <MipmapMode.kNearest: 1>
+    kNone: typing.ClassVar[MipmapMode]  # value = <MipmapMode.kNone: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kNone': <MipmapMode.kNone: 0>, 'kNearest': <MipmapMode.kNearest: 1>, 'kLinear': <MipmapMode.kLinear: 2>, 'kLast': <MipmapMode.kLinear: 2>}
-    kLast: animator.skia.MipmapMode  # value = <MipmapMode.kLinear: 2>
-    kLinear: animator.skia.MipmapMode  # value = <MipmapMode.kLinear: 2>
-    kNearest: animator.skia.MipmapMode  # value = <MipmapMode.kNearest: 1>
-    kNone: animator.skia.MipmapMode  # value = <MipmapMode.kNone: 0>
-    pass
+    def value(self) -> int: ...
 
 class NamedGamut:
-    kAdobeRGB: animator.skia.cms.Matrix3x3
-    kDisplayP3: animator.skia.cms.Matrix3x3
-    kRec2020: animator.skia.cms.Matrix3x3
-    kSRGB: animator.skia.cms.Matrix3x3
-    kXYZ: animator.skia.cms.Matrix3x3
-    pass
+    kAdobeRGB: typing.ClassVar[cms.Matrix3x3]  # value = <animator.skia.cms.Matrix3x3 object>
+    kDisplayP3: typing.ClassVar[cms.Matrix3x3]  # value = <animator.skia.cms.Matrix3x3 object>
+    kRec2020: typing.ClassVar[cms.Matrix3x3]  # value = <animator.skia.cms.Matrix3x3 object>
+    kSRGB: typing.ClassVar[cms.Matrix3x3]  # value = <animator.skia.cms.Matrix3x3 object>
+    kXYZ: typing.ClassVar[cms.Matrix3x3]  # value = <animator.skia.cms.Matrix3x3 object>
 
 class NamedTransferFn:
-    k2Dot2: animator.skia.cms.TransferFunction
-    kHLG: animator.skia.cms.TransferFunction
-    kLinear: animator.skia.cms.TransferFunction
-    kPQ: animator.skia.cms.TransferFunction
-    kRec2020: animator.skia.cms.TransferFunction
-    kSRGB: animator.skia.cms.TransferFunction
-    pass
+    k2Dot2: typing.ClassVar[cms.TransferFunction]  # value = <animator.skia.cms.TransferFunction object>
+    kHLG: typing.ClassVar[cms.TransferFunction]  # value = <animator.skia.cms.TransferFunction object>
+    kLinear: typing.ClassVar[cms.TransferFunction]  # value = <animator.skia.cms.TransferFunction object>
+    kPQ: typing.ClassVar[cms.TransferFunction]  # value = <animator.skia.cms.TransferFunction object>
+    kRec2020: typing.ClassVar[cms.TransferFunction]  # value = <animator.skia.cms.TransferFunction object>
+    kSRGB: typing.ClassVar[cms.TransferFunction]  # value = <animator.skia.cms.TransferFunction object>
 
 class OpBuilder:
     def __init__(self) -> None: ...
@@ -5034,10 +4456,9 @@ class OpBuilder:
         """
 
 class OverdrawColorFilter:
+    kNumColors: typing.ClassVar[int] = 6
     @staticmethod
     def MakeWithColors(colors: list[_Color]) -> ColorFilter: ...
-    kNumColors = 6
-    pass
 
 class Paint:
     class Cap:
@@ -5055,32 +4476,28 @@ class Paint:
           kDefault_Cap
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Paint.Cap]
+        ]  # value = {'kButt_Cap': <Cap.kButt_Cap: 0>, 'kRound_Cap': <Cap.kRound_Cap: 1>, 'kSquare_Cap': <Cap.kSquare_Cap: 2>, 'kLast_Cap': <Cap.kSquare_Cap: 2>, 'kDefault_Cap': <Cap.kButt_Cap: 0>}
+        kButt_Cap: typing.ClassVar[Paint.Cap]  # value = <Cap.kButt_Cap: 0>
+        kDefault_Cap: typing.ClassVar[Paint.Cap]  # value = <Cap.kButt_Cap: 0>
+        kLast_Cap: typing.ClassVar[Paint.Cap]  # value = <Cap.kSquare_Cap: 2>
+        kRound_Cap: typing.ClassVar[Paint.Cap]  # value = <Cap.kRound_Cap: 1>
+        kSquare_Cap: typing.ClassVar[Paint.Cap]  # value = <Cap.kSquare_Cap: 2>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kButt_Cap': <Cap.kButt_Cap: 0>, 'kRound_Cap': <Cap.kRound_Cap: 1>, 'kSquare_Cap': <Cap.kSquare_Cap: 2>, 'kLast_Cap': <Cap.kSquare_Cap: 2>, 'kDefault_Cap': <Cap.kButt_Cap: 0>}
-        kButt_Cap: animator.skia.Paint.Cap  # value = <Cap.kButt_Cap: 0>
-        kDefault_Cap: animator.skia.Paint.Cap  # value = <Cap.kButt_Cap: 0>
-        kLast_Cap: animator.skia.Paint.Cap  # value = <Cap.kSquare_Cap: 2>
-        kRound_Cap: animator.skia.Paint.Cap  # value = <Cap.kRound_Cap: 1>
-        kSquare_Cap: animator.skia.Paint.Cap  # value = <Cap.kSquare_Cap: 2>
-        pass
+        def value(self) -> int: ...
 
     class Join:
         """
@@ -5097,32 +4514,28 @@ class Paint:
           kDefault_Join
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Paint.Join]
+        ]  # value = {'kMiter_Join': <Join.kMiter_Join: 0>, 'kRound_Join': <Join.kRound_Join: 1>, 'kBevel_Join': <Join.kBevel_Join: 2>, 'kLast_Join': <Join.kBevel_Join: 2>, 'kDefault_Join': <Join.kMiter_Join: 0>}
+        kBevel_Join: typing.ClassVar[Paint.Join]  # value = <Join.kBevel_Join: 2>
+        kDefault_Join: typing.ClassVar[Paint.Join]  # value = <Join.kMiter_Join: 0>
+        kLast_Join: typing.ClassVar[Paint.Join]  # value = <Join.kBevel_Join: 2>
+        kMiter_Join: typing.ClassVar[Paint.Join]  # value = <Join.kMiter_Join: 0>
+        kRound_Join: typing.ClassVar[Paint.Join]  # value = <Join.kRound_Join: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kMiter_Join': <Join.kMiter_Join: 0>, 'kRound_Join': <Join.kRound_Join: 1>, 'kBevel_Join': <Join.kBevel_Join: 2>, 'kLast_Join': <Join.kBevel_Join: 2>, 'kDefault_Join': <Join.kMiter_Join: 0>}
-        kBevel_Join: animator.skia.Paint.Join  # value = <Join.kBevel_Join: 2>
-        kDefault_Join: animator.skia.Paint.Join  # value = <Join.kMiter_Join: 0>
-        kLast_Join: animator.skia.Paint.Join  # value = <Join.kBevel_Join: 2>
-        kMiter_Join: animator.skia.Paint.Join  # value = <Join.kMiter_Join: 0>
-        kRound_Join: animator.skia.Paint.Join  # value = <Join.kRound_Join: 1>
-        pass
+        def value(self) -> int: ...
 
     class Style:
         """
@@ -5135,33 +4548,37 @@ class Paint:
           kStrokeAndFill_Style
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Paint.Style]
+        ]  # value = {'kFill_Style': <Style.kFill_Style: 0>, 'kStroke_Style': <Style.kStroke_Style: 1>, 'kStrokeAndFill_Style': <Style.kStrokeAndFill_Style: 2>}
+        kFill_Style: typing.ClassVar[Paint.Style]  # value = <Style.kFill_Style: 0>
+        kStrokeAndFill_Style: typing.ClassVar[Paint.Style]  # value = <Style.kStrokeAndFill_Style: 2>
+        kStroke_Style: typing.ClassVar[Paint.Style]  # value = <Style.kStroke_Style: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kFill_Style': <Style.kFill_Style: 0>, 'kStroke_Style': <Style.kStroke_Style: 1>, 'kStrokeAndFill_Style': <Style.kStrokeAndFill_Style: 2>}
-        kFill_Style: animator.skia.Paint.Style  # value = <Style.kFill_Style: 0>
-        kStrokeAndFill_Style: animator.skia.Paint.Style  # value = <Style.kStrokeAndFill_Style: 2>
-        kStroke_Style: animator.skia.Paint.Style  # value = <Style.kStroke_Style: 1>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
+    kCapCount: typing.ClassVar[int] = 3
+    kJoinCount: typing.ClassVar[int] = 3
+    kStyleCount: typing.ClassVar[int] = 3
     def __eq__(self, other: Paint) -> bool: ...
     @typing.overload
     def __init__(self) -> None: ...
+    @typing.overload
+    def __init__(self, color: _Color4f, colorSpace: ColorSpace | None = None) -> None: ...
+    @typing.overload
+    def __init__(self, paint: Paint) -> None: ...
     @typing.overload
     def __init__(
         self,
@@ -5196,10 +4613,6 @@ class Paint:
 
         :note: Later arguments override earlier ones.
         """
-    @typing.overload
-    def __init__(self, color: _Color4f, colorSpace: ColorSpace | None = None) -> None: ...
-    @typing.overload
-    def __init__(self, paint: Paint) -> None: ...
     def __ne__(self, other: Paint) -> bool: ...
     def __str__(self) -> str: ...
     def asBlendMode(self) -> BlendMode | None: ...
@@ -5237,9 +4650,9 @@ class Paint:
     def setBlendMode(self, mode: BlendMode) -> None: ...
     def setBlender(self, blender: Blender | None) -> None: ...
     @typing.overload
-    def setColor(self, color: _Color4f, colorSpace: ColorSpace | None = None) -> None: ...
-    @typing.overload
     def setColor(self, color: _Color) -> None: ...
+    @typing.overload
+    def setColor(self, color: _Color4f, colorSpace: ColorSpace | None = None) -> None: ...
     def setColor4f(self, color: _Color4f, colorSpace: ColorSpace | None = None) -> None: ...
     def setColorFilter(self, colorFilter: ColorFilter | None) -> None: ...
     def setDither(self, dither: bool) -> None: ...
@@ -5253,10 +4666,6 @@ class Paint:
     def setStrokeMiter(self, miter: float) -> None: ...
     def setStrokeWidth(self, width: float) -> None: ...
     def setStyle(self, style: Paint.Style) -> None: ...
-    kCapCount = 3
-    kJoinCount = 3
-    kStyleCount = 3
-    pass
 
 class ParsePath:
     class PathEncoding:
@@ -5268,29 +4677,26 @@ class ParsePath:
           Relative
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        Absolute: typing.ClassVar[ParsePath.PathEncoding]  # value = <PathEncoding.Absolute: 0>
+        Relative: typing.ClassVar[ParsePath.PathEncoding]  # value = <PathEncoding.Relative: 1>
+        __members__: typing.ClassVar[
+            dict[str, ParsePath.PathEncoding]
+        ]  # value = {'Absolute': <PathEncoding.Absolute: 0>, 'Relative': <PathEncoding.Relative: 1>}
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        Absolute: animator.skia.ParsePath.PathEncoding  # value = <PathEncoding.Absolute: 0>
-        Relative: animator.skia.ParsePath.PathEncoding  # value = <PathEncoding.Relative: 1>
-        __members__: dict  # value = {'Absolute': <PathEncoding.Absolute: 0>, 'Relative': <PathEncoding.Relative: 1>}
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def FromSVGString(str: str) -> Path:
         """
@@ -5312,29 +4718,25 @@ class Path:
           kExtend_AddPathMode
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Path.AddPathMode]
+        ]  # value = {'kAppend_AddPathMode': <AddPathMode.kAppend_AddPathMode: 0>, 'kExtend_AddPathMode': <AddPathMode.kExtend_AddPathMode: 1>}
+        kAppend_AddPathMode: typing.ClassVar[Path.AddPathMode]  # value = <AddPathMode.kAppend_AddPathMode: 0>
+        kExtend_AddPathMode: typing.ClassVar[Path.AddPathMode]  # value = <AddPathMode.kExtend_AddPathMode: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kAppend_AddPathMode': <AddPathMode.kAppend_AddPathMode: 0>, 'kExtend_AddPathMode': <AddPathMode.kExtend_AddPathMode: 1>}
-        kAppend_AddPathMode: animator.skia.Path.AddPathMode  # value = <AddPathMode.kAppend_AddPathMode: 0>
-        kExtend_AddPathMode: animator.skia.Path.AddPathMode  # value = <AddPathMode.kExtend_AddPathMode: 1>
-        pass
+        def value(self) -> int: ...
 
     class ArcSize:
         """
@@ -5345,29 +4747,25 @@ class Path:
           kLarge_ArcSize
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Path.ArcSize]
+        ]  # value = {'kSmall_ArcSize': <ArcSize.kSmall_ArcSize: 0>, 'kLarge_ArcSize': <ArcSize.kLarge_ArcSize: 1>}
+        kLarge_ArcSize: typing.ClassVar[Path.ArcSize]  # value = <ArcSize.kLarge_ArcSize: 1>
+        kSmall_ArcSize: typing.ClassVar[Path.ArcSize]  # value = <ArcSize.kSmall_ArcSize: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kSmall_ArcSize': <ArcSize.kSmall_ArcSize: 0>, 'kLarge_ArcSize': <ArcSize.kLarge_ArcSize: 1>}
-        kLarge_ArcSize: animator.skia.Path.ArcSize  # value = <ArcSize.kLarge_ArcSize: 1>
-        kSmall_ArcSize: animator.skia.Path.ArcSize  # value = <ArcSize.kSmall_ArcSize: 0>
-        pass
+        def value(self) -> int: ...
 
     class Iter:
         @typing.overload
@@ -5388,7 +4786,6 @@ class Path:
             Returns a tuple of (:py:class:`Path.Verb`, list of :py:class:`Point`) for the next segment in the path.
             """
         def setPath(self, path: Path, forceClose: bool) -> None: ...
-        pass
 
     class SegmentMask:
         """
@@ -5403,31 +4800,27 @@ class Path:
           kCubic_SegmentMask
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Path.SegmentMask]
+        ]  # value = {'kLine_SegmentMask': <SegmentMask.kLine_SegmentMask: 1>, 'kQuad_SegmentMask': <SegmentMask.kQuad_SegmentMask: 2>, 'kConic_SegmentMask': <SegmentMask.kConic_SegmentMask: 4>, 'kCubic_SegmentMask': <SegmentMask.kCubic_SegmentMask: 8>}
+        kConic_SegmentMask: typing.ClassVar[Path.SegmentMask]  # value = <SegmentMask.kConic_SegmentMask: 4>
+        kCubic_SegmentMask: typing.ClassVar[Path.SegmentMask]  # value = <SegmentMask.kCubic_SegmentMask: 8>
+        kLine_SegmentMask: typing.ClassVar[Path.SegmentMask]  # value = <SegmentMask.kLine_SegmentMask: 1>
+        kQuad_SegmentMask: typing.ClassVar[Path.SegmentMask]  # value = <SegmentMask.kQuad_SegmentMask: 2>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kLine_SegmentMask': <SegmentMask.kLine_SegmentMask: 1>, 'kQuad_SegmentMask': <SegmentMask.kQuad_SegmentMask: 2>, 'kConic_SegmentMask': <SegmentMask.kConic_SegmentMask: 4>, 'kCubic_SegmentMask': <SegmentMask.kCubic_SegmentMask: 8>}
-        kConic_SegmentMask: animator.skia.Path.SegmentMask  # value = <SegmentMask.kConic_SegmentMask: 4>
-        kCubic_SegmentMask: animator.skia.Path.SegmentMask  # value = <SegmentMask.kCubic_SegmentMask: 8>
-        kLine_SegmentMask: animator.skia.Path.SegmentMask  # value = <SegmentMask.kLine_SegmentMask: 1>
-        kQuad_SegmentMask: animator.skia.Path.SegmentMask  # value = <SegmentMask.kQuad_SegmentMask: 2>
-        pass
+        def value(self) -> int: ...
 
     class Verb:
         """
@@ -5448,34 +4841,31 @@ class Path:
           kDone_Verb
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Path.Verb]
+        ]  # value = {'kMove_Verb': <Verb.kMove_Verb: 0>, 'kLine_Verb': <Verb.kLine_Verb: 1>, 'kQuad_Verb': <Verb.kQuad_Verb: 2>, 'kConic_Verb': <Verb.kConic_Verb: 3>, 'kCubic_Verb': <Verb.kCubic_Verb: 4>, 'kClose_Verb': <Verb.kClose_Verb: 5>, 'kDone_Verb': <Verb.kDone_Verb: 6>}
+        kClose_Verb: typing.ClassVar[Path.Verb]  # value = <Verb.kClose_Verb: 5>
+        kConic_Verb: typing.ClassVar[Path.Verb]  # value = <Verb.kConic_Verb: 3>
+        kCubic_Verb: typing.ClassVar[Path.Verb]  # value = <Verb.kCubic_Verb: 4>
+        kDone_Verb: typing.ClassVar[Path.Verb]  # value = <Verb.kDone_Verb: 6>
+        kLine_Verb: typing.ClassVar[Path.Verb]  # value = <Verb.kLine_Verb: 1>
+        kMove_Verb: typing.ClassVar[Path.Verb]  # value = <Verb.kMove_Verb: 0>
+        kQuad_Verb: typing.ClassVar[Path.Verb]  # value = <Verb.kQuad_Verb: 2>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kMove_Verb': <Verb.kMove_Verb: 0>, 'kLine_Verb': <Verb.kLine_Verb: 1>, 'kQuad_Verb': <Verb.kQuad_Verb: 2>, 'kConic_Verb': <Verb.kConic_Verb: 3>, 'kCubic_Verb': <Verb.kCubic_Verb: 4>, 'kClose_Verb': <Verb.kClose_Verb: 5>, 'kDone_Verb': <Verb.kDone_Verb: 6>}
-        kClose_Verb: animator.skia.Path.Verb  # value = <Verb.kClose_Verb: 5>
-        kConic_Verb: animator.skia.Path.Verb  # value = <Verb.kConic_Verb: 3>
-        kCubic_Verb: animator.skia.Path.Verb  # value = <Verb.kCubic_Verb: 4>
-        kDone_Verb: animator.skia.Path.Verb  # value = <Verb.kDone_Verb: 6>
-        kLine_Verb: animator.skia.Path.Verb  # value = <Verb.kLine_Verb: 1>
-        kMove_Verb: animator.skia.Path.Verb  # value = <Verb.kMove_Verb: 0>
-        kQuad_Verb: animator.skia.Path.Verb  # value = <Verb.kQuad_Verb: 2>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
     @staticmethod
     def Circle(center_x: float, center_y: float, radius: float, dir: PathDirection = PathDirection.kCW) -> Path: ...
     @staticmethod
@@ -5516,13 +4906,13 @@ class Path:
         """
     @staticmethod
     @typing.overload
-    def RRect(bounds: _Rect, rx: float, ry: float, dir: PathDirection = PathDirection.kCW) -> Path: ...
-    @staticmethod
-    @typing.overload
     def RRect(rr: RRect, dir: PathDirection = PathDirection.kCW) -> Path: ...
     @staticmethod
     @typing.overload
     def RRect(rr: RRect, dir: PathDirection, startIndex: int) -> Path: ...
+    @staticmethod
+    @typing.overload
+    def RRect(bounds: _Rect, rx: float, ry: float, dir: PathDirection = PathDirection.kCW) -> Path: ...
     @staticmethod
     def Rect(rect: _Rect, dir: PathDirection = PathDirection.kCW, startIndex: int = 0) -> Path: ...
     def __add__(self, arg0: Path) -> Path: ...
@@ -5555,9 +4945,9 @@ class Path:
         self, src: Path, dx: float, dy: float, mode: Path.AddPathMode = AddPathMode.kAppend_AddPathMode
     ) -> Path: ...
     @typing.overload
-    def addPath(self, src: Path, matrix: Matrix, mode: Path.AddPathMode = AddPathMode.kAppend_AddPathMode) -> Path: ...
-    @typing.overload
     def addPath(self, src: Path, mode: Path.AddPathMode = AddPathMode.kAppend_AddPathMode) -> Path: ...
+    @typing.overload
+    def addPath(self, src: Path, matrix: Matrix, mode: Path.AddPathMode = AddPathMode.kAppend_AddPathMode) -> Path: ...
     def addPoly(self, pts: typing.Sequence[_Point], close: bool) -> Path:
         """
         Adds contour created from *pts*.
@@ -5567,34 +4957,34 @@ class Path:
     @typing.overload
     def addRRect(self, rrect: RRect, dir: PathDirection, start: int) -> Path: ...
     @typing.overload
+    def addRect(self, rect: _Rect, dir: PathDirection, start: int) -> Path: ...
+    @typing.overload
+    def addRect(self, rect: _Rect, dir: PathDirection = PathDirection.kCW) -> Path: ...
+    @typing.overload
     def addRect(
         self, left: float, top: float, right: float, bottom: float, dir: PathDirection = PathDirection.kCW
     ) -> Path: ...
     @typing.overload
-    def addRect(self, rect: _Rect, dir: PathDirection = PathDirection.kCW) -> Path: ...
-    @typing.overload
-    def addRect(self, rect: _Rect, dir: PathDirection, start: int) -> Path: ...
+    def addRoundRect(self, rect: _Rect, rx: float, ry: float, dir: PathDirection = PathDirection.kCW) -> Path: ...
     @typing.overload
     def addRoundRect(
         self, rect: _Rect, radii: typing.Sequence[float], dir: PathDirection = PathDirection.kCW
     ) -> Path: ...
-    @typing.overload
-    def addRoundRect(self, rect: _Rect, rx: float, ry: float, dir: PathDirection = PathDirection.kCW) -> Path: ...
     def approximateBytesUsed(self) -> int: ...
     @typing.overload
     def arcTo(self, oval: _Rect, startAngle: float, sweepAngle: float, forceMoveTo: bool) -> Path: ...
     @typing.overload
-    def arcTo(self, p1: _Point, p2: _Point, radius: float) -> Path: ...
+    def arcTo(self, x1: float, y1: float, x2: float, y2: float, radius: float) -> Path: ...
     @typing.overload
-    def arcTo(
-        self, r: _Point, xAxisRotate: float, largeArc: Path.ArcSize, sweep: PathDirection, xy: _Point
-    ) -> Path: ...
+    def arcTo(self, p1: _Point, p2: _Point, radius: float) -> Path: ...
     @typing.overload
     def arcTo(
         self, rx: float, ry: float, xAxisRotate: float, largeArc: Path.ArcSize, sweep: PathDirection, x: float, y: float
     ) -> Path: ...
     @typing.overload
-    def arcTo(self, x1: float, y1: float, x2: float, y2: float, radius: float) -> Path: ...
+    def arcTo(
+        self, r: _Point, xAxisRotate: float, largeArc: Path.ArcSize, sweep: PathDirection, xy: _Point
+    ) -> Path: ...
     def asWinding(self) -> Path:
         """
         Return the result with fill type winding to area equivalent to path. If the conversion fails, throws
@@ -5603,17 +4993,17 @@ class Path:
     def close(self) -> Path: ...
     def computeTightBounds(self) -> Rect: ...
     @typing.overload
-    def conicTo(self, p1: _Point, p2: _Point, w: float) -> Path: ...
-    @typing.overload
     def conicTo(self, x1: float, y1: float, x2: float, y2: float, w: float) -> Path: ...
+    @typing.overload
+    def conicTo(self, p1: _Point, p2: _Point, w: float) -> Path: ...
     def conservativelyContainsRect(self, rect: _Rect) -> bool: ...
     def contains(self, x: float, y: float) -> bool: ...
     def countPoints(self) -> int: ...
     def countVerbs(self) -> int: ...
     @typing.overload
-    def cubicTo(self, p1: _Point, p2: _Point, p3: _Point) -> Path: ...
-    @typing.overload
     def cubicTo(self, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float) -> Path: ...
+    @typing.overload
+    def cubicTo(self, p1: _Point, p2: _Point, p3: _Point) -> Path: ...
     def dump(self) -> None: ...
     def dumpArrays(self) -> None: ...
     def dumpHex(self) -> None: ...
@@ -5703,9 +5093,9 @@ class Path:
         Simplify the path in place and return itself. If the simplify fails, throws a runtime error.
         """
     @typing.overload
-    def lineTo(self, p: _Point) -> Path: ...
-    @typing.overload
     def lineTo(self, x: float, y: float) -> Path: ...
+    @typing.overload
+    def lineTo(self, p: _Point) -> Path: ...
     def makeOffset(self, dx: float, dy: float) -> Path:
         """
         Offsets :py:class:`Point` array by (*dx*, *dy*) and returns the result as a new :py:class:`Path`.
@@ -5713,19 +5103,19 @@ class Path:
     def makeScale(self, sx: float, sy: float) -> Path: ...
     def makeTransform(self, m: Matrix, pc: ApplyPerspectiveClip = ApplyPerspectiveClip.kYes) -> Path: ...
     @typing.overload
-    def moveTo(self, p: _Point) -> Path: ...
-    @typing.overload
     def moveTo(self, x: float, y: float) -> Path: ...
+    @typing.overload
+    def moveTo(self, p: _Point) -> Path: ...
     def offset(self, dx: float, dy: float) -> None: ...
     def op(self, two: Path, op: PathOp) -> Path:
         """
-        Return the resultant path of applying the *op *to this path and the specified path. If the operation
+        Return the resultant path of applying the *op* to this path and the specified path. If the operation
         fails, throws a runtime error.
         """
     @typing.overload
-    def quadTo(self, p1: _Point, p2: _Point) -> Path: ...
-    @typing.overload
     def quadTo(self, x1: float, y1: float, x2: float, y2: float) -> Path: ...
+    @typing.overload
+    def quadTo(self, p1: _Point, p2: _Point) -> Path: ...
     def rArcTo(
         self,
         rx: float,
@@ -5752,9 +5142,9 @@ class Path:
     def setFillType(self, ft: PathFillType) -> None: ...
     def setIsVolatile(self, isVolatile: bool) -> Path: ...
     @typing.overload
-    def setLastPt(self, p: _Point) -> None: ...
-    @typing.overload
     def setLastPt(self, x: float, y: float) -> None: ...
+    @typing.overload
+    def setLastPt(self, p: _Point) -> None: ...
     def simplify(self) -> Path:
         """
         Return the path as a set of non-overlapping contours that describe the same area as the original path.
@@ -5768,7 +5158,6 @@ class Path:
     def toggleInverseFillType(self) -> None: ...
     def transform(self, matrix: Matrix, pc: ApplyPerspectiveClip = ApplyPerspectiveClip.kYes) -> None: ...
     def updateBoundsCache(self) -> None: ...
-    pass
 
 class Path1DPathEffect:
     class Style:
@@ -5784,39 +5173,34 @@ class Path1DPathEffect:
           kLastEnum_Style
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Path1DPathEffect.Style]
+        ]  # value = {'kTranslate_Style': <Style.kTranslate_Style: 0>, 'kRotate_Style': <Style.kRotate_Style: 1>, 'kMorph_Style': <Style.kMorph_Style: 2>, 'kLastEnum_Style': <Style.kMorph_Style: 2>}
+        kLastEnum_Style: typing.ClassVar[Path1DPathEffect.Style]  # value = <Style.kMorph_Style: 2>
+        kMorph_Style: typing.ClassVar[Path1DPathEffect.Style]  # value = <Style.kMorph_Style: 2>
+        kRotate_Style: typing.ClassVar[Path1DPathEffect.Style]  # value = <Style.kRotate_Style: 1>
+        kTranslate_Style: typing.ClassVar[Path1DPathEffect.Style]  # value = <Style.kTranslate_Style: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kTranslate_Style': <Style.kTranslate_Style: 0>, 'kRotate_Style': <Style.kRotate_Style: 1>, 'kMorph_Style': <Style.kMorph_Style: 2>, 'kLastEnum_Style': <Style.kMorph_Style: 2>}
-        kLastEnum_Style: animator.skia.Path1DPathEffect.Style  # value = <Style.kMorph_Style: 2>
-        kMorph_Style: animator.skia.Path1DPathEffect.Style  # value = <Style.kMorph_Style: 2>
-        kRotate_Style: animator.skia.Path1DPathEffect.Style  # value = <Style.kRotate_Style: 1>
-        kTranslate_Style: animator.skia.Path1DPathEffect.Style  # value = <Style.kTranslate_Style: 0>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def Make(path: Path, advance: float, phase: float, style: Path1DPathEffect.Style) -> PathEffect: ...
-    pass
 
 class Path2DPathEffect:
     @staticmethod
     def Make(matrix: Matrix, path: Path) -> PathEffect: ...
-    pass
 
 class PathBuilder:
     class ArcSize:
@@ -5828,37 +5212,34 @@ class PathBuilder:
           kLarge_ArcSize
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, PathBuilder.ArcSize]
+        ]  # value = {'kSmall_ArcSize': <ArcSize.kSmall_ArcSize: 0>, 'kLarge_ArcSize': <ArcSize.kLarge_ArcSize: 1>}
+        kLarge_ArcSize: typing.ClassVar[PathBuilder.ArcSize]  # value = <ArcSize.kLarge_ArcSize: 1>
+        kSmall_ArcSize: typing.ClassVar[PathBuilder.ArcSize]  # value = <ArcSize.kSmall_ArcSize: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kSmall_ArcSize': <ArcSize.kSmall_ArcSize: 0>, 'kLarge_ArcSize': <ArcSize.kLarge_ArcSize: 1>}
-        kLarge_ArcSize: animator.skia.PathBuilder.ArcSize  # value = <ArcSize.kLarge_ArcSize: 1>
-        kSmall_ArcSize: animator.skia.PathBuilder.ArcSize  # value = <ArcSize.kSmall_ArcSize: 0>
-        pass
+        def value(self) -> int: ...
+
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
     def __init__(self, ft: PathFillType) -> None: ...
     @typing.overload
-    def __init__(self, pathBuilder: PathBuilder) -> None: ...
-    @typing.overload
     def __init__(self, src: Path) -> None: ...
+    @typing.overload
+    def __init__(self, pathBuilder: PathBuilder) -> None: ...
     def addArc(self, oval: _Rect, startAngleDeg: float, sweepAngleDeg: float) -> PathBuilder: ...
     def addCircle(
         self, center_x: float, center_y: float, radius: float, dir: PathDirection = PathDirection.kCW
@@ -5870,41 +5251,41 @@ class PathBuilder:
     def addPath(self, src: Path) -> PathBuilder: ...
     def addPolygon(self, pts: list[_Point], isClosed: bool) -> PathBuilder: ...
     @typing.overload
-    def addRRect(self, rrect: RRect, dir: PathDirection = PathDirection.kCW) -> PathBuilder: ...
-    @typing.overload
     def addRRect(self, rrect: RRect, dir: PathDirection, index: int) -> PathBuilder: ...
     @typing.overload
-    def addRect(self, rect: _Rect, dir: PathDirection = PathDirection.kCW) -> PathBuilder: ...
+    def addRRect(self, rrect: RRect, dir: PathDirection = PathDirection.kCW) -> PathBuilder: ...
     @typing.overload
     def addRect(self, rect: _Rect, dir: PathDirection, index: int) -> PathBuilder: ...
+    @typing.overload
+    def addRect(self, rect: _Rect, dir: PathDirection = PathDirection.kCW) -> PathBuilder: ...
     @typing.overload
     def arcTo(self, oval: _Rect, startAngleDeg: float, sweepAngleDeg: float, forceMoveTo: bool) -> PathBuilder: ...
     @typing.overload
     def arcTo(self, p1: _Point, p2: _Point, radius: float) -> PathBuilder: ...
     @typing.overload
     def arcTo(
-        self, r: _Point, xAxisRotate: float, largeArc: PathBuilder.ArcSize, sweep: PathDirection, xy: Point
+        self, r: _Point, xAxisRotate: float, largeArc: PathBuilder.ArcSize, sweep: PathDirection, xy: _Point
     ) -> PathBuilder: ...
     def close(self) -> PathBuilder: ...
     def computeBounds(self) -> Rect: ...
     @typing.overload
     def conicTo(self, pt1: _Point, pt2: _Point, w: float) -> PathBuilder: ...
     @typing.overload
-    def conicTo(self, pts: list[_Point], w: float) -> PathBuilder: ...
-    @typing.overload
     def conicTo(self, x1: float, y1: float, x2: float, y2: float, w: float) -> PathBuilder: ...
+    @typing.overload
+    def conicTo(self, pts: list[_Point], w: float) -> PathBuilder: ...
     @typing.overload
     def cubicTo(self, pt1: _Point, pt2: _Point, pt3: _Point) -> PathBuilder: ...
     @typing.overload
-    def cubicTo(self, pts: list[_Point]) -> PathBuilder: ...
-    @typing.overload
     def cubicTo(self, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float) -> PathBuilder: ...
+    @typing.overload
+    def cubicTo(self, pts: list[_Point]) -> PathBuilder: ...
     def detach(self) -> Path: ...
     def fillType(self) -> PathFillType: ...
     @typing.overload
-    def incReserve(self, extraPtCount: int) -> None: ...
-    @typing.overload
     def incReserve(self, extraPtCount: int, extraVerbCount: int) -> None: ...
+    @typing.overload
+    def incReserve(self, extraPtCount: int) -> None: ...
     @typing.overload
     def lineTo(self, pt: _Point) -> PathBuilder: ...
     @typing.overload
@@ -5921,9 +5302,9 @@ class PathBuilder:
     @typing.overload
     def quadTo(self, pt1: _Point, pt2: _Point) -> PathBuilder: ...
     @typing.overload
-    def quadTo(self, pts: list[_Point]) -> PathBuilder: ...
-    @typing.overload
     def quadTo(self, x1: float, y1: float, x2: float, y2: float) -> PathBuilder: ...
+    @typing.overload
+    def quadTo(self, pts: list[_Point]) -> PathBuilder: ...
     @typing.overload
     def rConicTo(self, pt1: _Point, pt2: _Point, w: float) -> PathBuilder: ...
     @typing.overload
@@ -5945,7 +5326,6 @@ class PathBuilder:
     def setIsVolatile(self, isVolatile: bool) -> PathBuilder: ...
     def snapshot(self) -> Path: ...
     def toggleInverseFillType(self) -> PathBuilder: ...
-    pass
 
 class PathDirection:
     """
@@ -5956,29 +5336,25 @@ class PathDirection:
       kCCW
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, PathDirection]
+    ]  # value = {'kCW': <PathDirection.kCW: 0>, 'kCCW': <PathDirection.kCCW: 1>}
+    kCCW: typing.ClassVar[PathDirection]  # value = <PathDirection.kCCW: 1>
+    kCW: typing.ClassVar[PathDirection]  # value = <PathDirection.kCW: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kCW': <PathDirection.kCW: 0>, 'kCCW': <PathDirection.kCCW: 1>}
-    kCCW: animator.skia.PathDirection  # value = <PathDirection.kCCW: 1>
-    kCW: animator.skia.PathDirection  # value = <PathDirection.kCW: 0>
-    pass
+    def value(self) -> int: ...
 
 class PathEffect(Flattenable):
     class DashInfo:
@@ -5995,26 +5371,15 @@ class PathEffect(Flattenable):
             """
         def __str__(self) -> str: ...
         @property
-        def fCount(self) -> int:
-            """
-            :type: int
-            """
+        def fCount(self) -> int: ...
         @property
-        def fIntervals(self) -> list[float]:
-            """
-            :type: list[float]
-            """
+        def fIntervals(self) -> list[float]: ...
         @property
-        def fPhase(self) -> float:
-            """
-            :type: float
-            """
+        def fPhase(self) -> float: ...
         @property
         def fType(self) -> PathEffect.DashType:
             """
             The :py:class:`skia.PathEffect.DashType` of this dash.
-
-            :type: PathEffect.DashType
             """
 
     class DashType:
@@ -6026,29 +5391,26 @@ class PathEffect(Flattenable):
           kDash_DashType
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, PathEffect.DashType]
+        ]  # value = {'kNone_DashType': <DashType.kNone_DashType: 0>, 'kDash_DashType': <DashType.kDash_DashType: 1>}
+        kDash_DashType: typing.ClassVar[PathEffect.DashType]  # value = <DashType.kDash_DashType: 1>
+        kNone_DashType: typing.ClassVar[PathEffect.DashType]  # value = <DashType.kNone_DashType: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kNone_DashType': <DashType.kNone_DashType: 0>, 'kDash_DashType': <DashType.kDash_DashType: 1>}
-        kDash_DashType: animator.skia.PathEffect.DashType  # value = <DashType.kDash_DashType: 1>
-        kNone_DashType: animator.skia.PathEffect.DashType  # value = <DashType.kNone_DashType: 0>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def Deserialize(data: buffer) -> PathEffect: ...
     @staticmethod
@@ -6068,7 +5430,6 @@ class PathEffect(Flattenable):
         returning the new path.
         """
     def needsCTM(self) -> bool: ...
-    pass
 
 class PathFillType:
     """
@@ -6083,34 +5444,30 @@ class PathFillType:
       kInverseEvenOdd
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, PathFillType]
+    ]  # value = {'kWinding': <PathFillType.kWinding: 0>, 'kEvenOdd': <PathFillType.kEvenOdd: 1>, 'kInverseWinding': <PathFillType.kInverseWinding: 2>, 'kInverseEvenOdd': <PathFillType.kInverseEvenOdd: 3>}
+    kEvenOdd: typing.ClassVar[PathFillType]  # value = <PathFillType.kEvenOdd: 1>
+    kInverseEvenOdd: typing.ClassVar[PathFillType]  # value = <PathFillType.kInverseEvenOdd: 3>
+    kInverseWinding: typing.ClassVar[PathFillType]  # value = <PathFillType.kInverseWinding: 2>
+    kWinding: typing.ClassVar[PathFillType]  # value = <PathFillType.kWinding: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     def convertToNonInverse(self) -> PathFillType: ...
     def isEvenOdd(self) -> bool: ...
     def isInverse(self) -> bool: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kWinding': <PathFillType.kWinding: 0>, 'kEvenOdd': <PathFillType.kEvenOdd: 1>, 'kInverseWinding': <PathFillType.kInverseWinding: 2>, 'kInverseEvenOdd': <PathFillType.kInverseEvenOdd: 3>}
-    kEvenOdd: animator.skia.PathFillType  # value = <PathFillType.kEvenOdd: 1>
-    kInverseEvenOdd: animator.skia.PathFillType  # value = <PathFillType.kInverseEvenOdd: 3>
-    kInverseWinding: animator.skia.PathFillType  # value = <PathFillType.kInverseWinding: 2>
-    kWinding: animator.skia.PathFillType  # value = <PathFillType.kWinding: 0>
-    pass
+    def value(self) -> int: ...
 
 class PathMatcher:
     """Make two path interpolatable."""
@@ -6119,9 +5476,9 @@ class PathMatcher:
         """
         Members:
 
-          inBetween
+          inBetween : Add empty segments in between other segments.
 
-          atEnd
+          split : Split the largest segments.
         """
 
         __members__: typing.ClassVar[
@@ -6148,7 +5505,9 @@ class PathMatcher:
         self, path0: Path, path1: Path, distFactor: float = 1.0, matchType: PathMatcher.MatchType = ...
     ) -> None: ...
     def interpolate(self, weight: float, out: Path) -> None:
-        """Interpolate two paths by weight."""
+        """
+        Interpolate two paths by *weight* and write to *out*.
+        """
 
 class PathMeasure:
     class MatrixFlags(IntEnum):
@@ -6162,41 +5521,44 @@ class PathMeasure:
           kGetPosAndTan_MatrixFlag
         """
 
-        def __and__(self, other: object) -> object: ...
-        def __eq__(self, other: object) -> bool: ...
-        def __ge__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, PathMeasure.MatrixFlags]
+        ]  # value = {'kGetPosition_MatrixFlag': <MatrixFlags.kGetPosition_MatrixFlag: 1>, 'kGetTangent_MatrixFlag': <MatrixFlags.kGetTangent_MatrixFlag: 2>, 'kGetPosAndTan_MatrixFlag': <MatrixFlags.kGetPosAndTan_MatrixFlag: 3>}
+        kGetPosAndTan_MatrixFlag: typing.ClassVar[
+            PathMeasure.MatrixFlags
+        ]  # value = <MatrixFlags.kGetPosAndTan_MatrixFlag: 3>
+        kGetPosition_MatrixFlag: typing.ClassVar[
+            PathMeasure.MatrixFlags
+        ]  # value = <MatrixFlags.kGetPosition_MatrixFlag: 1>
+        kGetTangent_MatrixFlag: typing.ClassVar[
+            PathMeasure.MatrixFlags
+        ]  # value = <MatrixFlags.kGetTangent_MatrixFlag: 2>
+        def __and__(self, other: typing.Any) -> typing.Any: ...
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __ge__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
-        def __gt__(self, other: object) -> bool: ...
+        def __gt__(self, other: typing.Any) -> bool: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __invert__(self) -> object: ...
-        def __le__(self, other: object) -> bool: ...
-        def __lt__(self, other: object) -> bool: ...
-        def __ne__(self, other: object) -> bool: ...
-        def __or__(self, other: object) -> object: ...
-        def __rand__(self, other: object) -> object: ...
+        def __invert__(self) -> typing.Any: ...
+        def __le__(self, other: typing.Any) -> bool: ...
+        def __lt__(self, other: typing.Any) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __or__(self, other: typing.Any) -> typing.Any: ...
+        def __rand__(self, other: typing.Any) -> typing.Any: ...
         def __repr__(self) -> str: ...
-        def __ror__(self, other: object) -> object: ...
-        def __rxor__(self, other: object) -> object: ...
+        def __ror__(self, other: typing.Any) -> typing.Any: ...
+        def __rxor__(self, other: typing.Any) -> typing.Any: ...
         def __setstate__(self, state: int) -> None: ...
-        def __xor__(self, other: object) -> object: ...
+        def __str__(self) -> str: ...
+        def __xor__(self, other: typing.Any) -> typing.Any: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kGetPosition_MatrixFlag': <MatrixFlags.kGetPosition_MatrixFlag: 1>, 'kGetTangent_MatrixFlag': <MatrixFlags.kGetTangent_MatrixFlag: 2>, 'kGetPosAndTan_MatrixFlag': <MatrixFlags.kGetPosAndTan_MatrixFlag: 3>}
-        kGetPosAndTan_MatrixFlag: animator.skia.PathMeasure.MatrixFlags  # value = <MatrixFlags.kGetPosAndTan_MatrixFlag: 3>
-        kGetPosition_MatrixFlag: animator.skia.PathMeasure.MatrixFlags  # value = <MatrixFlags.kGetPosition_MatrixFlag: 1>
-        kGetTangent_MatrixFlag: animator.skia.PathMeasure.MatrixFlags  # value = <MatrixFlags.kGetTangent_MatrixFlag: 2>
-        pass
+        def value(self) -> int: ...
+
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
@@ -6220,7 +5582,6 @@ class PathMeasure:
     def isClosed(self) -> bool: ...
     def nextContour(self) -> bool: ...
     def setPath(self, path: Path, forceClosed: bool = False) -> None: ...
-    pass
 
 class PathOp:
     """
@@ -6237,32 +5598,28 @@ class PathOp:
       kReverseDifference_PathOp
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, PathOp]
+    ]  # value = {'kDifference_PathOp': <PathOp.kDifference_PathOp: 0>, 'kIntersect_PathOp': <PathOp.kIntersect_PathOp: 1>, 'kUnion_PathOp': <PathOp.kUnion_PathOp: 2>, 'kXOR_PathOp': <PathOp.kXOR_PathOp: 3>, 'kReverseDifference_PathOp': <PathOp.kReverseDifference_PathOp: 4>}
+    kDifference_PathOp: typing.ClassVar[PathOp]  # value = <PathOp.kDifference_PathOp: 0>
+    kIntersect_PathOp: typing.ClassVar[PathOp]  # value = <PathOp.kIntersect_PathOp: 1>
+    kReverseDifference_PathOp: typing.ClassVar[PathOp]  # value = <PathOp.kReverseDifference_PathOp: 4>
+    kUnion_PathOp: typing.ClassVar[PathOp]  # value = <PathOp.kUnion_PathOp: 2>
+    kXOR_PathOp: typing.ClassVar[PathOp]  # value = <PathOp.kXOR_PathOp: 3>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kDifference_PathOp': <PathOp.kDifference_PathOp: 0>, 'kIntersect_PathOp': <PathOp.kIntersect_PathOp: 1>, 'kUnion_PathOp': <PathOp.kUnion_PathOp: 2>, 'kXOR_PathOp': <PathOp.kXOR_PathOp: 3>, 'kReverseDifference_PathOp': <PathOp.kReverseDifference_PathOp: 4>}
-    kDifference_PathOp: animator.skia.PathOp  # value = <PathOp.kDifference_PathOp: 0>
-    kIntersect_PathOp: animator.skia.PathOp  # value = <PathOp.kIntersect_PathOp: 1>
-    kReverseDifference_PathOp: animator.skia.PathOp  # value = <PathOp.kReverseDifference_PathOp: 4>
-    kUnion_PathOp: animator.skia.PathOp  # value = <PathOp.kUnion_PathOp: 2>
-    kXOR_PathOp: animator.skia.PathOp  # value = <PathOp.kXOR_PathOp: 3>
-    pass
+    def value(self) -> int: ...
 
 class PathSegmentMask(IntEnum):
     """
@@ -6277,42 +5634,38 @@ class PathSegmentMask(IntEnum):
       kCubic_PathSegmentMask
     """
 
-    def __and__(self, other: object) -> object: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ge__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, PathSegmentMask]
+    ]  # value = {'kLine_PathSegmentMask': <PathSegmentMask.kLine_PathSegmentMask: 1>, 'kQuad_PathSegmentMask': <PathSegmentMask.kQuad_PathSegmentMask: 2>, 'kConic_PathSegmentMask': <PathSegmentMask.kConic_PathSegmentMask: 4>, 'kCubic_PathSegmentMask': <PathSegmentMask.kCubic_PathSegmentMask: 8>}
+    kConic_PathSegmentMask: typing.ClassVar[PathSegmentMask]  # value = <PathSegmentMask.kConic_PathSegmentMask: 4>
+    kCubic_PathSegmentMask: typing.ClassVar[PathSegmentMask]  # value = <PathSegmentMask.kCubic_PathSegmentMask: 8>
+    kLine_PathSegmentMask: typing.ClassVar[PathSegmentMask]  # value = <PathSegmentMask.kLine_PathSegmentMask: 1>
+    kQuad_PathSegmentMask: typing.ClassVar[PathSegmentMask]  # value = <PathSegmentMask.kQuad_PathSegmentMask: 2>
+    def __and__(self, other: typing.Any) -> typing.Any: ...
+    def __eq__(self, other: typing.Any) -> bool: ...
+    def __ge__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
-    def __gt__(self, other: object) -> bool: ...
+    def __gt__(self, other: typing.Any) -> bool: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __invert__(self) -> object: ...
-    def __le__(self, other: object) -> bool: ...
-    def __lt__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
-    def __or__(self, other: object) -> object: ...
-    def __rand__(self, other: object) -> object: ...
+    def __invert__(self) -> typing.Any: ...
+    def __le__(self, other: typing.Any) -> bool: ...
+    def __lt__(self, other: typing.Any) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
+    def __or__(self, other: typing.Any) -> typing.Any: ...
+    def __rand__(self, other: typing.Any) -> typing.Any: ...
     def __repr__(self) -> str: ...
-    def __ror__(self, other: object) -> object: ...
-    def __rxor__(self, other: object) -> object: ...
+    def __ror__(self, other: typing.Any) -> typing.Any: ...
+    def __rxor__(self, other: typing.Any) -> typing.Any: ...
     def __setstate__(self, state: int) -> None: ...
-    def __xor__(self, other: object) -> object: ...
+    def __str__(self) -> str: ...
+    def __xor__(self, other: typing.Any) -> typing.Any: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kLine_PathSegmentMask': <PathSegmentMask.kLine_PathSegmentMask: 1>, 'kQuad_PathSegmentMask': <PathSegmentMask.kQuad_PathSegmentMask: 2>, 'kConic_PathSegmentMask': <PathSegmentMask.kConic_PathSegmentMask: 4>, 'kCubic_PathSegmentMask': <PathSegmentMask.kCubic_PathSegmentMask: 8>}
-    kConic_PathSegmentMask: animator.skia.PathSegmentMask  # value = <PathSegmentMask.kConic_PathSegmentMask: 4>
-    kCubic_PathSegmentMask: animator.skia.PathSegmentMask  # value = <PathSegmentMask.kCubic_PathSegmentMask: 8>
-    kLine_PathSegmentMask: animator.skia.PathSegmentMask  # value = <PathSegmentMask.kLine_PathSegmentMask: 1>
-    kQuad_PathSegmentMask: animator.skia.PathSegmentMask  # value = <PathSegmentMask.kQuad_PathSegmentMask: 2>
-    pass
+    def value(self) -> int: ...
 
 class PathVerb:
     """
@@ -6331,33 +5684,29 @@ class PathVerb:
       kClose
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, PathVerb]
+    ]  # value = {'kMove': <PathVerb.kMove: 0>, 'kLine': <PathVerb.kLine: 1>, 'kQuad': <PathVerb.kQuad: 2>, 'kConic': <PathVerb.kConic: 3>, 'kCubic': <PathVerb.kCubic: 4>, 'kClose': <PathVerb.kClose: 5>}
+    kClose: typing.ClassVar[PathVerb]  # value = <PathVerb.kClose: 5>
+    kConic: typing.ClassVar[PathVerb]  # value = <PathVerb.kConic: 3>
+    kCubic: typing.ClassVar[PathVerb]  # value = <PathVerb.kCubic: 4>
+    kLine: typing.ClassVar[PathVerb]  # value = <PathVerb.kLine: 1>
+    kMove: typing.ClassVar[PathVerb]  # value = <PathVerb.kMove: 0>
+    kQuad: typing.ClassVar[PathVerb]  # value = <PathVerb.kQuad: 2>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kMove': <PathVerb.kMove: 0>, 'kLine': <PathVerb.kLine: 1>, 'kQuad': <PathVerb.kQuad: 2>, 'kConic': <PathVerb.kConic: 3>, 'kCubic': <PathVerb.kCubic: 4>, 'kClose': <PathVerb.kClose: 5>}
-    kClose: animator.skia.PathVerb  # value = <PathVerb.kClose: 5>
-    kConic: animator.skia.PathVerb  # value = <PathVerb.kConic: 3>
-    kCubic: animator.skia.PathVerb  # value = <PathVerb.kCubic: 4>
-    kLine: animator.skia.PathVerb  # value = <PathVerb.kLine: 1>
-    kMove: animator.skia.PathVerb  # value = <PathVerb.kMove: 0>
-    kQuad: animator.skia.PathVerb  # value = <PathVerb.kQuad: 2>
-    pass
+    def value(self) -> int: ...
 
 class Picture:
     @staticmethod
@@ -6395,7 +5744,6 @@ class Picture:
         Returns storage containing :py:class:`Data` describing :py:class:`Picture`.
         """
     def uniqueID(self) -> int: ...
-    pass
 
 class PictureRecorder:
     def __init__(self) -> None: ...
@@ -6406,9 +5754,8 @@ class PictureRecorder:
     def beginRecording(self, width: float, height: float) -> Canvas:
         """Returns the canvas that records the drawing commands with a bounding box of width and height."""
     def finishRecordingAsPicture(self) -> Picture: ...
-    def finishRecordingAsPictureWithCull(self, cullRect: Rect) -> Picture: ...
+    def finishRecordingAsPictureWithCull(self, cullRect: _Rect) -> Picture: ...
     def getRecordingCanvas(self) -> Canvas: ...
-    pass
 
 class PixelGeometry:
     """
@@ -6425,36 +5772,32 @@ class PixelGeometry:
       kBGR_V_PixelGeometry
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, PixelGeometry]
+    ]  # value = {'kUnknown_PixelGeometry': <PixelGeometry.kUnknown_PixelGeometry: 0>, 'kRGB_H_PixelGeometry': <PixelGeometry.kRGB_H_PixelGeometry: 1>, 'kBGR_H_PixelGeometry': <PixelGeometry.kBGR_H_PixelGeometry: 2>, 'kRGB_V_PixelGeometry': <PixelGeometry.kRGB_V_PixelGeometry: 3>, 'kBGR_V_PixelGeometry': <PixelGeometry.kBGR_V_PixelGeometry: 4>}
+    kBGR_H_PixelGeometry: typing.ClassVar[PixelGeometry]  # value = <PixelGeometry.kBGR_H_PixelGeometry: 2>
+    kBGR_V_PixelGeometry: typing.ClassVar[PixelGeometry]  # value = <PixelGeometry.kBGR_V_PixelGeometry: 4>
+    kRGB_H_PixelGeometry: typing.ClassVar[PixelGeometry]  # value = <PixelGeometry.kRGB_H_PixelGeometry: 1>
+    kRGB_V_PixelGeometry: typing.ClassVar[PixelGeometry]  # value = <PixelGeometry.kRGB_V_PixelGeometry: 3>
+    kUnknown_PixelGeometry: typing.ClassVar[PixelGeometry]  # value = <PixelGeometry.kUnknown_PixelGeometry: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     def pixelGeometryIsBGR(self) -> bool: ...
     def pixelGeometryIsH(self) -> bool: ...
     def pixelGeometryIsRGB(self) -> bool: ...
     def pixelGeometryIsV(self) -> bool: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kUnknown_PixelGeometry': <PixelGeometry.kUnknown_PixelGeometry: 0>, 'kRGB_H_PixelGeometry': <PixelGeometry.kRGB_H_PixelGeometry: 1>, 'kBGR_H_PixelGeometry': <PixelGeometry.kBGR_H_PixelGeometry: 2>, 'kRGB_V_PixelGeometry': <PixelGeometry.kRGB_V_PixelGeometry: 3>, 'kBGR_V_PixelGeometry': <PixelGeometry.kBGR_V_PixelGeometry: 4>}
-    kBGR_H_PixelGeometry: animator.skia.PixelGeometry  # value = <PixelGeometry.kBGR_H_PixelGeometry: 2>
-    kBGR_V_PixelGeometry: animator.skia.PixelGeometry  # value = <PixelGeometry.kBGR_V_PixelGeometry: 4>
-    kRGB_H_PixelGeometry: animator.skia.PixelGeometry  # value = <PixelGeometry.kRGB_H_PixelGeometry: 1>
-    kRGB_V_PixelGeometry: animator.skia.PixelGeometry  # value = <PixelGeometry.kRGB_V_PixelGeometry: 3>
-    kUnknown_PixelGeometry: animator.skia.PixelGeometry  # value = <PixelGeometry.kUnknown_PixelGeometry: 0>
-    pass
+    def value(self) -> int: ...
 
 class Pixmap:
     """
@@ -6472,6 +5815,12 @@ class Pixmap:
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
+    def __init__(self, info: ImageInfo, addr: buffer | None, rowBytes: int = 0) -> None:
+        """
+        Creates :py:class:`Pixmap` from info width, height, :py:class:`AlphaType`, and :py:class:`ColorType`,
+        and a buffer *addr*.
+        """
+    @typing.overload
     def __init__(
         self,
         array: numpy.ndarray,
@@ -6481,12 +5830,6 @@ class Pixmap:
     ) -> None:
         """
         Creates :py:class:`Pixmap` backed by numpy array.
-        """
-    @typing.overload
-    def __init__(self, info: ImageInfo, addr: buffer | None, rowBytes: int = 0) -> None:
-        """
-        Creates :py:class:`Pixmap` from info width, height, :py:class:`AlphaType`, and :py:class:`ColorType`,
-        and a buffer *addr*.
         """
     def __str__(self) -> str: ...
     def addr(self) -> memoryview:
@@ -6506,11 +5849,11 @@ class Pixmap:
     def computeIsOpaque(self) -> bool: ...
     def dimensions(self) -> ISize: ...
     @typing.overload
-    def erase(self, color: _Color4f, subset: _IRect | None = None) -> bool: ...
+    def erase(self, color: _Color, subset: _IRect) -> bool: ...
     @typing.overload
     def erase(self, color: _Color) -> bool: ...
     @typing.overload
-    def erase(self, color: _Color, subset: _IRect) -> bool: ...
+    def erase(self, color: _Color4f, subset: _IRect | None = None) -> bool: ...
     def extractSubset(self, area: _IRect) -> Pixmap:
         """
         Returns a new :py:class:`Pixmap` with subset of the original :py:class:`Pixmap` specified by *area*.
@@ -6522,14 +5865,14 @@ class Pixmap:
     def info(self) -> ImageInfo: ...
     def isOpaque(self) -> bool: ...
     @typing.overload
-    def readPixels(self, dst: Pixmap, srcX: int = 0, srcY: int = 0) -> bool: ...
-    @typing.overload
     def readPixels(
         self, dstInfo: ImageInfo, dstPixels: buffer, dstRowBytes: int = 0, srcX: int = 0, srcY: int = 0
     ) -> bool:
         """
         Copies *dstInfo* pixels starting from (*srcX*, *srcY*) to *dstPixels* buffer.
         """
+    @typing.overload
+    def readPixels(self, dst: Pixmap, srcX: int = 0, srcY: int = 0) -> bool: ...
     def refColorSpace(self) -> ColorSpace: ...
     @typing.overload
     def reset(self) -> None: ...
@@ -6549,9 +5892,11 @@ class Pixmap:
         """
     def width(self) -> int: ...
     def writable_addr(self) -> memoryview: ...
-    pass
 
 class Point:
+    __hash__: typing.ClassVar[None] = None
+    fX: float
+    fY: float
     @staticmethod
     def CrossProduct(a: _Point, b: _Point) -> float: ...
     @staticmethod
@@ -6566,10 +5911,10 @@ class Point:
     def Normalize(vec: _Point) -> float: ...
     @staticmethod
     @typing.overload
-    def Offset(points: typing.Sequence[_Point], dx: float, dy: float) -> list[Point]: ...
+    def Offset(points: typing.Sequence[_Point], offset: _Point) -> list[Point]: ...
     @staticmethod
     @typing.overload
-    def Offset(points: typing.Sequence[_Point], offset: _Point) -> list[Point]: ...
+    def Offset(points: typing.Sequence[_Point], dx: float, dy: float) -> list[Point]: ...
     def __add__(self, other: _Point) -> Point: ...
     def __eq__(self, other: _Point) -> bool: ...
     def __iadd__(self, other: _Point) -> None: ...
@@ -6605,9 +5950,9 @@ class Point:
     def isFinite(self) -> bool: ...
     def isZero(self) -> bool: ...
     @typing.overload
-    def iset(self, p: IPoint) -> None: ...
-    @typing.overload
     def iset(self, x: int, y: int) -> None: ...
+    @typing.overload
+    def iset(self, p: IPoint) -> None: ...
     def length(self) -> float: ...
     def makeScaled(self, scale: float) -> Point:
         """
@@ -6629,27 +5974,14 @@ class Point:
     def setNormalize(self, x: float, y: float) -> bool: ...
     def x(self) -> float: ...
     def y(self) -> float: ...
-    @property
-    def fX(self) -> float:
-        """
-        :type: float
-        """
-    @fX.setter
-    def fX(self, arg0: float) -> None:
-        pass
-    @property
-    def fY(self) -> float:
-        """
-        :type: float
-        """
-    @fY.setter
-    def fY(self, arg0: float) -> None:
-        pass
-    pass
 
 _Point = Point | tuple[float, float]
 
 class Point3:
+    __hash__: typing.ClassVar[None] = None
+    fX: float
+    fY: float
+    fZ: float
     @staticmethod
     def CrossProduct(a: _Point3, b: _Point3) -> Point3: ...
     @staticmethod
@@ -6684,31 +6016,6 @@ class Point3:
     def x(self) -> float: ...
     def y(self) -> float: ...
     def z(self) -> float: ...
-    @property
-    def fX(self) -> float:
-        """
-        :type: float
-        """
-    @fX.setter
-    def fX(self, arg0: float) -> None:
-        pass
-    @property
-    def fY(self) -> float:
-        """
-        :type: float
-        """
-    @fY.setter
-    def fY(self, arg0: float) -> None:
-        pass
-    @property
-    def fZ(self) -> float:
-        """
-        :type: float
-        """
-    @fZ.setter
-    def fZ(self, arg0: float) -> None:
-        pass
-    pass
 
 _Point3 = Point3 | tuple[float, float, float]
 
@@ -6726,31 +6033,27 @@ class RRect:
           kLowerLeft_Corner
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, RRect.Corner]
+        ]  # value = {'kUpperLeft_Corner': <Corner.kUpperLeft_Corner: 0>, 'kUpperRight_Corner': <Corner.kUpperRight_Corner: 1>, 'kLowerRight_Corner': <Corner.kLowerRight_Corner: 2>, 'kLowerLeft_Corner': <Corner.kLowerLeft_Corner: 3>}
+        kLowerLeft_Corner: typing.ClassVar[RRect.Corner]  # value = <Corner.kLowerLeft_Corner: 3>
+        kLowerRight_Corner: typing.ClassVar[RRect.Corner]  # value = <Corner.kLowerRight_Corner: 2>
+        kUpperLeft_Corner: typing.ClassVar[RRect.Corner]  # value = <Corner.kUpperLeft_Corner: 0>
+        kUpperRight_Corner: typing.ClassVar[RRect.Corner]  # value = <Corner.kUpperRight_Corner: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kUpperLeft_Corner': <Corner.kUpperLeft_Corner: 0>, 'kUpperRight_Corner': <Corner.kUpperRight_Corner: 1>, 'kLowerRight_Corner': <Corner.kLowerRight_Corner: 2>, 'kLowerLeft_Corner': <Corner.kLowerLeft_Corner: 3>}
-        kLowerLeft_Corner: animator.skia.RRect.Corner  # value = <Corner.kLowerLeft_Corner: 3>
-        kLowerRight_Corner: animator.skia.RRect.Corner  # value = <Corner.kLowerRight_Corner: 2>
-        kUpperLeft_Corner: animator.skia.RRect.Corner  # value = <Corner.kUpperLeft_Corner: 0>
-        kUpperRight_Corner: animator.skia.RRect.Corner  # value = <Corner.kUpperRight_Corner: 1>
-        pass
+        def value(self) -> int: ...
 
     class Type:
         """
@@ -6771,34 +6074,32 @@ class RRect:
           kLastType
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, RRect.Type]
+        ]  # value = {'kEmpty_Type': <Type.kEmpty_Type: 0>, 'kRect_Type': <Type.kRect_Type: 1>, 'kOval_Type': <Type.kOval_Type: 2>, 'kSimple_Type': <Type.kSimple_Type: 3>, 'kNinePatch_Type': <Type.kNinePatch_Type: 4>, 'kComplex_Type': <Type.kComplex_Type: 5>, 'kLastType': <Type.kComplex_Type: 5>}
+        kComplex_Type: typing.ClassVar[RRect.Type]  # value = <Type.kComplex_Type: 5>
+        kEmpty_Type: typing.ClassVar[RRect.Type]  # value = <Type.kEmpty_Type: 0>
+        kLastType: typing.ClassVar[RRect.Type]  # value = <Type.kComplex_Type: 5>
+        kNinePatch_Type: typing.ClassVar[RRect.Type]  # value = <Type.kNinePatch_Type: 4>
+        kOval_Type: typing.ClassVar[RRect.Type]  # value = <Type.kOval_Type: 2>
+        kRect_Type: typing.ClassVar[RRect.Type]  # value = <Type.kRect_Type: 1>
+        kSimple_Type: typing.ClassVar[RRect.Type]  # value = <Type.kSimple_Type: 3>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kEmpty_Type': <Type.kEmpty_Type: 0>, 'kRect_Type': <Type.kRect_Type: 1>, 'kOval_Type': <Type.kOval_Type: 2>, 'kSimple_Type': <Type.kSimple_Type: 3>, 'kNinePatch_Type': <Type.kNinePatch_Type: 4>, 'kComplex_Type': <Type.kComplex_Type: 5>, 'kLastType': <Type.kComplex_Type: 5>}
-        kComplex_Type: animator.skia.RRect.Type  # value = <Type.kComplex_Type: 5>
-        kEmpty_Type: animator.skia.RRect.Type  # value = <Type.kEmpty_Type: 0>
-        kLastType: animator.skia.RRect.Type  # value = <Type.kComplex_Type: 5>
-        kNinePatch_Type: animator.skia.RRect.Type  # value = <Type.kNinePatch_Type: 4>
-        kOval_Type: animator.skia.RRect.Type  # value = <Type.kOval_Type: 2>
-        kRect_Type: animator.skia.RRect.Type  # value = <Type.kRect_Type: 1>
-        kSimple_Type: animator.skia.RRect.Type  # value = <Type.kSimple_Type: 3>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
+    kSizeInMemory: typing.ClassVar[int] = 48
     @staticmethod
     def MakeEmpty() -> RRect: ...
     @staticmethod
@@ -6815,9 +6116,9 @@ class RRect:
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
-    def __init__(self, rect: _Rect, xRad: float, yRad: float) -> None: ...
-    @typing.overload
     def __init__(self, rrect: RRect) -> None: ...
+    @typing.overload
+    def __init__(self, rect: _Rect, xRad: float, yRad: float) -> None: ...
     def __ne__(self, arg0: RRect) -> bool: ...
     def __str__(self) -> str: ...
     def contains(self, rect: _Rect) -> bool: ...
@@ -6881,10 +6182,12 @@ class RRect:
         """
         Writes :py:class:`RRect` to :py:class:`Data` and returns it.
         """
-    kSizeInMemory = 48
-    pass
 
 class RSXform:
+    fSCos: float
+    fSSin: float
+    fTx: float
+    fTy: float
     @staticmethod
     def Make(scos: float, ssin: float, tx: float, ty: float) -> RSXform: ...
     @staticmethod
@@ -6895,15 +6198,6 @@ class RSXform:
     def set(self, scos: float, ssin: float, tx: float, ty: float) -> None: ...
     def setIdentity(self) -> None: ...
     @typing.overload
-    def toQuad(self, size: Size) -> list[Point]:
-        """
-        Maps a rectangle with the given *size* with this :py:class:`RSXform` and returns a list of 4 points, the
-        corners of the resulting quadrilateral.
-
-        :param size: The size of the rectangle.
-        :return: A list of 4 points, the corners of the resulting quadrilateral.
-        """
-    @typing.overload
     def toQuad(self, width: float, height: float) -> list[Point]:
         """
         Maps a rectangle with the given *width* and *height* with this :py:class:`RSXform` and returns a list of
@@ -6913,53 +6207,34 @@ class RSXform:
         :param height: The height of the rectangle.
         :return: A list of 4 points, the corners of the resulting quadrilateral.
         """
+    @typing.overload
+    def toQuad(self, size: Size) -> list[Point]:
+        """
+        Maps a rectangle with the given *size* with this :py:class:`RSXform` and returns a list of 4 points, the
+        corners of the resulting quadrilateral.
+
+        :param size: The size of the rectangle.
+        :return: A list of 4 points, the corners of the resulting quadrilateral.
+        """
     def toTriStrip(self, width: float, height: float) -> list[Point]:
         """
         Returns a list of 4 points, the corners of the resulting strip.
         """
-    @property
-    def fSCos(self) -> float:
-        """
-        :type: float
-        """
-    @fSCos.setter
-    def fSCos(self, arg0: float) -> None:
-        pass
-    @property
-    def fSSin(self) -> float:
-        """
-        :type: float
-        """
-    @fSSin.setter
-    def fSSin(self, arg0: float) -> None:
-        pass
-    @property
-    def fTx(self) -> float:
-        """
-        :type: float
-        """
-    @fTx.setter
-    def fTx(self, arg0: float) -> None:
-        pass
-    @property
-    def fTy(self) -> float:
-        """
-        :type: float
-        """
-    @fTy.setter
-    def fTy(self, arg0: float) -> None:
-        pass
-    pass
 
 class Rect:
+    __hash__: typing.ClassVar[None] = None
+    fBottom: float
+    fLeft: float
+    fRight: float
+    fTop: float
     @staticmethod
     def Intersects(a: _Rect, b: _Rect) -> bool: ...
     @staticmethod
     @typing.overload
-    def Make(irect: _IRect) -> Rect: ...
+    def Make(size: _ISize) -> Rect: ...
     @staticmethod
     @typing.overload
-    def Make(size: _ISize) -> Rect: ...
+    def Make(irect: _IRect) -> Rect: ...
     @staticmethod
     def MakeEmpty() -> Rect: ...
     @staticmethod
@@ -6973,15 +6248,20 @@ class Rect:
     @staticmethod
     def MakeXYWH(x: float, y: float, w: float, h: float) -> Rect: ...
     @typing.overload
-    def __contains__(self, arg0: _IRect) -> bool: ...
-    @typing.overload
     def __contains__(self, arg0: _Point) -> bool:
         """
         Returns ``True`` if :py:class:`Point` is inside :py:class:`Rect`.
         """
     @typing.overload
     def __contains__(self, arg0: _Rect) -> bool: ...
+    @typing.overload
+    def __contains__(self, arg0: _IRect) -> bool: ...
     def __eq__(self, other: _Rect) -> bool: ...
+    @typing.overload
+    def __init__(self, t: tuple) -> None:
+        """
+        Create an :py:class:`Rect` from a tuple of 0, 2, or 4 floats.
+        """
     @typing.overload
     def __init__(self) -> None:
         """
@@ -6990,10 +6270,20 @@ class Rect:
         convenience, but does not designate a special empty rectangle.
         """
     @typing.overload
-    def __init__(self, irect: _IRect) -> None:
+    def __init__(self, w: float, h: float) -> None:
         """
-        Constructs a :py:class:`Rect` set to iRect, promoting integer to floats. Does not validate input; fLeft
-        may be greater than fRight, fTop may be greater than fBottom.
+        Constructs a :py:class:`Rect` set to (0, 0, w, h). Does not validate input; w or h may be negative.
+
+        :param float w: width of constructed :py:class:`Rect`
+        :param float h: height of constructed :py:class:`Rect`
+        """
+    @typing.overload
+    def __init__(self, size: Size) -> None:
+        """
+        Constructs a :py:class:`Rect` set to (0, 0, size.width(), size.height()). Does not validate input;
+        size.width() or size.height() may be negative.
+
+        :param Size size: values for :py:class:`Rect` width and height
         """
     @typing.overload
     def __init__(self, l: float, t: float, r: float, b: float) -> None:
@@ -7015,25 +6305,10 @@ class Rect:
         :param ISize size: values for :py:class:`Rect` width and height
         """
     @typing.overload
-    def __init__(self, size: Size) -> None:
+    def __init__(self, irect: _IRect) -> None:
         """
-        Constructs a :py:class:`Rect` set to (0, 0, size.width(), size.height()). Does not validate input;
-        size.width() or size.height() may be negative.
-
-        :param Size size: values for :py:class:`Rect` width and height
-        """
-    @typing.overload
-    def __init__(self, t: tuple) -> None:
-        """
-        Create an :py:class:`Rect` from a tuple of 0, 2, or 4 floats.
-        """
-    @typing.overload
-    def __init__(self, w: float, h: float) -> None:
-        """
-        Constructs a :py:class:`Rect` set to (0, 0, w, h). Does not validate input; w or h may be negative.
-
-        :param float w: width of constructed :py:class:`Rect`
-        :param float h: height of constructed :py:class:`Rect`
+        Constructs a :py:class:`Rect` set to iRect, promoting integer to floats. Does not validate input; fLeft
+        may be greater than fRight, fTop may be greater than fBottom.
         """
     def __iter__(self) -> typing.Iterator: ...
     def __len__(self) -> int: ...
@@ -7048,19 +6323,19 @@ class Rect:
     def centerX(self) -> float: ...
     def centerY(self) -> float: ...
     @typing.overload
-    def contains(self, r: _IRect) -> bool: ...
+    def contains(self, x: float, y: float) -> bool: ...
     @typing.overload
     def contains(self, r: _Rect) -> bool: ...
     @typing.overload
-    def contains(self, x: float, y: float) -> bool: ...
+    def contains(self, r: _IRect) -> bool: ...
     def dump(self, asHex: bool = False) -> None: ...
     def dumpHex(self) -> None: ...
     def height(self) -> float: ...
     def inset(self, dx: float, dy: float) -> None: ...
     @typing.overload
-    def intersect(self, a: _Rect, b: _Rect) -> bool: ...
-    @typing.overload
     def intersect(self, r: _Rect) -> bool: ...
+    @typing.overload
+    def intersect(self, a: _Rect, b: _Rect) -> bool: ...
     def intersects(self, r: _Rect) -> bool: ...
     def isEmpty(self) -> bool: ...
     def isFinite(self) -> bool: ...
@@ -7077,9 +6352,9 @@ class Rect:
     def makeOutset(self, dx: float, dy: float) -> Rect: ...
     def makeSorted(self) -> Rect: ...
     @typing.overload
-    def offset(self, delta: _Point) -> None: ...
-    @typing.overload
     def offset(self, dx: float, dy: float) -> None: ...
+    @typing.overload
+    def offset(self, delta: _Point) -> None: ...
     def offsetTo(self, newX: float, newY: float) -> None: ...
     def outset(self, dx: float, dy: float) -> None: ...
     def right(self) -> float: ...
@@ -7087,9 +6362,9 @@ class Rect:
     def roundIn(self) -> IRect: ...
     def roundOut(self) -> IRect: ...
     @typing.overload
-    def set(self, p0: _Point, p1: _Point) -> None: ...
-    @typing.overload
     def set(self, src: _IRect) -> None: ...
+    @typing.overload
+    def set(self, p0: _Point, p1: _Point) -> None: ...
     def setBounds(self, points: typing.Sequence[_Point]) -> None:
         """
         Sets to bounds of :py:class:`Point` list. If list is empty, or contains an infinity or NaN, sets to
@@ -7124,39 +6399,6 @@ class Rect:
     def width(self) -> float: ...
     def x(self) -> float: ...
     def y(self) -> float: ...
-    @property
-    def fBottom(self) -> float:
-        """
-        :type: float
-        """
-    @fBottom.setter
-    def fBottom(self, arg0: float) -> None:
-        pass
-    @property
-    def fLeft(self) -> float:
-        """
-        :type: float
-        """
-    @fLeft.setter
-    def fLeft(self, arg0: float) -> None:
-        pass
-    @property
-    def fRight(self) -> float:
-        """
-        :type: float
-        """
-    @fRight.setter
-    def fRight(self, arg0: float) -> None:
-        pass
-    @property
-    def fTop(self) -> float:
-        """
-        :type: float
-        """
-    @fTop.setter
-    def fTop(self, arg0: float) -> None:
-        pass
-    pass
 
 _Rect = Rect | tuple[()] | tuple[float, float] | tuple[float, float, float, float]
 
@@ -7187,7 +6429,6 @@ class Region:
         def done(self) -> bool: ...
         def next(self) -> None: ...
         def rect(self) -> IRect: ...
-        pass
 
     class Iterator:
         @typing.overload
@@ -7202,7 +6443,6 @@ class Region:
         def reset(self, region: Region) -> None: ...
         def rewind(self) -> bool: ...
         def rgn(self) -> Region: ...
-        pass
 
     class Op:
         """
@@ -7223,34 +6463,30 @@ class Region:
           kLastOp
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Region.Op]
+        ]  # value = {'kDifference_Op': <Op.kDifference_Op: 0>, 'kIntersect_Op': <Op.kIntersect_Op: 1>, 'kUnion_Op': <Op.kUnion_Op: 2>, 'kXOR_Op': <Op.kXOR_Op: 3>, 'kReverseDifference_Op': <Op.kReverseDifference_Op: 4>, 'kReplace_Op': <Op.kReplace_Op: 5>, 'kLastOp': <Op.kReplace_Op: 5>}
+        kDifference_Op: typing.ClassVar[Region.Op]  # value = <Op.kDifference_Op: 0>
+        kIntersect_Op: typing.ClassVar[Region.Op]  # value = <Op.kIntersect_Op: 1>
+        kLastOp: typing.ClassVar[Region.Op]  # value = <Op.kReplace_Op: 5>
+        kReplace_Op: typing.ClassVar[Region.Op]  # value = <Op.kReplace_Op: 5>
+        kReverseDifference_Op: typing.ClassVar[Region.Op]  # value = <Op.kReverseDifference_Op: 4>
+        kUnion_Op: typing.ClassVar[Region.Op]  # value = <Op.kUnion_Op: 2>
+        kXOR_Op: typing.ClassVar[Region.Op]  # value = <Op.kXOR_Op: 3>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kDifference_Op': <Op.kDifference_Op: 0>, 'kIntersect_Op': <Op.kIntersect_Op: 1>, 'kUnion_Op': <Op.kUnion_Op: 2>, 'kXOR_Op': <Op.kXOR_Op: 3>, 'kReverseDifference_Op': <Op.kReverseDifference_Op: 4>, 'kReplace_Op': <Op.kReplace_Op: 5>, 'kLastOp': <Op.kReplace_Op: 5>}
-        kDifference_Op: animator.skia.Region.Op  # value = <Op.kDifference_Op: 0>
-        kIntersect_Op: animator.skia.Region.Op  # value = <Op.kIntersect_Op: 1>
-        kLastOp: animator.skia.Region.Op  # value = <Op.kReplace_Op: 5>
-        kReplace_Op: animator.skia.Region.Op  # value = <Op.kReplace_Op: 5>
-        kReverseDifference_Op: animator.skia.Region.Op  # value = <Op.kReverseDifference_Op: 4>
-        kUnion_Op: animator.skia.Region.Op  # value = <Op.kUnion_Op: 2>
-        kXOR_Op: animator.skia.Region.Op  # value = <Op.kXOR_Op: 3>
-        pass
+        def value(self) -> int: ...
 
     class Spanerator:
         def __init__(self, region: Region, y: int, left: int, right: int) -> None: ...
@@ -7261,74 +6497,76 @@ class Region:
             Advances iterator to next span intersecting :py:class:`Region` within line segment provided in constructor.
             Returns ``None`` if no intervals were found.
             """
-    @typing.overload
-    def __and__(self, arg0: _IRect) -> Region: ...
+    __hash__: typing.ClassVar[None] = None
+    kOpCnt: typing.ClassVar[int] = 6
     @typing.overload
     def __and__(self, arg0: Region) -> Region: ...
     @typing.overload
-    def __contains__(self, arg0: _IRect) -> bool: ...
-    @typing.overload
-    def __contains__(self, arg0: Region) -> bool: ...
+    def __and__(self, arg0: _IRect) -> Region: ...
     @typing.overload
     def __contains__(self, point: tuple) -> bool:
         """
         Checks if *point* is inside :py:class:`Region`.
         """
-    def __eq__(self, other: Region) -> bool: ...
     @typing.overload
-    def __iand__(self, arg0: _IRect) -> Region: ...
+    def __contains__(self, arg0: _IRect) -> bool: ...
+    @typing.overload
+    def __contains__(self, arg0: Region) -> bool: ...
+    def __eq__(self, other: Region) -> bool: ...
     @typing.overload
     def __iand__(self, arg0: Region) -> Region: ...
     @typing.overload
-    def __init__(self) -> None: ...
+    def __iand__(self, arg0: _IRect) -> Region: ...
     @typing.overload
-    def __init__(self, rect: _IRect) -> None: ...
+    def __init__(self) -> None: ...
     @typing.overload
     def __init__(self, region: Region) -> None: ...
     @typing.overload
-    def __ior__(self, arg0: _IRect) -> Region: ...
+    def __init__(self, rect: _IRect) -> None: ...
     @typing.overload
     def __ior__(self, arg0: Region) -> Region: ...
     @typing.overload
-    def __isub__(self, arg0: _IRect) -> Region: ...
+    def __ior__(self, arg0: _IRect) -> Region: ...
     @typing.overload
     def __isub__(self, arg0: Region) -> Region: ...
+    @typing.overload
+    def __isub__(self, arg0: _IRect) -> Region: ...
     def __iter__(self) -> Region.Iterator: ...
     @typing.overload
-    def __ixor__(self, arg0: _IRect) -> Region: ...
-    @typing.overload
     def __ixor__(self, arg0: Region) -> Region: ...
+    @typing.overload
+    def __ixor__(self, arg0: _IRect) -> Region: ...
     def __ne__(self, other: Region) -> bool: ...
     @typing.overload
-    def __or__(self, arg0: _IRect) -> Region: ...
-    @typing.overload
     def __or__(self, arg0: Region) -> Region: ...
+    @typing.overload
+    def __or__(self, arg0: _IRect) -> Region: ...
     def __rand__(self, arg0: _IRect) -> Region: ...
     def __ror__(self, arg0: _IRect) -> Region: ...
     def __rsub__(self, arg0: _IRect) -> Region: ...
     def __rxor__(self, arg0: _IRect) -> Region: ...
     def __str__(self) -> str: ...
     @typing.overload
-    def __sub__(self, arg0: _IRect) -> Region: ...
-    @typing.overload
     def __sub__(self, arg0: Region) -> Region: ...
     @typing.overload
-    def __xor__(self, arg0: _IRect) -> Region: ...
+    def __sub__(self, arg0: _IRect) -> Region: ...
     @typing.overload
     def __xor__(self, arg0: Region) -> Region: ...
+    @typing.overload
+    def __xor__(self, arg0: _IRect) -> Region: ...
     def computeRegionComplexity(self) -> int: ...
+    @typing.overload
+    def contains(self, x: int, y: int) -> bool: ...
     @typing.overload
     def contains(self, other: _IRect) -> bool: ...
     @typing.overload
     def contains(self, other: Region) -> bool: ...
-    @typing.overload
-    def contains(self, x: int, y: int) -> bool: ...
     def getBoundaryPath(self, path: Path) -> bool: ...
     def getBounds(self) -> IRect: ...
     @typing.overload
-    def intersects(self, other: Region) -> bool: ...
-    @typing.overload
     def intersects(self, rect: _IRect) -> bool: ...
+    @typing.overload
+    def intersects(self, other: Region) -> bool: ...
     def isComplex(self) -> bool: ...
     def isEmpty(self) -> bool: ...
     def isRect(self) -> bool: ...
@@ -7339,9 +6577,9 @@ class Region:
     @typing.overload
     def op(self, rect: _IRect, op: Region.Op) -> bool: ...
     @typing.overload
-    def op(self, rect: _IRect, rgn: Region, op: Region.Op) -> bool: ...
-    @typing.overload
     def op(self, rgn: Region, op: Region.Op) -> bool: ...
+    @typing.overload
+    def op(self, rect: _IRect, rgn: Region, op: Region.Op) -> bool: ...
     @typing.overload
     def op(self, rgn: Region, rect: _IRect, op: Region.Op) -> bool: ...
     @typing.overload
@@ -7370,81 +6608,40 @@ class Region:
         """
         Writes :py:class:`Region` to :py:class:`Data` and returns it.
         """
-    kOpCnt = 6
-    pass
 
-class RuntimeEffectBuilder:
-    class BuilderChild:
-        def __str__(self) -> str: ...
-        def set(self, val: Shader | ColorFilter | Blender | None) -> None:
-            """
-            Set the child to the given *val*.
-            """
-
-    class BuilderUniform:
-        def __str__(self) -> str: ...
-        @typing.overload
-        def set(self, val: Matrix) -> None:
-            """
-            Set the matrix uniform to the given *val*.
-            """
-        @typing.overload
-        def set(self, val: int | float) -> None:
-            """
-            Set the uniform with a single value to the given *val*. *val* is automatically type-cast.
-            """
-        @typing.overload
-        def set(self, val: typing.Sequence[int] | typing.Sequence[float]) -> None:
-            """
-            Set the uniform with an array of values to the given *val*. *val* is automatically type-cast.
-            """
-    def child(self, name: str) -> RuntimeEffectBuilder.BuilderChild: ...
-    def children(self) -> list[RuntimeEffect.ChildPtr]: ...
-    def effect(self) -> RuntimeEffect: ...
-    def uniform(self, name: str) -> RuntimeEffectBuilder.BuilderUniform: ...
-    def uniforms(self) -> Data: ...
-    pass
+class RuntimeBlendBuilder(RuntimeEffectBuilder):
+    def __init__(self, effect: RuntimeEffect) -> None: ...
+    def makeBlender(self) -> Blender: ...
 
 class RuntimeColorFilterBuilder(RuntimeEffectBuilder):
     def __init__(self, effect: RuntimeEffect) -> None: ...
     def makeColorFilter(self) -> ColorFilter: ...
-    pass
 
 class RuntimeEffect:
     class Child:
         def __str__(self) -> str: ...
         @property
-        def index(self) -> int:
-            """
-            :type: int
-            """
+        def index(self) -> int: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def type(self) -> RuntimeEffect.ChildType:
-            """
-            :type: RuntimeEffect.ChildType
-            """
+        def type(self) -> RuntimeEffect.ChildType: ...
 
     class ChildPtr:
         @typing.overload
         def __init__(self) -> None: ...
         @typing.overload
-        def __init__(self, b: Blender) -> None: ...
+        def __init__(self, s: Shader) -> None: ...
         @typing.overload
         def __init__(self, cf: ColorFilter) -> None: ...
         @typing.overload
-        def __init__(self, s: Shader) -> None: ...
+        def __init__(self, b: Blender) -> None: ...
         def __str__(self) -> str: ...
         def blender(self) -> Blender: ...
         def colorFilter(self) -> ColorFilter: ...
         def flattenable(self) -> Flattenable: ...
         def shader(self) -> Shader: ...
         def type(self) -> RuntimeEffect.ChildType | None: ...
-        pass
 
     class ChildType:
         """
@@ -7457,60 +6654,43 @@ class RuntimeEffect:
           kBlender
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, RuntimeEffect.ChildType]
+        ]  # value = {'kShader': <ChildType.kShader: 0>, 'kColorFilter': <ChildType.kColorFilter: 1>, 'kBlender': <ChildType.kBlender: 2>}
+        kBlender: typing.ClassVar[RuntimeEffect.ChildType]  # value = <ChildType.kBlender: 2>
+        kColorFilter: typing.ClassVar[RuntimeEffect.ChildType]  # value = <ChildType.kColorFilter: 1>
+        kShader: typing.ClassVar[RuntimeEffect.ChildType]  # value = <ChildType.kShader: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kShader': <ChildType.kShader: 0>, 'kColorFilter': <ChildType.kColorFilter: 1>, 'kBlender': <ChildType.kBlender: 2>}
-        kBlender: animator.skia.RuntimeEffect.ChildType  # value = <ChildType.kBlender: 2>
-        kColorFilter: animator.skia.RuntimeEffect.ChildType  # value = <ChildType.kColorFilter: 1>
-        kShader: animator.skia.RuntimeEffect.ChildType  # value = <ChildType.kShader: 0>
-        pass
+        def value(self) -> int: ...
 
     class Options:
         def __init__(self, forceUnoptimized: bool = False) -> None: ...
         def __str__(self) -> str: ...
-        pass
 
     class Result:
         def __str__(self) -> str: ...
         @property
-        def effect(self) -> RuntimeEffect | None:
-            """
-            :type: RuntimeEffect
-            """
+        def effect(self) -> RuntimeEffect: ...
         @property
-        def errorText(self) -> str:
-            """
-            :type: str
-            """
+        def errorText(self) -> str: ...
 
     class TracedShader:
         @property
-        def debugTrace(self) -> sksl.DebugTrace:
-            """
-            :type: sksl.DebugTrace
-            """
+        def debugTrace(self) -> sksl.DebugTrace: ...
         @property
-        def shader(self) -> Shader:
-            """
-            :type: Shader
-            """
+        def shader(self) -> Shader: ...
 
     class Uniform:
         class Flags(IntEnum):
@@ -7528,43 +6708,39 @@ class RuntimeEffect:
               kHalfPrecision_Flag
             """
 
-            def __and__(self, other: object) -> object: ...
-            def __eq__(self, other: object) -> bool: ...
-            def __ge__(self, other: object) -> bool: ...
+            __members__: typing.ClassVar[
+                dict[str, RuntimeEffect.Uniform.Flags]
+            ]  # value = {'kArray_Flag': <Flags.kArray_Flag: 1>, 'kColor_Flag': <Flags.kColor_Flag: 2>, 'kVertex_Flag': <Flags.kVertex_Flag: 4>, 'kFragment_Flag': <Flags.kFragment_Flag: 8>, 'kHalfPrecision_Flag': <Flags.kHalfPrecision_Flag: 16>}
+            kArray_Flag: typing.ClassVar[RuntimeEffect.Uniform.Flags]  # value = <Flags.kArray_Flag: 1>
+            kColor_Flag: typing.ClassVar[RuntimeEffect.Uniform.Flags]  # value = <Flags.kColor_Flag: 2>
+            kFragment_Flag: typing.ClassVar[RuntimeEffect.Uniform.Flags]  # value = <Flags.kFragment_Flag: 8>
+            kHalfPrecision_Flag: typing.ClassVar[RuntimeEffect.Uniform.Flags]  # value = <Flags.kHalfPrecision_Flag: 16>
+            kVertex_Flag: typing.ClassVar[RuntimeEffect.Uniform.Flags]  # value = <Flags.kVertex_Flag: 4>
+            def __and__(self, other: typing.Any) -> typing.Any: ...
+            def __eq__(self, other: typing.Any) -> bool: ...
+            def __ge__(self, other: typing.Any) -> bool: ...
             def __getstate__(self) -> int: ...
-            def __gt__(self, other: object) -> bool: ...
+            def __gt__(self, other: typing.Any) -> bool: ...
             def __hash__(self) -> int: ...
             def __index__(self) -> int: ...
             def __init__(self, value: int) -> None: ...
             def __int__(self) -> int: ...
-            def __invert__(self) -> object: ...
-            def __le__(self, other: object) -> bool: ...
-            def __lt__(self, other: object) -> bool: ...
-            def __ne__(self, other: object) -> bool: ...
-            def __or__(self, other: object) -> object: ...
-            def __rand__(self, other: object) -> object: ...
+            def __invert__(self) -> typing.Any: ...
+            def __le__(self, other: typing.Any) -> bool: ...
+            def __lt__(self, other: typing.Any) -> bool: ...
+            def __ne__(self, other: typing.Any) -> bool: ...
+            def __or__(self, other: typing.Any) -> typing.Any: ...
+            def __rand__(self, other: typing.Any) -> typing.Any: ...
             def __repr__(self) -> str: ...
-            def __ror__(self, other: object) -> object: ...
-            def __rxor__(self, other: object) -> object: ...
+            def __ror__(self, other: typing.Any) -> typing.Any: ...
+            def __rxor__(self, other: typing.Any) -> typing.Any: ...
             def __setstate__(self, state: int) -> None: ...
-            def __xor__(self, other: object) -> object: ...
+            def __str__(self) -> str: ...
+            def __xor__(self, other: typing.Any) -> typing.Any: ...
             @property
-            def name(self) -> str:
-                """
-                :type: str
-                """
+            def name(self) -> str: ...
             @property
-            def value(self) -> int:
-                """
-                :type: int
-                """
-            __members__: dict  # value = {'kArray_Flag': <Flags.kArray_Flag: 1>, 'kColor_Flag': <Flags.kColor_Flag: 2>, 'kVertex_Flag': <Flags.kVertex_Flag: 4>, 'kFragment_Flag': <Flags.kFragment_Flag: 8>, 'kHalfPrecision_Flag': <Flags.kHalfPrecision_Flag: 16>}
-            kArray_Flag: animator.skia.RuntimeEffect.Uniform.Flags  # value = <Flags.kArray_Flag: 1>
-            kColor_Flag: animator.skia.RuntimeEffect.Uniform.Flags  # value = <Flags.kColor_Flag: 2>
-            kFragment_Flag: animator.skia.RuntimeEffect.Uniform.Flags  # value = <Flags.kFragment_Flag: 8>
-            kHalfPrecision_Flag: animator.skia.RuntimeEffect.Uniform.Flags  # value = <Flags.kHalfPrecision_Flag: 16>
-            kVertex_Flag: animator.skia.RuntimeEffect.Uniform.Flags  # value = <Flags.kVertex_Flag: 4>
-            pass
+            def value(self) -> int: ...
 
         class Type:
             """
@@ -7593,67 +6769,50 @@ class RuntimeEffect:
               kInt4
             """
 
-            def __eq__(self, other: object) -> bool: ...
+            __members__: typing.ClassVar[
+                dict[str, RuntimeEffect.Uniform.Type]
+            ]  # value = {'kFloat': <Type.kFloat: 0>, 'kFloat2': <Type.kFloat2: 1>, 'kFloat3': <Type.kFloat3: 2>, 'kFloat4': <Type.kFloat4: 3>, 'kFloat2x2': <Type.kFloat2x2: 4>, 'kFloat3x3': <Type.kFloat3x3: 5>, 'kFloat4x4': <Type.kFloat4x4: 6>, 'kInt': <Type.kInt: 7>, 'kInt2': <Type.kInt2: 8>, 'kInt3': <Type.kInt3: 9>, 'kInt4': <Type.kInt4: 10>}
+            kFloat: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kFloat: 0>
+            kFloat2: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kFloat2: 1>
+            kFloat2x2: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kFloat2x2: 4>
+            kFloat3: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kFloat3: 2>
+            kFloat3x3: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kFloat3x3: 5>
+            kFloat4: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kFloat4: 3>
+            kFloat4x4: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kFloat4x4: 6>
+            kInt: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kInt: 7>
+            kInt2: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kInt2: 8>
+            kInt3: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kInt3: 9>
+            kInt4: typing.ClassVar[RuntimeEffect.Uniform.Type]  # value = <Type.kInt4: 10>
+            def __eq__(self, other: typing.Any) -> bool: ...
             def __getstate__(self) -> int: ...
             def __hash__(self) -> int: ...
             def __index__(self) -> int: ...
             def __init__(self, value: int) -> None: ...
             def __int__(self) -> int: ...
-            def __ne__(self, other: object) -> bool: ...
+            def __ne__(self, other: typing.Any) -> bool: ...
             def __repr__(self) -> str: ...
             def __setstate__(self, state: int) -> None: ...
+            def __str__(self) -> str: ...
             @property
-            def name(self) -> str:
-                """
-                :type: str
-                """
+            def name(self) -> str: ...
             @property
-            def value(self) -> int:
-                """
-                :type: int
-                """
-            __members__: dict  # value = {'kFloat': <Type.kFloat: 0>, 'kFloat2': <Type.kFloat2: 1>, 'kFloat3': <Type.kFloat3: 2>, 'kFloat4': <Type.kFloat4: 3>, 'kFloat2x2': <Type.kFloat2x2: 4>, 'kFloat3x3': <Type.kFloat3x3: 5>, 'kFloat4x4': <Type.kFloat4x4: 6>, 'kInt': <Type.kInt: 7>, 'kInt2': <Type.kInt2: 8>, 'kInt3': <Type.kInt3: 9>, 'kInt4': <Type.kInt4: 10>}
-            kFloat: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kFloat: 0>
-            kFloat2: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kFloat2: 1>
-            kFloat2x2: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kFloat2x2: 4>
-            kFloat3: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kFloat3: 2>
-            kFloat3x3: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kFloat3x3: 5>
-            kFloat4: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kFloat4: 3>
-            kFloat4x4: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kFloat4x4: 6>
-            kInt: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kInt: 7>
-            kInt2: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kInt2: 8>
-            kInt3: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kInt3: 9>
-            kInt4: animator.skia.RuntimeEffect.Uniform.Type  # value = <Type.kInt4: 10>
-            pass
+            def value(self) -> int: ...
+
         def __str__(self) -> str: ...
         def isArray(self) -> bool: ...
         def isColor(self) -> bool: ...
         def sizeInBytes(self) -> int: ...
         @property
-        def count(self) -> int:
-            """
-            :type: int
-            """
+        def count(self) -> int: ...
         @property
-        def flags(self) -> int:
-            """
-            :type: int
-            """
+        def flags(self) -> int: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def offset(self) -> int:
-            """
-            :type: int
-            """
+        def offset(self) -> int: ...
         @property
-        def type(self) -> RuntimeEffect.Uniform.Type:
-            """
-            :type: RuntimeEffect.Uniform.Type
-            """
+        def type(self) -> RuntimeEffect.Uniform.Type: ...
+
     @staticmethod
     def MakeForBlender(sksl: str, options: RuntimeEffect.Options = ...) -> RuntimeEffect.Result: ...
     @staticmethod
@@ -7685,19 +6844,10 @@ class RuntimeEffect:
         """
         Create a color filter from this effect with the given *uniforms* and *children*.
         """
-    def makeImage(
-        self,
-        uniforms: Data,
-        children: list[RuntimeEffect.ChildPtr],
-        resultInfo: ImageInfo,
-        localMatrix: Matrix | None = None,
-        mipmapped: bool = False,
-    ) -> Image:
+    @typing.overload
+    def makeShader(self, uniforms: Data, children: list[Shader], localMatrix: Matrix | None = None) -> Shader:
         """
-        Create an image from this effect with the given *uniforms* and *children*.
-
-        :note: The *resultInfo* and *localMatrix* parameters are swapped from the corresponding parameters in
-            the C++ API.
+        Create a shader from this effect with the given *uniforms* and *children*.
         """
     @typing.overload
     def makeShader(
@@ -7706,75 +6856,73 @@ class RuntimeEffect:
         """
         Create a shader from this effect with the given *uniforms* and *children*.
         """
-    @typing.overload
-    def makeShader(self, uniforms: Data, children: list[Shader], localMatrix: Matrix | None = None) -> Shader:
-        """
-        Create a shader from this effect with the given *uniforms* and *children*.
-        """
     def source(self) -> str: ...
     def uniformSize(self) -> int: ...
     def uniforms(self) -> list[RuntimeEffect.Uniform]: ...
-    pass
 
-class RuntimeBlendBuilder(RuntimeEffectBuilder):
-    def __init__(self, effect: RuntimeEffect) -> None: ...
-    def makeBlender(self) -> Blender: ...
-    pass
+class RuntimeEffectBuilder:
+    class BuilderChild:
+        def __str__(self) -> str: ...
+        def set(self, val: Shader | ColorFilter | Blender | None) -> None:
+            """
+            Set the child to the given *val*.
+            """
+
+    class BuilderUniform:
+        def __str__(self) -> str: ...
+        @typing.overload
+        def set(self, val: Matrix) -> None:
+            """
+            Set the matrix uniform to the given *val*.
+            """
+        @typing.overload
+        def set(self, val: int | float) -> None:
+            """
+            Set the uniform with a single value to the given *val*. *val* is automatically type-cast.
+            """
+        @typing.overload
+        def set(self, val: typing.Sequence[int] | typing.Sequence[float]) -> None:
+            """
+            Set the uniform with an array of values to the given *val*. *val* is automatically type-cast.
+            """
+    def child(self, name: str) -> RuntimeEffectBuilder.BuilderChild: ...
+    def children(self) -> list[RuntimeEffect.ChildPtr]: ...
+    def effect(self) -> RuntimeEffect: ...
+    def uniform(self, name: str) -> RuntimeEffectBuilder.BuilderUniform: ...
+    def uniforms(self) -> Data: ...
 
 class RuntimeShaderBuilder(RuntimeEffectBuilder):
     def __init__(self, effect: RuntimeEffect) -> None: ...
-    def makeImage(self, resultInfo: ImageInfo, localMatrix: Matrix | None = None, mipmapped: bool = False) -> Image:
-        """
-        Create an image from this shader builder with the given *resultInfo*.
-
-        :note: The *resultInfo* and *localMatrix* parameters are swapped from the corresponding parameters in
-            the C++ API.
-        """
     def makeShader(self, localMatrix: Matrix | None = None) -> Shader: ...
-    pass
 
 class SamplingOptions:
+    __hash__: typing.ClassVar[None] = None
     @staticmethod
     def Aniso(maxAniso: int) -> SamplingOptions: ...
     def __eq__(self, arg0: SamplingOptions) -> bool: ...
     @typing.overload
     def __init__(self) -> None: ...
     @typing.overload
-    def __init__(self, c: CubicResampler) -> None: ...
-    @typing.overload
-    def __init__(self, fm: FilterMode) -> None: ...
+    def __init__(self, other: SamplingOptions) -> None: ...
     @typing.overload
     def __init__(self, fm: FilterMode, mm: MipmapMode) -> None: ...
     @typing.overload
-    def __init__(self, other: SamplingOptions) -> None: ...
+    def __init__(self, fm: FilterMode) -> None: ...
+    @typing.overload
+    def __init__(self, c: CubicResampler) -> None: ...
     def __ne__(self, arg0: SamplingOptions) -> bool: ...
     def __str__(self) -> str: ...
     def isAniso(self) -> bool: ...
     @property
-    def cubic(self) -> CubicResampler:
-        """
-        :type: CubicResampler
-        """
+    def cubic(self) -> CubicResampler: ...
     @property
-    def filter(self) -> FilterMode:
-        """
-        :type: FilterMode
-        """
+    def filter(self) -> FilterMode: ...
     @property
-    def maxAniso(self) -> int:
-        """
-        :type: int
-        """
+    def maxAniso(self) -> int: ...
     @property
-    def mipmap(self) -> MipmapMode:
-        """
-        :type: MipmapMode
-        """
+    def mipmap(self) -> MipmapMode: ...
     @property
-    def useCubic(self) -> bool:
-        """
-        :type: bool
-        """
+    def useCubic(self) -> bool: ...
 
 class Shader(Flattenable):
     """
@@ -7783,16 +6931,16 @@ class Shader(Flattenable):
 
     @staticmethod
     @typing.overload
-    def Blend(blender: Blender, dst: Shader, src: Shader) -> Shader: ...
-    @staticmethod
-    @typing.overload
     def Blend(mode: BlendMode, dst: Shader, src: Shader) -> Shader: ...
     @staticmethod
     @typing.overload
-    def Color(color: _Color4f, space: ColorSpace | None = None) -> Shader: ...
+    def Blend(blender: Blender, dst: Shader, src: Shader) -> Shader: ...
     @staticmethod
     @typing.overload
     def Color(color: _Color) -> Shader: ...
+    @staticmethod
+    @typing.overload
+    def Color(color: _Color4f, space: ColorSpace | None = None) -> Shader: ...
     @staticmethod
     def CoordClamp(shader: Shader, subset: _Rect) -> Shader: ...
     @staticmethod
@@ -7813,12 +6961,11 @@ class Shader(Flattenable):
     def isOpaque(self) -> bool: ...
     def makeWithColorFilter(self, filter: ColorFilter) -> Shader: ...
     def makeWithLocalMatrix(self, localMatrix: Matrix) -> Shader: ...
-    pass
+    def makeWithWorkingColorSpace(self, workingSpace: ColorSpace) -> Shader: ...
 
 class ShaderMaskFilter:
     @staticmethod
     def Make(shader: Shader) -> MaskFilter: ...
-    pass
 
 class ShadowFlags(IntEnum):
     """
@@ -7837,44 +6984,42 @@ class ShadowFlags(IntEnum):
       kAll_ShadowFlag
     """
 
-    def __and__(self, other: object) -> object: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ge__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, ShadowFlags]
+    ]  # value = {'kNone_ShadowFlag': <ShadowFlags.kNone_ShadowFlag: 0>, 'kTransparentOccluder_ShadowFlag': <ShadowFlags.kTransparentOccluder_ShadowFlag: 1>, 'kGeometricOnly_ShadowFlag': <ShadowFlags.kGeometricOnly_ShadowFlag: 2>, 'kDirectionalLight_ShadowFlag': <ShadowFlags.kDirectionalLight_ShadowFlag: 4>, 'kConcaveBlurOnly_ShadowFlag': <ShadowFlags.kConcaveBlurOnly_ShadowFlag: 8>, 'kAll_ShadowFlag': <ShadowFlags.kAll_ShadowFlag: 15>}
+    kAll_ShadowFlag: typing.ClassVar[ShadowFlags]  # value = <ShadowFlags.kAll_ShadowFlag: 15>
+    kConcaveBlurOnly_ShadowFlag: typing.ClassVar[ShadowFlags]  # value = <ShadowFlags.kConcaveBlurOnly_ShadowFlag: 8>
+    kDirectionalLight_ShadowFlag: typing.ClassVar[ShadowFlags]  # value = <ShadowFlags.kDirectionalLight_ShadowFlag: 4>
+    kGeometricOnly_ShadowFlag: typing.ClassVar[ShadowFlags]  # value = <ShadowFlags.kGeometricOnly_ShadowFlag: 2>
+    kNone_ShadowFlag: typing.ClassVar[ShadowFlags]  # value = <ShadowFlags.kNone_ShadowFlag: 0>
+    kTransparentOccluder_ShadowFlag: typing.ClassVar[
+        ShadowFlags
+    ]  # value = <ShadowFlags.kTransparentOccluder_ShadowFlag: 1>
+    def __and__(self, other: typing.Any) -> typing.Any: ...
+    def __eq__(self, other: typing.Any) -> bool: ...
+    def __ge__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
-    def __gt__(self, other: object) -> bool: ...
+    def __gt__(self, other: typing.Any) -> bool: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __invert__(self) -> object: ...
-    def __le__(self, other: object) -> bool: ...
-    def __lt__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
-    def __or__(self, other: object) -> object: ...
-    def __rand__(self, other: object) -> object: ...
+    def __invert__(self) -> typing.Any: ...
+    def __le__(self, other: typing.Any) -> bool: ...
+    def __lt__(self, other: typing.Any) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
+    def __or__(self, other: typing.Any) -> typing.Any: ...
+    def __rand__(self, other: typing.Any) -> typing.Any: ...
     def __repr__(self) -> str: ...
-    def __ror__(self, other: object) -> object: ...
-    def __rxor__(self, other: object) -> object: ...
+    def __ror__(self, other: typing.Any) -> typing.Any: ...
+    def __rxor__(self, other: typing.Any) -> typing.Any: ...
     def __setstate__(self, state: int) -> None: ...
-    def __xor__(self, other: object) -> object: ...
+    def __str__(self) -> str: ...
+    def __xor__(self, other: typing.Any) -> typing.Any: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kNone_ShadowFlag': <ShadowFlags.kNone_ShadowFlag: 0>, 'kTransparentOccluder_ShadowFlag': <ShadowFlags.kTransparentOccluder_ShadowFlag: 1>, 'kGeometricOnly_ShadowFlag': <ShadowFlags.kGeometricOnly_ShadowFlag: 2>, 'kDirectionalLight_ShadowFlag': <ShadowFlags.kDirectionalLight_ShadowFlag: 4>, 'kConcaveBlurOnly_ShadowFlag': <ShadowFlags.kConcaveBlurOnly_ShadowFlag: 8>, 'kAll_ShadowFlag': <ShadowFlags.kAll_ShadowFlag: 15>}
-    kAll_ShadowFlag: animator.skia.ShadowFlags  # value = <ShadowFlags.kAll_ShadowFlag: 15>
-    kConcaveBlurOnly_ShadowFlag: animator.skia.ShadowFlags  # value = <ShadowFlags.kConcaveBlurOnly_ShadowFlag: 8>
-    kDirectionalLight_ShadowFlag: animator.skia.ShadowFlags  # value = <ShadowFlags.kDirectionalLight_ShadowFlag: 4>
-    kGeometricOnly_ShadowFlag: animator.skia.ShadowFlags  # value = <ShadowFlags.kGeometricOnly_ShadowFlag: 2>
-    kNone_ShadowFlag: animator.skia.ShadowFlags  # value = <ShadowFlags.kNone_ShadowFlag: 0>
-    kTransparentOccluder_ShadowFlag: animator.skia.ShadowFlags  # value = <ShadowFlags.kTransparentOccluder_ShadowFlag: 1>
-    pass
+    def value(self) -> int: ...
 
 class ShadowUtils:
     @staticmethod
@@ -7907,19 +7052,18 @@ class ShadowUtils:
         """
 
 class Size:
-    @staticmethod
-    @typing.overload
-    def Make(src: _ISize) -> Size: ...
+    __hash__: typing.ClassVar[None] = None
+    fHeight: float
+    fWidth: float
     @staticmethod
     @typing.overload
     def Make(w: float, h: float) -> Size: ...
     @staticmethod
+    @typing.overload
+    def Make(src: _ISize) -> Size: ...
+    @staticmethod
     def MakeEmpty() -> Size: ...
     def __eq__(self, other: Size) -> bool: ...
-    @typing.overload
-    def __init__(self) -> None: ...
-    @typing.overload
-    def __init__(self, src: _ISize) -> None: ...
     @typing.overload
     def __init__(self, t: tuple) -> None:
         """
@@ -7929,6 +7073,10 @@ class Size:
         """
     @typing.overload
     def __init__(self, w: float, h: float) -> None: ...
+    @typing.overload
+    def __init__(self, src: _ISize) -> None: ...
+    @typing.overload
+    def __init__(self) -> None: ...
     def __iter__(self) -> typing.Iterator: ...
     def __len__(self) -> int: ...
     def __ne__(self, other: Size) -> bool: ...
@@ -7943,33 +7091,6 @@ class Size:
     def toFloor(self) -> ISize: ...
     def toRound(self) -> ISize: ...
     def width(self) -> float: ...
-    @property
-    def fHeight(self) -> float:
-        """
-        :type: float
-        """
-    @fHeight.setter
-    def fHeight(self, arg0: float) -> None:
-        pass
-    @property
-    def fWidth(self) -> float:
-        """
-        :type: float
-        """
-    @fWidth.setter
-    def fWidth(self, arg0: float) -> None:
-        pass
-    pass
-
-class StrokeAndFillPathEffect:
-    @staticmethod
-    def Make() -> PathEffect: ...
-    pass
-
-class StrokePathEffect:
-    @staticmethod
-    def Make(width: float, join: Paint.Join, cap: Paint.Cap, miter: float = 4) -> PathEffect: ...
-    pass
 
 class StrokeRec:
     class InitStyle:
@@ -7981,29 +7102,25 @@ class StrokeRec:
           kFill_InitStyle
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, StrokeRec.InitStyle]
+        ]  # value = {'kHairline_InitStyle': <InitStyle.kHairline_InitStyle: 0>, 'kFill_InitStyle': <InitStyle.kFill_InitStyle: 1>}
+        kFill_InitStyle: typing.ClassVar[StrokeRec.InitStyle]  # value = <InitStyle.kFill_InitStyle: 1>
+        kHairline_InitStyle: typing.ClassVar[StrokeRec.InitStyle]  # value = <InitStyle.kHairline_InitStyle: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kHairline_InitStyle': <InitStyle.kHairline_InitStyle: 0>, 'kFill_InitStyle': <InitStyle.kFill_InitStyle: 1>}
-        kFill_InitStyle: animator.skia.StrokeRec.InitStyle  # value = <InitStyle.kFill_InitStyle: 1>
-        kHairline_InitStyle: animator.skia.StrokeRec.InitStyle  # value = <InitStyle.kHairline_InitStyle: 0>
-        pass
+        def value(self) -> int: ...
 
     class Style:
         """
@@ -8018,44 +7135,42 @@ class StrokeRec:
           kStrokeAndFill_Style
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, StrokeRec.Style]
+        ]  # value = {'kHairline_Style': <Style.kHairline_Style: 0>, 'kFill_Style': <Style.kFill_Style: 1>, 'kStroke_Style': <Style.kStroke_Style: 2>, 'kStrokeAndFill_Style': <Style.kStrokeAndFill_Style: 3>}
+        kFill_Style: typing.ClassVar[StrokeRec.Style]  # value = <Style.kFill_Style: 1>
+        kHairline_Style: typing.ClassVar[StrokeRec.Style]  # value = <Style.kHairline_Style: 0>
+        kStrokeAndFill_Style: typing.ClassVar[StrokeRec.Style]  # value = <Style.kStrokeAndFill_Style: 3>
+        kStroke_Style: typing.ClassVar[StrokeRec.Style]  # value = <Style.kStroke_Style: 2>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kHairline_Style': <Style.kHairline_Style: 0>, 'kFill_Style': <Style.kFill_Style: 1>, 'kStroke_Style': <Style.kStroke_Style: 2>, 'kStrokeAndFill_Style': <Style.kStrokeAndFill_Style: 3>}
-        kFill_Style: animator.skia.StrokeRec.Style  # value = <Style.kFill_Style: 1>
-        kHairline_Style: animator.skia.StrokeRec.Style  # value = <Style.kHairline_Style: 0>
-        kStrokeAndFill_Style: animator.skia.StrokeRec.Style  # value = <Style.kStrokeAndFill_Style: 3>
-        kStroke_Style: animator.skia.StrokeRec.Style  # value = <Style.kStroke_Style: 2>
-        pass
-    @staticmethod
-    @typing.overload
-    def GetInflationRadius(join: Paint.Join, miterLimit: float, cap: Paint.Cap, strokeWidth: float) -> float: ...
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
+    kStyleCount: typing.ClassVar[int] = 4
     @staticmethod
     @typing.overload
     def GetInflationRadius(paint: Paint, style: Paint.Style) -> float: ...
+    @staticmethod
+    @typing.overload
+    def GetInflationRadius(join: Paint.Join, miterLimit: float, cap: Paint.Cap, strokeWidth: float) -> float: ...
     def __eq__(self, other: StrokeRec) -> bool: ...
     @typing.overload
-    def __init__(self, paint: Paint, resScale: float = 1) -> None: ...
+    def __init__(self, style: StrokeRec.InitStyle) -> None: ...
     @typing.overload
     def __init__(self, paint: Paint, style: Paint.Style, resScale: float = 1) -> None: ...
     @typing.overload
-    def __init__(self, style: StrokeRec.InitStyle) -> None: ...
+    def __init__(self, paint: Paint, resScale: float = 1) -> None: ...
     def __str__(self) -> str: ...
     def applyAndGetPath(self, src: Path) -> Path:
         """
@@ -8083,8 +7198,6 @@ class StrokeRec:
     def setResScale(self, rs: float) -> None: ...
     def setStrokeParams(self, cap: Paint.Cap, join: Paint.Join, miterLimit: float) -> None: ...
     def setStrokeStyle(self, width: float, strokeAndFill: bool = False) -> None: ...
-    kStyleCount = 4
-    pass
 
 class Surface:
     """
@@ -8107,29 +7220,30 @@ class Surface:
           kRetain_ContentChangeMode
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Surface.ContentChangeMode]
+        ]  # value = {'kDiscard_ContentChangeMode': <ContentChangeMode.kDiscard_ContentChangeMode: 0>, 'kRetain_ContentChangeMode': <ContentChangeMode.kRetain_ContentChangeMode: 1>}
+        kDiscard_ContentChangeMode: typing.ClassVar[
+            Surface.ContentChangeMode
+        ]  # value = <ContentChangeMode.kDiscard_ContentChangeMode: 0>
+        kRetain_ContentChangeMode: typing.ClassVar[
+            Surface.ContentChangeMode
+        ]  # value = <ContentChangeMode.kRetain_ContentChangeMode: 1>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kDiscard_ContentChangeMode': <ContentChangeMode.kDiscard_ContentChangeMode: 0>, 'kRetain_ContentChangeMode': <ContentChangeMode.kRetain_ContentChangeMode: 1>}
-        kDiscard_ContentChangeMode: animator.skia.Surface.ContentChangeMode  # value = <ContentChangeMode.kDiscard_ContentChangeMode: 0>
-        kRetain_ContentChangeMode: animator.skia.Surface.ContentChangeMode  # value = <ContentChangeMode.kRetain_ContentChangeMode: 1>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def Null(width: int, height: int) -> Surface: ...
     @staticmethod
@@ -8149,7 +7263,7 @@ class Surface:
         """
         Returns a :py:class:`Canvas` object that can be used to draw on the surface.
         """
-    def __exit__(self, arg0: object, arg1: object, arg2: object) -> None: ...
+    def __exit__(self, arg0: typing.Any, arg1: typing.Any, arg2: typing.Any) -> None: ...
     @typing.overload
     def __init__(
         self,
@@ -8187,8 +7301,6 @@ class Surface:
         """
     def props(self) -> SurfaceProps: ...
     @typing.overload
-    def readPixels(self, dst: Bitmap, srcX: int = 0, srcY: int = 0) -> bool: ...
-    @typing.overload
     def readPixels(self, dst: Pixmap, srcX: int = 0, srcY: int = 0) -> bool: ...
     @typing.overload
     def readPixels(
@@ -8197,6 +7309,8 @@ class Surface:
         """
         Copies *dstInfo* pixels starting from (*srcX*, *srcY*) to *dstPixels* buffer.
         """
+    @typing.overload
+    def readPixels(self, dst: Bitmap, srcX: int = 0, srcY: int = 0) -> bool: ...
     def toarray(
         self,
         srcX: int = 0,
@@ -8210,10 +7324,9 @@ class Surface:
         """
     def width(self) -> int: ...
     @typing.overload
-    def writePixels(self, src: Bitmap, dstX: int = 0, dstY: int = 0) -> None: ...
-    @typing.overload
     def writePixels(self, src: Pixmap, dstX: int = 0, dstY: int = 0) -> None: ...
-    pass
+    @typing.overload
+    def writePixels(self, src: Bitmap, dstX: int = 0, dstY: int = 0) -> None: ...
 
 class SurfaceProps:
     class Flags(IntEnum):
@@ -8227,41 +7340,40 @@ class SurfaceProps:
           kAlwaysDither_Flag
         """
 
-        def __and__(self, other: object) -> object: ...
-        def __eq__(self, other: object) -> bool: ...
-        def __ge__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, SurfaceProps.Flags]
+        ]  # value = {'kUseDeviceIndependentFonts_Flag': <Flags.kUseDeviceIndependentFonts_Flag: 1>, 'kDynamicMSAA_Flag': <Flags.kDynamicMSAA_Flag: 2>, 'kAlwaysDither_Flag': <Flags.kAlwaysDither_Flag: 4>}
+        kAlwaysDither_Flag: typing.ClassVar[SurfaceProps.Flags]  # value = <Flags.kAlwaysDither_Flag: 4>
+        kDynamicMSAA_Flag: typing.ClassVar[SurfaceProps.Flags]  # value = <Flags.kDynamicMSAA_Flag: 2>
+        kUseDeviceIndependentFonts_Flag: typing.ClassVar[
+            SurfaceProps.Flags
+        ]  # value = <Flags.kUseDeviceIndependentFonts_Flag: 1>
+        def __and__(self, other: typing.Any) -> typing.Any: ...
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __ge__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
-        def __gt__(self, other: object) -> bool: ...
+        def __gt__(self, other: typing.Any) -> bool: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __invert__(self) -> object: ...
-        def __le__(self, other: object) -> bool: ...
-        def __lt__(self, other: object) -> bool: ...
-        def __ne__(self, other: object) -> bool: ...
-        def __or__(self, other: object) -> object: ...
-        def __rand__(self, other: object) -> object: ...
+        def __invert__(self) -> typing.Any: ...
+        def __le__(self, other: typing.Any) -> bool: ...
+        def __lt__(self, other: typing.Any) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __or__(self, other: typing.Any) -> typing.Any: ...
+        def __rand__(self, other: typing.Any) -> typing.Any: ...
         def __repr__(self) -> str: ...
-        def __ror__(self, other: object) -> object: ...
-        def __rxor__(self, other: object) -> object: ...
+        def __ror__(self, other: typing.Any) -> typing.Any: ...
+        def __rxor__(self, other: typing.Any) -> typing.Any: ...
         def __setstate__(self, state: int) -> None: ...
-        def __xor__(self, other: object) -> object: ...
+        def __str__(self) -> str: ...
+        def __xor__(self, other: typing.Any) -> typing.Any: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kUseDeviceIndependentFonts_Flag': <Flags.kUseDeviceIndependentFonts_Flag: 1>, 'kDynamicMSAA_Flag': <Flags.kDynamicMSAA_Flag: 2>, 'kAlwaysDither_Flag': <Flags.kAlwaysDither_Flag: 4>}
-        kAlwaysDither_Flag: animator.skia.SurfaceProps.Flags  # value = <Flags.kAlwaysDither_Flag: 4>
-        kDynamicMSAA_Flag: animator.skia.SurfaceProps.Flags  # value = <Flags.kDynamicMSAA_Flag: 2>
-        kUseDeviceIndependentFonts_Flag: animator.skia.SurfaceProps.Flags  # value = <Flags.kUseDeviceIndependentFonts_Flag: 1>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
     def __eq__(self, arg0: SurfaceProps) -> bool: ...
     @typing.overload
     def __init__(self) -> None: ...
@@ -8275,7 +7387,6 @@ class SurfaceProps:
     def isAlwaysDither(self) -> bool: ...
     def isUseDeviceIndependentFonts(self) -> bool: ...
     def pixelGeometry(self) -> PixelGeometry: ...
-    pass
 
 class TableMaskFilter:
     @staticmethod
@@ -8300,25 +7411,17 @@ class TextBlob:
         class Run:
             def __str__(self) -> str: ...
             @property
-            def fGlyphCount(self) -> int:
-                """
-                :type: int
-                """
+            def fGlyphCount(self) -> int: ...
             @property
-            def fGlyphIndices(self) -> list[int]:
-                """
-                :type: list[int]
-                """
+            def fGlyphIndices(self) -> list[int]: ...
             @property
-            def fTypeface(self) -> Typeface:
-                """
-                :type: Typeface
-                """
+            def fTypeface(self) -> Typeface: ...
+
         def __init__(self, arg0: TextBlob) -> None: ...
         def __iter__(self) -> TextBlob.Iter: ...
         def __next__(self) -> TextBlob.Iter.Run: ...
         def next(self) -> TextBlob.Iter.Run | None: ...
-        pass
+
     @staticmethod
     def Deserialize(data: buffer) -> TextBlob:
         """
@@ -8371,7 +7474,6 @@ class TextBlob:
         """
     def serialize(self) -> Data: ...
     def uniqueID(self) -> int: ...
-    pass
 
 class TextBlobBuilder:
     """
@@ -8482,7 +7584,6 @@ class TextBlobBuilder:
         Sets a new run with glyphs for *text* with *xforms* and supporting *clusters* and *utf8text*.
         """
     def make(self) -> TextBlob: ...
-    pass
 
 class TextEncoding:
     """
@@ -8497,31 +7598,27 @@ class TextEncoding:
       kGlyphID
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, TextEncoding]
+    ]  # value = {'kUTF8': <TextEncoding.kUTF8: 0>, 'kUTF16': <TextEncoding.kUTF16: 1>, 'kUTF32': <TextEncoding.kUTF32: 2>, 'kGlyphID': <TextEncoding.kGlyphID: 3>}
+    kGlyphID: typing.ClassVar[TextEncoding]  # value = <TextEncoding.kGlyphID: 3>
+    kUTF16: typing.ClassVar[TextEncoding]  # value = <TextEncoding.kUTF16: 1>
+    kUTF32: typing.ClassVar[TextEncoding]  # value = <TextEncoding.kUTF32: 2>
+    kUTF8: typing.ClassVar[TextEncoding]  # value = <TextEncoding.kUTF8: 0>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kUTF8': <TextEncoding.kUTF8: 0>, 'kUTF16': <TextEncoding.kUTF16: 1>, 'kUTF32': <TextEncoding.kUTF32: 2>, 'kGlyphID': <TextEncoding.kGlyphID: 3>}
-    kGlyphID: animator.skia.TextEncoding  # value = <TextEncoding.kGlyphID: 3>
-    kUTF16: animator.skia.TextEncoding  # value = <TextEncoding.kUTF16: 1>
-    kUTF32: animator.skia.TextEncoding  # value = <TextEncoding.kUTF32: 2>
-    kUTF8: animator.skia.TextEncoding  # value = <TextEncoding.kUTF8: 0>
-    pass
+    def value(self) -> int: ...
 
 class TextUtils_Align:
     """
@@ -8534,29 +7631,26 @@ class TextUtils_Align:
       kRight_Align
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, TextUtils_Align]
+    ]  # value = {'kLeft_Align': <TextUtils_Align.kLeft_Align: 0>, 'kCenter_Align': <TextUtils_Align.kCenter_Align: 1>, 'kRight_Align': <TextUtils_Align.kRight_Align: 2>}
+    kCenter_Align: typing.ClassVar[TextUtils_Align]  # value = <TextUtils_Align.kCenter_Align: 1>
+    kLeft_Align: typing.ClassVar[TextUtils_Align]  # value = <TextUtils_Align.kLeft_Align: 0>
+    kRight_Align: typing.ClassVar[TextUtils_Align]  # value = <TextUtils_Align.kRight_Align: 2>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kLeft_Align': <TextUtils_Align.kLeft_Align: 0>, 'kCenter_Align': <TextUtils_Align.kCenter_Align: 1>, 'kRight_Align': <TextUtils_Align.kRight_Align: 2>}
-    kCenter_Align: animator.skia.TextUtils_Align  # value = <TextUtils_Align.kCenter_Align: 1>
-    kLeft_Align: animator.skia.TextUtils_Align  # value = <TextUtils_Align.kLeft_Align: 0>
-    kRight_Align: animator.skia.TextUtils_Align  # value = <TextUtils_Align.kRight_Align: 2>
+    def value(self) -> int: ...
 
 class TileMode:
     """
@@ -8573,32 +7667,28 @@ class TileMode:
       kLastTileMode
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, TileMode]
+    ]  # value = {'kClamp': <TileMode.kClamp: 0>, 'kRepeat': <TileMode.kRepeat: 1>, 'kMirror': <TileMode.kMirror: 2>, 'kDecal': <TileMode.kDecal: 3>, 'kLastTileMode': <TileMode.kDecal: 3>}
+    kClamp: typing.ClassVar[TileMode]  # value = <TileMode.kClamp: 0>
+    kDecal: typing.ClassVar[TileMode]  # value = <TileMode.kDecal: 3>
+    kLastTileMode: typing.ClassVar[TileMode]  # value = <TileMode.kDecal: 3>
+    kMirror: typing.ClassVar[TileMode]  # value = <TileMode.kMirror: 2>
+    kRepeat: typing.ClassVar[TileMode]  # value = <TileMode.kRepeat: 1>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kClamp': <TileMode.kClamp: 0>, 'kRepeat': <TileMode.kRepeat: 1>, 'kMirror': <TileMode.kMirror: 2>, 'kDecal': <TileMode.kDecal: 3>, 'kLastTileMode': <TileMode.kDecal: 3>}
-    kClamp: animator.skia.TileMode  # value = <TileMode.kClamp: 0>
-    kDecal: animator.skia.TileMode  # value = <TileMode.kDecal: 3>
-    kLastTileMode: animator.skia.TileMode  # value = <TileMode.kDecal: 3>
-    kMirror: animator.skia.TileMode  # value = <TileMode.kMirror: 2>
-    kRepeat: animator.skia.TileMode  # value = <TileMode.kRepeat: 1>
-    pass
+    def value(self) -> int: ...
 
 class TrimPathEffect:
     class Mode:
@@ -8610,38 +7700,33 @@ class TrimPathEffect:
           kInverted
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, TrimPathEffect.Mode]
+        ]  # value = {'kNormal': <Mode.kNormal: 0>, 'kInverted': <Mode.kInverted: 1>}
+        kInverted: typing.ClassVar[TrimPathEffect.Mode]  # value = <Mode.kInverted: 1>
+        kNormal: typing.ClassVar[TrimPathEffect.Mode]  # value = <Mode.kNormal: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kNormal': <Mode.kNormal: 0>, 'kInverted': <Mode.kInverted: 1>}
-        kInverted: animator.skia.TrimPathEffect.Mode  # value = <Mode.kInverted: 1>
-        kNormal: animator.skia.TrimPathEffect.Mode  # value = <Mode.kNormal: 0>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def Make(startT: float, stopT: float, mode: TrimPathEffect.Mode = Mode.kNormal) -> PathEffect: ...
-    pass
 
 class Typeface:
     class LocalizedStrings:
         def __iter__(self) -> Typeface.LocalizedStrings: ...
         def __next__(self) -> tuple: ...
-        pass
 
     class SerializeBehavior:
         """
@@ -8654,53 +7739,50 @@ class Typeface:
           kIncludeDataIfLocal
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Typeface.SerializeBehavior]
+        ]  # value = {'kDoIncludeData': <SerializeBehavior.kDoIncludeData: 0>, 'kDontIncludeData': <SerializeBehavior.kDontIncludeData: 1>, 'kIncludeDataIfLocal': <SerializeBehavior.kIncludeDataIfLocal: 2>}
+        kDoIncludeData: typing.ClassVar[Typeface.SerializeBehavior]  # value = <SerializeBehavior.kDoIncludeData: 0>
+        kDontIncludeData: typing.ClassVar[Typeface.SerializeBehavior]  # value = <SerializeBehavior.kDontIncludeData: 1>
+        kIncludeDataIfLocal: typing.ClassVar[
+            Typeface.SerializeBehavior
+        ]  # value = <SerializeBehavior.kIncludeDataIfLocal: 2>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kDoIncludeData': <SerializeBehavior.kDoIncludeData: 0>, 'kDontIncludeData': <SerializeBehavior.kDontIncludeData: 1>, 'kIncludeDataIfLocal': <SerializeBehavior.kIncludeDataIfLocal: 2>}
-        kDoIncludeData: animator.skia.Typeface.SerializeBehavior  # value = <SerializeBehavior.kDoIncludeData: 0>
-        kDontIncludeData: animator.skia.Typeface.SerializeBehavior  # value = <SerializeBehavior.kDontIncludeData: 1>
-        kIncludeDataIfLocal: animator.skia.Typeface.SerializeBehavior  # value = <SerializeBehavior.kIncludeDataIfLocal: 2>
-        pass
+        def value(self) -> int: ...
+    __hash__: typing.ClassVar[None] = None
     @staticmethod
     def Equal(facea: Typeface, faceb: Typeface) -> bool: ...
     @staticmethod
-    def MakeDefault() -> Typeface: ...
-    @staticmethod
-    def MakeDeserialize(data: Data) -> Typeface:
+    def MakeDeserialize(data: Data, lastResortMgr: FontMgr | None = None) -> Typeface:
         """
         Given the data previously written by :py:meth:`serialize`, return a new instance of a typeface referring
-        to the same font.
+        to the same font. Goes through all registered typeface factories and lastResortMgr (if non-null).
         """
+    @staticmethod
+    def MakeEmpty() -> Typeface: ...
     @staticmethod
     def MakeFromData(data: Data, index: int = 0) -> Typeface: ...
     @staticmethod
     def MakeFromFile(path: str, index: int = 0) -> Typeface: ...
     @staticmethod
     def MakeFromName(familyName: str | None, fontStyle: FontStyle = ...) -> Typeface: ...
-    @staticmethod
-    def UniqueID(face: Typeface) -> int: ...
     def __eq__(self, arg0: Typeface) -> bool: ...
     @typing.overload
     def __init__(self) -> None:
         """
-        Returns the default normal typeface.
+        Returns a non-null typeface which contains no glyphs.
         """
     @typing.overload
     def __init__(self, familyName: str | None, fontStyle: FontStyle = ...) -> None:
@@ -8724,7 +7806,7 @@ class Typeface:
         """
         Returns the family name for this typeface.
         """
-    def getFamilyNames(self) -> list:
+    def getFamilyNames(self) -> list[tuple[str, str]]:
         """
         Returns a list of tuple of (family name, language) specified by the font.
         """
@@ -8781,7 +7863,6 @@ class Typeface:
         :return: the corresponding glyph IDs for each character.
         """
     def uniqueID(self) -> int: ...
-    pass
 
 class Vertices:
     class VertexMode:
@@ -8797,31 +7878,30 @@ class Vertices:
           kLast_VertexMode
         """
 
-        def __eq__(self, other: object) -> bool: ...
+        __members__: typing.ClassVar[
+            dict[str, Vertices.VertexMode]
+        ]  # value = {'kTriangles_VertexMode': <VertexMode.kTriangles_VertexMode: 0>, 'kTriangleStrip_VertexMode': <VertexMode.kTriangleStrip_VertexMode: 1>, 'kTriangleFan_VertexMode': <VertexMode.kTriangleFan_VertexMode: 2>, 'kLast_VertexMode': <VertexMode.kTriangleFan_VertexMode: 2>}
+        kLast_VertexMode: typing.ClassVar[Vertices.VertexMode]  # value = <VertexMode.kTriangleFan_VertexMode: 2>
+        kTriangleFan_VertexMode: typing.ClassVar[Vertices.VertexMode]  # value = <VertexMode.kTriangleFan_VertexMode: 2>
+        kTriangleStrip_VertexMode: typing.ClassVar[
+            Vertices.VertexMode
+        ]  # value = <VertexMode.kTriangleStrip_VertexMode: 1>
+        kTriangles_VertexMode: typing.ClassVar[Vertices.VertexMode]  # value = <VertexMode.kTriangles_VertexMode: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
         def __getstate__(self) -> int: ...
         def __hash__(self) -> int: ...
         def __index__(self) -> int: ...
         def __init__(self, value: int) -> None: ...
         def __int__(self) -> int: ...
-        def __ne__(self, other: object) -> bool: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
         def __repr__(self) -> str: ...
         def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
         @property
-        def name(self) -> str:
-            """
-            :type: str
-            """
+        def name(self) -> str: ...
         @property
-        def value(self) -> int:
-            """
-            :type: int
-            """
-        __members__: dict  # value = {'kTriangles_VertexMode': <VertexMode.kTriangles_VertexMode: 0>, 'kTriangleStrip_VertexMode': <VertexMode.kTriangleStrip_VertexMode: 1>, 'kTriangleFan_VertexMode': <VertexMode.kTriangleFan_VertexMode: 2>, 'kLast_VertexMode': <VertexMode.kTriangleFan_VertexMode: 2>}
-        kLast_VertexMode: animator.skia.Vertices.VertexMode  # value = <VertexMode.kTriangleFan_VertexMode: 2>
-        kTriangleFan_VertexMode: animator.skia.Vertices.VertexMode  # value = <VertexMode.kTriangleFan_VertexMode: 2>
-        kTriangleStrip_VertexMode: animator.skia.Vertices.VertexMode  # value = <VertexMode.kTriangleStrip_VertexMode: 1>
-        kTriangles_VertexMode: animator.skia.Vertices.VertexMode  # value = <VertexMode.kTriangles_VertexMode: 0>
-        pass
+        def value(self) -> int: ...
+
     @staticmethod
     def MakeCopy(
         mode: Vertices.VertexMode,
@@ -8847,7 +7927,6 @@ class Vertices:
     def approximateSize(self) -> int: ...
     def bounds(self) -> Rect: ...
     def uniqueID(self) -> int: ...
-    pass
 
 class YUVColorSpace:
     """
@@ -8886,52 +7965,57 @@ class YUVColorSpace:
       kBT2020_YUVColorSpace
     """
 
-    def __eq__(self, other: object) -> bool: ...
+    __members__: typing.ClassVar[
+        dict[str, YUVColorSpace]
+    ]  # value = {'kJPEG_Full_YUVColorSpace': <YUVColorSpace.kJPEG_Full_YUVColorSpace: 0>, 'kRec601_Limited_YUVColorSpace': <YUVColorSpace.kRec601_Limited_YUVColorSpace: 1>, 'kRec709_Full_YUVColorSpace': <YUVColorSpace.kRec709_Full_YUVColorSpace: 2>, 'kRec709_Limited_YUVColorSpace': <YUVColorSpace.kRec709_Limited_YUVColorSpace: 3>, 'kBT2020_8bit_Full_YUVColorSpace': <YUVColorSpace.kBT2020_8bit_Full_YUVColorSpace: 4>, 'kBT2020_8bit_Limited_YUVColorSpace': <YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace: 5>, 'kBT2020_10bit_Full_YUVColorSpace': <YUVColorSpace.kBT2020_10bit_Full_YUVColorSpace: 6>, 'kBT2020_10bit_Limited_YUVColorSpace': <YUVColorSpace.kBT2020_10bit_Limited_YUVColorSpace: 7>, 'kBT2020_12bit_Full_YUVColorSpace': <YUVColorSpace.kBT2020_12bit_Full_YUVColorSpace: 8>, 'kBT2020_12bit_Limited_YUVColorSpace': <YUVColorSpace.kBT2020_12bit_Limited_YUVColorSpace: 9>, 'kIdentity_YUVColorSpace': <YUVColorSpace.kIdentity_YUVColorSpace: 10>, 'kLastEnum_YUVColorSpace': <YUVColorSpace.kIdentity_YUVColorSpace: 10>, 'kJPEG_YUVColorSpace': <YUVColorSpace.kJPEG_Full_YUVColorSpace: 0>, 'kRec601_YUVColorSpace': <YUVColorSpace.kRec601_Limited_YUVColorSpace: 1>, 'kRec709_YUVColorSpace': <YUVColorSpace.kRec709_Limited_YUVColorSpace: 3>, 'kBT2020_YUVColorSpace': <YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace: 5>}
+    kBT2020_10bit_Full_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kBT2020_10bit_Full_YUVColorSpace: 6>
+    kBT2020_10bit_Limited_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kBT2020_10bit_Limited_YUVColorSpace: 7>
+    kBT2020_12bit_Full_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kBT2020_12bit_Full_YUVColorSpace: 8>
+    kBT2020_12bit_Limited_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kBT2020_12bit_Limited_YUVColorSpace: 9>
+    kBT2020_8bit_Full_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kBT2020_8bit_Full_YUVColorSpace: 4>
+    kBT2020_8bit_Limited_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace: 5>
+    kBT2020_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace: 5>
+    kIdentity_YUVColorSpace: typing.ClassVar[YUVColorSpace]  # value = <YUVColorSpace.kIdentity_YUVColorSpace: 10>
+    kJPEG_Full_YUVColorSpace: typing.ClassVar[YUVColorSpace]  # value = <YUVColorSpace.kJPEG_Full_YUVColorSpace: 0>
+    kJPEG_YUVColorSpace: typing.ClassVar[YUVColorSpace]  # value = <YUVColorSpace.kJPEG_Full_YUVColorSpace: 0>
+    kLastEnum_YUVColorSpace: typing.ClassVar[YUVColorSpace]  # value = <YUVColorSpace.kIdentity_YUVColorSpace: 10>
+    kRec601_Limited_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kRec601_Limited_YUVColorSpace: 1>
+    kRec601_YUVColorSpace: typing.ClassVar[YUVColorSpace]  # value = <YUVColorSpace.kRec601_Limited_YUVColorSpace: 1>
+    kRec709_Full_YUVColorSpace: typing.ClassVar[YUVColorSpace]  # value = <YUVColorSpace.kRec709_Full_YUVColorSpace: 2>
+    kRec709_Limited_YUVColorSpace: typing.ClassVar[
+        YUVColorSpace
+    ]  # value = <YUVColorSpace.kRec709_Limited_YUVColorSpace: 3>
+    kRec709_YUVColorSpace: typing.ClassVar[YUVColorSpace]  # value = <YUVColorSpace.kRec709_Limited_YUVColorSpace: 3>
+    def __eq__(self, other: typing.Any) -> bool: ...
     def __getstate__(self) -> int: ...
     def __hash__(self) -> int: ...
     def __index__(self) -> int: ...
     def __init__(self, value: int) -> None: ...
     def __int__(self) -> int: ...
-    def __ne__(self, other: object) -> bool: ...
+    def __ne__(self, other: typing.Any) -> bool: ...
     def __repr__(self) -> str: ...
     def __setstate__(self, state: int) -> None: ...
+    def __str__(self) -> str: ...
     @property
-    def name(self) -> str:
-        """
-        :type: str
-        """
+    def name(self) -> str: ...
     @property
-    def value(self) -> int:
-        """
-        :type: int
-        """
-    __members__: dict  # value = {'kJPEG_Full_YUVColorSpace': <YUVColorSpace.kJPEG_Full_YUVColorSpace: 0>, 'kRec601_Limited_YUVColorSpace': <YUVColorSpace.kRec601_Limited_YUVColorSpace: 1>, 'kRec709_Full_YUVColorSpace': <YUVColorSpace.kRec709_Full_YUVColorSpace: 2>, 'kRec709_Limited_YUVColorSpace': <YUVColorSpace.kRec709_Limited_YUVColorSpace: 3>, 'kBT2020_8bit_Full_YUVColorSpace': <YUVColorSpace.kBT2020_8bit_Full_YUVColorSpace: 4>, 'kBT2020_8bit_Limited_YUVColorSpace': <YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace: 5>, 'kBT2020_10bit_Full_YUVColorSpace': <YUVColorSpace.kBT2020_10bit_Full_YUVColorSpace: 6>, 'kBT2020_10bit_Limited_YUVColorSpace': <YUVColorSpace.kBT2020_10bit_Limited_YUVColorSpace: 7>, 'kBT2020_12bit_Full_YUVColorSpace': <YUVColorSpace.kBT2020_12bit_Full_YUVColorSpace: 8>, 'kBT2020_12bit_Limited_YUVColorSpace': <YUVColorSpace.kBT2020_12bit_Limited_YUVColorSpace: 9>, 'kIdentity_YUVColorSpace': <YUVColorSpace.kIdentity_YUVColorSpace: 10>, 'kLastEnum_YUVColorSpace': <YUVColorSpace.kIdentity_YUVColorSpace: 10>, 'kJPEG_YUVColorSpace': <YUVColorSpace.kJPEG_Full_YUVColorSpace: 0>, 'kRec601_YUVColorSpace': <YUVColorSpace.kRec601_Limited_YUVColorSpace: 1>, 'kRec709_YUVColorSpace': <YUVColorSpace.kRec709_Limited_YUVColorSpace: 3>, 'kBT2020_YUVColorSpace': <YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace: 5>}
-    kBT2020_10bit_Full_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kBT2020_10bit_Full_YUVColorSpace: 6>
-    kBT2020_10bit_Limited_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kBT2020_10bit_Limited_YUVColorSpace: 7>
-    kBT2020_12bit_Full_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kBT2020_12bit_Full_YUVColorSpace: 8>
-    kBT2020_12bit_Limited_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kBT2020_12bit_Limited_YUVColorSpace: 9>
-    kBT2020_8bit_Full_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kBT2020_8bit_Full_YUVColorSpace: 4>
-    kBT2020_8bit_Limited_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace: 5>
-    kBT2020_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kBT2020_8bit_Limited_YUVColorSpace: 5>
-    kIdentity_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kIdentity_YUVColorSpace: 10>
-    kJPEG_Full_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kJPEG_Full_YUVColorSpace: 0>
-    kJPEG_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kJPEG_Full_YUVColorSpace: 0>
-    kLastEnum_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kIdentity_YUVColorSpace: 10>
-    kRec601_Limited_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kRec601_Limited_YUVColorSpace: 1>
-    kRec601_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kRec601_Limited_YUVColorSpace: 1>
-    kRec709_Full_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kRec709_Full_YUVColorSpace: 2>
-    kRec709_Limited_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kRec709_Limited_YUVColorSpace: 3>
-    kRec709_YUVColorSpace: animator.skia.YUVColorSpace  # value = <YUVColorSpace.kRec709_Limited_YUVColorSpace: 3>
-    pass
-
-@typing.overload
-def Color(color4f: _Color4f) -> int:
-    """
-    Returns color value from 4-float component values (:py:class:`Color4f`).
-
-    :param color4f: color and alpha, unpremultiplied
-    :return: color and alpha, unpremultiplied
-    """
+    def value(self) -> int: ...
 
 @typing.overload
 def Color(r: int, g: int, b: int, a: int = 255) -> int:
@@ -8945,27 +8029,22 @@ def Color(r: int, g: int, b: int, a: int = 255) -> int:
     :return: color and alpha, unpremultiplied
     """
 
-def ColorGetA(color: _Color) -> int:
-    pass
+@typing.overload
+def Color(color4f: _Color4f) -> int:
+    """
+    Returns color value from 4-float component values (:py:class:`Color4f`).
 
-def ColorGetB(color: _Color) -> int:
-    pass
+    :param color4f: color and alpha, unpremultiplied
+    :return: color and alpha, unpremultiplied
+    """
 
-def ColorGetG(color: _Color) -> int:
-    pass
-
-def ColorGetR(color: _Color) -> int:
-    pass
-
-def ColorSetA(c: int, a: int) -> int:
-    pass
-
-def ColorSetARGB(a: int, r: int, g: int, b: int) -> int:
-    pass
-
-def ColorSetRGB(r: int, g: int, b: int) -> int:
-    pass
-
+def ColorGetA(color: _Color) -> int: ...
+def ColorGetB(color: _Color) -> int: ...
+def ColorGetG(color: _Color) -> int: ...
+def ColorGetR(color: _Color) -> int: ...
+def ColorSetA(c: int, a: int) -> int: ...
+def ColorSetARGB(a: int, r: int, g: int, b: int) -> int: ...
+def ColorSetRGB(r: int, g: int, b: int) -> int: ...
 def ColorToHSV(color: _Color) -> list[float]:
     """
     Converts ARGB color to its HSV components. Alpha in ARGB is ignored.
@@ -8987,15 +8066,9 @@ def HSVToColor(hsv: list[float], alpha: int = 255) -> int:
     :return: ARGB equivalent to HSV
     """
 
-def MakeNullCanvas() -> Canvas:
-    pass
-
-def PreMultiplyARGB(a: int, r: int, g: int, b: int) -> int:
-    pass
-
-def PreMultiplyColor(c: int) -> int:
-    pass
-
+def MakeNullCanvas() -> Canvas: ...
+def PreMultiplyARGB(a: int, r: int, g: int, b: int) -> int: ...
+def PreMultiplyColor(c: int) -> int: ...
 def RGBToHSV(red: int, green: int, blue: int) -> list[float]:
     """
     Converts RGB to its HSV components.
@@ -9017,18 +8090,18 @@ def uniqueColor(l: float = 71, s: float = 100) -> Color4f:
     :return: A tuple of (r, g, b, a). a is always 1.
     """
 
-AlphaOPAQUE = 255
-AlphaTRANSPARENT = 0
-ColorBLACK = 4278190080
-ColorBLUE = 4278190335
-ColorCYAN = 4278255615
-ColorDKGRAY = 4282664004
-ColorGRAY = 4287137928
-ColorGREEN = 4278255360
-ColorLTGRAY = 4291611852
-ColorMAGENTA = 4294902015
-ColorRED = 4294901760
-ColorTRANSPARENT = 0
-ColorWHITE = 4294967295
-ColorYELLOW = 4294967040
-kTileModeCount = 4
+AlphaOPAQUE: int = 255
+AlphaTRANSPARENT: int = 0
+ColorBLACK: int = 4278190080
+ColorBLUE: int = 4278190335
+ColorCYAN: int = 4278255615
+ColorDKGRAY: int = 4282664004
+ColorGRAY: int = 4287137928
+ColorGREEN: int = 4278255360
+ColorLTGRAY: int = 4291611852
+ColorMAGENTA: int = 4294902015
+ColorRED: int = 4294901760
+ColorTRANSPARENT: int = 0
+ColorWHITE: int = 4294967295
+ColorYELLOW: int = 4294967040
+kTileModeCount: int = 4

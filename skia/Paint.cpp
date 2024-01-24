@@ -80,8 +80,9 @@ void initPaint(py::module &m)
                  respective setters for each keyword argument.
 
                  Supported keyword arguments: ``antiAlias``, ``dither``, ``style``, ``stroke``, ``color``, ``color4f``,
-                ``alpha``, ``argb``, ``strokeWidth``, ``strokeMiter``, ``strokeCap``, ``strokeJoin``, ``shader``,
-                ``colorFilter``, ``blendMode``, ``blender``, ``pathEffect``, ``maskFilter``, ``imageFilter``.
+                ``alphaf``, ``alpha``, ``argb``, ``strokeWidth``, ``strokeMiter``, ``strokeCap``, ``strokeJoin``,
+                ``shader``, ``colorFilter``, ``blendMode``, ``blender``, ``pathEffect``, ``maskFilter``,
+                ``imageFilter``.
 
                 :note: Later arguments override earlier ones.
             )doc")

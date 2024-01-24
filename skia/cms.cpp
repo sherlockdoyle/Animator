@@ -587,8 +587,6 @@ void initCms(py::module &m)
         .value("A_8_", skcms_PixelFormat_A_8_)
         .value("G_8", skcms_PixelFormat_G_8)
         .value("G_8_", skcms_PixelFormat_G_8_)
-        .value("RGBA_8888_Palette8", skcms_PixelFormat_RGBA_8888_Palette8)
-        .value("BGRA_8888_Palette8", skcms_PixelFormat_BGRA_8888_Palette8)
 
         .value("RGB_565", skcms_PixelFormat_RGB_565)
         .value("BGR_565", skcms_PixelFormat_BGR_565)
@@ -670,68 +668,5 @@ void initCms(py::module &m)
                 :rtype: numpy.ndarray
             )doc",
            "src"_a, "srcFmt"_a, "srcAlpha"_a, "srcProfile"_a, "dstFmt"_a, "dstAlpha"_a, "dstProfile"_a)
-        .def(
-            "transformWithPalette",
-            [](const py::array &src, const skcms_PixelFormat &srcFmt, const skcms_AlphaFormat &srcAlpha,
-               const skcms_ICCProfile *srcProfile, const skcms_PixelFormat &dstFmt, const skcms_AlphaFormat &dstAlpha,
-               const skcms_ICCProfile *dstProfile, const std::optional<py::array> &palette)
-            {
-                py::ssize_t ndim = src.ndim();
-                auto shape = src.shape();
-                auto strides = src.strides();
-                py::array dst(src.dtype(), std::vector<py::ssize_t>(shape, shape + ndim),
-                              std::vector<py::ssize_t>(strides, strides + ndim));
-                if (skcms_TransformWithPalette(src.data(), srcFmt, srcAlpha, srcProfile, dst.mutable_data(), dstFmt,
-                                               dstAlpha, dstProfile, src.size(), palette ? palette->data() : nullptr))
-                    return dst;
-                throw py::value_error("Failed to transform.");
-            },
-            R"doc(
-                Convert pixels from src format and color profile to dst format and color profile.
-
-                :param numpy.ndarray src: The source pixels.
-                :param PixelFormat srcFmt: The source pixel format.
-                :param AlphaFormat srcAlpha: The source alpha format.
-                :param ICCProfile srcProfile: The source color profile. If ``None``, the sRGB color profile is used.
-                :param PixelFormat dstFmt: The destination pixel format.
-                :param AlphaFormat dstAlpha: The destination alpha format.
-                :param ICCProfile dstProfile: The destination color profile. If ``None``, the sRGB color profile is
-                    used.
-                :param numpy.ndarray palette: The palette. If ``None``, no palette is used.
-                :return: The destination pixels.
-                :rtype: numpy.ndarray
-            )doc",
-            "src"_a, "srcFmt"_a, "srcAlpha"_a, "srcProfile"_a, "dstFmt"_a, "dstAlpha"_a, "dstProfile"_a,
-            "palette"_a = py::none())
-        .def(
-            "transformWithPalette",
-            [](const py::array &src, const skcms_PixelFormat &srcFmt, const skcms_AlphaFormat &srcAlpha,
-               const skcms_ICCProfile *srcProfile, py::array &dst, const skcms_PixelFormat &dstFmt,
-               const skcms_AlphaFormat &dstAlpha, const skcms_ICCProfile *dstProfile,
-               const std::optional<py::array> &palette)
-            {
-                if (skcms_TransformWithPalette(src.data(), srcFmt, srcAlpha, srcProfile, dst.mutable_data(), dstFmt,
-                                               dstAlpha, dstProfile, src.size(), palette ? palette->data() : nullptr))
-                    return dst;
-                throw py::value_error("Failed to transform.");
-            },
-            R"doc(
-                Convert pixels from src format and color profile to dst format and color profile.
-
-                :param numpy.ndarray src: The source pixels.
-                :param PixelFormat srcFmt: The source pixel format.
-                :param AlphaFormat srcAlpha: The source alpha format.
-                :param ICCProfile srcProfile: The source color profile. If ``None``, the sRGB color profile is used.
-                :param numpy.ndarray dst: The destination pixels.
-                :param PixelFormat dstFmt: The destination pixel format.
-                :param AlphaFormat dstAlpha: The destination alpha format.
-                :param ICCProfile dstProfile: The destination color profile. If ``None``, the sRGB color profile is
-                    used.
-                :param numpy.ndarray palette: The palette. If ``None``, no palette is used.
-                :return: The destination pixels.
-                :rtype: numpy.ndarray
-            )doc",
-            "src"_a, "srcFmt"_a, "srcAlpha"_a, "srcProfile"_a, "dst"_a, "dstFmt"_a, "dstAlpha"_a, "dstProfile"_a,
-            "palette"_a = py::none())
         .def("disableRuntimeCPUDetection", &skcms_DisableRuntimeCPUDetection);
 }

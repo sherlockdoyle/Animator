@@ -66,6 +66,7 @@ void initColorFilter(py::module &m)
         .def("filterColor", &SkColorFilter::filterColor, "color"_a)
         .def("filterColor4f", &SkColorFilter::filterColor4f, "srcColor"_a, "srcCS"_a, "dstCS"_a)
         .def("makeComposed", &SkColorFilter::makeComposed, "inner"_a)
+        .def("makeWithWorkingColorSpace", &SkColorFilter::makeWithWorkingColorSpace, "workingSpace"_a)
         .def_static(
             "Deserialize",
             [](const py::buffer &b)

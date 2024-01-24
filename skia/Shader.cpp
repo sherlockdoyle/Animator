@@ -8,6 +8,8 @@
 #include "include/effects/SkPerlinNoiseShader.h"
 #include <pybind11/stl.h>
 
+static constexpr SkGradientShader::Interpolation di;
+
 template <typename T>
 const SkScalar *validateColor_Pos(const std::vector<T> &colors, const std::optional<std::vector<SkScalar>> &pos)
 {
@@ -45,6 +47,7 @@ void initShader(py::module &m)
             )doc")
         .def("makeWithLocalMatrix", &SkShader::makeWithLocalMatrix, "localMatrix"_a)
         .def("makeWithColorFilter", &SkShader::makeWithColorFilter, "filter"_a)
+        .def("makeWithWorkingColorSpace", &SkShader::makeWithWorkingColorSpace, "workingSpace"_a)
         .def_static("Empty", &SkShaders::Empty)
         .def_static("Color", py::overload_cast<SkColor>(&SkShaders::Color), "color"_a)
         .def_static("Color", py::overload_cast<const SkColor4f &, sk_sp<SkColorSpace>>(&SkShaders::Color), "color"_a,
@@ -94,8 +97,6 @@ void initShader(py::module &m)
         .def_readwrite("fColorSpace", &SkGradientShader::Interpolation::fColorSpace)
         .def_readwrite("fHueMethod", &SkGradientShader::Interpolation::fHueMethod)
         .def_static("FromFlags", &SkGradientShader::Interpolation::FromFlags, "flags"_a);
-
-    static constexpr SkGradientShader::Interpolation di;
 
     GradientShader
         .def_static(

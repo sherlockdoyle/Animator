@@ -85,6 +85,10 @@ public:
     {
         PYBIND11_OVERLOAD_PURE(int, Paragraph, getLineNumberAt, codeUnitIndex);
     }
+    int getLineNumberAtUTF16Offset(size_t codeUnitIndex) override
+    {
+        PYBIND11_OVERLOAD_PURE(int, Paragraph, getLineNumberAtUTF16Offset, codeUnitIndex);
+    }
     bool getLineMetricsAt(int lineNumber, LineMetrics *lineMetrics) const override
     {
         PYBIND11_OVERLOAD_PURE(bool, Paragraph, getLineMetricsAt, lineNumber, lineMetrics);
@@ -101,9 +105,21 @@ public:
     {
         PYBIND11_OVERLOAD_PURE(bool, Paragraph, getClosestGlyphClusterAt, dx, dy, glyphInfo);
     }
+    bool getGlyphInfoAtUTF16Offset(size_t codeUnitIndex, GlyphInfo *glyphInfo) override
+    {
+        PYBIND11_OVERLOAD_PURE(bool, Paragraph, getGlyphInfoAtUTF16Offset, codeUnitIndex, glyphInfo);
+    }
+    bool getClosestUTF16GlyphInfoAt(SkScalar dx, SkScalar dy, GlyphInfo *glyphInfo) override
+    {
+        PYBIND11_OVERLOAD_PURE(bool, Paragraph, getClosestUTF16GlyphInfoAt, dx, dy, glyphInfo);
+    }
     SkFont getFontAt(TextIndex codeUnitIndex) const override
     {
         PYBIND11_OVERLOAD_PURE(SkFont, Paragraph, getFontAt, codeUnitIndex);
+    }
+    SkFont getFontAtUTF16Offset(size_t codeUnitIndex) override
+    {
+        PYBIND11_OVERLOAD_PURE(SkFont, Paragraph, getFontAtUTF16Offset, codeUnitIndex);
     }
     std::vector<FontInfo> getFonts() const override
     {
@@ -152,6 +168,12 @@ void initParagraph(py::module &m)
             [](FontCollection &self, const SkUnichar &unicode, const SkFontStyle &fontStyle, const std::string &locale)
             { return self.defaultFallback(unicode, fontStyle, SkString(locale)); },
             "unicode"_a, "fontStyle"_a, "locale"_a)
+        .def(
+            "defaultEmojiFallback",
+            [](FontCollection &self, const SkUnichar &emojiStart, const SkFontStyle &fontStyle,
+               const std::string &locale)
+            { return self.defaultEmojiFallback(emojiStart, fontStyle, SkString(locale)); },
+            "emojiStart"_a, "fontStyle"_a, "locale"_a)
         .def("defaultFallback", py::overload_cast<>(&FontCollection::defaultFallback))
         .def("disableFontFallback", &FontCollection::disableFontFallback)
         .def("enableFontFallback", &FontCollection::enableFontFallback)
@@ -315,6 +337,7 @@ void initParagraph(py::module &m)
         .def("containsEmoji", &Paragraph::containsEmoji, "textBlob"_a)
         .def("containsColorFontOrBitmap", &Paragraph::containsColorFontOrBitmap, "textBlob"_a)
         .def("getLineNumberAt", &Paragraph::getLineNumberAt, "codeUnitIndex"_a)
+        .def("getLineNumberAtUTF16Offset", &Paragraph::getLineNumberAtUTF16Offset, "codeUnitIndex"_a)
         .def(
             "getLineMetricsAt",
             [](const Paragraph &self, int lineNumber) -> std::optional<LineMetrics>
@@ -359,6 +382,37 @@ void initParagraph(py::module &m)
             },
             "dx"_a, "dy"_a);
 
+    py::class_<Paragraph::GlyphInfo>(ParagraphClass, "GlyphInfo")
+        .def_readonly("fGraphemeLayoutBounds", &Paragraph::GlyphInfo::fGraphemeLayoutBounds)
+        .def_readonly("fGraphemeClusterTextRange", &Paragraph::GlyphInfo::fGraphemeClusterTextRange)
+        .def_readonly("fDirection", &Paragraph::GlyphInfo::fDirection)
+        .def_readonly("fIsEllipsis", &Paragraph::GlyphInfo::fIsEllipsis)
+        .def(
+            "__str__",
+            [](const Paragraph::GlyphInfo &self)
+            {
+                return "GlyphInfo(fGraphemeLayoutBounds={}, fGraphemeClusterTextRange={}, fDirection={}, fIsEllipsis={})"_s
+                    .format(self.fGraphemeLayoutBounds, self.fGraphemeClusterTextRange, self.fDirection,
+                            self.fIsEllipsis);
+            });
+    ParagraphClass
+        .def("getGlyphInfoAtUTF16Offset",
+             [](Paragraph &self, const size_t &codeUnitIndex) -> std::optional<Paragraph::GlyphInfo>
+             {
+                 Paragraph::GlyphInfo glyphInfo;
+                 if (self.getGlyphInfoAtUTF16Offset(codeUnitIndex, &glyphInfo))
+                     return glyphInfo;
+                 return std::nullopt;
+             })
+        .def("getClosestUTF16GlyphInfoAt",
+             [](Paragraph &self, const SkScalar &dx, const SkScalar &dy) -> std::optional<Paragraph::GlyphInfo>
+             {
+                 Paragraph::GlyphInfo glyphInfo;
+                 if (self.getClosestUTF16GlyphInfoAt(dx, dy, &glyphInfo))
+                     return glyphInfo;
+                 return std::nullopt;
+             });
+
     py::class_<Paragraph::FontInfo>(ParagraphClass, "FontInfo")
         .def(py::init<const SkFont &, const TextRange &>(), "font"_a, "textRange"_a)
         .def(py::init<const Paragraph::FontInfo &>(), "other"_a)
@@ -367,6 +421,7 @@ void initParagraph(py::module &m)
         .def("__str__", [](const Paragraph::FontInfo &self)
              { return "FontInfo(fFont={}, fTextRange={})"_s.format(self.fFont, self.fTextRange); });
     ParagraphClass.def("getFontAt", &Paragraph::getFontAt, "codeUnitIndex"_a)
+        .def("getFontAtUTF16Offset", &Paragraph::getFontAtUTF16Offset, "codeUnitIndex"_a)
         .def("getFonts", &Paragraph::getFonts)
         .def(
             "__str__",

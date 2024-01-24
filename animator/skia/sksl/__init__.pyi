@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-__all__ = ["DebugTrace"]
+__all__ = ['DebugTrace']
 
 class DebugTrace:
     def dump(self) -> str:

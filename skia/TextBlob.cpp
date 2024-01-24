@@ -1,6 +1,8 @@
 #include "common.h"
 #include "include/core/SkContourMeasure.h"
 #include "include/core/SkData.h"
+#include "include/core/SkPaint.h"
+#include "include/core/SkPath.h"
 #include "include/core/SkRSXform.h"
 #include "include/core/SkSerialProcs.h"
 #include "include/core/SkTextBlob.h"

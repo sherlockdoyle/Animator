@@ -12,6 +12,8 @@ from animator import skia
 from animator.entity import Entity
 from animator.graphics import FontStyle
 
+_FONT_COLLECTION = skia.textlayout.FontCollection()
+_FONT_COLLECTION.setDefaultFontManager(skia.FontMgr())
 _HEIGHT_OVERRIDE = True
 _HEIGHT = 1.25
 
@@ -38,6 +40,17 @@ def _style_to_class(
             if st['bgcolor']:
                 text_style.setBackgroundPaint(skia.Paint(color=_parse_hex(st['bgcolor'])))
     return classes
+
+
+def _get_char_width(text_style: skia.textlayout.TextStyle) -> float:
+    return (
+        skia.Font(
+            _FONT_COLLECTION.findTypefaces(text_style.getFontFamilies(), text_style.getFontStyle())[0],
+            text_style.getFontSize(),
+        )
+        .getMetrics()[0]
+        .fAvgCharWidth
+    )
 
 
 class CodeParser(HTMLParser):
@@ -103,13 +116,15 @@ class Code(Entity):
             font_size = text_style.getFontSize()
         else:
             text_style.setFontSize(font_size)
-        builder = skia.textlayout.ParagraphBuilder(skia.textlayout.ParagraphStyle(textStyle=text_style), skia.FontMgr())
+        builder = skia.textlayout.ParagraphBuilder(
+            skia.textlayout.ParagraphStyle(textStyle=text_style), _FONT_COLLECTION
+        )
         parser = CodeParser(builder, formatter.style, font_names, font_size, no_err)
         parser.feed(highlight(code, lexer, formatter).strip('\n'))
         parser.close()
 
         self.__paragraph = builder.Build()
-        self.__paragraph.layout(text_style.getFontMetrics().fAvgCharWidth * 100 if width is None else width)
+        self.__paragraph.layout(_get_char_width(text_style) * 100 if width is None else width)
 
     def on_draw(self, canvas: skia.Canvas) -> None:
         self.__paragraph.paint(canvas, self.offset.fX, self.offset.fY)

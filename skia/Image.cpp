@@ -1,8 +1,8 @@
 #include "common.h"
+#include "include/codec/SkEncodedImageFormat.h"
 #include "include/core/SkBitmap.h"
 #include "include/core/SkColorSpace.h"
 #include "include/core/SkData.h"
-#include "include/core/SkEncodedImageFormat.h"
 #include "include/core/SkImage.h"
 #include "include/core/SkImageFilter.h"
 #include "include/core/SkMatrix.h"
@@ -359,11 +359,8 @@ void initImage(py::module &m)
                 throw std::runtime_error("Image filtering failed.");
             },
             "Creates filtered :py:class:`Image` and returns ``(filteredImage, outSubset, offset)``.", "src"_a,
-            "filter"_a, "subset"_a = nullptr, "clipBounds"_a = nullptr);
-
-    static constexpr SkSamplingOptions dso;
-
-    Image.def("imageInfo", &SkImage::imageInfo)
+            "filter"_a, "subset"_a = nullptr, "clipBounds"_a = nullptr)
+        .def("imageInfo", &SkImage::imageInfo)
         .def("width", &SkImage::width)
         .def("height", &SkImage::height)
         .def("dimensions", &SkImage::dimensions)

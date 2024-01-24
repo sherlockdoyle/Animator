@@ -7,10 +7,11 @@
 #include "include/effects/SkDashPathEffect.h"
 #include "include/effects/SkDiscretePathEffect.h"
 #include "include/effects/SkImageFilters.h"
-#include "include/effects/SkOpPathEffect.h"
-#include "include/effects/SkStrokeAndFillPathEffect.h"
 #include "include/effects/SkTrimPathEffect.h"
 #include <pybind11/stl.h>
+
+static constexpr SkRect kNoCropRect = {SK_ScalarNegativeInfinity, SK_ScalarNegativeInfinity, SK_ScalarInfinity,
+                                       SK_ScalarInfinity};
 
 struct PyDashInfo : public SkPathEffect::DashInfo
 {
@@ -171,7 +172,7 @@ void initPathEffect(py::module &m)
                 Given a *src* path (input) and a stroke-*rec* (input and output), apply this effect to the *src* path,
                 returning the new path.
             )doc",
-            "src"_a, "rec"_a, "cullR"_a = skif::kNoCropRect, "ctm"_a = SkMatrix::I())
+            "src"_a, "rec"_a, "cullR"_a = kNoCropRect, "ctm"_a = SkMatrix::I())
         .def("needsCTM", &SkPathEffect::needsCTM)
         .def_static(
             "Deserialize",
@@ -213,19 +214,6 @@ void initPathEffect(py::module &m)
 
     py::class_<SkDiscretePathEffect>(m, "DiscretePathEffect")
         .def_static("Make", &SkDiscretePathEffect::Make, "segLength"_a, "dev"_a, "seedAssist"_a = 0);
-
-    py::class_<SkMergePathEffect>(m, "MergePathEffect")
-        .def_static("Make", &SkMergePathEffect::Make, "one"_a, "two"_a, "op"_a);
-
-    py::class_<SkMatrixPathEffect>(m, "MatrixPathEffect")
-        .def_static("MakeTranslate", &SkMatrixPathEffect::MakeTranslate, "dx"_a, "dy"_a)
-        .def_static("Make", &SkMatrixPathEffect::Make, "matrix"_a);
-
-    py::class_<SkStrokePathEffect>(m, "StrokePathEffect")
-        .def_static("Make", &SkStrokePathEffect::Make, "width"_a, "join"_a, "cap"_a, "miter"_a = 4);
-
-    py::class_<SkStrokeAndFillPathEffect>(m, "StrokeAndFillPathEffect")
-        .def_static("Make", &SkStrokeAndFillPathEffect::Make);
 
     py::class_<SkTrimPathEffect> TrimPathEffect(m, "TrimPathEffect");
 

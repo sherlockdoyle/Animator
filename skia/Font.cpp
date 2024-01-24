@@ -3,6 +3,7 @@
 #include "include/core/SkFont.h"
 #include "include/core/SkFontMetrics.h"
 #include "include/core/SkFontMgr.h"
+#include "include/core/SkFontTypes.h"
 #include "include/core/SkPaint.h"
 #include "include/core/SkPath.h"
 #include "include/core/SkStream.h"
@@ -240,11 +241,10 @@ void initFont(py::module &m)
             },
             "Returns the design variation parameters.")
         .def("uniqueID", &SkTypeface::uniqueID)
-        .def_static("UniqueID", &SkTypeface::UniqueID, "face"_a)
         .def_static("Equal", &SkTypeface::Equal, "facea"_a, "faceb"_a)
         .def("__eq__", &SkTypeface::Equal, py::is_operator())
-        .def_static("MakeDefault", &SkTypeface::MakeDefault)
-        .def(py::init(&SkTypeface::MakeDefault), "Returns the default normal typeface.")
+        .def_static("MakeEmpty", &SkTypeface::MakeEmpty)
+        .def(py::init(&SkTypeface::MakeEmpty), "Returns a non-null typeface which contains no glyphs.")
         .def_static("MakeFromName", &Typeface_MakeFromName, "familyName"_a, "fontStyle"_a = SkFontStyle())
         .def(
             py::init(&Typeface_MakeFromName),
@@ -265,16 +265,19 @@ void initFont(py::module &m)
              "behavior"_a = SkTypeface::SerializeBehavior::kIncludeDataIfLocal)
         .def_static(
             "MakeDeserialize",
-            [](const sk_sp<SkData> &data)
+            [](const sk_sp<SkData> &data, const sk_sp<SkFontMgr> &lastResortMgr)
             {
                 SkMemoryStream stream(data);
+                if (lastResortMgr)
+                    return SkTypeface::MakeDeserialize(&stream, lastResortMgr);
                 return SkTypeface::MakeDeserialize(&stream);
             },
             R"doc(
-                Given the data previously written by :py:meth:`serialize`, return a new instance of a typeface referring
-                to the same font.
+                Given the *data* previously written by :py:meth:`serialize`, return a new instance of a typeface
+                referring to the same font. Goes through all registered typeface factories and *lastResortMgr* (if
+                non-null).
             )doc",
-            "data"_a)
+            "data"_a, "lastResortMgr"_a = nullptr)
         .def(
             "unicharsToGlyphs",
             [](const SkTypeface &self, const std::vector<SkUnichar> &uni)
@@ -422,7 +425,7 @@ void initFont(py::module &m)
              });
 
     py::class_<SkFontMetrics> FontMetrics(m, "FontMetrics");
-    FontMetrics.def(py::init()).def("__eq__", &SkFontMetrics::operator==, py::is_operator(), "other"_a);
+    FontMetrics.def(py::init()).def(py::self == py::self, "other"_a);
     py::enum_<SkFontMetrics::FontMetricsFlags>(FontMetrics, "FontMetricsFlags", py::arithmetic())
         .value("kUnderlineThicknessIsValid_Flag", SkFontMetrics::FontMetricsFlags::kUnderlineThicknessIsValid_Flag)
         .value("kUnderlinePositionIsValid_Flag", SkFontMetrics::FontMetricsFlags::kUnderlinePositionIsValid_Flag)
@@ -539,12 +542,10 @@ void initFont(py::module &m)
         .def("getHinting", &SkFont::getHinting)
         .def("makeWithSize", &SkFont::makeWithSize, "size"_a)
         .def("getTypeface", &SkFont::getTypeface, py::return_value_policy::reference)
-        .def("getTypefaceOrDefault", &SkFont::getTypefaceOrDefault, py::return_value_policy::reference)
         .def("getSize", &SkFont::getSize)
         .def("getScaleX", &SkFont::getScaleX)
         .def("getSkewX", &SkFont::getSkewX)
         .def("refTypeface", &SkFont::refTypeface)
-        .def("refTypefaceOrDefault", &SkFont::refTypefaceOrDefault)
         .def("setTypeface", &SkFont::setTypeface, "tf"_a)
         .def("setSize", &SkFont::setSize, "textSize"_a)
         .def("setScaleX", &SkFont::setScaleX, "scaleX"_a)
@@ -728,8 +729,8 @@ void initFont(py::module &m)
         .def("__str__",
              [](const SkFont &self)
              {
-                 return "Font({}, size={:g}, scale={:g}, skew={:g})"_s.format(
-                     self.getTypefaceOrDefault(), self.getSize(), self.getScaleX(), self.getSkewX());
+                 return "Font({}, size={:g}, scale={:g}, skew={:g})"_s.format(self.getTypeface(), self.getSize(),
+                                                                              self.getScaleX(), self.getSkewX());
              });
 
     py::class_<SkFontStyleSet, sk_sp<SkFontStyleSet>>(m, "FontStyleSet")

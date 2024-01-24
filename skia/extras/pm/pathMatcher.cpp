@@ -31,6 +31,6 @@ void initPathMatcher(py::module &m)
     PathMatcherClass
         .def(py::init<const SkPath &, const SkPath &, const float, const ContourMatcher::MatchType>(), "path0"_a,
              "path1"_a, "distFactor"_a = 1.0f, "matchType"_a = ContourMatcher::MatchType::split)
-        .def("interpolate", &PathMatcher::interpolate, "Interpolate two paths by *weight* ad write to *out*.",
+        .def("interpolate", &PathMatcher::interpolate, "Interpolate two paths by *weight* and write to *out*.",
              "weight"_a, "out"_a);
 }

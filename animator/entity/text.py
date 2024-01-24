@@ -272,7 +272,7 @@ class Text(Entity):
         """Get the (approximate) bounds of the text."""
         self.__build_paragraph()
         bounds = skia.Rect.MakeXYWH(
-            self.offset.fX, self.offset.fY, self.__paragraph.getMaxIntrinsicWidth(), self.__paragraph.getHeight()
+            self.offset.fX, self.offset.fY, self.__paragraph.getLongestLine(), self.__paragraph.getHeight()
         )
         if transformed:
             return self.mat.mapRect(bounds, skia.ApplyPerspectiveClip.kNo)

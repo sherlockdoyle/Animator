@@ -5,6 +5,8 @@
 #include "include/effects/SkRuntimeEffect.h"
 #include <pybind11/stl.h>
 
+static constexpr SkRuntimeEffect::Options dopts;
+
 static void BuilderUniform_throwIfUnequal(const size_t &size, const size_t &count)
 {
     if (size != count)
@@ -114,8 +116,6 @@ void initRuntimeEffect(py::module &m)
                      return "Result({})"_s.format(self.effect);
                  return "Result(error=\"{}\")"_s.format(self.errorText.c_str());
              });
-
-    static constexpr SkRuntimeEffect::Options dopts{};
     RuntimeEffect
         .def_static(
             "MakeForColorFilter",
