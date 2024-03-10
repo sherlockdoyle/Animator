@@ -1,4 +1,5 @@
 """Entities are the basic objects that can be drawn on the screen."""
+
 from __future__ import annotations
 
 import math
@@ -274,6 +275,26 @@ class Entity:
         :param degrees: The amount to rotate in degrees.
         """
         self.mat.preRotate(degrees)
+        return self
+
+    def rotate3d(self: ET, axis: tuple[float, float, float] | Literal['x', 'y'], degrees: float, depth: float) -> ET:
+        """Rotate the entity around a 3D axis by the given amount.
+
+        :param axis: The axis to rotate around. This can be a tuple representing the axis in 3D space, or a string
+            ``'x'`` or ``'y'`` representing the x or y axis, respectively.
+        :param degrees: The amount to rotate in degrees.
+        :param depth: The depth used to create a perspective matrix for the rotation.
+
+        :note: This method only simulates a 3D rotation. Repeated 3D rotations won't necessarily rotate the entity by
+            the sum of the rotations.
+        """
+        if axis == 'x':
+            axis = (1, 0, 0)
+        elif axis == 'y':
+            axis = (0, 1, 0)
+        m44 = skia.M44(self.mat)
+        m44.preConcat(skia.M44.Perspective(depth)).preConcat(skia.M44.Rotate(axis, math.radians(degrees)))
+        self.mat.setFromM44(m44)
         return self
 
     def skew(self: ET, kx: float = 0, ky: float = 0) -> ET:

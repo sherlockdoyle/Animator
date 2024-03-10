@@ -1,4 +1,5 @@
 #include "common.h"
+#include "include/core/SkM44.h"
 #include "include/core/SkMatrix.h"
 #include "include/core/SkPoint3.h"
 #include "include/core/SkRSXform.h"
@@ -8,17 +9,17 @@
 
 typedef py::array_t<SkScalar> ndarray;
 
-SkScalar getItem(const SkMatrix &m, int index)
+SkScalar Matrix_getItem(const SkMatrix &self, int index)
 {
     if (index < 0 || 9 <= index)
         throw py::index_error("Index out of range.");
-    return m[index];
+    return self[index];
 }
-void setItem(SkMatrix &m, int index, SkScalar value)
+void Matrix_setItem(SkMatrix &self, int index, SkScalar value)
 {
     if (index < 0 || 9 <= index)
         throw py::index_error("Index out of range.");
-    m[index] = value;
+    self[index] = value;
 }
 
 void initMatrix(py::module &m)
@@ -39,7 +40,7 @@ void initMatrix(py::module &m)
             "toQuad",
             [](const SkRSXform &rsxForm, const SkScalar &width, const SkScalar &height)
             {
-                std::vector<SkPoint> quad(4);
+                std::array<SkPoint, 4> quad;
                 rsxForm.toQuad(width, height, quad.data());
                 return quad;
             },
@@ -56,7 +57,7 @@ void initMatrix(py::module &m)
             "toQuad",
             [](const SkRSXform &rsxForm, const SkSize &size)
             {
-                std::vector<SkPoint> quad(4);
+                std::array<SkPoint, 4> quad;
                 rsxForm.toQuad(size, quad.data());
                 return quad;
             },
@@ -72,7 +73,7 @@ void initMatrix(py::module &m)
             "toTriStrip",
             [](const SkRSXform &rsxForm, const SkScalar &width, const SkScalar &height)
             {
-                std::vector<SkPoint> strip(4);
+                std::array<SkPoint, 4> strip;
                 rsxForm.toTriStrip(width, height, strip.data());
                 return strip;
             },
@@ -153,7 +154,7 @@ void initMatrix(py::module &m)
         .def_readonly_static("kAScaleY", &SkMatrix::kAScaleY)
         .def_readonly_static("kATransX", &SkMatrix::kATransX)
         .def_readonly_static("kATransY", &SkMatrix::kATransY)
-        .def("__getitem__", &getItem, py::is_operator(), "index"_a)
+        .def("__getitem__", &Matrix_getItem, py::is_operator(), "index"_a)
         .def("get", &SkMatrix::get, "index"_a)
         .def("rc", &SkMatrix::rc, "r"_a, "c"_a)
         .def("getScaleX", &SkMatrix::getScaleX)
@@ -164,7 +165,7 @@ void initMatrix(py::module &m)
         .def("getTranslateY", &SkMatrix::getTranslateY)
         .def("getPerspX", &SkMatrix::getPerspX)
         .def("getPerspY", &SkMatrix::getPerspY)
-        .def("__setitem__", &setItem, py::is_operator(), "index"_a, "value"_a)
+        .def("__setitem__", &Matrix_setItem, py::is_operator(), "index"_a, "value"_a)
         .def("set", &SkMatrix::set, "index"_a, "value"_a)
         .def(
             "setFromMatrix",
@@ -174,6 +175,14 @@ void initMatrix(py::module &m)
                 self.dirtyMatrixTypeCache();
             },
             "Sets the values from the given matrix.", "src"_a)
+        .def(
+            "setFromM44",
+            [](SkMatrix &self, const SkM44 &src)
+            {
+                self.setAll(src.rc(0, 0), src.rc(0, 1), src.rc(0, 3), src.rc(1, 0), src.rc(1, 1), src.rc(1, 3),
+                            src.rc(3, 0), src.rc(3, 1), src.rc(3, 3));
+            },
+            "Sets the values from the given py::class:`M44`.", "src"_a)
         .def("setScaleX", &SkMatrix::setScaleX, "v"_a)
         .def("setScaleY", &SkMatrix::setScaleY, "v"_a)
         .def("setSkewY", &SkMatrix::setSkewY, "v"_a)
@@ -188,7 +197,7 @@ void initMatrix(py::module &m)
             "get9",
             [](const SkMatrix &matrix)
             {
-                std::vector<SkScalar> buffer(9);
+                std::array<SkScalar, 9> buffer;
                 matrix.get9(buffer.data());
                 return buffer;
             },
@@ -197,13 +206,7 @@ void initMatrix(py::module &m)
                 kMScaleX, kMSkewX, kMTransX, kMSkewY, kMScaleY, kMTransY, kMPersp0, kMPersp1, kMPersp2.
             )doc")
         .def(
-            "set9",
-            [](SkMatrix &matrix, const std::vector<SkScalar> &values)
-            {
-                if (values.size() != 9)
-                    throw py::value_error("set9 expects 9 values.");
-                return matrix.set9(values.data());
-            },
+            "set9", [](SkMatrix &matrix, const std::array<SkScalar, 9> &values) { return matrix.set9(values.data()); },
             "buffer"_a)
         .def("reset", &SkMatrix::reset)
         .def("setIdentity", &SkMatrix::setIdentity)
@@ -281,7 +284,7 @@ void initMatrix(py::module &m)
             "SetAffineIdentity",
             []()
             {
-                std::vector<SkScalar> affine(6);
+                std::array<SkScalar, 6> affine;
                 SkMatrix::SetAffineIdentity(affine.data());
                 return affine;
             },
@@ -295,9 +298,9 @@ void initMatrix(py::module &m)
             )doc")
         .def(
             "asAffine",
-            [](const SkMatrix &self) -> std::optional<std::vector<SkScalar>>
+            [](const SkMatrix &self) -> std::optional<std::array<SkScalar, 6>>
             {
-                std::vector<SkScalar> affine(6);
+                std::array<SkScalar, 6> affine;
                 if (self.asAffine(affine.data()))
                     return affine;
                 return std::nullopt;
@@ -315,12 +318,7 @@ void initMatrix(py::module &m)
             )doc")
         .def(
             "setAffine",
-            [](SkMatrix &matrix, const std::vector<SkScalar> &affine)
-            {
-                if (affine.size() != 6)
-                    throw py::value_error("affine must have 6 elements.");
-                return matrix.setAffine(affine.data());
-            },
+            [](SkMatrix &matrix, const std::array<SkScalar, 6> &affine) { return matrix.setAffine(affine.data()); },
             "affine"_a)
         .def("normalizePerspective", &SkMatrix::normalizePerspective)
         .def(
@@ -385,7 +383,7 @@ void initMatrix(py::module &m)
             "mapRectToQuad",
             [](const SkMatrix &matrix, const SkRect &rect)
             {
-                std::vector<SkPoint> dst(4);
+                std::array<SkPoint, 4> dst;
                 matrix.mapRectToQuad(dst.data(), rect);
                 return dst;
             },
@@ -474,4 +472,238 @@ void initMatrix(py::module &m)
              });
 
     py::implicitly_convertible<ndarray, SkMatrix>();
+
+    py::class_<SkM44> M44(m, "M44");
+    M44.def(py::init<const SkM44 &>(), "src"_a)
+        .def(py::init())
+        .def(py::init<const SkM44 &, const SkM44 &>(), "a"_a, "b"_a);
+
+    py::enum_<SkM44::Uninitialized_Constructor>(M44, "Uninitialized_Constructor")
+        .value("kUninitialized_Constructor", SkM44::Uninitialized_Constructor::kUninitialized_Constructor);
+    M44.def(py::init<SkM44::Uninitialized_Constructor>());
+
+    py::enum_<SkM44::NaN_Constructor>(M44, "NaN_Constructor")
+        .value("kNaN_Constructor", SkM44::NaN_Constructor::kNaN_Constructor);
+    M44.def(py::init<SkM44::NaN_Constructor>())
+        .def(py::init([](const SkScalar &m0, const SkScalar &m4, const SkScalar &m8, const SkScalar &m12,
+                         const SkScalar &m1, const SkScalar &m5, const SkScalar &m9, const SkScalar &m13,
+                         const SkScalar &m2, const SkScalar &m6, const SkScalar &m10, const SkScalar &m14,
+                         const SkScalar &m3, const SkScalar &m7, const SkScalar &m11, const SkScalar &m15)
+                      { return SkM44(m0, m4, m8, m12, m1, m5, m9, m13, m2, m6, m10, m14, m3, m7, m11, m15); }),
+             "m0"_a, "m4"_a, "m8"_a, "m12"_a, "m1"_a, "m5"_a, "m9"_a, "m13"_a, "m2"_a, "m6"_a, "m10"_a, "m14"_a, "m3"_a,
+             "m7"_a, "m11"_a, "m15"_a)
+        .def_static(
+            "Rows",
+            [](const std::array<float, 4> &r0, const std::array<float, 4> &r1, const std::array<float, 4> &r2,
+               const std::array<float, 4> &r3)
+            {
+                return SkM44::Rows({r0[0], r0[1], r0[2], r0[3]}, {r1[0], r1[1], r1[2], r1[3]},
+                                   {r2[0], r2[1], r2[2], r2[3]}, {r3[0], r3[1], r3[2], r3[3]});
+            },
+            "Creates a :py:class:`M44` from 4 rows of 4 floats.", "r0"_a, "r1"_a, "r2"_a, "r3"_a)
+        .def_static(
+            "Cols",
+            [](const std::array<float, 4> &c0, const std::array<float, 4> &c1, const std::array<float, 4> &c2,
+               const std::array<float, 4> &c3)
+            {
+                return SkM44::Cols({c0[0], c0[1], c0[2], c0[3]}, {c1[0], c1[1], c1[2], c1[3]},
+                                   {c2[0], c2[1], c2[2], c2[3]}, {c3[0], c3[1], c3[2], c3[3]});
+            },
+            "Creates a :py:class:`M44` from 4 columns of 4 floats.", "c0"_a, "c1"_a, "c2"_a, "c3"_a)
+        .def_static(
+            "RowMajor", [](const std::array<float, 4> &r) { return SkM44::RowMajor(r.data()); }, "r"_a)
+        .def(py::init(
+                 [](const ndarray &array)
+                 {
+                     if (array.size() != 16)
+                         throw py::value_error("Matrix must be a 4x4 matrix.");
+                     return SkM44::RowMajor(array.data());
+                 }),
+             "Creates a :py:class:`M44` from 4x4 float32 NumPy array.", "array"_a)
+        .def_static(
+            "ColMajor", [](const std::array<float, 4> &c) { return SkM44::ColMajor(c.data()); }, "c"_a)
+        .def_static("Translate", SkM44::Translate, "x"_a, "y"_a, "z"_a = 0)
+        .def_static("Scale", SkM44::Scale, "x"_a, "y"_a, "z"_a = 1)
+        .def_static(
+            "Rotate",
+            [](const std::array<float, 3> &axis, const SkScalar &radians) {
+                return SkM44::Rotate({axis[0], axis[1], axis[2]}, radians);
+            },
+            "Creates a :py:class:`M44` from a 3D axis represented as a list and angle.", "axis"_a, "radians"_a)
+        .def_static(
+            "Rotate",
+            [](const SkScalar &x, const SkScalar &y, const SkScalar &z, const SkScalar &radians) {
+                return SkM44::Rotate(SkV3{x, y, z}, radians);
+            },
+            "Creates a :py:class:`M44` from a 3D axis represented as 3 scalars and an angle.", "x"_a, "y"_a, "z"_a,
+            "radians"_a)
+        .def_static("RectToRect", SkM44::RectToRect, "src"_a, "dst"_a)
+        .def_static(
+            "LookAt",
+            [](const std::array<float, 3> &eye, const std::array<float, 3> &center, const std::array<float, 3> &up) {
+                return SkM44::LookAt({eye[0], eye[1], eye[2]}, {center[0], center[1], center[2]},
+                                     {up[0], up[1], up[2]});
+            },
+            "Creates a look-at :py:class:`M44` from an eye, center, and up vector.", "eye"_a, "center"_a, "up"_a)
+        .def_static("Perspective", SkM44::Perspective, "near"_a, "far"_a, "angle"_a)
+        .def_static(
+            "Perspective",
+            [](const SkScalar &depth)
+            {
+                SkM44 m;
+                m.setRC(3, 2, -1 / depth);
+                return m;
+            },
+            "Creates a perspective :py:class:`M44` from a *depth*.", "depth"_a)
+        .def(py::self == py::self)
+        .def(py::self != py::self)
+        .def(
+            "getColMajor",
+            [](const SkM44 &self)
+            {
+                std::array<SkScalar, 16> v;
+                self.getColMajor(v.data());
+                return v;
+            },
+            "Returns the matrix in column-major order.")
+        .def(
+            "getRowMajor",
+            [](const SkM44 &self)
+            {
+                std::array<SkScalar, 16> v;
+                self.getRowMajor(v.data());
+                return v;
+            },
+            "Returns the matrix in row-major order.")
+        .def("rc", &SkM44::rc, "r"_a, "c"_a)
+        .def(
+            "__getitem__",
+            [](const SkM44 &self, const py::tuple &index)
+            {
+                if (index.size() != 2)
+                    throw py::index_error("Index must be a 2-tuple.");
+                return self.rc(index[0].cast<int>(), index[1].cast<int>());
+            },
+            py::is_operator())
+        .def("setRC", &SkM44::setRC, "r"_a, "c"_a, "value"_a)
+        .def(
+            "__setitem__",
+            [](SkM44 &self, const py::tuple &index, const SkScalar &value)
+            {
+                if (index.size() != 2)
+                    throw py::index_error("Index must be a 2-tuple.");
+                self.setRC(index[0].cast<int>(), index[1].cast<int>(), value);
+            },
+            py::is_operator())
+        .def(
+            "row",
+            [](const SkM44 &self, const int &i)
+            {
+                auto row = self.row(i);
+                return std::array{row.x, row.y, row.z, row.w};
+            },
+            "Returns the *i*-th row as a list.", "i"_a)
+        .def(
+            "col",
+            [](const SkM44 &self, const int &i)
+            {
+                auto col = self.col(i);
+                return std::array{col.x, col.y, col.z, col.w};
+            },
+            "Returns the *i*-th column as a list.", "i"_a)
+        .def(
+            "setRow",
+            [](SkM44 &self, const int &i, const std::array<float, 4> &v) {
+                self.setRow(i, {v[0], v[1], v[2], v[3]});
+            },
+            "Sets the *i*-th row from a list.", "i"_a, "v"_a)
+        .def(
+            "setCol",
+            [](SkM44 &self, const int &i, const std::array<float, 4> &v) {
+                self.setCol(i, {v[0], v[1], v[2], v[3]});
+            },
+            "Sets the *i*-th column from a list.", "i"_a, "v"_a)
+        .def("setIdentity", &SkM44::setIdentity)
+        .def("setTranslate", &SkM44::setTranslate, "x"_a, "y"_a, "z"_a = 0)
+        .def("setScale", &SkM44::setScale, "x"_a, "y"_a, "z"_a = 1)
+        .def(
+            "setRotateUnitSinCos",
+            [](SkM44 &self, const std::array<float, 3> &axis, const SkScalar &sinAngle, const SkScalar &cosAngle) {
+                return self.setRotateUnitSinCos({axis[0], axis[1], axis[2]}, sinAngle, cosAngle);
+            },
+            "Set this matrix to rotate about the specified unit-length axis list, by an angle specified by its sin() "
+            "and cos().",
+            "axis"_a, "sinAngle"_a, "cosAngle"_a)
+        .def(
+            "setRotateUnit",
+            [](SkM44 &self, const std::array<float, 3> &axis, const SkScalar &radians) {
+                return self.setRotateUnit({axis[0], axis[1], axis[2]}, radians);
+            },
+            "Set this matrix to rotate about the specified unit-length axis list, by an angle specified in radians.",
+            "axis"_a, "radians"_a)
+        .def(
+            "setRotate",
+            [](SkM44 &self, const std::array<float, 3> &axis, const SkScalar &radians) {
+                return self.setRotate({axis[0], axis[1], axis[2]}, radians);
+            },
+            "Set this matrix to rotate about the specified axis list, by an angle specified in radians.", "axis"_a,
+            "radians"_a)
+        .def("setConcat", &SkM44::setConcat, "a"_a, "b"_a)
+        .def(py::self * py::self)
+        .def("preConcat", py::overload_cast<const SkM44 &>(&SkM44::preConcat), "m"_a)
+        .def("postConcat", &SkM44::postConcat, "m"_a)
+        .def("normalizePerspective", &SkM44::normalizePerspective)
+        .def("isFinite", &SkM44::isFinite)
+        .def("invert", &SkM44::invert, "inverse"_a)
+        .def(
+            "makeInverse",
+            [](const SkM44 &self)
+            {
+                SkM44 inverse;
+                if (self.invert(&inverse))
+                    return inverse;
+                throw py::value_error("Matrix is not invertible.");
+            },
+            "Returns the inverse of this matrix.")
+        .def("transpose", &SkM44::transpose)
+        .def("dump", &SkM44::dump)
+        .def(
+            "map",
+            [](const SkM44 &self, const float &x, const float &y, const float &z, const float &w)
+            {
+                auto v4 = self.map(x, y, z, w);
+                return std::array{v4.x, v4.y, v4.z, v4.w};
+            },
+            "Returns the matrix-vector (size 4) product.", "x"_a, "y"_a, "z"_a, "w"_a)
+        .def(
+            "__mul__",
+            [](const SkM44 &self, const std::array<float, 4> &v)
+            {
+                auto v4 = self * SkV4{v[0], v[1], v[2], v[3]};
+                return std::array{v4.x, v4.y, v4.z, v4.w};
+            },
+            py::is_operator(), "Returns the matrix-vector (size 4) product.")
+        .def(
+            "__mul__",
+            [](const SkM44 &self, const std::array<float, 3> &v)
+            {
+                auto v3 = self * SkV3{v[0], v[1], v[2]};
+                return std::array{v3.x, v3.y, v3.z};
+            },
+            py::is_operator(), "Returns the matrix-vector (size 3) product.")
+        .def("asM33", &SkM44::asM33)
+        .def(py::init<const SkMatrix &>(), "src"_a)
+        .def("preTranslate", &SkM44::preTranslate, "x"_a, "y"_a, "z"_a = 0)
+        .def("postTranslate", &SkM44::postTranslate, "x"_a, "y"_a, "z"_a = 0)
+        .def("preScale", py::overload_cast<SkScalar, SkScalar>(&SkM44::preScale), "x"_a, "y"_a)
+        .def("preScale", py::overload_cast<SkScalar, SkScalar, SkScalar>(&SkM44::preScale), "x"_a, "y"_a, "z"_a)
+        .def("preConcat", py::overload_cast<const SkMatrix &>(&SkM44::preConcat), "b"_a)
+        .def("__str__",
+             [](const SkM44 &self)
+             {
+                 return "M44(({}, {}, {}, {}), ({}, {}, {}, {}), ({}, {}, {}, {}), ({}, {}, {}, {}))"_s.format(
+                     self.rc(0, 0), self.rc(0, 1), self.rc(0, 2), self.rc(0, 3), self.rc(1, 0), self.rc(1, 1),
+                     self.rc(1, 2), self.rc(1, 3), self.rc(2, 0), self.rc(2, 1), self.rc(2, 2), self.rc(2, 3),
+                     self.rc(3, 0), self.rc(3, 1), self.rc(3, 2), self.rc(3, 3));
+             });
 }

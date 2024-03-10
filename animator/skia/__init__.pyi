@@ -4,6 +4,7 @@ Custom Skia bindings for animator.
 Refer to the Skia documentation for more information. Unless otherwise documented, all functions behave the same as the
 corresponding Skia function. Small changes like throwing exceptions instead of returning false have been made.
 """
+
 from __future__ import annotations
 
 import typing
@@ -92,6 +93,7 @@ __all__ = [
     'ImageInfo',
     'Line2DPathEffect',
     'LumaColorFilter',
+    'M44',
     'MakeNullCanvas',
     'MaskFilter',
     'Matrix',
@@ -908,7 +910,10 @@ class Canvas:
     def clipRect(self, rect: _Rect, op: ClipOp = ClipOp.kIntersect, doAntiAlias: bool = False) -> None: ...
     def clipRegion(self, deviceRgn: Region, op: ClipOp = ClipOp.kIntersect) -> None: ...
     def clipShader(self, sh: Shader, op: ClipOp = ClipOp.kIntersect) -> None: ...
+    @typing.overload
     def concat(self, matrix: Matrix) -> None: ...
+    @typing.overload
+    def concat(self, m: M44) -> None: ...
     def discard(self) -> None: ...
     def drawArc(self, oval: _Rect, startAngle: float, sweepAngle: float, useCenter: bool, paint: Paint) -> None: ...
     def drawAtlas(
@@ -1056,6 +1061,7 @@ class Canvas:
     def getBaseProps(self) -> SurfaceProps: ...
     def getDeviceClipBounds(self) -> IRect: ...
     def getLocalClipBounds(self) -> Rect: ...
+    def getLocalToDevice(self) -> M44: ...
     def getLocalToDeviceAs3x3(self) -> Matrix: ...
     def getProps(self) -> SurfaceProps | None:
         """
@@ -1104,6 +1110,9 @@ class Canvas:
     def saveLayerAlpha(self, bounds: _Rect | None, alpha: int) -> int: ...
     def saveLayerAlphaf(self, bounds: _Rect | None, alpha: float) -> int: ...
     def scale(self, sx: float, sy: float) -> None: ...
+    @typing.overload
+    def setMatrix(self, matrix: M44) -> None: ...
+    @typing.overload
     def setMatrix(self, matrix: Matrix) -> None: ...
     def skew(self, sx: float, sy: float) -> None: ...
     def toarray(
@@ -2009,6 +2018,7 @@ class Font:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     defaultSize: typing.ClassVar[float] = 12.0
     def __eq__(self, arg0: Font) -> bool: ...
@@ -2197,6 +2207,7 @@ class FontArguments:
                 """
                 Remove and return the item at index ``i``
                 """
+
         index: int
         overrides: FontArguments.Palette.OverrideVector
         def __init__(self, index: int, overrides: FontArguments.Palette.OverrideVector) -> None: ...
@@ -2283,6 +2294,7 @@ class FontArguments:
                 """
                 Remove and return the item at index ``i``
                 """
+
         coordinates: FontArguments.VariationPosition.CoordinateVector
         def __init__(self, coordinates: FontArguments.VariationPosition.CoordinateVector) -> None: ...
         def __str__(self) -> str: ...
@@ -2391,6 +2403,7 @@ class FontMetrics:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     fAscent: float
     fAvgCharWidth: float
@@ -2615,6 +2628,7 @@ class FontStyle:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     @staticmethod
     def Bold() -> FontStyle: ...
@@ -2828,6 +2842,7 @@ class GradientShader:
             def name(self) -> str: ...
             @property
             def value(self) -> int: ...
+
         kColorSpaceCount: typing.ClassVar[int] = 9
         kHueMethodCount: typing.ClassVar[int] = 4
         fColorSpace: GradientShader.Interpolation.ColorSpace
@@ -3060,6 +3075,7 @@ class HighContrastConfig:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     fContrast: float
     fGrayscale: bool
     fInvertStyle: HighContrastConfig.InvertStyle
@@ -4021,6 +4037,241 @@ class LumaColorFilter:
     @staticmethod
     def Make() -> ColorFilter: ...
 
+class M44:
+    class NaN_Constructor:
+        """
+        Members:
+
+          kNaN_Constructor
+        """
+
+        __members__: typing.ClassVar[
+            dict[str, M44.NaN_Constructor]
+        ]  # value = {'kNaN_Constructor': <NaN_Constructor.kNaN_Constructor: 0>}
+        kNaN_Constructor: typing.ClassVar[M44.NaN_Constructor]  # value = <NaN_Constructor.kNaN_Constructor: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __getstate__(self) -> int: ...
+        def __hash__(self) -> int: ...
+        def __index__(self) -> int: ...
+        def __init__(self, value: int) -> None: ...
+        def __int__(self) -> int: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __repr__(self) -> str: ...
+        def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
+        @property
+        def name(self) -> str: ...
+        @property
+        def value(self) -> int: ...
+
+    class Uninitialized_Constructor:
+        """
+        Members:
+
+          kUninitialized_Constructor
+        """
+
+        __members__: typing.ClassVar[
+            dict[str, M44.Uninitialized_Constructor]
+        ]  # value = {'kUninitialized_Constructor': <Uninitialized_Constructor.kUninitialized_Constructor: 0>}
+        kUninitialized_Constructor: typing.ClassVar[
+            M44.Uninitialized_Constructor
+        ]  # value = <Uninitialized_Constructor.kUninitialized_Constructor: 0>
+        def __eq__(self, other: typing.Any) -> bool: ...
+        def __getstate__(self) -> int: ...
+        def __hash__(self) -> int: ...
+        def __index__(self) -> int: ...
+        def __init__(self, value: int) -> None: ...
+        def __int__(self) -> int: ...
+        def __ne__(self, other: typing.Any) -> bool: ...
+        def __repr__(self) -> str: ...
+        def __setstate__(self, state: int) -> None: ...
+        def __str__(self) -> str: ...
+        @property
+        def name(self) -> str: ...
+        @property
+        def value(self) -> int: ...
+
+    __hash__: typing.ClassVar[None] = None
+    @staticmethod
+    def ColMajor(c: typing.Annotated[list[float], 4]) -> M44: ...
+    @staticmethod
+    def Cols(
+        c0: typing.Annotated[list[float], 4],
+        c1: typing.Annotated[list[float], 4],
+        c2: typing.Annotated[list[float], 4],
+        c3: typing.Annotated[list[float], 4],
+    ) -> M44:
+        """
+        Creates a :py:class:`M44` from 4 columns of 4 floats.
+        """
+    @staticmethod
+    def LookAt(
+        eye: typing.Annotated[list[float], 3],
+        center: typing.Annotated[list[float], 3],
+        up: typing.Annotated[list[float], 3],
+    ) -> M44:
+        """
+        Creates a look-at :py:class:`M44` from an eye, center, and up vector.
+        """
+    @staticmethod
+    @typing.overload
+    def Perspective(near: float, far: float, angle: float) -> M44: ...
+    @staticmethod
+    @typing.overload
+    def Perspective(depth: float) -> M44:
+        """
+        Creates a perspective :py:class:`M44` from a *depth*.
+        """
+    @staticmethod
+    def RectToRect(src: Rect, dst: Rect) -> M44: ...
+    @staticmethod
+    @typing.overload
+    def Rotate(axis: tuple[float, float, float], radians: float) -> M44:
+        """
+        Creates a :py:class:`M44` from a 3D axis represented as a list and angle.
+        """
+    @staticmethod
+    @typing.overload
+    def Rotate(x: float, y: float, z: float, radians: float) -> M44:
+        """
+        Creates a :py:class:`M44` from a 3D axis represented as 3 scalars and an angle.
+        """
+    @staticmethod
+    def RowMajor(r: typing.Annotated[list[float], 4]) -> M44: ...
+    @staticmethod
+    def Rows(
+        r0: typing.Annotated[list[float], 4],
+        r1: typing.Annotated[list[float], 4],
+        r2: typing.Annotated[list[float], 4],
+        r3: typing.Annotated[list[float], 4],
+    ) -> M44:
+        """
+        Creates a :py:class:`M44` from 4 rows of 4 floats.
+        """
+    @staticmethod
+    def Scale(x: float, y: float, z: float = 1) -> M44: ...
+    @staticmethod
+    def Translate(x: float, y: float, z: float = 0) -> M44: ...
+    def __eq__(self, arg0: M44) -> bool: ...
+    def __getitem__(self, arg0: tuple) -> float: ...
+    @typing.overload
+    def __init__(self, src: M44) -> None: ...
+    @typing.overload
+    def __init__(self) -> None: ...
+    @typing.overload
+    def __init__(self, a: M44, b: M44) -> None: ...
+    @typing.overload
+    def __init__(self, arg0: M44.Uninitialized_Constructor) -> None: ...
+    @typing.overload
+    def __init__(self, arg0: M44.NaN_Constructor) -> None: ...
+    @typing.overload
+    def __init__(
+        self,
+        m0: float,
+        m4: float,
+        m8: float,
+        m12: float,
+        m1: float,
+        m5: float,
+        m9: float,
+        m13: float,
+        m2: float,
+        m6: float,
+        m10: float,
+        m14: float,
+        m3: float,
+        m7: float,
+        m11: float,
+        m15: float,
+    ) -> None: ...
+    @typing.overload
+    def __init__(self, array: numpy.ndarray) -> None:
+        """
+        Creates a :py:class:`M44` from 4x4 float32 NumPy array.
+        """
+    @typing.overload
+    def __init__(self, src: Matrix) -> None: ...
+    @typing.overload
+    def __mul__(self, arg0: M44) -> M44: ...
+    @typing.overload
+    def __mul__(self, arg0: typing.Annotated[list[float], 4]) -> typing.Annotated[list[float], 4]:
+        """
+        Returns the matrix-vector (size 4) product.
+        """
+    @typing.overload
+    def __mul__(self, arg0: typing.Annotated[list[float], 3]) -> typing.Annotated[list[float], 3]:
+        """
+        Returns the matrix-vector (size 3) product.
+        """
+    def __ne__(self, arg0: M44) -> bool: ...
+    def __setitem__(self, arg0: tuple, arg1: float) -> None: ...
+    def __str__(self) -> str: ...
+    def asM33(self) -> Matrix: ...
+    def col(self, i: int) -> typing.Annotated[list[float], 4]:
+        """
+        Returns the *i*-th column as a list.
+        """
+    def dump(self) -> None: ...
+    def getColMajor(self) -> typing.Annotated[list[float], 16]:
+        """
+        Returns the matrix in column-major order.
+        """
+    def getRowMajor(self) -> typing.Annotated[list[float], 16]:
+        """
+        Returns the matrix in row-major order.
+        """
+    def invert(self, inverse: M44) -> bool: ...
+    def isFinite(self) -> bool: ...
+    def makeInverse(self) -> M44:
+        """
+        Returns the inverse of this matrix.
+        """
+    def map(self, x: float, y: float, z: float, w: float) -> typing.Annotated[list[float], 4]: ...
+    def normalizePerspective(self) -> None: ...
+    def postConcat(self, m: M44) -> M44: ...
+    def postTranslate(self, x: float, y: float, z: float = 0) -> M44: ...
+    @typing.overload
+    def preConcat(self, m: M44) -> M44: ...
+    @typing.overload
+    def preConcat(self, b: Matrix) -> M44: ...
+    @typing.overload
+    def preScale(self, x: float, y: float) -> M44: ...
+    @typing.overload
+    def preScale(self, x: float, y: float, z: float) -> M44: ...
+    def preTranslate(self, x: float, y: float, z: float = 0) -> M44: ...
+    def rc(self, r: int, c: int) -> float: ...
+    def row(self, i: int) -> typing.Annotated[list[float], 4]:
+        """
+        Returns the *i*-th row as a list.
+        """
+    def setCol(self, i: int, v: typing.Annotated[list[float], 4]) -> None:
+        """
+        Sets the *i*-th column from a list.
+        """
+    def setConcat(self, a: M44, b: M44) -> M44: ...
+    def setIdentity(self) -> M44: ...
+    def setRC(self, r: int, c: int, value: float) -> None: ...
+    def setRotate(self, axis: typing.Annotated[list[float], 3], radians: float) -> M44:
+        """
+        Set this matrix to rotate about the specified axis list, by an angle specified in radians.
+        """
+    def setRotateUnit(self, axis: typing.Annotated[list[float], 3], radians: float) -> M44:
+        """
+        Set this matrix to rotate about the specified unit-length axis list, by an angle specified in radians.
+        """
+    def setRotateUnitSinCos(self, axis: typing.Annotated[list[float], 3], sinAngle: float, cosAngle: float) -> M44:
+        """
+        Set this matrix to rotate about the specified unit-length axis list, by an angle specified by its sin() and cos().
+        """
+    def setRow(self, i: int, v: typing.Annotated[list[float], 4]) -> None:
+        """
+        Sets the *i*-th row from a list.
+        """
+    def setScale(self, x: float, y: float, z: float = 1) -> M44: ...
+    def setTranslate(self, x: float, y: float, z: float = 0) -> M44: ...
+    def transpose(self) -> M44: ...
+
 class MaskFilter(Flattenable):
     @staticmethod
     def Deserialize(data: buffer) -> MaskFilter: ...
@@ -4112,6 +4363,7 @@ class Matrix:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     kAScaleX: typing.ClassVar[int] = 0
     kAScaleY: typing.ClassVar[int] = 3
@@ -4161,7 +4413,7 @@ class Matrix:
     @staticmethod
     def Scale(sx: float, sy: float) -> Matrix: ...
     @staticmethod
-    def SetAffineIdentity() -> list[float]:
+    def SetAffineIdentity() -> typing.Annotated[list[float], 6]:
         """
         Returns affine with identity values in column major order. Sets affine to:
 
@@ -4202,7 +4454,7 @@ class Matrix:
     def __ne__(self, arg0: Matrix) -> bool: ...
     def __setitem__(self, index: int, value: float) -> None: ...
     def __str__(self) -> str: ...
-    def asAffine(self) -> list[float] | None:
+    def asAffine(self) -> typing.Annotated[list[float], 6] | None:
         """
         Returns affine in column major order. Sets affine to:
 
@@ -4225,7 +4477,7 @@ class Matrix:
     def dirtyMatrixTypeCache(self) -> None: ...
     def dump(self) -> None: ...
     def get(self, index: int) -> float: ...
-    def get9(self) -> list[float]:
+    def get9(self) -> typing.Annotated[list[float], 9]:
         """
         Returns nine scalar values contained by :py:class:`Matrix` into list, in member value ascending order:
         kMScaleX, kMSkewX, kMTransX, kMSkewY, kMScaleY, kMTransY, kMPersp0, kMPersp1, kMPersp2.
@@ -4293,7 +4545,7 @@ class Matrix:
         :param src: :py:class:`Rect` to map
         :return: bounds of mapped :py:class:`Point`
         """
-    def mapRectToQuad(self, rect: _Rect) -> list[Point]:
+    def mapRectToQuad(self, rect: _Rect) -> typing.Annotated[list[Point], 4]:
         """
         Maps four corners of *rect* to a list of 4 :py:class:`Point`.
 
@@ -4345,8 +4597,8 @@ class Matrix:
     def rectStaysRect(self) -> bool: ...
     def reset(self) -> Matrix: ...
     def set(self, index: int, value: float) -> Matrix: ...
-    def set9(self, buffer: typing.Sequence[float]) -> Matrix: ...
-    def setAffine(self, affine: list[float]) -> Matrix: ...
+    def set9(self, buffer: typing.Annotated[typing.Sequence[float], 9]) -> Matrix: ...
+    def setAffine(self, affine: typing.Annotated[list[float], 6]) -> Matrix: ...
     def setAll(
         self,
         scaleX: float,
@@ -4360,6 +4612,8 @@ class Matrix:
         persp2: float,
     ) -> Matrix: ...
     def setConcat(self, a: Matrix, b: Matrix) -> Matrix: ...
+    def setFromM44(self, src: M44) -> None:
+        """Sets the values from the given py::class:`M44`."""
     def setFromMatrix(self, src: Matrix) -> None:
         """Sets the values from the given matrix."""
     def setIdentity(self) -> Matrix: ...
@@ -4568,6 +4822,7 @@ class Paint:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     kCapCount: typing.ClassVar[int] = 3
     kJoinCount: typing.ClassVar[int] = 3
@@ -4865,6 +5120,7 @@ class Path:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     @staticmethod
     def Circle(center_x: float, center_y: float, radius: float, dir: PathDirection = PathDirection.kCW) -> Path: ...
@@ -6098,6 +6354,7 @@ class RRect:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     kSizeInMemory: typing.ClassVar[int] = 48
     @staticmethod
@@ -6198,7 +6455,7 @@ class RSXform:
     def set(self, scos: float, ssin: float, tx: float, ty: float) -> None: ...
     def setIdentity(self) -> None: ...
     @typing.overload
-    def toQuad(self, width: float, height: float) -> list[Point]:
+    def toQuad(self, width: float, height: float) -> typing.Annotated[list[Point], 4]:
         """
         Maps a rectangle with the given *width* and *height* with this :py:class:`RSXform` and returns a list of
         4 points, the corners of the resulting quadrilateral.
@@ -6208,7 +6465,7 @@ class RSXform:
         :return: A list of 4 points, the corners of the resulting quadrilateral.
         """
     @typing.overload
-    def toQuad(self, size: Size) -> list[Point]:
+    def toQuad(self, size: Size) -> typing.Annotated[list[Point], 4]:
         """
         Maps a rectangle with the given *size* with this :py:class:`RSXform` and returns a list of 4 points, the
         corners of the resulting quadrilateral.
@@ -6216,7 +6473,7 @@ class RSXform:
         :param size: The size of the rectangle.
         :return: A list of 4 points, the corners of the resulting quadrilateral.
         """
-    def toTriStrip(self, width: float, height: float) -> list[Point]:
+    def toTriStrip(self, width: float, height: float) -> typing.Annotated[list[Point], 4]:
         """
         Returns a list of 4 points, the corners of the resulting strip.
         """
@@ -6497,6 +6754,7 @@ class Region:
             Advances iterator to next span intersecting :py:class:`Region` within line segment provided in constructor.
             Returns ``None`` if no intervals were found.
             """
+
     __hash__: typing.ClassVar[None] = None
     kOpCnt: typing.ClassVar[int] = 6
     @typing.overload
@@ -6885,6 +7143,7 @@ class RuntimeEffectBuilder:
             """
             Set the uniform with an array of values to the given *val*. *val* is automatically type-cast.
             """
+
     def child(self, name: str) -> RuntimeEffectBuilder.BuilderChild: ...
     def children(self) -> list[RuntimeEffect.ChildPtr]: ...
     def effect(self) -> RuntimeEffect: ...
@@ -7156,6 +7415,7 @@ class StrokeRec:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     kStyleCount: typing.ClassVar[int] = 4
     @staticmethod
@@ -7373,6 +7633,7 @@ class SurfaceProps:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     def __eq__(self, arg0: SurfaceProps) -> bool: ...
     @typing.overload
@@ -7761,6 +8022,7 @@ class Typeface:
         def name(self) -> str: ...
         @property
         def value(self) -> int: ...
+
     __hash__: typing.ClassVar[None] = None
     @staticmethod
     def Equal(facea: Typeface, faceb: Typeface) -> bool: ...
