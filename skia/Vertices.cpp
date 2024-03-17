@@ -31,9 +31,9 @@ void initVertices(py::module &m)
 
     Vertices
         .def(py::init(&Vertices_MakeCopy), "Create a vertices by copying the specified arrays.", "mode"_a,
-             "positions"_a, "texs"_a = py::none(), "colors"_a = py::none(), "indices"_a = py::none())
+             "positions"_a, "texs"_a = std::nullopt, "colors"_a = std::nullopt, "indices"_a = std::nullopt)
         .def_static("MakeCopy", &Vertices_MakeCopy, "Create a vertices by copying the specified arrays.", "mode"_a,
-                    "positions"_a, "texs"_a, "colors"_a, "indices"_a = py::none())
+                    "positions"_a, "texs"_a, "colors"_a, "indices"_a = std::nullopt)
         .def("uniqueID", &SkVertices::uniqueID)
         .def("bounds", &SkVertices::bounds)
         .def("approximateSize", &SkVertices::approximateSize);

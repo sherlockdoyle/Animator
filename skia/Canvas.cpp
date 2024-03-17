@@ -517,7 +517,7 @@ void initCanvas(py::module &m)
         [](SkCanvas *self, const std::string &text, const SkScalar &x, const SkScalar &y, const SkFont &font,
            const SkPaint &paint, const SkTextEncoding &encoding, const SkTextUtils::Align &align)
         { SkTextUtils::Draw(self, text.c_str(), text.size(), encoding, x, y, font, paint, align); },
-        "Draws the *text* at (*x*, *y*) using the given *font* and *paint* useing SkTextUtils.", "text"_a, "x"_a, "y"_a,
+        "Draws the *text* at (*x*, *y*) using the given *font* and *paint* using SkTextUtils.", "text"_a, "x"_a, "y"_a,
         "font"_a, "paint"_a, "encoding"_a = SkTextEncoding::kUTF8, "align"_a = SkTextUtils::Align::kLeft_Align);
 
     // py::class_<SkSVGCanvas>(m, "SVGCanvas")

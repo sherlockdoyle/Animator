@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 
 
 class _Artist:
-    def __init__(self, parent: Plot, c: ColorLike | None = None, sw: float = 3) -> None:
+    def __init__(self, parent: Plot, *, c: ColorLike | None = None, sw: float = 3) -> None:
         self._parent: Plot = parent
         self._color: skia.Color4f = skia.uniqueColor(50) if c is None else parse_color(c)
         self._stroke_width: float = sw
@@ -100,18 +100,15 @@ class _Line_Anim(Anim):
     def __init__(self, artist: _LineArtist, data: np.ndarray, duration: float, **kwargs: Any) -> None:
         super().__init__(duration, **kwargs)
         self.__artist: _LineArtist = artist
-        self.__target_path: skia.Path = skia.plot.Point_Polygon(data, False)
-        self.__initial_aligned_path: skia.Path = None  # type: ignore lateinit
-        self.__target_aligned_path: skia.Path = None  # type: ignore lateinit
+        self.__target_path: skia.Path = skia.plot.Path_Polygon(data, False)
+        self.__matcher: skia.PathMatcher = None  # type: ignore lateinit
 
     def start(self) -> None:
-        matcher = skia.LinearSegment(self.__artist._path, self.__target_path)
-        self.__initial_aligned_path = matcher.mPath0
-        self.__target_aligned_path = matcher.mPath1
+        self.__matcher = skia.PathMatcher(self.__artist._path, self.__target_path)
         self.__artist._parent.ion()
 
     def update(self, t: float) -> None:
-        self.__artist._path = self.__target_aligned_path.interpolate(self.__initial_aligned_path, t)  # type: ignore aligned path will always be interpolatable
+        self.__matcher.interpolate(t, self.__artist._path)
 
     def end(self) -> None:
         self.__artist._path = self.__target_path
@@ -135,7 +132,7 @@ class _LineArtist(_Artist):
         :param data: Data to plot of shape (2, n).
         """
         super().__init__(*args, **kwargs)
-        self._path: skia.Path = skia.plot.Point_Polygon(data, False)
+        self._path: skia.Path = skia.plot.Path_Polygon(data, False)
 
     def _draw(self, canvas: skia.Canvas, matrix: skia.Matrix) -> None:
         self._parent.style.stroke_paint.setColor4f(self._color)
@@ -144,7 +141,7 @@ class _LineArtist(_Artist):
 
     def set_data(self, *args: ArrayLike) -> None:
         """Set data to plot. Takes the same data as :meth:`Plot.plot`."""
-        self._path = skia.plot.Point_Polygon(_sanitize_plot_data(args), False)
+        self._path = skia.plot.Path_Polygon(_sanitize_plot_data(args), False)
         self._parent._mark_dirty()
 
     def animate_set_data(self, args: tuple[ArrayLike, ...], duration: float, **kwargs: Any) -> _Line_Anim:
@@ -171,7 +168,7 @@ class _FuncArtist(_Artist):
         y = origin.fY - self.__func((x - origin.fX) / scale.fX) * scale.fY
         self._parent.style.stroke_paint.setColor4f(self._color)
         self._parent.style.stroke_paint.setStrokeWidth(self._stroke_width)
-        canvas.drawPath(skia.plot.Point_Polygon(np.vstack((x, y)).T.copy(), False), self._parent.style.stroke_paint)
+        canvas.drawPath(skia.plot.Path_Polygon(np.vstack((x, y)).T.copy(), False), self._parent.style.stroke_paint)
 
 
 class _ZoomAnim(Anim):
@@ -231,7 +228,8 @@ class Plot(Entity):
     """
     This provides a very basic matplotlib like interface for plotting and animating simple graphs. This entity does not
     draw anything by default. Call any of the plot methods to draw a graph. The ``stroke_paint`` is used for plotting
-    and the ``fill_paint`` is used for drawing the grid.
+    and the ``fill_paint`` is used for drawing the grid. Every call to any of the plot methods will change some of the
+    properties of the ``stroke_paint``.
     """
 
     def __init__(
@@ -244,6 +242,16 @@ class Plot(Entity):
         pos: PointLike = (0, 0),
         **kwargs: Any,
     ) -> None:
+        """
+        :param width: Width of the plot. Defaults to the width of the scene.
+        :param height: Height of the plot. Defaults to the height of the scene.
+        :param bounds: Bounds of the plot. Defaults to (-width/2, width/2) for x and (-height/2, height/2) for y minus
+            the padding if you don't plot anything. After the first plot call, the bounds is set to the bounds of the
+            data.
+        :param padding: Extra space around the bounds. The grid and the graph is still drawn in this space.
+        :param tick_spacing: Minimum distance between ticks/grid lines. The actual spacing will depend on the zoom
+            level.
+        """
         super().__init__(pos=pos, **kwargs)
         self.width: float = width  # type: ignore set in set_scene
         self.height: float = height  # type: ignore set in set_scene
@@ -357,6 +365,14 @@ class Plot(Entity):
         self.__artists.clear()
 
     def scatter(self, x_data: ArrayLike, y_data: ArrayLike, **kwargs: Any) -> _PointArtist:
+        """
+        Add a scatter plot with the given *x_data* and *y_data*. Each of the *x_data* and *y_data* must be an array-like
+        of the same length. You can also pass keyword arguments to customize the plot.
+
+        :param c: The color of the points. Can be one of the supported Animation color types. If not specified, a unique
+            color is used.
+        :param sw: The stroke width of the points.
+        """
         data = _sanitize_scatter_data(x_data, y_data)
         if self.__rebound:
             self.bounds = skia.Rect(*data.min(0), *data.max(0))
@@ -368,6 +384,11 @@ class Plot(Entity):
         return artist
 
     def plot(self, *args: ArrayLike, **kwargs: Any) -> _LineArtist:
+        """
+        Add a line plot with the given *args*. Takes the same keyword arguments as :meth:`scatter`.
+
+        :param args: A sequence of numbers, one array-like, or two array-likes of the same length.
+        """
         data = _sanitize_plot_data(args)
         if self.__rebound:
             self.bounds = skia.Rect(*data.min(0), *data.max(0))
@@ -379,6 +400,12 @@ class Plot(Entity):
         return artist
 
     def func_plot(self, func: Callable[[float], float], **kwargs: Any) -> _FuncArtist:
+        """
+        Add a function plot with the given *func*. The plot will be drawn to take the full width of the plot,
+        irrespective of its bounds. Takes the same keyword arguments as :meth:`scatter`.
+
+        :param func: Function to plot of type ``y = f(x)``.
+        """
         artist = _FuncArtist(func, self, **kwargs)
         self.__artists.append(artist)
         self._is_dirty = True
