@@ -11,16 +11,18 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Literal
 
-_CODE_IMPORT = '''import animator as am
+_CODE_IMPORT = """import animator as am
 
-'''
-_CODE_SUFFIX = '''scene.play_frames()
-'''
-_CODE_SUFFIX_IMG = '''scene.show_frame()
-'''
+"""
+_CODE_SUFFIX = """scene.play_frames()
+"""
+_CODE_SUFFIX_IMG = """scene.show_frame()
+"""
 
 
 class DemoParser(HTMLParser):
+    CDATA_CONTENT_ELEMENTS = ('demo',)
+
     def __init__(self) -> None:
         super().__init__()
         self.__inside_demo: bool = False
@@ -54,6 +56,10 @@ class DemoParser(HTMLParser):
     @property
     def code_prefix(self) -> str:
         return f'scene = am.Scene({self.__attribs.get("args", "")})\n'
+
+    @property
+    def collapsed(self) -> bool:
+        return bool(self.__attribs.get('collapsed', False))
 
     def write_code(self, writer: io.TextIOWrapper) -> None:
         writer.write('```python\n')
@@ -116,6 +122,9 @@ class Parser(AbstractContextManager):
                 if self.__readline().strip().startswith('<demo'):
                     demo = DemoParser()
                     demo.feed(self.__read_demo())
+
+                    if demo.collapsed:
+                        self.__writer.write('<details>\n<summary>Code</summary>\n\n')
                     demo.write_code(self.__writer)
 
                     code = demo.get_exec()
@@ -140,6 +149,8 @@ class Parser(AbstractContextManager):
                         if not demo.image:
                             os.system(f'{self.__ffmpeg} -i {mp4_path} {gif_path} -y')
 
+                    if demo.collapsed:
+                        self.__writer.write('\n</details>\n')
                     self.__writer.write(
                         f'\n**Output**\n\n![{demo.alt}]({Path(png_path if demo.image else gif_path).relative_to(self.__base)})\n'
                     )
