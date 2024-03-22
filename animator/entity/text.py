@@ -1,4 +1,5 @@
 """Entities for showing text."""
+
 from __future__ import annotations
 
 import re
@@ -8,6 +9,7 @@ from animator import skia
 from animator.entity.entity import Entity
 from animator.graphics import FontStyle, Style, TextStyle
 from animator.util.html import ParagraphHTMLParser
+from animator.util.text import FONT_COLLECTION, get_char_width
 
 if TYPE_CHECKING:
     from animator.scene import Scene
@@ -176,11 +178,11 @@ class Text(Entity):
             text_style.setFontFamilies(font_name.split(','))
         if font_size is not None:
             text_style.setFontSize(font_size)
-        self.width: float = text_style.getFontMetrics().fAvgCharWidth * 80 if width is None else width
+        self.width: float = get_char_width(text_style) * 80 if width is None else width
         self.__set_width_from_scene = width is None
 
         self.__builder = skia.textlayout.ParagraphBuilder(
-            skia.textlayout.ParagraphStyle(textStyle=text_style), skia.FontMgr()
+            skia.textlayout.ParagraphStyle(textStyle=text_style), FONT_COLLECTION
         )
         if text is not None:
             self.__builder.addText(text)

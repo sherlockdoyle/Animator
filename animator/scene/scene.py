@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Callable, Iterator, TypeVar
+from typing import Any, Callable, Final, Iterator, TypeVar
 
 import numpy as np
 
@@ -89,8 +89,8 @@ class Scene:
         """
         if isinstance(width, str):
             width, height = _str2px(width)
-        self.width: int = width
-        self.height: int = height
+        self.width: Final[int] = width
+        self.height: Final[int] = height
 
         if isinstance(scale, (str, tuple)):
             if isinstance(scale, str):
@@ -99,16 +99,16 @@ class Scene:
         else:
             frame_width = int(width * scale)
             frame_height = int(height * scale)
-        self.frame: np.ndarray = np.empty(shape=(frame_height, frame_width, 4), dtype=np.uint8)
-        self.canvas = skia.Canvas(self.frame)
+        self.frame: Final[np.ndarray] = np.empty(shape=(frame_height, frame_width, 4), dtype=np.uint8)
+        self.canvas: Final[skia.Canvas] = skia.Canvas(self.frame)
         scale = min(frame_width / width, frame_height / height)
         self.canvas.translate((frame_width - width * scale) / 2, (frame_height - height * scale) / 2)
         self.canvas.scale(scale, scale)
 
         self.fps: float = fps
 
-        self.entities: EntityList = EntityList()
-        self.animation_manager = AnimationManager(self)
+        self.entities: Final[EntityList] = EntityList()
+        self.animation_manager: Final[AnimationManager] = AnimationManager(self)
         self.bgcolor: skia.Color4f = skia.Color4f.kBlack
         self.__context2d: Context2d | None = None
 
@@ -167,8 +167,8 @@ class Scene:
             entity.set_scene(self)
 
     def __matmul__(self, entity: __Entity) -> __Entity:
-        """Sets the scene of an entity withouth adding it to the scene."""
-        entity.set_scene(self)
+        """Sets the scene of an entity without adding it to the scene. This does not call :meth:`Entity.set_scene`."""
+        entity._scene = self
         return entity
 
     __rmatmul__ = __matmul__

@@ -1,9 +1,11 @@
 """Contains relative positioning used by entities."""
+
 from typing import Final
 
 import numpy
+import numpy.typing
 
-RelativePosition = Final[numpy.ndarray]
+RelativePosition = Final[numpy.typing.NDArray[numpy.float64]]
 
 # Relative positions
 LEFT: RelativePosition = numpy.array([-1, 0])

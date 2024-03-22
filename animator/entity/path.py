@@ -1,4 +1,5 @@
 """Path based entities."""
+
 from __future__ import annotations
 
 import math
@@ -299,7 +300,7 @@ class PolyLine(PathEntity):
     @classmethod
     def line(cls, x1: float, y1: float, x2: float, y2: float, **kwargs: Any) -> PolyLine:
         """Create a line from ``(x1, y1)`` to ``(x2, y2)``."""
-        return cls([(x1, y1), (x2, y2)], **kwargs)
+        return cls([(x1, y1), (x2, y2)], pos=(0, 0), **kwargs)
 
     @classmethod
     def polygon(cls, n: int, r: float, **kwargs: Any) -> PolyLine:
